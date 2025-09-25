@@ -24,7 +24,7 @@
 #endif
 
 static void start_async_task_doing_fs_operations() {
-  LittleFS.begin(true);
+  LittleFS.begin(true, "/littlefs", 10, "fs");
   // Start a task doing heavy FS operations every 500 ms
   // This is to simulate a real-world scenario where the main loop does FS operations
   // and to show that MycilaDimmer is designed to work in such conditions
@@ -32,10 +32,10 @@ static void start_async_task_doing_fs_operations() {
     for (;;) {
       File f = LittleFS.open("/test.txt", FILE_WRITE);
       if (f) {
-        f.printf("Hello World! %lu\n", millis());
+        f.printf("Hello World! This is a test line to write to the file system to simulate heavy FS operations. Current millis: %" PRIu32 "\n", millis());
         f.close();
       }
-      vTaskDelay(200 / portTICK_PERIOD_MS);
+      vTaskDelay(100 / portTICK_PERIOD_MS);
     }
   },
               "fs_task",
