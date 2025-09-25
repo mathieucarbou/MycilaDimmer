@@ -69,7 +69,7 @@ struct gptimer_t {
 // FROM gptimer.c
 ///////////////////////////////////////////////////////////////////////////
 
-__attribute__((always_inline)) inline esp_err_t inlined_gptimer_get_raw_count(gptimer_handle_t timer, unsigned long long* value) {
+__attribute__((always_inline)) inline esp_err_t inlined_gptimer_get_raw_count(gptimer_handle_t timer, uint64_t* value) {
   if (timer == NULL || value == NULL) {
     return ESP_ERR_INVALID_ARG;
   }
@@ -80,7 +80,7 @@ __attribute__((always_inline)) inline esp_err_t inlined_gptimer_get_raw_count(gp
   return ESP_OK;
 }
 
-__attribute__((always_inline)) inline esp_err_t inlined_gptimer_set_raw_count(gptimer_handle_t timer, unsigned long long value) {
+__attribute__((always_inline)) inline esp_err_t inlined_gptimer_set_raw_count(gptimer_handle_t timer, uint64_t value) {
   if (timer == NULL) {
     return ESP_ERR_INVALID_ARG;
   }
