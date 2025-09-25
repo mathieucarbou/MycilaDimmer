@@ -9,7 +9,7 @@
 
 #include <Arduino.h>
 #include <ArduinoJson.h>
-#include <MycilaDimmerDFRobot.h>
+#include <MycilaDimmer.h>
 #include <Wire.h>
 
 static Mycila::Dimmer* createDimmer() {

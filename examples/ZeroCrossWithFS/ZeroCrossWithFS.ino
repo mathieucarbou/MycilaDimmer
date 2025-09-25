@@ -12,7 +12,7 @@
 
 #include <Arduino.h>
 #include <LittleFS.h>
-#include <MycilaDimmerZeroCross.h>
+#include <MycilaDimmer.h>
 #include <MycilaPulseAnalyzer.h>
 
 #if defined(CONFIG_IDF_TARGET_ESP32)

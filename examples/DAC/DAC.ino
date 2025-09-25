@@ -8,7 +8,7 @@
 //
 
 #include <Arduino.h>
-#include <MycilaDimmerDFRobot.h>
+#include <MycilaDimmer.h>
 #include <Wire.h>
 
 static Mycila::Dimmer* createDimmer() {

@@ -235,3 +235,7 @@ namespace Mycila {
       virtual bool apply() { return true; }
   };
 } // namespace Mycila
+
+#include "MycilaDimmerDFRobot.h"
+#include "MycilaDimmerPWM.h"
+#include "MycilaDimmerZeroCross.h"

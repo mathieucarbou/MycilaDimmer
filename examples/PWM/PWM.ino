@@ -8,7 +8,7 @@
 //
 
 #include <Arduino.h>
-#include <MycilaDimmerPWM.h>
+#include <MycilaDimmer.h>
 
 #if defined(CONFIG_IDF_TARGET_ESP32)
   #define GPIO_DIMMER GPIO_NUM_25
