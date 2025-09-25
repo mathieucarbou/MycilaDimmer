@@ -6,6 +6,9 @@
 
 A comprehensive ESP32/Arduino library for controlling AC power devices including TRIACs, SSRs, and voltage regulators through multiple dimming methods.
 
+![](https://raw.githubusercontent.com/mathieucarbou/MycilaDimmer/assets/img/console.png)
+![](https://raw.githubusercontent.com/mathieucarbou/MycilaDimmer/assets/img/anim.gif)
+
 ## Table of Contents
 
 - [Overview](#overview)
