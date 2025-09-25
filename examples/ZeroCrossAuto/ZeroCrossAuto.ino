@@ -28,7 +28,7 @@ static void initZCD() {
   // Initialize the Zero-Cross Detection (ZCD)
   // You can use MycilaPulseAnalyzer library to detect zero-crossing events from the AC waveform
   // See MycilaPulseAnalyzer documentation for more details
-  // MycilaPulseAnalyzer supports many types of ZCD modules (like the Robodyn ZCD or the ZCD from Daniel S., JSY-194g, etc)
+  // MycilaPulseAnalyzer supports many types of ZCD modules (like the RobotDyn ZCD or the ZCD from Daniel S., JSY-194g, etc)
 
   // IMPORTANT NOTE:
   // Mycila Pulse Analyzer library is optional: if you already have a library or code capable of detecting zero-crossing events,

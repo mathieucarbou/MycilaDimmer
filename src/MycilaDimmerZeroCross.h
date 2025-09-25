@@ -46,7 +46,7 @@ namespace Mycila {
        *
        * pulseAnalyzer.onZeroCross(Mycila::Dimmer::onZeroCross);
        *
-       * - When using your own ISR with the Robodyn ZCD,       you can call this method with delayUntilZero == 200 since the length of the ZCD pulse is about  400 us.
+       * - When using your own ISR with the RobotDyn ZCD,      you can call this method with delayUntilZero == 200 since the length of the ZCD pulse is about  400 us.
        * - When using your own ISR with the ZCd from Daniel S, you can call this method with delayUntilZero == 550 since the length of the ZCD pulse is about 1100 us.
        */
       static void onZeroCross(int16_t delayUntilZero, void* args);
