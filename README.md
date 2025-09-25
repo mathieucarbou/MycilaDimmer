@@ -272,12 +272,12 @@ lib_deps =
 
 The library includes comprehensive examples:
 
-- **[DAC Example](examples/DAC/)** - DFRobot DAC module control
-- **[JSON Example](examples/Json/)** - Telemetry and JSON integration
-- **[PWM Example](examples/PWM/)** - Basic PWM dimming
-- **[ZeroCross Example](examples/ZeroCross/)** - TRIAC control with zero-cross detection
-- **[ZeroCrossAuto Example](examples/ZeroCrossAuto/)** - Automatic detection of frequency and semi-period
-- **[ZeroCrossWithFS Example](examples/ZeroCrossWithFS/)** - File system integration
+- **[DAC Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/DAC/)** - DFRobot DAC module control
+- **[JSON Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/Json/)** - Telemetry and JSON integration
+- **[PWM Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/PWM/)** - Basic PWM dimming
+- **[ZeroCross Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCross/)** - TRIAC control with zero-cross detection
+- **[ZeroCrossAuto Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCrossAuto/)** - Automatic detection of frequency and semi-period
+- **[ZeroCrossWithFS Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCrossWithFS/)** - File system integration
 
 ## Build Configuration
 
