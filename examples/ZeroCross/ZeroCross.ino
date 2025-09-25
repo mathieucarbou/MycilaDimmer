@@ -11,6 +11,14 @@
 #include <MycilaDimmerZeroCross.h>
 #include <MycilaPulseAnalyzer.h>
 
+#if defined(CONFIG_IDF_TARGET_ESP32)
+  #define GPIO_DIMMER GPIO_NUM_25
+  #define GPIO_ZCD    GPIO_NUM_35
+#else
+  #define GPIO_DIMMER GPIO_NUM_20
+  #define GPIO_ZCD    GPIO_NUM_8
+#endif
+
 static Mycila::PulseAnalyzer pulseAnalyzer;
 static Mycila::Dimmer* dimmer;
 
@@ -32,14 +40,14 @@ static void initZCD() {
   // The dimmer will be notified of zero-crossing events and will trigger the TRIAC/SSR at the right time
   pulseAnalyzer.onZeroCross(Mycila::ZeroCrossDimmer::onZeroCross);
 
-  pulseAnalyzer.begin(35); // GPIO connected to the ZCD output. This can be an input-only pin.
+  pulseAnalyzer.begin(GPIO_ZCD); // GPIO connected to the ZCD output. This can be an input-only pin.
 }
 
 static Mycila::Dimmer* createDimmer() {
   Mycila::ZeroCrossDimmer* dimmer = new Mycila::ZeroCrossDimmer();
 
   // GPIO connected to the dimmer control pin (or Vcc of random SSR)
-  dimmer->setPin(GPIO_NUM_25);
+  dimmer->setPin(GPIO_DIMMER);
 
   return dimmer;
 }

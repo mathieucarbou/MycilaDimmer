@@ -88,6 +88,9 @@ jobs:
       - name: Build ZeroCrossAuto
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ZeroCrossAuto/ZeroCrossAuto.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
 
+      - name: Build ZeroCrossWithFS
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ZeroCrossWithFS/ZeroCrossWithFS.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+
   platformio:
     name: "pio:${{ matrix.board }}:${{ matrix.platform }}"
     runs-on: ubuntu-latest
@@ -97,7 +100,6 @@ jobs:
         board:
           [
             esp32dev,
-            esp32-s2-saola-1,
             esp32-s3-devkitc-1,
             esp32-c3-devkitc-02,
             esp32-c6-devkitc-1,
@@ -136,3 +138,4 @@ jobs:
       - run: PLATFORMIO_SRC_DIR=examples/PWM PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
       - run: PLATFORMIO_SRC_DIR=examples/ZeroCross PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
       - run: PLATFORMIO_SRC_DIR=examples/ZeroCrossAuto PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+      - run: PLATFORMIO_SRC_DIR=examples/ZeroCrossWithFS PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd

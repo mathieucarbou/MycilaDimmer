@@ -10,11 +10,17 @@
 #include <Arduino.h>
 #include <MycilaDimmerPWM.h>
 
+#if defined(CONFIG_IDF_TARGET_ESP32)
+  #define GPIO_DIMMER GPIO_NUM_25
+#else
+  #define GPIO_DIMMER GPIO_NUM_20
+#endif
+
 static Mycila::Dimmer* createDimmer() {
   Mycila::PWMDimmer* dimmer = new Mycila::PWMDimmer();
 
   // GPIO connected to the PWM input of the voltage regulator, or PWM to Analog Converter such as a 3.3V PWM Signal to 0-10V Convertor
-  dimmer->setPin(GPIO_NUM_25);
+  dimmer->setPin(GPIO_DIMMER);
 
   // PWM frequency, to adjust depending on the hardware used
   dimmer->setFrequency(1000); // 1 kHz
