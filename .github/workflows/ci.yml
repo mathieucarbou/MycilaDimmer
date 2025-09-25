@@ -1,0 +1,138 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+
+name: Build
+
+on:
+  workflow_dispatch:
+  push:
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  cpplint:
+    name: cpplint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Cache
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-cpplint
+          path: ~/.cache/pip
+
+      - name: Pyhton
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: cpplint
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade cpplint
+          cpplint \
+            --repository=. \
+            --recursive \
+            --filter=-whitespace/line_length,-whitespace/braces,-whitespace/comments,-runtime/indentation_namespace,-whitespace/indent,-readability/braces,-whitespace/newline,-readability/todo,-runtime/int,-build/c++11 \
+            src
+
+  arduino:
+    name: Arduino
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - core: esp32:esp32
+            board: esp32:esp32:esp32
+            index_url: https://espressif.github.io/arduino-esp32/package_esp32_index.json
+          # - core: esp32:esp32
+          #   board: esp32:esp32:esp32
+          #   index_url: https://espressif.github.io/arduino-esp32/package_esp32_dev_index.json
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Install arduino-cli
+        run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=/usr/local/bin sh
+
+      - name: Update core index
+        run: arduino-cli core update-index --additional-urls "${{ matrix.index_url }}"
+
+      - name: Install core
+        run: arduino-cli core install --additional-urls "${{ matrix.index_url }}" ${{ matrix.core }}
+
+      - name: Install ArduinoJson
+        run: arduino-cli lib install ArduinoJson
+
+      - name: Install MycilaPulseAnalyzer
+        run: ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true arduino-cli lib install --git-url https://github.com/mathieucarbou/MycilaPulseAnalyzer#v3.0.6
+
+      - name: Build DAC
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/DAC/DAC.ino"
+
+      - name: Build Json
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/Json/Json.ino" --build-property build.extra_flags=-DMYCILA_JSON_SUPPORT
+
+      - name: Build PWM
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/PWM/PWM.ino"
+
+      - name: Build ZeroCross
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ZeroCross/ZeroCross.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+
+      - name: Build ZeroCrossAuto
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ZeroCrossAuto/ZeroCrossAuto.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+
+  platformio:
+    name: "pio:${{ matrix.board }}:${{ matrix.platform }}"
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        board:
+          [
+            esp32dev,
+            esp32-s2-saola-1,
+            esp32-s3-devkitc-1,
+            esp32-c3-devkitc-02,
+            esp32-c6-devkitc-1,
+            esp32-h2-devkitm-1,
+          ]
+        platform:
+          [
+            "https://github.com/pioarduino/platform-espressif32/releases/download/55.03.31/platform-espressif32.zip",
+          ]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Cache PlatformIO
+        uses: actions/cache@v4
+        with:
+          key: ${{ runner.os }}-pio
+          path: |
+            ~/.cache/pip
+            ~/.platformio
+
+      - name: Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: Build
+        run: |
+          python -m pip install --upgrade pip
+          pip install --upgrade platformio
+          pip install --upgrade intelhex
+
+      - run: PLATFORMIO_SRC_DIR=examples/DAC PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
+      - run: PLATFORMIO_SRC_DIR=examples/Json PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-json
+      - run: PLATFORMIO_SRC_DIR=examples/PWM PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
+      - run: PLATFORMIO_SRC_DIR=examples/ZeroCross PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+      - run: PLATFORMIO_SRC_DIR=examples/ZeroCrossAuto PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
