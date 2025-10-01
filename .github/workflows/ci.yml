@@ -76,6 +76,9 @@ jobs:
       - name: Build DAC
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/DAC/DAC.ino"
 
+      - name: Build DACAuto
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/DACAuto/DACAuto.ino"
+
       - name: Build Json
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/Json/Json.ino" --build-property build.extra_flags=-DMYCILA_JSON_SUPPORT
 
@@ -133,9 +136,23 @@ jobs:
           pip install --upgrade platformio
           pip install --upgrade intelhex
 
-      - run: PLATFORMIO_SRC_DIR=examples/DAC PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
-      - run: PLATFORMIO_SRC_DIR=examples/Json PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-json
-      - run: PLATFORMIO_SRC_DIR=examples/PWM PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
-      - run: PLATFORMIO_SRC_DIR=examples/ZeroCross PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
-      - run: PLATFORMIO_SRC_DIR=examples/ZeroCrossAuto PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
-      - run: PLATFORMIO_SRC_DIR=examples/ZeroCrossWithFS PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+      - name: Build DAC
+        run: PLATFORMIO_SRC_DIR=examples/DAC PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
+
+      - name: Build DACAuto
+        run: PLATFORMIO_SRC_DIR=examples/DACAuto PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
+
+      - name: Build Json
+        run: PLATFORMIO_SRC_DIR=examples/Json PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-json
+
+      - name: Build PWM
+        run: PLATFORMIO_SRC_DIR=examples/PWM PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
+
+      - name: Build ZeroCross
+        run: PLATFORMIO_SRC_DIR=examples/ZeroCross PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+
+      - name: Build ZeroCrossAuto
+        run: PLATFORMIO_SRC_DIR=examples/ZeroCrossAuto PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+
+      - name: Build ZeroCrossWithFS
+        run: PLATFORMIO_SRC_DIR=examples/ZeroCrossWithFS PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
