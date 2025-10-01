@@ -41,6 +41,7 @@ MycilaDimmer provides a unified interface for controlling AC power devices throu
 
 ## Features
 
+- ✨ **Flicker-Free Dimming**: Progressive dimming without flickering using precise DAC control or zero-cross detection with quality ZCD circuits
 - 🎛️ **Multiple Control Methods**: Zero-cross detection, PWM, and I2C DAC
 - ⚡ **High Performance**: IRAM-safe interrupt handlers with lookup table optimization
 - 🔧 **Flexible Configuration**: Duty cycle remapping and calibration support
@@ -111,7 +112,7 @@ void loop() {
 
 ### Zero-Cross Dimmer
 
-Perfect for TRIAC and Random SSR control with precise phase angle control.
+Perfect for TRIAC and Random SSR control with **flicker-free progressive dimming**. Achieves smooth, continuous power control through precise phase angle control when paired with quality zero-cross detection circuits.
 
 ```cpp
 #include <MycilaDimmer.h>
@@ -130,8 +131,9 @@ void setup() {
 
 **Features:**
 
+- **Flicker-free dimming**: Smooth progressive control without visible flickering
 - Microsecond-precision phase angle control
-- Lookup table with linear interpolation
+- Lookup table with linear interpolation for seamless transitions
 - IRAM-safe interrupt handlers
 - Supports several zero-cross detection circuits:
   - [Zero-Cross Detector](https://www.pcbway.com/project/shareproject/Zero_Cross_Detector_a707a878.html) from Daniel S
@@ -171,8 +173,8 @@ For example, this dimmer can be used with a [3.3V to 0-5V/0-10V signal converter
 
 ### DFRobot DAC Dimmer
 
-I2C-based control for DFRobot DAC modules.
-Perfect for voltage regulator controlled ([LSA](https://aliexpress.com/item/32606780994.html), [LCTC](https://aliexpress.com/item/1005005008018888.html), etc) with a 0-10V input.
+**Flicker-free progressive dimming** using precision I2C DAC modules.
+Perfect for voltage regulator controlled devices ([LSA](https://aliexpress.com/item/32606780994.html), [LCTC](https://aliexpress.com/item/1005005008018888.html), etc) with 0-10V input, providing ultra-smooth dimming without any visible flickering thanks to high-resolution DAC output.
 
 ```cpp
 #include <MycilaDimmer.h>
