@@ -111,6 +111,8 @@ void Mycila::DFRobotDimmer::end() {
 }
 
 bool Mycila::DFRobotDimmer::apply() {
+  if (!_enabled)
+    return false;
   uint16_t duty = getFiringRatio() * ((1 << getResolution()) - 1);
   return _sendDutyCycle(_deviceAddress, duty) == ESP_OK;
 }

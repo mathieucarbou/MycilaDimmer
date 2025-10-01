@@ -73,6 +73,8 @@ void Mycila::PWMDimmer::end() {
 }
 
 bool Mycila::PWMDimmer::apply() {
+  if (!_enabled)
+    return false;
   uint32_t duty = getFiringRatio() * ((1 << _resolution) - 1);
   // LOGD(TAG, "Set PWM duty cycle on pin %" PRId8 " to %lu", _pin, duty);
   return ledcWrite(_pin, duty);

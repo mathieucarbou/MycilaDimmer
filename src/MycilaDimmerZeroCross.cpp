@@ -99,7 +99,7 @@ void Mycila::ZeroCrossDimmer::end() {
 }
 
 bool Mycila::ZeroCrossDimmer::apply() {
-  return true;
+  return _enabled;
 }
 
 void ARDUINO_ISR_ATTR Mycila::ZeroCrossDimmer::onZeroCross(int16_t delayUntilZero, void* arg) {
