@@ -20,6 +20,7 @@
     "include": [
       "examples",
       "src",
+      "tools",
       "library.json",
       "library.properties",
       "LICENSE",
