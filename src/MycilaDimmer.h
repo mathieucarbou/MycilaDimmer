@@ -100,9 +100,9 @@ namespace Mycila {
         float mapped = getMappedDutyCycle();
 
         if (mapped == 0)
-          _delay = UINT16_MAX;
+          _delay = UINT16_MAX; // UINT16_MAX means dimmer off
         else if (mapped == 1)
-          _delay = 0;
+          _delay = 0; // dimmer on at full power
         else
           _delay = _usePowerLUT ? _lookupFiringDelay(mapped, _semiPeriod) : static_cast<uint16_t>((1.0f - mapped) * static_cast<float>(_semiPeriod));
 
@@ -148,11 +148,6 @@ namespace Mycila {
       float getDutyCycle() const { return _dutyCycle; }
 
       /**
-       * @brief Get the remapped power duty cycle in effect for the dimmer. This is the value that is actually applied to the dimmer.
-       */
-      float getMappedDutyCycle() const { return _dutyCycleMin + _dutyCycle * (_dutyCycleMax - _dutyCycleMin); }
-
-      /**
        * @brief returns getDutyCycle() if the dimmer is online, else returns 0
        */
       float getDutyCycleLive() const { return isOnline() ? _dutyCycle : 0; }
@@ -173,9 +168,15 @@ namespace Mycila {
       float getDutyCycleMax() const { return _dutyCycleMax; }
 
       /**
+       * @brief Get the remapped power duty cycle in effect for the dimmer. This is the value that is actually applied after the remapping of the user input.
+       */
+      float getMappedDutyCycle() const { return _dutyCycleMin + _dutyCycle * (_dutyCycleMax - _dutyCycleMin); }
+
+      /**
        * @brief Get the firing delay in us of the dimmer in the range [0, semi-period]
        * At 0% power, delay is equal to the semi-period: the dimmer is kept off
        * At 100% power, the delay is 0 us: the dimmer is kept on
+       * This value is mostly used for TRIAC based dimmers but also in order to derive metrics based on the phase angle
        */
       uint16_t getFiringDelay() const { return _delay > _semiPeriod ? _semiPeriod : _delay; }
 
