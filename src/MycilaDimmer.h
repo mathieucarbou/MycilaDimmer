@@ -35,6 +35,19 @@ namespace Mycila {
       uint16_t getSemiPeriod() const { return _semiPeriod; }
 
       /**
+       * @brief Enable or disable the use of power LUT for dimmer curve
+       * The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness.
+       * If disabled, a linear dimming curve will be used.
+       * Default is enabled (true).
+       */
+      void setPowerLUTused(bool use) { _usePowerLUT = use; }
+
+      /**
+       * @brief Check if the power LUT is enabled
+       */
+      bool isPowerLUTUsed() const { return _usePowerLUT; }
+
+      /**
        * @brief Check if the dimmer is enabled
        */
       bool isEnabled() const { return _enabled; }
@@ -91,7 +104,7 @@ namespace Mycila {
         else if (mapped == 1)
           _delay = 0;
         else
-          _delay = _lookupFiringDelay(mapped);
+          _delay = _usePowerLUT ? _lookupFiringDelay(mapped, _semiPeriod) : static_cast<uint16_t>((1.0f - mapped) * static_cast<float>(_semiPeriod));
 
         return apply();
       }
@@ -212,6 +225,7 @@ namespace Mycila {
 
     protected:
       bool _enabled = false;
+      bool _usePowerLUT = true;
       float _dutyCycle = 0;
       float _dutyCycleLimit = 1;
       float _dutyCycleMin = 0;
@@ -219,7 +233,7 @@ namespace Mycila {
       uint16_t _semiPeriod = 0;
       uint16_t _delay = UINT16_MAX; // this is the next firing delay to apply
 
-      uint16_t _lookupFiringDelay(float dutyCycle);
+      static uint16_t _lookupFiringDelay(float dutyCycle, uint16_t semiPeriod);
 
       virtual bool apply() = 0;
 

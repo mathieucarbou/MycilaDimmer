@@ -36,12 +36,12 @@ static const uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {
 // Mycila::Dimmer
 // =============================================================================
 
-uint16_t Mycila::Dimmer::_lookupFiringDelay(float dutyCycle) {
+uint16_t Mycila::Dimmer::_lookupFiringDelay(float dutyCycle, uint16_t semiPeriod) {
   uint32_t duty = dutyCycle * FIRING_DELAY_MAX;
   uint32_t slot = duty * FIRING_DELAYS_SCALE + (FIRING_DELAYS_SCALE >> 1);
   uint32_t index = slot >> 16;
   uint32_t a = FIRING_DELAYS[index];
   uint32_t b = FIRING_DELAYS[index + 1];
   uint32_t delay = a - (((a - b) * (slot & 0xffff)) >> 16); // interpolate a b
-  return (delay * _semiPeriod) >> 16; // scale to period
+  return (delay * semiPeriod) >> 16; // scale to period
 }
