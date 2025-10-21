@@ -75,7 +75,7 @@ namespace Mycila {
       /**
        * @brief Check if the dimmer is on
        */
-      bool isOn() const { return _enabled && _semiPeriod && _dutyCycle; }
+      bool isOn() const { return isOnline() && _dutyCycle; }
 
       /**
        * @brief Check if the dimmer is on at full power
@@ -153,9 +153,9 @@ namespace Mycila {
       float getMappedDutyCycle() const { return _dutyCycleMin + _dutyCycle * (_dutyCycleMax - _dutyCycleMin); }
 
       /**
-       * @brief Get the runtime (live value) of the power duty cycle in effect for the dimmer. This is the value that is actually applied to the dimmer: if the dimmer is disabled, this value will be 0.
+       * @brief returns getDutyCycle() if the dimmer is online, else returns 0
        */
-      float getDutyCycleLive() const { return _enabled ? _dutyCycle : 0; }
+      float getDutyCycleLive() const { return isOnline() ? _dutyCycle : 0; }
 
       /**
        * @brief Get the power duty cycle limit of the dimmer
