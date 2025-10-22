@@ -40,12 +40,12 @@ namespace Mycila {
        * If disabled, a linear dimming curve will be used.
        * Default is enabled (true).
        */
-      void setPowerLUTused(bool use) { _usePowerLUT = use; }
+      void setUsePowerLUT(bool use) { _usePowerLUT = use; }
 
       /**
        * @brief Check if the power LUT is enabled
        */
-      bool isPowerLUTUsed() const { return _usePowerLUT; }
+      bool isUsingPowerLUT() const { return _usePowerLUT; }
 
       /**
        * @brief Check if the dimmer is enabled
