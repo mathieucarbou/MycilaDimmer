@@ -64,18 +64,10 @@ void Mycila::PWMDimmer::end() {
   if (!_enabled)
     return;
   _enabled = false;
+  _online = false;
   LOGI(TAG, "Disable PWM Dimmer on pin %" PRId8, _pin);
-  // Note: do not set _dutyCycle to 0 in order to keep last set user value
-  _delay = UINT16_MAX;
+  _apply();
   ledcDetach(_pin);
   pinMode(_pin, OUTPUT);
   digitalWrite(_pin, LOW);
-}
-
-bool Mycila::PWMDimmer::apply() {
-  if (!_enabled)
-    return false;
-  uint32_t duty = getFiringRatio() * ((1 << _resolution) - 1);
-  // LOGD(TAG, "Set PWM duty cycle on pin %" PRId8 " to %lu", _pin, duty);
-  return ledcWrite(_pin, duty);
 }

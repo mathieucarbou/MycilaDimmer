@@ -91,8 +91,32 @@ namespace Mycila {
 
       virtual const char* type() const { return "dfrobot"; }
 
+#ifdef MYCILA_JSON_SUPPORT
+      /**
+       * @brief Serialize Dimmer information to a JSON object
+       *
+       * @param root: the JSON object to serialize to
+       */
+      void toJson(const JsonObject& root) const override {
+        Dimmer::toJson(root);
+        root["dfrobot_sku"] = _sku == SKU::DFR1071_GP8211S ? "DFR1071_GP8211S" : _sku == SKU::DFR1073_GP8413 ? "DFR1073_GP8413"
+                                                                               : _sku == SKU::DFR0971_GP8403 ? "DFR0971_GP8403"
+                                                                                                             : "UNKNOWN";
+        root["dfrobot_output"] = _output == Output::RANGE_0_5V ? "0-5V" : "0-10V";
+        root["dfrobot_i2c_address"] = _deviceAddress;
+        root["dfrobot_channel"] = _channel;
+        root["dfrobot_resolution"] = getResolution();
+      }
+#endif
+
     protected:
-      virtual bool apply();
+      virtual bool _apply() {
+        if (!_online) {
+          return _sendDutyCycle(_deviceAddress, 0) == ESP_OK;
+        }
+        uint16_t duty = _dutyCycleFire * ((1 << getResolution()) - 1);
+        return _sendDutyCycle(_deviceAddress, duty) == ESP_OK;
+      }
 
     private:
       SKU _sku = SKU::UNKNOWN;

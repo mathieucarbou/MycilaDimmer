@@ -42,20 +42,25 @@ void setup() {
 
   dimmer = createDimmer();
 
+  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
   // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
-  dimmer->setSemiPeriod(10000); // 50Hz grid frequency
-  // dimmer.setSemiPeriod(8333);  // 60Hz grid frequency
+  dimmer->enablePowerLUT(true, 10000); // 50Hz grid frequency
+  // dimmer->enablePowerLUT(true, 8333);  // 60Hz grid frequency
 
+  // Start the dimmer and find the DAC on the I2C bus
   dimmer->begin();
+
+  // Switch the dimmer online
+  dimmer->setOnline(true);
 
   Serial.printf("\nProgressive dimming...\n");
 
-  Serial.println("From 0% to 100%...");
+  Serial.println("0 => 100");
   for (int i = 0; i <= 1000; i++) {
     dimmer->setDutyCycle(i / 1000.0f);
     delay(10);
   }
-  Serial.println("From 100% to 0%...");
+  Serial.println("100 => 0");
   for (int i = 1000; i >= 0; i--) {
     dimmer->setDutyCycle(i / 1000.0f);
     delay(10);
@@ -65,8 +70,8 @@ void setup() {
 
   dimmer->end();
 
-  dimmer = nullptr;
   delete dimmer;
+  dimmer = nullptr;
 }
 
 void loop() {

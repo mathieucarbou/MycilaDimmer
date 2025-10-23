@@ -42,25 +42,29 @@ void setup() {
 
   dimmer = createDimmer();
 
+  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
   // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
-  dimmer->setSemiPeriod(10000); // 50Hz grid frequency
-  // dimmer.setSemiPeriod(8333);  // 60Hz grid frequency
+  dimmer->enablePowerLUT(true, 10000); // 50Hz grid frequency
+  // dimmer->enablePowerLUT(true, 8333);  // 60Hz grid frequency
 
+  // Start the dimmer and find the DAC on the I2C bus
   dimmer->begin();
+
+  // Switch the dimmer online
+  dimmer->setOnline(true);
 
   Serial.printf("\nConfig:\n");
   Serial.printf(" - Limit: %d %%\n", static_cast<int>(dimmer->getDutyCycleLimit() * 100));
   Serial.printf(" - Remapping: 0 %% => %d %% - 100 %% => %d %%\n", static_cast<int>(dimmer->getDutyCycleMin() * 100), static_cast<int>(dimmer->getDutyCycleMax() * 100));
-  Serial.printf(" - Semi-period: %" PRIu16 " us\n", dimmer->getSemiPeriod());
+  Serial.printf(" - Semi-period: %" PRIu16 " us\n", dimmer->getPowerLUTSemiPeriod());
 
   for (int i = 0; i <= 100; i += 10) {
     dimmer->setDutyCycle(i / 100.0f);
-    Serial.printf("Power: %d %% => Mapped to: %d %% with firing delay: %" PRIu16 " us => DAC Output: %d %% (%f V)\n",
+    Serial.printf("Power: %d %% => Mapped to: %d %% => DAC Output: %d %% (%f V)\n",
                   static_cast<int>(dimmer->getDutyCycle() * 100),
-                  static_cast<int>(dimmer->getMappedDutyCycle() * 100),
-                  dimmer->getFiringDelay(),
-                  static_cast<int>(dimmer->getFiringRatio() * 100),
-                  dimmer->getFiringRatio() * 10);
+                  static_cast<int>(dimmer->getDutyCycleMapped() * 100),
+                  static_cast<int>(dimmer->getDutyCycleFire() * 100),
+                  dimmer->getDutyCycleFire() * 10);
     delay(1000);
   }
 
@@ -74,23 +78,22 @@ void setup() {
   Serial.printf("\nConfig:\n");
   Serial.printf(" - Limit: %d %%\n", static_cast<int>(dimmer->getDutyCycleLimit() * 100));
   Serial.printf(" - Remapping: 0 %% => %d %% - 100 %% => %d %%\n", static_cast<int>(dimmer->getDutyCycleMin() * 100), static_cast<int>(dimmer->getDutyCycleMax() * 100));
-  Serial.printf(" - Semi-period: %" PRIu16 " us\n", dimmer->getSemiPeriod());
+  Serial.printf(" - Semi-period: %" PRIu16 " us\n", dimmer->getPowerLUTSemiPeriod());
 
   for (int i = 0; i <= 100; i += 10) {
     dimmer->setDutyCycle(i / 100.0f);
-    Serial.printf("Power: %d %% => Mapped to: %d %% with firing delay: %" PRIu16 " us => DAC Output: %d %% (%f V)\n",
+    Serial.printf("Power: %d %% => Mapped to: %d %% => DAC Output: %d %% (%f V)\n",
                   static_cast<int>(dimmer->getDutyCycle() * 100),
-                  static_cast<int>(dimmer->getMappedDutyCycle() * 100),
-                  dimmer->getFiringDelay(),
-                  static_cast<int>(dimmer->getFiringRatio() * 100),
-                  dimmer->getFiringRatio() * 10);
+                  static_cast<int>(dimmer->getDutyCycleMapped() * 100),
+                  static_cast<int>(dimmer->getDutyCycleFire() * 100),
+                  dimmer->getDutyCycleFire() * 10);
     delay(1000);
   }
 
   dimmer->end();
 
-  dimmer = nullptr;
   delete dimmer;
+  dimmer = nullptr;
 }
 
 void loop() {

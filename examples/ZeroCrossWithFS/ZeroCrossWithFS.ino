@@ -59,16 +59,11 @@ void setup() {
   pulseAnalyzer.onZeroCross(Mycila::ZeroCrossDimmer::onZeroCross);
   pulseAnalyzer.begin(GPIO_ZCD);
 
-  while (!pulseAnalyzer.getNominalGridSemiPeriod()) {
-    Serial.printf("Waiting for grid frequency detection...\n");
-    delay(200);
-  }
-
-  Serial.printf("Grid frequency detected: %d Hz\n", pulseAnalyzer.getNominalGridFrequency());
-
-  dimmer.setSemiPeriod(pulseAnalyzer.getNominalGridSemiPeriod());
+  dimmer.setSemiPeriod(10000); // 50Hz grid frequency
+  dimmer.enablePowerLUT(true); // Enable power LUT for better dimming curve
   dimmer.setPin(GPIO_DIMMER);
   dimmer.begin();
+  dimmer.setOnline(true);
 
   Serial.printf("\nProgressive dimming...\n");
 
@@ -77,12 +72,12 @@ void setup() {
   dimmer.setDutyCycleMax(1);
   dimmer.setDutyCycle(0);
 
-  Serial.println("From 0% to 100%...");
+  Serial.println("0 => 100");
   for (int i = 0; i <= 1000; i++) {
     dimmer.setDutyCycle(i / 1000.0f);
     delay(10);
   }
-  Serial.println("From 100% to 0%...");
+  Serial.println("100 => 0");
   for (int i = 1000; i >= 0; i--) {
     dimmer.setDutyCycle(i / 1000.0f);
     delay(10);

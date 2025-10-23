@@ -61,8 +61,28 @@ namespace Mycila {
 
       virtual const char* type() const { return "pwm"; }
 
+#ifdef MYCILA_JSON_SUPPORT
+      /**
+       * @brief Serialize Dimmer information to a JSON object
+       *
+       * @param root: the JSON object to serialize to
+       */
+      void toJson(const JsonObject& root) const override {
+        Dimmer::toJson(root);
+        root["pwm_pin"] = static_cast<int>(_pin);
+        root["pwm_frequency"] = _frequency;
+        root["pwm_resolution"] = _resolution;
+      }
+#endif
+
     protected:
-      virtual bool apply();
+      virtual bool _apply() {
+        if (!_online) {
+          return ledcWrite(_pin, 0);
+        }
+        uint32_t duty = _dutyCycleFire * ((1 << _resolution) - 1);
+        return ledcWrite(_pin, duty);
+      }
 
     private:
       gpio_num_t _pin = GPIO_NUM_NC;

@@ -8,7 +8,7 @@ MycilaDimmer is an ESP32/Arduino library for controlling AC power devices (TRIAC
 
 ### Abstract Base Class Pattern
 - `Mycila::Dimmer` (src/MycilaDimmer.h) - Pure virtual base defining the contract
-- All implementations inherit and implement `apply()`, `begin()`, `end()`, and `type()`
+- All implementations inherit and implement `_apply()`, `begin()`, `end()`, and `type()`
 - Virtual destructor ensures proper cleanup in polymorphic contexts
 
 ### Three Hardware Implementations

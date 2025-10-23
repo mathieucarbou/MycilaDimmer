@@ -20,7 +20,7 @@
 #endif
 
 static Mycila::PulseAnalyzer pulseAnalyzer;
-static Mycila::Dimmer* dimmer;
+static Mycila::ZeroCrossDimmer* dimmer;
 
 static void initZCD() {
   // Initialize the Zero-Cross Detection (ZCD)
@@ -43,11 +43,15 @@ static void initZCD() {
   pulseAnalyzer.begin(GPIO_ZCD); // GPIO connected to the ZCD output. This can be an input-only pin.
 }
 
-static Mycila::Dimmer* createDimmer() {
+static Mycila::ZeroCrossDimmer* createDimmer() {
   Mycila::ZeroCrossDimmer* dimmer = new Mycila::ZeroCrossDimmer();
 
   // GPIO connected to the dimmer control pin (or Vcc of random SSR)
   dimmer->setPin(GPIO_DIMMER);
+
+  // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
+  dimmer->setSemiPeriod(10000); // 50Hz grid frequency
+  // dimmer.setSemiPeriod(8333);  // 60Hz grid frequency
 
   return dimmer;
 }
@@ -61,11 +65,15 @@ void setup() {
 
   dimmer = createDimmer();
 
-  // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
-  dimmer->setSemiPeriod(10000); // 50Hz grid frequency
-  // dimmer.setSemiPeriod(8333);  // 60Hz grid frequency
+  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
+  // Since the semi-period is already set and is required for  Zero-Cross Detection based dimmers, we just need to enable the LUT.
+  dimmer->enablePowerLUT(true);
 
+  // Start the dimmer and IRAM timers
   dimmer->begin();
+
+  // put the dimmer online
+  dimmer->setOnline(true);
 
   Serial.printf("\nConfig:\n");
   Serial.printf(" - Limit: %d %%\n", static_cast<int>(dimmer->getDutyCycleLimit() * 100));
@@ -76,7 +84,7 @@ void setup() {
     dimmer->setDutyCycle(i / 100.0f);
     Serial.printf("Power: %d %% => Mapped to: %d %% with firing delay: %" PRIu16 " us\n",
                   static_cast<int>(dimmer->getDutyCycle() * 100),
-                  static_cast<int>(dimmer->getMappedDutyCycle() * 100),
+                  static_cast<int>(dimmer->getDutyCycleMapped() * 100),
                   dimmer->getFiringDelay());
     delay(1000);
   }
@@ -97,7 +105,7 @@ void setup() {
     dimmer->setDutyCycle(i / 100.0f);
     Serial.printf("Power: %d %% => Mapped to: %d %% with firing delay: %" PRIu16 " us\n",
                   static_cast<int>(dimmer->getDutyCycle() * 100),
-                  static_cast<int>(dimmer->getMappedDutyCycle() * 100),
+                  static_cast<int>(dimmer->getDutyCycleMapped() * 100),
                   dimmer->getFiringDelay());
     delay(1000);
   }
@@ -109,12 +117,12 @@ void setup() {
   dimmer->setDutyCycleMax(1);
   dimmer->setDutyCycle(0);
 
-  Serial.printf("From 0% to 100%...\n");
+  Serial.println("0 => 100");
   for (int i = 0; i <= 1000; i++) {
     dimmer->setDutyCycle(i / 1000.0f);
     delay(10);
   }
-  Serial.printf("From 100% to 0%...\n");
+  Serial.println("100 => 0");
   for (int i = 1000; i >= 0; i--) {
     dimmer->setDutyCycle(i / 1000.0f);
     delay(10);
@@ -125,8 +133,8 @@ void setup() {
   dimmer->end();
   pulseAnalyzer.end();
 
-  dimmer = nullptr;
   delete dimmer;
+  dimmer = nullptr;
 }
 
 void loop() {

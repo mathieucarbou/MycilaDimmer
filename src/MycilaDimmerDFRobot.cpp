@@ -90,7 +90,7 @@ void Mycila::DFRobotDimmer::begin() {
   // set output
   uint8_t err = _sendOutput(_deviceAddress, _output);
   if (err) {
-    LOGE(TAG, "Disable DFRobot Dimmer: Unable to set output voltage: TwoWire communication error: %d", err);
+    LOGE(TAG, "Disable DFRobot Dimmer @ 0x%02x: Unable to set output voltage: TwoWire communication error: %d", _deviceAddress, err);
     return;
   }
 
@@ -104,17 +104,9 @@ void Mycila::DFRobotDimmer::end() {
   if (!_enabled)
     return;
   _enabled = false;
-  LOGI(TAG, "Disable DFRobot Dimmer");
-  // Note: do not set _dutyCycle to 0 in order to keep last set user value
-  _delay = UINT16_MAX;
-  apply();
-}
-
-bool Mycila::DFRobotDimmer::apply() {
-  if (!_enabled)
-    return false;
-  uint16_t duty = getFiringRatio() * ((1 << getResolution()) - 1);
-  return _sendDutyCycle(_deviceAddress, duty) == ESP_OK;
+  _online = false;
+  LOGI(TAG, "Disable DFRobot Dimmer @ 0x%02x", _deviceAddress);
+  _apply();
 }
 
 uint8_t Mycila::DFRobotDimmer::_sendDutyCycle(uint8_t address, uint16_t duty) {

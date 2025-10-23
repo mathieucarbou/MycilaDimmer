@@ -44,7 +44,7 @@ MycilaDimmer provides a unified interface for controlling AC power devices throu
 - ✨ **Flicker-Free Dimming**: Progressive dimming without flickering using precise DAC control or zero-cross detection with quality ZCD circuits
 - 🎛️ **Multiple Control Methods**: Zero-cross detection, PWM, and I2C DAC
 - ⚡ **High Performance**: IRAM-safe interrupt handlers with lookup table optimization
-- 🔧 **Flexible Configuration**: Duty cycle remapping and calibration support
+- 🔧 **Flexible Configuration**: Duty cycle remapping, calibration, and dimming curve selection (linear or power LUT)
 - 📊 **Rich Telemetry**: Phase angles, firing delays, and power measurements
 - 🛡️ **Safety Features**: Duty cycle limits and grid connection detection
 - 📱 **JSON Integration**: Optional ArduinoJson support for telemetry
@@ -199,29 +199,74 @@ Here is a [comparison table](https://www.dfrobot.com/blog-13458.html) of the dif
 
 ## API Reference
 
-### Core Methods
+### Common API (All Dimmer Types)
 
 ```cpp
+// Lifecycle
+void begin();                          // Initialize dimmer
+void end();                            // Cleanup and disable
+const char* type() const;              // Get dimmer type name
+
 // Power Control
-void on();                          // Full power
-void off();                         // Turn off
-bool setDutyCycle(float dutyCycle); // Set power (0.0-1.0)
+void on();                             // Full power
+void off();                            // Turn off
+bool setDutyCycle(float dutyCycle);    // Set power (0.0-1.0)
 
-// Status
-bool isEnabled();                   // Is configured
-bool isOnline();                    // Ready for operation
-bool isOn();                        // Currently active
-float getDutyCycle();               // Current power setting
+// Status & State
+bool isEnabled() const;                // Is configured
+bool isOnline() const;                 // Ready for operation (enabled + online)
+void setOnline(bool online);           // Set online status (grid connection)
+bool isOn() const;                     // Currently active (online + duty > 0)
+bool isOff() const;                    // Currently inactive
+bool isOnAtFullPower() const;          // Check if at max power
 
-// Calibration
-void setDutyCycleMin(float min);    // Remap 0% point
-void setDutyCycleMax(float max);    // Remap 100% point
-void setDutyCycleLimit(float limit); // Safety limit
+// Calibration & Remapping
+void setDutyCycleMin(float min);       // Remap 0% point (hardware calibration)
+void setDutyCycleMax(float max);       // Remap 100% point
+void setDutyCycleLimit(float limit);   // Clamp max allowed power
+float getDutyCycle() const;            // Current power setting
+float getDutyCycleMapped() const;      // Get mapped/calibrated duty cycle
+float getDutyCycleLimit() const;       // Get current limit
+float getDutyCycleMin() const;         // Get current min
+float getDutyCycleMax() const;         // Get current max
+
+// Dimming Curve (Power LUT)
+void enablePowerLUT(bool enable, uint16_t semiPeriod = 0); // Enable/disable perceptual LUT (default: false)
+bool isPowerLUTEnabled() const;         // Check if LUT is enabled
+uint16_t getPowerLUTSemiPeriod() const; // Get LUT semi-period (us)
 
 // Measurements
-float getPhaseAngle();              // Phase angle (0-180°)
-uint16_t getFiringDelay();          // Delay in microseconds
-float getFiringRatio();             // On-time ratio
+float getDutyCycleFire() const;         // Actual firing ratio (0-1)
+
+#ifdef MYCILA_JSON_SUPPORT
+void toJson(const JsonObject& root) const; // Serialize to JSON
+#endif
+```
+
+### Zero-Cross Dimmer Specific
+
+```cpp
+void setPin(gpio_num_t pin);           // Set output GPIO pin
+void setSemiPeriod(uint16_t semiPeriod); // Set grid semi-period (us)
+static void onZeroCross(int16_t delayUntilZero, void* arg); // Zero-cross callback
+```
+
+### PWM Dimmer Specific
+
+```cpp
+void setPin(gpio_num_t pin);           // Set output GPIO pin
+void setFrequency(uint32_t frequency); // Set PWM frequency (default: 1000 Hz)
+void setResolution(uint8_t resolution); // Set PWM resolution (default: 12-bit)
+```
+
+### DFRobot DAC Dimmer Specific
+
+```cpp
+void setWire(TwoWire& wire);           // Set I2C bus (default: Wire)
+void setSKU(SKU sku);                  // Set module SKU (DFR0971/1071/1073)
+void setOutput(Output output);         // Set voltage range (0-5V or 0-10V)
+void setDeviceAddress(uint8_t addr);   // Set I2C address (default: 0x58)
+void setChannel(uint8_t channel);      // Set DAC channel (0 or 1 for dual-channel)
 ```
 
 ### Advanced Features
@@ -233,6 +278,10 @@ dimmer.setDutyCycleMax(0.9);  // 100% now maps to 90%
 
 // Safety Limiting
 dimmer.setDutyCycleLimit(0.8); // Never exceed 80% power
+
+// Dimming Curve Selection (Power LUT)
+dimmer.enablePowerLUT(true, 10000);   // Enable perceptual LUT (semi-period in us, e.g. 10000 for 50Hz)
+dimmer.enablePowerLUT(false);         // Use linear dimming curve
 
 // Telemetry (with MYCILA_JSON_SUPPORT)
 #ifdef MYCILA_JSON_SUPPORT

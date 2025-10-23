@@ -30,8 +30,11 @@ void setup() {
     continue;
 
   dimmer = createDimmer();
-  dimmer->setSemiPeriod(10000); // 50Hz grid frequency
+  dimmer->setDutyCycleMin(0.05f); // remap 5% to 95%
+  dimmer->setDutyCycleMax(0.95f);
+  dimmer->enablePowerLUT(true, 10000); // 10000us semi-period for 50Hz
   dimmer->begin();
+  dimmer->setOnline(true);
 
   for (int i = 0; i <= 100; i += 10) {
     dimmer->setDutyCycle(i / 100.0f);
@@ -39,13 +42,13 @@ void setup() {
     dimmer->toJson(doc.to<JsonObject>());
     serializeJson(doc, Serial);
     Serial.println();
-    delay(1000);
+    delay(2000);
   }
 
   dimmer->end();
 
-  dimmer = nullptr;
   delete dimmer;
+  dimmer = nullptr;
 }
 
 void loop() {

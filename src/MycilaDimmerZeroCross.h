@@ -23,6 +23,37 @@ namespace Mycila {
       gpio_num_t getPin() const { return _pin; }
 
       /**
+       * @brief Set the semi-period of the grid frequency in us. It cannot be zero.
+       */
+      void setSemiPeriod(uint16_t semiPeriod) {
+        if (semiPeriod == 0) {
+          ESP_LOGE("MycilaDimmerZeroCross", "setSemiPeriod: semiPeriod must be > 0");
+        }
+        assert(semiPeriod > 0);
+        _semiPeriod = semiPeriod;
+      }
+
+      /**
+       * @brief Get the semi-period of the grid frequency in us
+       */
+      uint16_t getSemiPeriod() const { return _semiPeriod; }
+
+      /**
+       * @brief Get the firing delay in us of the dimmer in the range [0, semi-period]
+       * At 0% power, delay is equal to the semi-period: the dimmer is kept off
+       * At 100% power, the delay is 0 us: the dimmer is kept on
+       * This value is mostly used for TRIAC based dimmers but also in order to derive metrics based on the phase angle
+       */
+      uint16_t getFiringDelay() const { return _delay > _semiPeriod ? _semiPeriod : _delay; }
+
+      /**
+       * @brief Get the phase angle in degrees (°) of the dimmer in the range [0, 180]
+       * At 0% power, the phase angle is equal to 180
+       * At 100% power, the phase angle is equal to 0
+       */
+      float getPhaseAngle() const { return _delay >= _semiPeriod ? 180 : 180 * _delay / _semiPeriod; }
+
+      /**
        * @brief Enable a dimmer on a specific GPIO pin
        *
        * @warning Dimmer won't be enabled if pin is invalid
@@ -51,11 +82,31 @@ namespace Mycila {
        */
       static void onZeroCross(int16_t delayUntilZero, void* args);
 
+#ifdef MYCILA_JSON_SUPPORT
+      /**
+       * @brief Serialize Dimmer information to a JSON object
+       *
+       * @param root: the JSON object to serialize to
+       */
+      void toJson(const JsonObject& root) const override {
+        Dimmer::toJson(root);
+        root["dimmer_pin"] = _pin;
+        root["dimmer_semi_period"] = _semiPeriod;
+        root["dimmer_firing_delay"] = getFiringDelay();
+        root["dimmer_firing_angle"] = getPhaseAngle();
+      }
+#endif
+
     protected:
-      virtual bool apply();
+      virtual bool _apply() {
+        _delay = !_online || !_semiPeriod ? UINT16_MAX : (1.0f - _dutyCycleFire) * static_cast<float>(_semiPeriod);
+        return _enabled;
+      }
 
     private:
       gpio_num_t _pin = GPIO_NUM_NC;
+      uint16_t _delay = UINT16_MAX; // this is the next firing delay to apply
+
       static bool _fireTimerISR(gptimer_handle_t timer, const gptimer_alarm_event_data_t* event, void* arg);
       static void _registerDimmer(Mycila::ZeroCrossDimmer* dimmer);
       static void _unregisterDimmer(Mycila::ZeroCrossDimmer* dimmer);
