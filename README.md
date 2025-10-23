@@ -44,8 +44,9 @@ MycilaDimmer provides a unified interface for controlling AC power devices throu
 - ✨ **Flicker-Free Dimming**: Progressive dimming without flickering using precise DAC control or zero-cross detection with quality ZCD circuits
 - 🎛️ **Multiple Control Methods**: Zero-cross detection, PWM, and I2C DAC
 - ⚡ **High Performance**: IRAM-safe interrupt handlers with lookup table optimization
-- 🔧 **Flexible Configuration**: Duty cycle remapping, calibration, and dimming curve selection (linear or power LUT)
-- 📊 **Rich Telemetry**: Phase angles, firing delays, and power measurements
+- 💡 **Selectable Dimming Curves**: Choose between linear dimming or Power LUT for perceptual brightness matching - switch at runtime based on your needs
+- � **Flexible Configuration**: Duty cycle remapping, calibration, and user-selectable dimming modes
+- 📊 **Rich Telemetry**: Duty cycle measurements, firing ratios, and online status
 - 🛡️ **Safety Features**: Duty cycle limits and grid connection detection
 - 📱 **JSON Integration**: Optional ArduinoJson support for telemetry
 - 🔄 **Real-time Control**: Microsecond-precision timing control
@@ -279,9 +280,29 @@ dimmer.setDutyCycleMax(0.9);  // 100% now maps to 90%
 // Safety Limiting
 dimmer.setDutyCycleLimit(0.8); // Never exceed 80% power
 
-// Dimming Curve Selection (Power LUT)
-dimmer.enablePowerLUT(true, 10000);   // Enable perceptual LUT (semi-period in us, e.g. 10000 for 50Hz)
-dimmer.enablePowerLUT(false);         // Use linear dimming curve
+// Power LUT - Selectable Dimming Curve
+// Choose between LINEAR or POWER LUT dimming at runtime!
+//
+// LINEAR MODE (default, disabled):
+//   - Direct phase angle control
+//   - 50% duty cycle = 50% phase delay
+//   - Non-linear relationship between duty cycle and actual power output
+//   - Use when you need direct phase control or working with non-resistive loads
+//
+// POWER LUT MODE (enabled):
+//   - Non-linear curve that matches real power output of resistive loads
+//   - 50% duty cycle ≈ 50% actual power consumption
+//   - Also provides more natural dimming that matches human brightness perception
+//   - Best for resistive loads (heating elements, incandescent bulbs) where
+//     you want predictable power control
+//
+dimmer.enablePowerLUT(true, 10000);   // Enable Power LUT mode (semi-period: 10000us for 50Hz, 8333us for 60Hz)
+dimmer.enablePowerLUT(false);         // Switch to linear phase angle mode
+bool isUsing = dimmer.isPowerLUTEnabled(); // Check current mode
+
+// Online Status Control
+dimmer.setOnline(false); // Temporarily disable dimmer (e.g., when grid disconnected)
+dimmer.setOnline(true);  // Re-enable dimmer
 
 // Telemetry (with MYCILA_JSON_SUPPORT)
 #ifdef MYCILA_JSON_SUPPORT
