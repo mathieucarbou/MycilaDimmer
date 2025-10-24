@@ -53,7 +53,7 @@ void Mycila::DFRobotDimmer::begin() {
     for (int i = 0; i < 3; i++) {
       uint8_t err = _test(_deviceAddress);
       if (err) {
-        LOGW(TAG, "DFRobot Dimmer @ 0x%02x: TwoWire communication error: %d", _deviceAddress, err);
+        LOGD(TAG, "DFRobot Dimmer @ 0x%02x: TwoWire communication error: %d", _deviceAddress, err);
         delay(10);
       } else {
         found = true;
@@ -62,29 +62,23 @@ void Mycila::DFRobotDimmer::begin() {
     }
 
   } else {
-    LOGI(TAG, "Searching for DFRobot Dimmer @ 0x58-0x5F (discovery)...");
+    LOGI(TAG, "Searching for DFRobot Dimmer @ 0x58 up to 0x5F...");
     for (uint8_t addr = 0x58; !found && addr <= 0x5F; addr++) {
-      for (int i = 0; i < 3; i++) {
-        uint8_t err = _test(addr);
-        if (err) {
-          LOGW(TAG, "DFRobot Dimmer @ 0x%02x: TwoWire communication error: %d", addr, err);
-          delay(10);
-        } else {
-          _deviceAddress = addr;
-          found = true;
-          break;
-        }
+      if (_test(addr) == ESP_OK) {
+        _deviceAddress = addr;
+        found = true;
+        break;
       }
     }
   }
 
   if (found) {
-    LOGI(TAG, "Enable DFRobot Dimmer @ 0x%02x and channel %d", _deviceAddress, _channel);
+    LOGI(TAG, "Found DFRobot Dimmer @ 0x%02x and channel %d", _deviceAddress, _channel);
   } else if (_deviceAddress) {
     LOGW(TAG, "DFRobot Dimmer @ 0x%02x: Unable to communicate with device", _deviceAddress);
   } else {
     _deviceAddress = 0x58;
-    LOGW(TAG, "DFRobot Dimmer: Discovery failed! Using default address 0x58");
+    LOGW(TAG, "DFRobot Dimmer no found! Using default address 0x58");
   }
 
   // set output
