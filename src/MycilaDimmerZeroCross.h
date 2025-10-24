@@ -99,7 +99,15 @@ namespace Mycila {
 
     protected:
       virtual bool _apply() {
-        _delay = !_online || !_semiPeriod ? UINT16_MAX : (1.0f - _dutyCycleFire) * static_cast<float>(_semiPeriod);
+        if (!_online || !_semiPeriod || _dutyCycleFire == 0) {
+          _delay = UINT16_MAX;
+          return _enabled;
+        }
+        if (_dutyCycleFire == 1) {
+          _delay = 0;
+          return _enabled;
+        }
+        _delay = (1.0f - _dutyCycleFire) * static_cast<float>(_semiPeriod);
         return _enabled;
       }
 
