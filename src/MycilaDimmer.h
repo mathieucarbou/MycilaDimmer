@@ -146,6 +146,8 @@ namespace Mycila {
           _dutyCycleFire = 0.0f;
           if (_enabled)
             _apply();
+        } else {
+          setDutyCycle(_dutyCycle);
         }
       }
 
