@@ -23,7 +23,7 @@ namespace Mycila {
       gpio_num_t getPin() const { return _pin; }
 
       /**
-       * @brief Set the semi-period of the grid frequency in us. It cannot be zero.
+       * @brief Set the semi-period of the grid frequency in us. It cannot be zero and it is required for proper dimmer operation.
        */
       void setSemiPeriod(uint16_t semiPeriod) {
         if (semiPeriod == 0) {

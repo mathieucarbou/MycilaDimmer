@@ -14,19 +14,44 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
 - [Overview](#overview)
 - [Features](#features)
 - [Hardware Support](#hardware-support)
+  - [Supported Platforms](#supported-platforms)
+  - [Supported Hardware](#supported-hardware)
 - [Installation](#installation)
+  - [PlatformIO](#platformio)
+  - [Arduino IDE](#arduino-ide)
 - [Quick Start](#quick-start)
 - [Dimmer Types](#dimmer-types)
   - [Zero-Cross Dimmer](#zero-cross-dimmer)
   - [PWM Dimmer](#pwm-dimmer)
   - [DFRobot DAC Dimmer](#dfrobot-dac-dimmer)
+- [Understanding AC Dimming Methods](#understanding-ac-dimming-methods)
+  - [Dimming Method Comparison](#dimming-method-comparison)
+    - [Phase Control](#phase-control)
+    - [Burst Fire on Full Period](#burst-fire-on-full-period)
+    - [Burst Fire on Semi-Period](#burst-fire-on-semi-period)
+    - [Stochastic Burst Fire (Coming Soon)](#stochastic-burst-fire-coming-soon)
+  - [Recommendations for Harmonic Mitigation (Phase Control)](#recommendations-for-harmonic-mitigation-phase-control)
+  - [Current MycilaDimmer Support](#current-myciladimmer-support)
+  - [Choosing the Right Method](#choosing-the-right-method)
+- [References and Further Reading](#references-and-further-reading)
 - [API Reference](#api-reference)
+  - [Common API (All Dimmer Types)](#common-api-all-dimmer-types)
+  - [Zero-Cross Dimmer Specific](#zero-cross-dimmer-specific)
+  - [PWM Dimmer Specific](#pwm-dimmer-specific)
+  - [DFRobot DAC Dimmer Specific](#dfrobot-dac-dimmer-specific)
+  - [Advanced Features](#advanced-features)
 - [Configuration](#configuration)
+  - [Build Flags](#build-flags)
 - [Examples](#examples)
 - [Build Configuration](#build-configuration)
+  - [PlatformIO Configuration](#platformio-configuration)
+  - [Dependencies](#dependencies)
 - [Troubleshooting](#troubleshooting)
+  - [Common Issues](#common-issues)
 - [Contributing](#contributing)
+  - [Development Setup](#development-setup)
 - [License](#license)
+- [Disclaimer](#disclaimer)
 
 ## Overview
 
@@ -198,7 +223,179 @@ void setup() {
 
 Here is a [comparison table](https://www.dfrobot.com/blog-13458.html) of the different DFRobot DAC modules.
 
+## Understanding AC Dimming Methods
+
+When controlling AC power devices like TRIACs, SSRs, and voltage regulators, there are several dimming approaches available. Each method has specific characteristics, advantages, and limitations that affect precision, grid compatibility, and regulatory compliance.
+
+### Dimming Method Comparison
+
+#### Phase Control
+
+**How it works:** Controls power by delaying the firing angle within each AC semi-period (twice per cycle). The TRIAC/SSR activates at a specific point in the sine wave, "chopping" the waveform to deliver partial power.
+
+![](https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/Oscillo_Dimmer_50.jpeg)
+
+**Advantages:**
+
+- ✅ **High Precision**: Can adjust power at each semi-period (every 10ms for 50Hz), enabling watt-level control
+- ✅ **Fast Response**: Instant power adjustment with no delay
+- ✅ **Accurate Power Control**: With Power LUT, achieves predictable power output matching the desired level
+- ✅ **Regulatory Compliant**: Keeps grid balanced (no DC component) when properly implemented under harmonic regulations
+- ✅ **Widely Used**: Standard method in commercial dimmers and variable speed drives
+
+**Limitations:**
+
+- ⚠️ **Harmonics**: Generates harmonic distortion, especially at 50% power (90° phase angle)
+  - Harmonics are regulated by CEI 61000-3-2 (Class A devices)
+  - H3 (3rd harmonic) is the most significant, exceeds limits at 50% dimming with ~1700W nominal load
+  - H15 (15th harmonic) first to exceed limits at ~760W nominal load (but less significant than H3)
+  - Maximum compliant load: ~800W without mitigation
+  - Maximum significant load: ~1700W
+- ⚠️ **Mitigation may be required**: May need RC snubbers, proper wiring, load management, or limiter settings
+
+**MycilaDimmer Implementation:**
+
+- All three implementations (ZeroCrossDimmer, PWMDimmer, DFRobotDimmer) use phase control
+- ZeroCrossDimmer: Direct TRIAC/Random SSR control with zero-cross detection
+- PWMDimmer: Generates PWM signal for converter for voltage regulators (LSA, LCTC) which perform internal phase control
+- DFRobotDimmer: Outputs 0-10V analog signal to voltage regulators (LSA, LCTC) which perform internal phase control
+
+#### Burst Fire on Full Period
+
+**How it works:** Rapidly switches complete AC cycles on/off (20ms periods for 50Hz). For example, to achieve 50% power, alternates full power for 20ms, then turns off for 20ms, and so on.
+
+![](https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/burst_fire_20ms.jpeg)
+
+**Advantages:**
+
+- ✅ **No Harmonics**: Preserves complete sine waves, generates minimal harmonic distortion
+- ✅ **Simple Implementation**: Basic on/off switching logic
+- ✅ **Compatible with Zero-Cross SSRs**: Can use simpler, cheaper SSRs
+
+**Limitations:**
+
+- ❌ **Flickering**: Visible light can flicker and voltage fluctuations can affect nearby devices
+  - Caused by sudden high current draw creating voltage drops
+  - Can impact micro-inverters and other sensitive electronics
+- ❌ **Slow Response**: Limited precision due to coarse time slots
+  - Example: 50 slots in 1-second window for 50Hz = 60W resolution for 3000W load
+- ❌ **Heat Dissipation**: Rapid switching generates more heat in SSR
+- ❌ **Poor Accuracy**: Cannot achieve watt-level control precision
+- ❌ **Delayed Corrections**: By the time adjustment is applied, conditions may have changed
+
+#### Burst Fire on Semi-Period
+
+**How it works:** Switches at semi-period level (every 10ms for 50Hz) to double the control slots and improve response time. For example, to achieve 50% power, alternates full power and no power for 20ms, and 10ms, to avoid creating DC components.
+
+![](https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/burst_fire_10ms.jpeg)
+
+**Advantages:**
+
+- ✅ **Better Resolution**: Twice as many control slots compared to full-period burst fire
+- ✅ **Faster Response**: 2x quicker than full-period burst fire
+
+**Limitations:**
+
+- ❌ **All Full-Period Limitations**: Still suffers from flickering, heat, and inaccuracy but to a lesser extent
+- ❌ **DC Component**: Critical regulatory violation in some countries
+  - Can create dangerous DC components on AC grid (current asymmetry drawn only one side of the waveform for a short time)
+  - Can unbalance grid network by drawing current asymmetrically if not properly balanced
+  - **Can violate electrical regulation** - this method cannot be used in some countries where regulations forbid DC components on AC grids
+
+#### Stochastic Burst Fire (Coming Soon)
+
+**How it works:** Probabilistic switching at each zero-cross. At each AC cycle, generates a random number (0-100) and compares it to the desired power level percentage. If the random number is lower, the full wave is allowed through; otherwise, it's blocked.
+
+**Advantages:**
+
+- ✅ **No DC Component**: Always switches at zero-cross on full waves, maintains grid balance
+- ✅ **Eliminates Periodic Flickering**: Random distribution prevents visible periodic patterns
+- ✅ **Minimal EMF Interference**: Zero-cross switching reduces electromagnetic interference
+- ✅ **Multi-Channel Safe**: Random switching prevents simultaneous current spikes across channels
+- ✅ **Even Distribution**: Over time, produces statistically accurate power output
+- ✅ **No Harmonics**: Preserves complete sine waves like traditional burst fire
+
+**Limitations:**
+
+- ⚠️ **Less Precise**: Statistical accuracy over time, not instant watt-level precision
+- ⚠️ **Requires More Cycles**: Needs multiple AC cycles to reach target power level
+- ⚠️ **Not for Fast-Response Systems**: Better suited for thermal/heating applications with slower dynamics
+
+**Use Cases:**
+
+- Multi-channel heating systems
+- Temperature control with PID regulation
+- Applications where eliminating flicker is more important than instant precision
+- Systems sensitive to EMF interference
+
+### Recommendations for Harmonic Mitigation (Phase Control)
+
+When using phase control, harmonics can be reduced or partially mitigated through several approaches. Examples (but not limited to):
+
+1. **Power Limiter**: Limit dimmer (in example to 40% of nominal load)
+2. **Reduced Load**: Use lower wattage resistance (e.g., 1000W @ 53Ω instead of 3000W @ 18Ω)
+3. **Proper Wiring**: Minimize cable length, use appropriate wire gauge
+4. **Strategic Placement**: Position router close to grid entry/exit point
+5. **Stepped Loads**: Use multiple resistances with relays (e.g., 3x 800W elements)
+6. **RC Snubbers**: 100Ω 100nF snubbers can help with sensitive equipment
+
+### Current MycilaDimmer Support
+
+**Currently Supported (Phase Control):**
+
+- ✅ ZeroCrossDimmer - TRIAC/Random SSR with zero-cross detection
+- ✅ PWMDimmer - PWM output for voltage regulators (LSA, LCTC)
+- ✅ DFRobotDimmer - I2C DAC for voltage regulators (LSA, LCTC)
+
+**Coming Soon:**
+
+- ✅ BurstFireDimmer - Stochastic burst fire for Zero-Cross SSR and TRIAC/Random SSR with zero-cross detection
+
+### Choosing the Right Method
+
+**For Solar Routers & High-Precision Applications:**
+
+- Use **Phase Control** with appropriate harmonic mitigation
+- Provides best accuracy and response time
+
+**For Simple On/Off Control:**
+
+- Consider **Zero-Cross SSR** with simple relay control
+- Suitable when precise dimming is not required
+- No harmonics, but no variable power control
+
+## References and Further Reading
+
+**Harmonics**
+
+- [CEI 61000-3-2 Harmonic Standards](http://crochet.david.online.fr/bep/copie%20serveur/Normes/cei%2061000-3-2.pdf)
+- [Etude des harmoniques du courant de ligne](https://www.thierry-lequeu.fr/data/TRIAC.pdf) (Thierry Lequeu)
+- [Détection et atténuation des harmoniques](https://fr.electrical-installation.org/frwiki/Détection_et_atténuation_des_harmoniques) (Schneider Electric)
+- [Router via TRIAC et "Pollution" du réseau](https://forum-photovoltaique.fr/viewtopic.php?t=60521) (Forum photovoltaïque)
+- [HARMONICS: CAUSES, EFFECTS AND MINIMIZATION](https://www.salicru.com/files/pagina/72/278/jn004a01_whitepaper-armonics_%281%29.pdf) (Ramon Pinyol, R&D Product Leader SALICRU)
+- [HARMONIQUES ET DEPOLLUTION DU RESEAU ELECTRIQUE](http://archives.univ-biskra.dz/bitstream/123456789/21913/1/BELHADJ%20KHEIRA%20ET%20BOUZIR%20NESSRINE.pdf) (BELHADJ KHEIRA ET BOUZIR NESSRINE)
+- [Impact de la pollution harmonique sur les matériels de réseau](https://theses.hal.science/tel-00441877/document) (Wilfried Frelin)
+
+**TRIAC and Thyristors**
+
+- [NEW TRIACS: IS THE SNUBBER CIRCUIT NECESSARY?](https://www.thierry-lequeu.fr/data/AN437.pdf) (Thierry Lequeu)
+- [Le triac](https://emrecmic.wordpress.com/2017/02/07/le-triac/)
+- [Le gradateur](http://philippe.demerliac.free.fr/RichardK/Graduateur.pdf) (Richard KOWAL)
+- [Switching Loads with Arduino and Solid State Relay](https://www.luisllamas.es/en/arduino-solid-state-relay-ssr/)
+
+**Technical docs and algorithms**
+
+- [Learn: PV Diversion](https://docs.openenergymonitor.org/pv-diversion/)
+- [Optimized Random Integral Wave AC Control Algorithm for AC heaters](https://tsltd.github.io)
+- [Cycle Stealing Control](https://www.renesas.com/en/document/apn/1164-cycle-stealing-control) (Vladimir Veljkovic)
+
+**Solar Router using this library:**
+
+- [YaSolR Overview - Detailed Analysis](https://yasolr.carbou.me/overview)
+
 ## API Reference
+
+**Doxygen documentation** is available [here](https://mathieu.carbou.me/MycilaDimmer/api/index.html).
 
 ### Common API (All Dimmer Types)
 
@@ -425,6 +622,20 @@ pio run
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Disclaimer
+
+_This website is provided for informational purposes only. By accessing this site and using the information contained herein, you accept the terms set forth in this disclaimer._
+
+- _**Accuracy of Information**: We strive to provide accurate and up-to-date information on this site, but we cannot guarantee the completeness or accuracy of this information. The information provided is subject to change without notice._
+
+- _**Use of Information**: Use of the information provided on this site is at your own risk. \*We decline all responsibility for the consequences arising from the use of this information. It is recommended that you consult a competent professional for advice specific to your situation._
+
+- _**External Links**: This site may contain links to external websites which are provided for your reference and convenience. We have no control over the content of these external sites and we accept no responsibility for their content and their use._
+
+- _**Limitation of Liability**: To the fullest extent permitted by applicable law, we disclaim all liability for any direct, indirect, incidental, consequential or special damages arising out of the use of, or inability to use, this website, even if we have been advised of the possibility of such damage._
+
+_By using this site, you agree to hold harmless the owners, administrators and authors of this site from any claims arising from your use of this website. **If you do not agree to these terms, please do not use this site.**_
 
 ---
 
