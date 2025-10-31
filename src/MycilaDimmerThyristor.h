@@ -68,7 +68,7 @@ namespace Mycila {
        */
       virtual void end();
 
-      virtual const char* type() const { return "zero-cross"; }
+      virtual const char* type() const { return "thyristor"; }
 
       /**
        * Callback to be called when a zero-crossing event is detected.
