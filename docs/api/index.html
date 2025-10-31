@@ -95,7 +95,7 @@ $(function() {
 </li>
 <li>Quick Start</li>
 <li>Dimmer Types<ul>
-<li>Zero-Cross Dimmer</li>
+<li>Thyristor Dimmer</li>
 <li>PWM Dimmer</li>
 <li>DFRobot DAC Dimmer</li>
 </ul>
@@ -116,7 +116,7 @@ $(function() {
 <li>References and Further Reading</li>
 <li>API Reference<ul>
 <li>Common API (All Dimmer Types)</li>
-<li>Zero-Cross Dimmer Specific</li>
+<li>Thyristor Dimmer Specific</li>
 <li>PWM Dimmer Specific</li>
 <li>DFRobot DAC Dimmer Specific</li>
 <li>Advanced Features</li>
@@ -217,7 +217,7 @@ $(function() {
 <div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html_a04eda47bd3b808743674eb3fc034aac7"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html#a04eda47bd3b808743674eb3fc034aac7">Mycila::PWMDimmer::setPin</a></div><div class="ttdeci">void setPin(gpio_num_t pin)</div><div class="ttdoc">Set the GPIO pin to use for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_p_w_m_8h_source.html#l00020">MycilaDimmerPWM.h:20</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html_a7544d46c5613d21168eae14807fb9cde"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html#a7544d46c5613d21168eae14807fb9cde">Mycila::PWMDimmer::begin</a></div><div class="ttdeci">virtual void begin()</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_p_w_m_8cpp_source.html#l00038">MycilaDimmerPWM.cpp:38</a></div></div>
 </div><!-- fragment --><h1>Dimmer Types</h1>
-<h2>Zero-Cross Dimmer</h2>
+<h2>Thyristor Dimmer</h2>
 <p>Perfect for TRIAC and Random SSR control with <b>flicker-free progressive dimming</b>. Achieves smooth, continuous power control through precise phase angle control when paired with quality zero-cross detection circuits.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;MycilaDimmer.h&gt;</span></div>
 <div class="line"> </div>
@@ -336,7 +336,7 @@ $(function() {
 <ul>
 <li>✅ <b>No Harmonics</b>: Preserves complete sine waves, generates minimal harmonic distortion</li>
 <li>✅ <b>Simple Implementation</b>: Basic on/off switching logic</li>
-<li>✅ <b>Compatible with Zero-Cross SSRs</b>: Can use simpler, cheaper SSRs</li>
+<li>✅ <b>Compatible with many common SSRs</b> (Zero-Cross / Sync ones): Can use simpler, cheaper SSRs</li>
 </ul>
 <p><b>Limitations:</b></p>
 <ul>
@@ -414,7 +414,7 @@ $(function() {
 </ul>
 <p><b>Coming Soon:</b></p>
 <ul>
-<li>✅ BurstFireDimmer - Stochastic burst fire for Zero-Cross SSR and TRIAC/Random SSR with zero-cross detection</li>
+<li>✅ BurstFireDimmer - Stochastic burst fire for common SSR (Zero-Cross / Sync ones) and TRIAC / Random SSR with zero-cross detection</li>
 </ul>
 <h2>Choosing the Right Method</h2>
 <p><b>For Solar Routers &amp; High-Precision Applications:</b></p>
@@ -424,7 +424,7 @@ $(function() {
 </ul>
 <p><b>For Simple On/Off Control:</b></p>
 <ul>
-<li>Consider <b>Zero-Cross SSR</b> with simple relay control</li>
+<li>Consider <b>normal SSR</b> (Zero-Cross / Sync ones) with simple relay control</li>
 <li>Suitable when precise dimming is not required</li>
 <li>No harmonics, but no variable power control</li>
 </ul>
@@ -498,7 +498,7 @@ $(function() {
 <div class="line"><span class="preprocessor">#ifdef MYCILA_JSON_SUPPORT</span></div>
 <div class="line"><span class="keywordtype">void</span> toJson(<span class="keyword">const</span> JsonObject&amp; root) <span class="keyword">const</span>; <span class="comment">// Serialize to JSON</span></div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-</div><!-- fragment --><h2>Zero-Cross Dimmer Specific</h2>
+</div><!-- fragment --><h2>Thyristor Dimmer Specific</h2>
 <div class="fragment"><div class="line"><span class="keywordtype">void</span> setPin(gpio_num_t pin);           <span class="comment">// Set output GPIO pin</span></div>
 <div class="line"><span class="keywordtype">void</span> setSemiPeriod(uint16_t semiPeriod); <span class="comment">// Set grid semi-period (us)</span></div>
 <div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> onZeroCross(int16_t delayUntilZero, <span class="keywordtype">void</span>* arg); <span class="comment">// Zero-cross callback</span></div>
@@ -558,7 +558,7 @@ $(function() {
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_af83b436ec8799d705dbf22265225beaf"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#af83b436ec8799d705dbf22265225beaf">Mycila::Dimmer::setDutyCycleLimit</a></div><div class="ttdeci">void setDutyCycleLimit(float limit)</div><div class="ttdoc">Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00037">MycilaDimmer.h:37</a></div></div>
 </div><!-- fragment --><h1>Configuration</h1>
 <h2>Build Flags</h2>
-<p>For <b>Zero-Cross Dimmer</b> (IRAM safety):</p>
+<p>For <b>Thyristor Dimmer</b> (IRAM safety):</p>
 <div class="fragment"><div class="line">build_flags =</div>
 <div class="line">  -D CONFIG_ARDUINO_ISR_IRAM=1</div>
 <div class="line">  -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1</div>
@@ -597,7 +597,7 @@ $(function() {
 <div class="line">  -D CONFIG_ARDUHAL_LOG_COLORS</div>
 <div class="line">  -D CORE_DEBUG_LEVEL=ARDUHAL_LOG_LEVEL_DEBUG</div>
 <div class="line">  -Wall -Wextra</div>
-<div class="line">  ; Zero-Cross specific flags</div>
+<div class="line">  ; ThyristorDimmer specific flags</div>
 <div class="line">  -D CONFIG_ARDUINO_ISR_IRAM=1</div>
 <div class="line">  -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1</div>
 <div class="line">  -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1</div>
@@ -614,7 +614,7 @@ $(function() {
 </ul>
 <h1>Troubleshooting</h1>
 <h2>Common Issues</h2>
-<p><b>Zero-Cross Dimmer Not Working</b></p>
+<p><b>Thyristor Dimmer Not Working</b></p>
 <ul>
 <li>Ensure IRAM build flags are set</li>
 <li>Check semi-period is configured (<span class="tt">setSemiPeriod()</span>)</li>

@@ -4,10 +4,10 @@
  */
 #pragma once
 
-#define MYCILA_DIMMER_VERSION          "2.0.1"
+#define MYCILA_DIMMER_VERSION          "2.0.2"
 #define MYCILA_DIMMER_VERSION_MAJOR    2
 #define MYCILA_DIMMER_VERSION_MINOR    0
-#define MYCILA_DIMMER_VERSION_REVISION 1
+#define MYCILA_DIMMER_VERSION_REVISION 2
 
 #ifdef MYCILA_JSON_SUPPORT
   #include <ArduinoJson.h>
