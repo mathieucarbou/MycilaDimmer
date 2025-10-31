@@ -117,14 +117,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Cache PlatformIO
-        uses: actions/cache@v4
-        with:
-          key: ${{ runner.os }}-pio
-          path: |
-            ~/.cache/pip
-            ~/.platformio
-
       - name: Python
         uses: actions/setup-python@v6
         with:
