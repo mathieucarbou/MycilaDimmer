@@ -12,7 +12,7 @@ MycilaDimmer is an ESP32/Arduino library for controlling AC power devices (TRIAC
 - Virtual destructor ensures proper cleanup in polymorphic contexts
 
 ### Three Hardware Implementations
-1. **ZeroCrossDimmer** - TRIAC control with zero-cross detection, uses ESP32 GPTimers
+1. **ThyristorDimmer** - TRIAC control with zero-cross detection, uses ESP32 GPTimers
 2. **PWMDimmer** - Standard PWM output, configurable frequency/resolution
 3. **DFRobotDimmer** - I2C DAC control for DFRobot modules (GP8211S, GP8413, GP8403)
 
@@ -63,7 +63,7 @@ Conditional compilation with `#ifdef MYCILA_JSON_SUPPORT` - include ArduinoJson 
 - Firing delay in microseconds: `(delay * semiPeriod) >> 16`
 
 ### Zero-Cross Integration
-Static callback `ZeroCrossDimmer::onZeroCross(int16_t delayUntilZero, void* args)` designed for external pulse analyzers or ISRs.
+Static callback `ThyristorDimmer::onZeroCross(int16_t delayUntilZero, void* args)` designed for external pulse analyzers or ISRs.
 
 ## File Organization
 - Main headers: `MycilaDimmer.h` (base), `MycilaDimmer[Type].h` (implementations)

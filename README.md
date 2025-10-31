@@ -143,7 +143,7 @@ Perfect for TRIAC and Random SSR control with **flicker-free progressive dimming
 ```cpp
 #include <MycilaDimmer.h>
 
-Mycila::ZeroCrossDimmer dimmer;
+Mycila::ThyristorDimmer dimmer;
 
 void setup() {
   dimmer.setPin(GPIO_NUM_26);
@@ -151,7 +151,7 @@ void setup() {
   dimmer.begin();
 
   // Register with external zero-cross detector
-  pulseAnalyzer.onZeroCross(Mycila::ZeroCrossDimmer::onZeroCross);
+  pulseAnalyzer.onZeroCross(Mycila::ThyristorDimmer::onZeroCross);
 }
 ```
 
@@ -255,8 +255,8 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 
 **MycilaDimmer Implementation:**
 
-- All three implementations (ZeroCrossDimmer, PWMDimmer, DFRobotDimmer) use phase control
-- ZeroCrossDimmer: Direct TRIAC/Random SSR control with zero-cross detection
+- All three implementations (ThyristorDimmer, PWMDimmer, DFRobotDimmer) use phase control
+- ThyristorDimmer: Direct TRIAC/Random SSR control with zero-cross detection
 - PWMDimmer: Generates PWM signal for converter for voltage regulators (LSA, LCTC) which perform internal phase control
 - DFRobotDimmer: Outputs 0-10V analog signal to voltage regulators (LSA, LCTC) which perform internal phase control
 
@@ -343,7 +343,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 
 **Currently Supported (Phase Control):**
 
-- ✅ ZeroCrossDimmer - TRIAC/Random SSR with zero-cross detection
+- ✅ ThyristorDimmer - TRIAC/Random SSR with zero-cross detection
 - ✅ PWMDimmer - PWM output for voltage regulators (LSA, LCTC)
 - ✅ DFRobotDimmer - I2C DAC for voltage regulators (LSA, LCTC)
 
@@ -544,9 +544,9 @@ The library includes comprehensive examples:
 - **[DAC Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/DAC/)** - DFRobot DAC module control
 - **[JSON Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/Json/)** - Telemetry and JSON integration
 - **[PWM Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/PWM/)** - Basic PWM dimming
-- **[ZeroCross Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCross/)** - TRIAC control with zero-cross detection
-- **[ZeroCrossAuto Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCrossAuto/)** - Automatic detection of frequency and semi-period
-- **[ZeroCrossWithFS Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCrossWithFS/)** - File system integration
+- **[Thyristor Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/Thyristor/)** - TRIAC control with zero-cross detection
+- **[ThyristorAutoFrequency Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorAutoFrequency/)** - Automatic detection of frequency and semi-period
+- **[ThyristorWithFS Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorWithFS/)** - File system integration
 
 ## Build Configuration
 
@@ -555,7 +555,7 @@ The library includes comprehensive examples:
 ```ini
 [platformio]
 lib_dir = .
-src_dir = examples/ZeroCross  ; or DAC, PWM, etc.
+src_dir = examples/Thyristor  ; or DAC, PWM, etc.
 
 [env]
 framework = arduino

@@ -46,7 +46,7 @@ static void start_async_task_doing_fs_operations() {
 }
 
 static Mycila::PulseAnalyzer pulseAnalyzer;
-static Mycila::ZeroCrossDimmer dimmer;
+static Mycila::ThyristorDimmer dimmer;
 
 void setup() {
   Serial.begin(115200);
@@ -56,7 +56,7 @@ void setup() {
   start_async_task_doing_fs_operations();
 
   pulseAnalyzer.setZeroCrossEventShift(-150);
-  pulseAnalyzer.onZeroCross(Mycila::ZeroCrossDimmer::onZeroCross);
+  pulseAnalyzer.onZeroCross(Mycila::ThyristorDimmer::onZeroCross);
   pulseAnalyzer.begin(GPIO_ZCD);
 
   dimmer.setSemiPeriod(10000); // 50Hz grid frequency

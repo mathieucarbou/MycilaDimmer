@@ -7,14 +7,10 @@ digraph "EnabledDimmer"
   Node1 [id="Node000001",label="EnabledDimmer",height=0.2,width=0.4,color="gray40", fillcolor="grey60", style="filled", fontcolor="black",tooltip=" "];
   Node2 -> Node1 [id="edge1_Node000001_Node000002",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">dimmer</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
-  Node2 [id="Node000002",label="Mycila::BurstFireDimmer",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$class_mycila_1_1_burst_fire_dimmer.html",tooltip=" "];
+  Node2 [id="Node000002",label="Mycila::ThyristorDimmer",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$class_mycila_1_1_thyristor_dimmer.html",tooltip=" "];
   Node3 -> Node2 [id="edge2_Node000002_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
   Node3 [id="Node000003",label="Mycila::Dimmer",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$class_mycila_1_1_dimmer.html",tooltip=" "];
-  Node4 -> Node1 [id="edge3_Node000001_Node000004",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">dimmer</TD></TR>
-</TABLE>> ,fontcolor="grey" ];
-  Node4 [id="Node000004",label="Mycila::ZeroCrossDimmer",height=0.2,width=0.4,color="grey75", fillcolor="white", style="filled",URL="$class_mycila_1_1_zero_cross_dimmer.html",tooltip=" "];
-  Node3 -> Node4 [id="edge4_Node000004_Node000003",dir="back",color="steelblue1",style="solid",tooltip=" "];
-  Node1 -> Node1 [id="edge5_Node000001_Node000001",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">next</TD></TR>
+  Node1 -> Node1 [id="edge3_Node000001_Node000001",dir="back",color="darkorchid3",style="dashed",tooltip=" ",label=<<TABLE CELLBORDER="0" BORDER="0"><TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">next</TD></TR>
 <TR><TD VALIGN="top" ALIGN="LEFT" CELLPADDING="1" CELLSPACING="0">prev</TD></TR>
 </TABLE>> ,fontcolor="grey" ];
 }

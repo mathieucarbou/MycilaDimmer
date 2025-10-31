@@ -290,4 +290,4 @@ namespace Mycila {
 
 #include "MycilaDimmerDFRobot.h"
 #include "MycilaDimmerPWM.h"
-#include "MycilaDimmerZeroCross.h"
+#include "MycilaDimmerThyristor.h"

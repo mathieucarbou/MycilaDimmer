@@ -8,9 +8,9 @@
 #include <driver/gptimer_types.h>
 
 namespace Mycila {
-  class ZeroCrossDimmer : public Dimmer {
+  class ThyristorDimmer : public Dimmer {
     public:
-      virtual ~ZeroCrossDimmer() { end(); }
+      virtual ~ThyristorDimmer() { end(); }
 
       /**
        * @brief Set the GPIO pin to use for the dimmer
@@ -27,7 +27,7 @@ namespace Mycila {
        */
       void setSemiPeriod(uint16_t semiPeriod) {
         if (semiPeriod == 0) {
-          ESP_LOGE("MycilaDimmerZeroCross", "setSemiPeriod: semiPeriod must be > 0");
+          ESP_LOGE("MycilaDimmerThyristor", "setSemiPeriod: semiPeriod must be > 0");
         }
         assert(semiPeriod > 0);
         _semiPeriod = semiPeriod;
@@ -116,7 +116,7 @@ namespace Mycila {
       uint16_t _delay = UINT16_MAX; // this is the next firing delay to apply
 
       static bool _fireTimerISR(gptimer_handle_t timer, const gptimer_alarm_event_data_t* event, void* arg);
-      static void _registerDimmer(Mycila::ZeroCrossDimmer* dimmer);
-      static void _unregisterDimmer(Mycila::ZeroCrossDimmer* dimmer);
+      static void _registerDimmer(Mycila::ThyristorDimmer* dimmer);
+      static void _unregisterDimmer(Mycila::ThyristorDimmer* dimmer);
   };
 } // namespace Mycila

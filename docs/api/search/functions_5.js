@@ -9,7 +9,7 @@ var searchData=
   ['setfrequency_6',['setFrequency',['../class_mycila_1_1_p_w_m_dimmer.html#a4de79584bffb1a77bba14a97e6c22d81',1,'Mycila::PWMDimmer']]],
   ['setonline_7',['setOnline',['../class_mycila_1_1_dimmer.html#a7dfc096d101bd15b5948d1e398fdc236',1,'Mycila::Dimmer']]],
   ['setoutput_8',['setOutput',['../class_mycila_1_1_d_f_robot_dimmer.html#a787206839fe862de890da60eb49db146',1,'Mycila::DFRobotDimmer']]],
-  ['setpin_9',['setPin',['../class_mycila_1_1_burst_fire_dimmer.html#a57e4afcf90291d17dc01c2f05a043adf',1,'Mycila::BurstFireDimmer::setPin()'],['../class_mycila_1_1_p_w_m_dimmer.html#a04eda47bd3b808743674eb3fc034aac7',1,'Mycila::PWMDimmer::setPin()'],['../class_mycila_1_1_zero_cross_dimmer.html#a90ba4a712d24a1e393614e2768bff199',1,'Mycila::ZeroCrossDimmer::setPin()']]],
+  ['setpin_9',['setPin',['../class_mycila_1_1_p_w_m_dimmer.html#a04eda47bd3b808743674eb3fc034aac7',1,'Mycila::PWMDimmer::setPin()'],['../class_mycila_1_1_thyristor_dimmer.html#a6ea7401605120ef604f0f5fdb255b58e',1,'Mycila::ThyristorDimmer::setPin()']]],
   ['setresolution_10',['setResolution',['../class_mycila_1_1_p_w_m_dimmer.html#a1e03df6c8414c708adfb214ec9135e7c',1,'Mycila::PWMDimmer']]],
-  ['setsemiperiod_11',['setSemiPeriod',['../class_mycila_1_1_burst_fire_dimmer.html#a7f7ee4cbd8a4ec690e6d9c8fbe4c113e',1,'Mycila::BurstFireDimmer::setSemiPeriod()'],['../class_mycila_1_1_zero_cross_dimmer.html#ae0676141bd5adad7f492b4aad90375a3',1,'Mycila::ZeroCrossDimmer::setSemiPeriod()']]]
+  ['setsemiperiod_11',['setSemiPeriod',['../class_mycila_1_1_thyristor_dimmer.html#aaf06ed2c2bc8e2ab9e103f928b623a35',1,'Mycila::ThyristorDimmer']]]
 ];

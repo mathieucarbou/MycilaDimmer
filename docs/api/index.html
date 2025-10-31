@@ -81,7 +81,6 @@ $(function() {
 <p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/console.png" alt="" class="inline"/> <img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/anim.gif" alt="" class="inline"/></p>
 <h1>Table of Contents</h1>
 <ul>
-<li>Table of Contents</li>
 <li>Overview</li>
 <li>Features</li>
 <li>Hardware Support<ul>
@@ -114,6 +113,7 @@ $(function() {
 <li>Choosing the Right Method</li>
 </ul>
 </li>
+<li>References and Further Reading</li>
 <li>API Reference<ul>
 <li>Common API (All Dimmer Types)</li>
 <li>Zero-Cross Dimmer Specific</li>
@@ -221,21 +221,21 @@ $(function() {
 <p>Perfect for TRIAC and Random SSR control with <b>flicker-free progressive dimming</b>. Achieves smooth, continuous power control through precise phase angle control when paired with quality zero-cross detection circuits.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;MycilaDimmer.h&gt;</span></div>
 <div class="line"> </div>
-<div class="line"><a class="code hl_class" href="class_mycila_1_1_zero_cross_dimmer.html">Mycila::ZeroCrossDimmer</a> dimmer;</div>
+<div class="line"><a class="code hl_class" href="class_mycila_1_1_thyristor_dimmer.html">Mycila::ThyristorDimmer</a> dimmer;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> setup() {</div>
-<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_zero_cross_dimmer.html#a90ba4a712d24a1e393614e2768bff199">setPin</a>(GPIO_NUM_26);</div>
-<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_zero_cross_dimmer.html#ae0676141bd5adad7f492b4aad90375a3">setSemiPeriod</a>(10000); <span class="comment">// 50Hz AC (10ms semi-period)</span></div>
-<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_zero_cross_dimmer.html#a6ae1980953df0a80c6222f3008b280ed">begin</a>();</div>
+<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_thyristor_dimmer.html#a6ea7401605120ef604f0f5fdb255b58e">setPin</a>(GPIO_NUM_26);</div>
+<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_thyristor_dimmer.html#aaf06ed2c2bc8e2ab9e103f928b623a35">setSemiPeriod</a>(10000); <span class="comment">// 50Hz AC (10ms semi-period)</span></div>
+<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_thyristor_dimmer.html#ac49a5479c2f74f67078a2ebf9656e004">begin</a>();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Register with external zero-cross detector</span></div>
-<div class="line">  pulseAnalyzer.onZeroCross(<a class="code hl_function" href="class_mycila_1_1_zero_cross_dimmer.html#a7ca7ae8d0317b153a2126e49a808c0b0">Mycila::ZeroCrossDimmer::onZeroCross</a>);</div>
+<div class="line">  pulseAnalyzer.onZeroCross(<a class="code hl_function" href="class_mycila_1_1_thyristor_dimmer.html#a5b09bdb65f3ee8676ecaf31290d24d6c">Mycila::ThyristorDimmer::onZeroCross</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_mycila_1_1_zero_cross_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_zero_cross_dimmer.html">Mycila::ZeroCrossDimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_zero_cross_8h_source.html#l00011">MycilaDimmerZeroCross.h:11</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_zero_cross_dimmer_html_a6ae1980953df0a80c6222f3008b280ed"><div class="ttname"><a href="class_mycila_1_1_zero_cross_dimmer.html#a6ae1980953df0a80c6222f3008b280ed">Mycila::ZeroCrossDimmer::begin</a></div><div class="ttdeci">virtual void begin()</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_zero_cross_8cpp_source.html#l00070">MycilaDimmerZeroCross.cpp:70</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_zero_cross_dimmer_html_a7ca7ae8d0317b153a2126e49a808c0b0"><div class="ttname"><a href="class_mycila_1_1_zero_cross_dimmer.html#a7ca7ae8d0317b153a2126e49a808c0b0">Mycila::ZeroCrossDimmer::onZeroCross</a></div><div class="ttdeci">static void onZeroCross(int16_t delayUntilZero, void *args)</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_zero_cross_8cpp_source.html#l00101">MycilaDimmerZeroCross.cpp:101</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_zero_cross_dimmer_html_a90ba4a712d24a1e393614e2768bff199"><div class="ttname"><a href="class_mycila_1_1_zero_cross_dimmer.html#a90ba4a712d24a1e393614e2768bff199">Mycila::ZeroCrossDimmer::setPin</a></div><div class="ttdeci">void setPin(gpio_num_t pin)</div><div class="ttdoc">Set the GPIO pin to use for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_zero_cross_8h_source.html#l00018">MycilaDimmerZeroCross.h:18</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_zero_cross_dimmer_html_ae0676141bd5adad7f492b4aad90375a3"><div class="ttname"><a href="class_mycila_1_1_zero_cross_dimmer.html#ae0676141bd5adad7f492b4aad90375a3">Mycila::ZeroCrossDimmer::setSemiPeriod</a></div><div class="ttdeci">void setSemiPeriod(uint16_t semiPeriod)</div><div class="ttdoc">Set the semi-period of the grid frequency in us. It cannot be zero and it is required for proper dimm...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_zero_cross_8h_source.html#l00028">MycilaDimmerZeroCross.h:28</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html">Mycila::ThyristorDimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8h_source.html#l00011">MycilaDimmerThyristor.h:11</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_a5b09bdb65f3ee8676ecaf31290d24d6c"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#a5b09bdb65f3ee8676ecaf31290d24d6c">Mycila::ThyristorDimmer::onZeroCross</a></div><div class="ttdeci">static void onZeroCross(int16_t delayUntilZero, void *args)</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8cpp_source.html#l00101">MycilaDimmerThyristor.cpp:101</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_a6ea7401605120ef604f0f5fdb255b58e"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#a6ea7401605120ef604f0f5fdb255b58e">Mycila::ThyristorDimmer::setPin</a></div><div class="ttdeci">void setPin(gpio_num_t pin)</div><div class="ttdoc">Set the GPIO pin to use for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8h_source.html#l00018">MycilaDimmerThyristor.h:18</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_aaf06ed2c2bc8e2ab9e103f928b623a35"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#aaf06ed2c2bc8e2ab9e103f928b623a35">Mycila::ThyristorDimmer::setSemiPeriod</a></div><div class="ttdeci">void setSemiPeriod(uint16_t semiPeriod)</div><div class="ttdoc">Set the semi-period of the grid frequency in us. It cannot be zero and it is required for proper dimm...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8h_source.html#l00028">MycilaDimmerThyristor.h:28</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_ac49a5479c2f74f67078a2ebf9656e004"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#ac49a5479c2f74f67078a2ebf9656e004">Mycila::ThyristorDimmer::begin</a></div><div class="ttdeci">virtual void begin()</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8cpp_source.html#l00070">MycilaDimmerThyristor.cpp:70</a></div></div>
 </div><!-- fragment --><p><b>Features:</b></p>
 <ul>
 <li><b>Flicker-free dimming</b>: Smooth progressive control without visible flickering</li>
@@ -301,12 +301,13 @@ $(function() {
 <h2>Dimming Method Comparison</h2>
 <h3>Phase Control</h3>
 <p><b>How it works:</b> Controls power by delaying the firing angle within each AC semi-period (twice per cycle). The TRIAC/SSR activates at a specific point in the sine wave, "chopping" the waveform to deliver partial power.</p>
+<p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/Oscillo_Dimmer_50.jpeg" alt="" class="inline"/></p>
 <p><b>Advantages:</b></p>
 <ul>
 <li>✅ <b>High Precision</b>: Can adjust power at each semi-period (every 10ms for 50Hz), enabling watt-level control</li>
 <li>✅ <b>Fast Response</b>: Instant power adjustment with no delay</li>
 <li>✅ <b>Accurate Power Control</b>: With Power LUT, achieves predictable power output matching the desired level</li>
-<li>✅ <b>Regulatory Compliant</b>: Keeps grid balanced (no DC component) when properly implemented</li>
+<li>✅ <b>Regulatory Compliant</b>: Keeps grid balanced (no DC component) when properly implemented under harmonic regulations</li>
 <li>✅ <b>Widely Used</b>: Standard method in commercial dimmers and variable speed drives</li>
 </ul>
 <p><b>Limitations:</b></p>
@@ -323,13 +324,14 @@ $(function() {
 </ul>
 <p><b>MycilaDimmer Implementation:</b></p>
 <ul>
-<li>All three implementations (ZeroCrossDimmer, PWMDimmer, DFRobotDimmer) use phase control</li>
-<li>ZeroCrossDimmer: Direct TRIAC/Random SSR control with zero-cross detection</li>
+<li>All three implementations (ThyristorDimmer, PWMDimmer, DFRobotDimmer) use phase control</li>
+<li>ThyristorDimmer: Direct TRIAC/Random SSR control with zero-cross detection</li>
 <li>PWMDimmer: Generates PWM signal for converter for voltage regulators (LSA, LCTC) which perform internal phase control</li>
 <li>DFRobotDimmer: Outputs 0-10V analog signal to voltage regulators (LSA, LCTC) which perform internal phase control</li>
 </ul>
 <h3>Burst Fire on Full Period</h3>
-<p><b>How it works:</b> Rapidly switches complete AC cycles on/off (20ms periods for 50Hz). For example, to achieve 50% power, alternates full power for 1 second, then off for 1 second.</p>
+<p><b>How it works:</b> Rapidly switches complete AC cycles on/off (20ms periods for 50Hz). For example, to achieve 50% power, alternates full power for 20ms, then turns off for 20ms, and so on.</p>
+<p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/burst_fire_20ms.jpeg" alt="" class="inline"/></p>
 <p><b>Advantages:</b></p>
 <ul>
 <li>✅ <b>No Harmonics</b>: Preserves complete sine waves, generates minimal harmonic distortion</li>
@@ -338,14 +340,13 @@ $(function() {
 </ul>
 <p><b>Limitations:</b></p>
 <ul>
-<li>❌ <b>Flickering</b>: Visible light flicker and voltage fluctuations affecting nearby devices<ul>
+<li>❌ <b>Flickering</b>: Visible light can flicker and voltage fluctuations can affect nearby devices<ul>
 <li>Caused by sudden high current draw creating voltage drops</li>
-<li>Impacts micro-inverters and other sensitive electronics</li>
+<li>Can impact micro-inverters and other sensitive electronics</li>
 </ul>
 </li>
 <li>❌ <b>Slow Response</b>: Limited precision due to coarse time slots<ul>
-<li>50 slots in 1-second window for 50Hz = 60W resolution for 3000W load</li>
-<li>Longer windows reduce precision; shorter windows worsen flickering</li>
+<li>Example: 50 slots in 1-second window for 50Hz = 60W resolution for 3000W load</li>
 </ul>
 </li>
 <li>❌ <b>Heat Dissipation</b>: Rapid switching generates more heat in SSR</li>
@@ -353,7 +354,8 @@ $(function() {
 <li>❌ <b>Delayed Corrections</b>: By the time adjustment is applied, conditions may have changed</li>
 </ul>
 <h3>Burst Fire on Semi-Period</h3>
-<p><b>How it works:</b> Switches at semi-period level (every 10ms for 50Hz) to double the control slots and improve response time.</p>
+<p><b>How it works:</b> Switches at semi-period level (every 10ms for 50Hz) to double the control slots and improve response time. For example, to achieve 50% power, alternates full power and no power for 20ms, and 10ms, to avoid creating DC components.</p>
+<p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/burst_fire_10ms.jpeg" alt="" class="inline"/></p>
 <p><b>Advantages:</b></p>
 <ul>
 <li>✅ <b>Better Resolution</b>: Twice as many control slots compared to full-period burst fire</li>
@@ -361,19 +363,16 @@ $(function() {
 </ul>
 <p><b>Limitations:</b></p>
 <ul>
-<li>❌ <b>All Full-Period Limitations</b>: Still suffers from flickering, heat, and inaccuracy</li>
-<li>❌ <b>DC Component - FORBIDDEN</b>: Critical regulatory violation<ul>
-<li>At 50% power, may turn off negative semi-periods (1 second), then positive semi-periods (1 second)</li>
-<li>Creates dangerous DC components on AC grid (current asymmetry drawn only one side of the waveform for a short time)</li>
-<li>Unbalances grid network by drawing current asymmetrically</li>
-<li><b>Violates electrical regulations</b> - this method should not be used</li>
+<li>❌ <b>All Full-Period Limitations</b>: Still suffers from flickering, heat, and inaccuracy but to a lesser extent</li>
+<li>❌ <b>DC Component</b>: Critical regulatory violation in some countries<ul>
+<li>Can create dangerous DC components on AC grid (current asymmetry drawn only one side of the waveform for a short time)</li>
+<li>Can unbalance grid network by drawing current asymmetrically if not properly balanced</li>
+<li><b>Can violate electrical regulation</b> - this method cannot be used in some countries where regulations forbid DC components on AC grids</li>
 </ul>
 </li>
-<li>❌ <b>Grid Instability</b>: Causes phase imbalance and potential equipment damage</li>
 </ul>
-<p><b>Regulatory Note:</b> Creating DC components on AC power grids is explicitly forbidden by electrical regulations. Many routers implement this method unknowingly, creating compliance and safety issues.</p>
 <h3>Stochastic Burst Fire (Coming Soon)</h3>
-<p><b>How it works:</b> Probabilistic full-wave switching at each zero-cross. At each AC cycle, generates a random number (0-100) and compares it to the desired power level percentage. If the random number is lower, the full wave is allowed through; otherwise, it's blocked.</p>
+<p><b>How it works:</b> Probabilistic switching at each zero-cross. At each AC cycle, generates a random number (0-100) and compares it to the desired power level percentage. If the random number is lower, the full wave is allowed through; otherwise, it's blocked.</p>
 <p><b>Advantages:</b></p>
 <ul>
 <li>✅ <b>No DC Component</b>: Always switches at zero-cross on full waves, maintains grid balance</li>
@@ -396,9 +395,8 @@ $(function() {
 <li>Applications where eliminating flicker is more important than instant precision</li>
 <li>Systems sensitive to EMF interference</li>
 </ul>
-<p><b>Regulatory Note:</b> Creating DC components on AC power grids is explicitly forbidden by electrical regulations. Many routers implement this method unknowingly, creating compliance and safety issues.</p>
 <h2>Recommendations for Harmonic Mitigation (Phase Control)</h2>
-<p>When using phase control, harmonics can be reduced through several approaches:</p>
+<p>When using phase control, harmonics can be reduced or partially mitigated through several approaches. Examples (but not limited to):</p>
 <ol type="1">
 <li><b>Power Limiter</b>: Limit dimmer (in example to 40% of nominal load)</li>
 <li><b>Reduced Load</b>: Use lower wattage resistance (e.g., 1000W @ 53Ω instead of 3000W @ 18Ω)</li>
@@ -406,40 +404,23 @@ $(function() {
 <li><b>Strategic Placement</b>: Position router close to grid entry/exit point</li>
 <li><b>Stepped Loads</b>: Use multiple resistances with relays (e.g., 3x 800W elements)</li>
 <li><b>RC Snubbers</b>: 100Ω 100nF snubbers can help with sensitive equipment</li>
-<li><b>Power LUT</b>: Use perceptual power curve to reduce time spent at problematic phase angles</li>
 </ol>
 <h2>Current MycilaDimmer Support</h2>
 <p><b>Currently Supported (Phase Control):</b></p>
 <ul>
-<li>✅ ZeroCrossDimmer - TRIAC/Random SSR with zero-cross detection</li>
+<li>✅ ThyristorDimmer - TRIAC/Random SSR with zero-cross detection</li>
 <li>✅ PWMDimmer - PWM output for voltage regulators (LSA, LCTC)</li>
 <li>✅ DFRobotDimmer - I2C DAC for voltage regulators (LSA, LCTC)</li>
 </ul>
 <p><b>Coming Soon:</b></p>
 <ul>
-<li>🚧 <b>Stochastic Burst Fire (Full Period)</b> - For Zero-Cross SSR compatibility<ul>
-<li><b>Novel probabilistic approach</b>: At each zero-cross, generates random number (0-100) and compares to desired power level</li>
-<li><b>Smart distribution</b>: If random number &lt; desired power, relay switches on; otherwise switches off</li>
-<li><b>Key advantages over traditional burst fire:</b><ul>
-<li>Eliminates periodic flickering through randomized switching pattern</li>
-<li>Prevents simultaneous high current draw across multiple channels</li>
-<li>Evenly distributed full-wave switching over time</li>
-<li>No DC component - maintains grid balance</li>
-<li>Reduces EMF interference by switching only at zero-cross</li>
-</ul>
-</li>
-<li><b>Trade-offs</b>: Less precise than phase control but safer and more grid-friendly</li>
-<li><b>Ideal for</b>: Multi-channel heating applications, temperature control systems</li>
-<li>Based on proven <a href="https://github.com/DanielKowalczyk/StochasticHeatController">StochasticHeatController</a> implementation</li>
-</ul>
-</li>
+<li>✅ BurstFireDimmer - Stochastic burst fire for Zero-Cross SSR and TRIAC/Random SSR with zero-cross detection</li>
 </ul>
 <h2>Choosing the Right Method</h2>
 <p><b>For Solar Routers &amp; High-Precision Applications:</b></p>
 <ul>
 <li>Use <b>Phase Control</b> with appropriate harmonic mitigation</li>
 <li>Provides best accuracy and response time</li>
-<li>Essential for PV routing where precise power matching is critical</li>
 </ul>
 <p><b>For Simple On/Off Control:</b></p>
 <ul>
@@ -447,13 +428,36 @@ $(function() {
 <li>Suitable when precise dimming is not required</li>
 <li>No harmonics, but no variable power control</li>
 </ul>
-<p><b>Resources:</b></p>
+<h1>References and Further Reading</h1>
+<p><b>Harmonics</b></p>
 <ul>
 <li><a href="http://crochet.david.online.fr/bep/copie%20serveur/Normes/cei%2061000-3-2.pdf">CEI 61000-3-2 Harmonic Standards</a></li>
+<li><a href="https://www.thierry-lequeu.fr/data/TRIAC.pdf">Etude des harmoniques du courant de ligne</a> (Thierry Lequeu)</li>
+<li><a href="https://fr.electrical-installation.org/frwiki/Détection_et_atténuation_des_harmoniques">Détection et atténuation des harmoniques</a> (Schneider Electric)</li>
+<li><a href="https://forum-photovoltaique.fr/viewtopic.php?t=60521">Router via TRIAC et "Pollution" du réseau</a> (Forum photovoltaïque)</li>
+<li><a href="https://www.salicru.com/files/pagina/72/278/jn004a01_whitepaper-armonics_%281%29.pdf">HARMONICS: CAUSES, EFFECTS AND MINIMIZATION</a> (Ramon Pinyol, R&amp;D Product Leader SALICRU)</li>
+<li><a href="http://archives.univ-biskra.dz/bitstream/123456789/21913/1/BELHADJ%20KHEIRA%20ET%20BOUZIR%20NESSRINE.pdf">HARMONIQUES ET DEPOLLUTION DU RESEAU ELECTRIQUE</a> (BELHADJ KHEIRA ET BOUZIR NESSRINE)</li>
+<li><a href="https://theses.hal.science/tel-00441877/document">Impact de la pollution harmonique sur les matériels de réseau</a> (Wilfried Frelin)</li>
+</ul>
+<p><b>TRIAC and Thyristors</b></p>
+<ul>
+<li><a href="https://www.thierry-lequeu.fr/data/AN437.pdf">NEW TRIACS: IS THE SNUBBER CIRCUIT NECESSARY?</a> (Thierry Lequeu)</li>
+<li><a href="https://emrecmic.wordpress.com/2017/02/07/le-triac/">Le triac</a></li>
+<li><a href="http://philippe.demerliac.free.fr/RichardK/Graduateur.pdf">Le gradateur</a> (Richard KOWAL)</li>
+<li><a href="https://www.luisllamas.es/en/arduino-solid-state-relay-ssr/">Switching Loads with Arduino and Solid State Relay</a></li>
+</ul>
+<p><b>Technical docs and algorithms</b></p>
+<ul>
+<li><a href="https://docs.openenergymonitor.org/pv-diversion/">Learn: PV Diversion</a></li>
+<li><a href="https://tsltd.github.io">Optimized Random Integral Wave AC Control Algorithm for AC heaters</a></li>
+<li><a href="https://www.renesas.com/en/document/apn/1164-cycle-stealing-control">Cycle Stealing Control</a> (Vladimir Veljkovic)</li>
+</ul>
+<p><b>Solar Router using this library:</b></p>
+<ul>
 <li><a href="https://yasolr.carbou.me/overview">YaSolR Overview - Detailed Analysis</a></li>
-<li><a href="https://www.thierry-lequeu.fr/data/TRIAC.pdf">Harmonic Studies and Mitigation</a></li>
 </ul>
 <h1>API Reference</h1>
+<p><b>Doxygen documentation</b> is available <a href="https://mathieu.carbou.me/MycilaDimmer/api/index.html">here</a>.</p>
 <h2>Common API (All Dimmer Types)</h2>
 <div class="fragment"><div class="line"><span class="comment">// Lifecycle</span></div>
 <div class="line"><span class="keywordtype">void</span> begin();                          <span class="comment">// Initialize dimmer</span></div>
@@ -576,15 +580,15 @@ $(function() {
 <li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/DAC/">DAC Example</a></b> - DFRobot DAC module control</li>
 <li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/Json/">JSON Example</a></b> - Telemetry and JSON integration</li>
 <li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/PWM/">PWM Example</a></b> - Basic PWM dimming</li>
-<li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCross/">ZeroCross Example</a></b> - TRIAC control with zero-cross detection</li>
-<li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCrossAuto/">ZeroCrossAuto Example</a></b> - Automatic detection of frequency and semi-period</li>
-<li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ZeroCrossWithFS/">ZeroCrossWithFS Example</a></b> - File system integration</li>
+<li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/Thyristor/">Thyristor Example</a></b> - TRIAC control with zero-cross detection</li>
+<li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorAutoFrequency/">ThyristorAutoFrequency Example</a></b> - Automatic detection of frequency and semi-period</li>
+<li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorWithFS/">ThyristorWithFS Example</a></b> - File system integration</li>
 </ul>
 <h1>Build Configuration</h1>
 <h2>PlatformIO Configuration</h2>
 <div class="fragment"><div class="line">[platformio]</div>
 <div class="line">lib_dir = .</div>
-<div class="line">src_dir = examples/ZeroCross  ; or DAC, PWM, etc.</div>
+<div class="line">src_dir = examples/Thyristor  ; or DAC, PWM, etc.</div>
 <div class="line"> </div>
 <div class="line">[env]</div>
 <div class="line">framework = arduino</div>

@@ -85,14 +85,14 @@ jobs:
       - name: Build PWM
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/PWM/PWM.ino"
 
-      - name: Build ZeroCross
-        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ZeroCross/ZeroCross.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+      - name: Build Thyristor
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/Thyristor/Thyristor.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
 
-      - name: Build ZeroCrossAuto
-        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ZeroCrossAuto/ZeroCrossAuto.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+      - name: Build ThyristorAutoFrequency
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ThyristorAutoFrequency/ThyristorAutoFrequency.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
 
-      - name: Build ZeroCrossWithFS
-        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ZeroCrossWithFS/ZeroCrossWithFS.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+      - name: Build ThyristorWithFS
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ThyristorWithFS/ThyristorWithFS.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
 
   platformio:
     name: "pio:${{ matrix.board }}:${{ matrix.platform }}"
@@ -148,11 +148,11 @@ jobs:
       - name: Build PWM
         run: PLATFORMIO_SRC_DIR=examples/PWM PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
 
-      - name: Build ZeroCross
-        run: PLATFORMIO_SRC_DIR=examples/ZeroCross PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+      - name: Build Thyristor
+        run: PLATFORMIO_SRC_DIR=examples/Thyristor PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
 
-      - name: Build ZeroCrossAuto
-        run: PLATFORMIO_SRC_DIR=examples/ZeroCrossAuto PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+      - name: Build ThyristorAutoFrequency
+        run: PLATFORMIO_SRC_DIR=examples/ThyristorAutoFrequency PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
 
-      - name: Build ZeroCrossWithFS
-        run: PLATFORMIO_SRC_DIR=examples/ZeroCrossWithFS PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+      - name: Build ThyristorWithFS
+        run: PLATFORMIO_SRC_DIR=examples/ThyristorWithFS PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd

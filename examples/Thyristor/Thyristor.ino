@@ -20,7 +20,7 @@
 #endif
 
 static Mycila::PulseAnalyzer pulseAnalyzer;
-static Mycila::ZeroCrossDimmer* dimmer;
+static Mycila::ThyristorDimmer* dimmer;
 
 static void initZCD() {
   // Initialize the Zero-Cross Detection (ZCD)
@@ -30,7 +30,7 @@ static void initZCD() {
 
   // IMPORTANT NOTE:
   // Mycila Pulse Analyzer library is optional: if you already have a library or code capable of detecting zero-crossing events,
-  // you can reuse it and call Mycila::ZeroCrossDimmer::onZeroCross() from your own ISR.
+  // you can reuse it and call Mycila::ThyristorDimmer::onZeroCross() from your own ISR.
 
   // Default valu is: -150 us
   // Sends the Zero-Cross even 150 us before the real zero-crossing point of teh voltage
@@ -38,13 +38,13 @@ static void initZCD() {
 
   // Link the ZCD system to our dimmer
   // The dimmer will be notified of zero-crossing events and will trigger the TRIAC/SSR at the right time
-  pulseAnalyzer.onZeroCross(Mycila::ZeroCrossDimmer::onZeroCross);
+  pulseAnalyzer.onZeroCross(Mycila::ThyristorDimmer::onZeroCross);
 
   pulseAnalyzer.begin(GPIO_ZCD); // GPIO connected to the ZCD output. This can be an input-only pin.
 }
 
-static Mycila::ZeroCrossDimmer* createDimmer() {
-  Mycila::ZeroCrossDimmer* dimmer = new Mycila::ZeroCrossDimmer();
+static Mycila::ThyristorDimmer* createDimmer() {
+  Mycila::ThyristorDimmer* dimmer = new Mycila::ThyristorDimmer();
 
   // GPIO connected to the dimmer control pin (or Vcc of random SSR)
   dimmer->setPin(GPIO_DIMMER);

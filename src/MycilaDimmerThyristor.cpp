@@ -2,7 +2,7 @@
 /*
  * Copyright (C) 2023-2025 Mathieu Carbou
  */
-#include <MycilaDimmerZeroCross.h>
+#include <MycilaDimmerThyristor.h>
 
 // lock
 #include <freertos/FreeRTOS.h>
@@ -53,7 +53,7 @@ extern Mycila::Logger logger;
 
 struct EnabledDimmer;
 struct EnabledDimmer {
-    Mycila::ZeroCrossDimmer* dimmer = nullptr;
+    Mycila::ThyristorDimmer* dimmer = nullptr;
     EnabledDimmer* prev = nullptr;
     EnabledDimmer* next = nullptr;
     uint16_t alarm_count = UINT16_MAX; // when to fire the dimmer
@@ -67,7 +67,7 @@ static gptimer_handle_t fire_timer = nullptr;
 static portMUX_TYPE dimmers_spinlock = portMUX_INITIALIZER_UNLOCKED;
 #endif
 
-void Mycila::ZeroCrossDimmer::begin() {
+void Mycila::ThyristorDimmer::begin() {
   if (_enabled)
     return;
 
@@ -87,7 +87,7 @@ void Mycila::ZeroCrossDimmer::begin() {
   setDutyCycle(_dutyCycle);
 }
 
-void Mycila::ZeroCrossDimmer::end() {
+void Mycila::ThyristorDimmer::end() {
   if (!_enabled)
     return;
   _enabled = false;
@@ -98,7 +98,7 @@ void Mycila::ZeroCrossDimmer::end() {
   digitalWrite(_pin, LOW);
 }
 
-void ARDUINO_ISR_ATTR Mycila::ZeroCrossDimmer::onZeroCross(int16_t delayUntilZero, void* arg) {
+void ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::onZeroCross(int16_t delayUntilZero, void* arg) {
   // prepare our next alarm for the next dimmer to be fired
   gptimer_alarm_config_t fire_timer_alarm_cfg = {.alarm_count = UINT16_MAX, .reload_count = 0, .flags = {.auto_reload_on_alarm = false}};
 
@@ -166,7 +166,7 @@ void ARDUINO_ISR_ATTR Mycila::ZeroCrossDimmer::onZeroCross(int16_t delayUntilZer
 }
 
 // Timer ISR to be called as soon as a dimmer needs to be fired
-bool ARDUINO_ISR_ATTR Mycila::ZeroCrossDimmer::_fireTimerISR(gptimer_handle_t timer, const gptimer_alarm_event_data_t* event, void* arg) {
+bool ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::_fireTimerISR(gptimer_handle_t timer, const gptimer_alarm_event_data_t* event, void* arg) {
   // prepare our next alarm for the first dimmer to be fired
   gptimer_alarm_config_t fire_timer_alarm_cfg = {.alarm_count = UINT16_MAX, .reload_count = 0, .flags = {.auto_reload_on_alarm = false}};
 
@@ -221,7 +221,7 @@ bool ARDUINO_ISR_ATTR Mycila::ZeroCrossDimmer::_fireTimerISR(gptimer_handle_t ti
 }
 
 // add a dimmer to the list of managed dimmers
-void Mycila::ZeroCrossDimmer::_registerDimmer(Mycila::ZeroCrossDimmer* dimmer) {
+void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
   if (dimmers == nullptr) {
     LOGI(TAG, "Starting dimmer firing ISR");
 
@@ -268,7 +268,7 @@ void Mycila::ZeroCrossDimmer::_registerDimmer(Mycila::ZeroCrossDimmer* dimmer) {
 }
 
 // remove a dimmer from the list of managed dimmers
-void Mycila::ZeroCrossDimmer::_unregisterDimmer(Mycila::ZeroCrossDimmer* dimmer) {
+void Mycila::ThyristorDimmer::_unregisterDimmer(Mycila::ThyristorDimmer* dimmer) {
   LOGD(TAG, "Unregister dimmer %p on pin %d", dimmer, dimmer->getPin());
 
 #if USE_DIMMER_LOCK
