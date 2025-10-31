@@ -26,7 +26,7 @@ MycilaDimmer is an ESP32/Arduino library for controlling AC power devices (TRIAC
 
 ## Critical Build Configuration
 
-### Required PlatformIO Build Flags (for Zero-Cross)
+### Required PlatformIO Build Flags (for ThyristorDimmer)
 ```ini
 -D CONFIG_ARDUINO_ISR_IRAM=1
 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1
@@ -62,7 +62,7 @@ Conditional compilation with `#ifdef MYCILA_JSON_SUPPORT` - include ArduinoJson 
 - 100% duty = 0° phase angle (no delay)
 - Firing delay in microseconds: `(delay * semiPeriod) >> 16`
 
-### Zero-Cross Integration
+### Zero-Cross event Integration
 Static callback `ThyristorDimmer::onZeroCross(int16_t delayUntilZero, void* args)` designed for external pulse analyzers or ISRs.
 
 ## File Organization

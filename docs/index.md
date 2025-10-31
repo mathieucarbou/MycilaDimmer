@@ -21,7 +21,7 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
   - [Arduino IDE](#arduino-ide)
 - [Quick Start](#quick-start)
 - [Dimmer Types](#dimmer-types)
-  - [Zero-Cross Dimmer](#zero-cross-dimmer)
+  - [Thyristor Dimmer](#thyristor-dimmer)
   - [PWM Dimmer](#pwm-dimmer)
   - [DFRobot DAC Dimmer](#dfrobot-dac-dimmer)
 - [Understanding AC Dimming Methods](#understanding-ac-dimming-methods)
@@ -36,7 +36,7 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
 - [References and Further Reading](#references-and-further-reading)
 - [API Reference](#api-reference)
   - [Common API (All Dimmer Types)](#common-api-all-dimmer-types)
-  - [Zero-Cross Dimmer Specific](#zero-cross-dimmer-specific)
+  - [Thyristor Dimmer Specific](#thyristor-dimmer-specific)
   - [PWM Dimmer Specific](#pwm-dimmer-specific)
   - [DFRobot DAC Dimmer Specific](#dfrobot-dac-dimmer-specific)
   - [Advanced Features](#advanced-features)
@@ -136,7 +136,7 @@ void loop() {
 
 ## Dimmer Types
 
-### Zero-Cross Dimmer
+### Thyristor Dimmer
 
 Perfect for TRIAC and Random SSR control with **flicker-free progressive dimming**. Achieves smooth, continuous power control through precise phase angle control when paired with quality zero-cross detection circuits.
 
@@ -270,7 +270,7 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 
 - ✅ **No Harmonics**: Preserves complete sine waves, generates minimal harmonic distortion
 - ✅ **Simple Implementation**: Basic on/off switching logic
-- ✅ **Compatible with Zero-Cross SSRs**: Can use simpler, cheaper SSRs
+- ✅ **Compatible with many common SSRs** (Zero-Cross / Sync ones): Can use simpler, cheaper SSRs
 
 **Limitations:**
 
@@ -349,7 +349,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 
 **Coming Soon:**
 
-- ✅ BurstFireDimmer - Stochastic burst fire for Zero-Cross SSR and TRIAC/Random SSR with zero-cross detection
+- ✅ BurstFireDimmer - Stochastic burst fire for common SSR (Zero-Cross / Sync ones) and TRIAC / Random SSR with zero-cross detection
 
 ### Choosing the Right Method
 
@@ -360,7 +360,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 
 **For Simple On/Off Control:**
 
-- Consider **Zero-Cross SSR** with simple relay control
+- Consider **normal SSR** (Zero-Cross / Sync ones) with simple relay control
 - Suitable when precise dimming is not required
 - No harmonics, but no variable power control
 
@@ -441,7 +441,7 @@ void toJson(const JsonObject& root) const; // Serialize to JSON
 #endif
 ```
 
-### Zero-Cross Dimmer Specific
+### Thyristor Dimmer Specific
 
 ```cpp
 void setPin(gpio_num_t pin);           // Set output GPIO pin
@@ -513,7 +513,7 @@ serializeJson(doc, Serial);
 
 ### Build Flags
 
-For **Zero-Cross Dimmer** (IRAM safety):
+For **Thyristor Dimmer** (IRAM safety):
 
 ```ini
 build_flags =
@@ -564,7 +564,7 @@ build_flags =
   -D CONFIG_ARDUHAL_LOG_COLORS
   -D CORE_DEBUG_LEVEL=ARDUHAL_LOG_LEVEL_DEBUG
   -Wall -Wextra
-  ; Zero-Cross specific flags
+  ; ThyristorDimmer specific flags
   -D CONFIG_ARDUINO_ISR_IRAM=1
   -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1
   -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1
@@ -585,7 +585,7 @@ lib_deps =
 
 ### Common Issues
 
-**Zero-Cross Dimmer Not Working**
+**Thyristor Dimmer Not Working**
 
 - Ensure IRAM build flags are set
 - Check semi-period is configured (`setSemiPeriod()`)

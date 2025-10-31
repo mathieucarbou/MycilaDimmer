@@ -76,7 +76,7 @@ void Mycila::ThyristorDimmer::begin() {
     return;
   }
 
-  LOGI(TAG, "Enable Zero-Cross Dimmer on pin %" PRId8, _pin);
+  LOGI(TAG, "Enable Thyristor Dimmer on pin %" PRId8, _pin);
 
   pinMode(_pin, OUTPUT);
   digitalWrite(_pin, LOW);
