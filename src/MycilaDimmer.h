@@ -34,9 +34,9 @@ namespace Mycila {
     public:
       virtual ~Dimmer() {};
 
-      virtual void begin() = 0;
-      virtual void end() = 0;
-      virtual const char* type() const = 0;
+      virtual void begin() { _enabled = true; };
+      virtual void end() { _enabled = false; };
+      virtual const char* type() const { return "virtual"; }
 
       ///////////////////
       // DIMMER CONFIG //
@@ -280,7 +280,7 @@ namespace Mycila {
         return _calculateHarmonics(array, n);
       }
 
-      virtual bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const;
+      virtual bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const { return false; }
 
 #ifdef MYCILA_JSON_SUPPORT
       /**
@@ -328,8 +328,17 @@ namespace Mycila {
       bool _powerLUTEnabled = false;
       uint16_t _semiPeriod = 0;
 
-      virtual bool _apply() = 0;
-      virtual bool _calculateHarmonics(float* array, size_t n) const = 0;
+      virtual bool _apply() { return _enabled; }
+      virtual bool _calculateHarmonics(float* array, size_t n) const {
+        for (size_t i = 0; i < n; i++) {
+          array[i] = 0.0f; // No harmonics for virtual dimmer
+        }
+        return true;
+      }
+
+      ////////////////////
+      // STATIC HELPERS //
+      ////////////////////
 
       static uint16_t _lookupFiringDelay(float dutyCycle, uint16_t semiPeriod);
 
@@ -412,27 +421,6 @@ namespace Mycila {
         } else {
           return false;
         }
-      }
-  };
-
-  class VirtualDimmer : public Dimmer {
-    public:
-      virtual ~VirtualDimmer() { end(); }
-
-      void begin() override { _enabled = true; }
-      void end() override { _enabled = false; }
-      const char* type() const override { return "virtual"; }
-      bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const override {
-        return false;
-      }
-
-    protected:
-      bool _apply() override { return true; }
-      bool _calculateHarmonics(float* array, size_t n) const override {
-        for (size_t i = 0; i < n; i++) {
-          array[i] = 0.0f; // No harmonics for virtual dimmer
-        }
-        return true;
       }
   };
 } // namespace Mycila

@@ -65,7 +65,7 @@ namespace Mycila {
       const char* type() const override { return "pwm"; }
 
       bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const override {
-        return isOnline() && _calculatePhaseControlMetrics(metrics, _dutyCycleFire, gridVoltage, loadResistance);
+        return isEnabled() && _calculatePhaseControlMetrics(metrics, _dutyCycleFire, gridVoltage, loadResistance);
       }
 
 #ifdef MYCILA_JSON_SUPPORT
