@@ -239,15 +239,12 @@ namespace Mycila {
       // array[0] = H1 (fundamental), array[1] = H3, array[2] = H5, array[3] = H7, etc.
       // Only odd harmonics are calculated (even harmonics are negligible for symmetric dimmers)
       // Returns true if harmonics were calculated, false if dimmer is not active
-      bool readHarmonics(float* array, size_t n) const {
+      bool calculateHarmonics(float* array, size_t n) const {
         if (array == nullptr || n == 0)
           return false;
 
         // Check if dimmer is active and routing
-        if (!isOnline())
-          return false;
-
-        if (_dutyCycleFire <= 0.0f) {
+        if (!isOnline() || _dutyCycleFire <= 0.0f) {
           for (size_t i = 0; i < n; i++) {
             array[i] = 0.0f; // No power, no harmonics
           }
@@ -267,9 +264,68 @@ namespace Mycila {
           array[i] = NAN;
         }
 
+        return _calculateHarmonics(array, n);
+      }
+
+#ifdef MYCILA_JSON_SUPPORT
+      /**
+       * @brief Serialize Dimmer information to a JSON object
+       *
+       * @param root: the JSON object to serialize to
+       */
+      virtual void toJson(const JsonObject& root) const {
+        root["type"] = type();
+        root["enabled"] = _enabled;
+        root["online"] = _online;
+        root["state"] = isOn() ? "on" : "off";
+        root["duty_cycle"] = _dutyCycle;
+        root["duty_cycle_mapped"] = getDutyCycleMapped();
+        root["duty_cycle_fire"] = _dutyCycleFire;
+        root["duty_cycle_limit"] = _dutyCycleLimit;
+        root["duty_cycle_min"] = _dutyCycleMin;
+        root["duty_cycle_max"] = _dutyCycleMax;
+        root["power_lut"] = _powerLUTEnabled;
+        root["power_lut_semi_period"] = _semiPeriod;
+        JsonObject harmonics = root["harmonics"].to<JsonObject>();
+        float output[11]; // H1 to H21
+        if (calculateHarmonics(output, 11)) {
+          for (size_t i = 0; i < 11; i++) {
+            if (!std::isnan(output[i])) {
+              char key[8];
+              snprintf(key, sizeof(key), "H%d", static_cast<int>(2 * i + 1));
+              harmonics[key] = output[i];
+            }
+          }
+        }
+      }
+#endif
+
+    protected:
+      bool _enabled = false;
+      bool _online = false;
+
+      float _dutyCycle = 0.0f;
+      float _dutyCycleFire = 0.0f;
+      float _dutyCycleLimit = 1.0f;
+      float _dutyCycleMin = 0.0f;
+      float _dutyCycleMax = 1.0f;
+
+      bool _powerLUTEnabled = false;
+      uint16_t _semiPeriod = 0;
+
+      virtual bool _apply() = 0;
+      virtual bool _calculateHarmonics(float* array, size_t n) const = 0;
+
+      static uint16_t _lookupFiringDelay(float dutyCycle, uint16_t semiPeriod);
+
+      static inline float _contrain(float amt, float low, float high) {
+        return (amt < low) ? low : ((amt > high) ? high : amt);
+      }
+
+      static bool _calculatePhaseControlHarmonics(float dutyCycleFire, float* array, size_t n) {
         // getDutyCycleFire() returns the conduction angle normalized (0-1)
         // Convert to firing angle: α = π × (1 - conduction)
-        const float firingAngle = M_PI * (1.0f - _dutyCycleFire);
+        const float firingAngle = M_PI * (1.0f - dutyCycleFire);
         const float sin_2a = sinf(2.0f * firingAngle);
 
         // RMS of fundamental component: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]
@@ -302,49 +358,6 @@ namespace Mycila {
 
         return true;
       }
-
-#ifdef MYCILA_JSON_SUPPORT
-      /**
-       * @brief Serialize Dimmer information to a JSON object
-       *
-       * @param root: the JSON object to serialize to
-       */
-      virtual void toJson(const JsonObject& root) const {
-        root["type"] = type();
-        root["enabled"] = _enabled;
-        root["online"] = _online;
-        root["state"] = isOn() ? "on" : "off";
-        root["duty_cycle"] = _dutyCycle;
-        root["duty_cycle_mapped"] = getDutyCycleMapped();
-        root["duty_cycle_fire"] = _dutyCycleFire;
-        root["duty_cycle_limit"] = _dutyCycleLimit;
-        root["duty_cycle_min"] = _dutyCycleMin;
-        root["duty_cycle_max"] = _dutyCycleMax;
-        root["power_lut"] = _powerLUTEnabled;
-        root["power_lut_semi_period"] = _semiPeriod;
-      }
-#endif
-
-    protected:
-      bool _enabled = false;
-      bool _online = false;
-
-      float _dutyCycle = 0.0f;
-      float _dutyCycleFire = 0.0f;
-      float _dutyCycleLimit = 1.0f;
-      float _dutyCycleMin = 0.0f;
-      float _dutyCycleMax = 1.0f;
-
-      bool _powerLUTEnabled = false;
-      uint16_t _semiPeriod = 0;
-
-      static uint16_t _lookupFiringDelay(float dutyCycle, uint16_t semiPeriod);
-
-      virtual bool _apply() = 0;
-
-      static inline float _contrain(float amt, float low, float high) {
-        return (amt < low) ? low : ((amt > high) ? high : amt);
-      }
   };
 
   class VirtualDimmer : public Dimmer {
@@ -357,6 +370,12 @@ namespace Mycila {
 
     protected:
       virtual bool _apply() { return true; }
+      virtual bool _calculateHarmonics(float* array, size_t n) const {
+        for (size_t i = 0; i < n; i++) {
+          array[i] = 0.0f; // No harmonics for virtual dimmer
+        }
+        return true;
+      }
   };
 } // namespace Mycila
 

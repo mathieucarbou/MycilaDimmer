@@ -10,6 +10,9 @@
 #define MYCILA_DIMMER_PWM_FREQUENCY  1000 // 1 kHz
 
 namespace Mycila {
+  /**
+   * @brief PWM based dimmer implementation for voltage regulators controlled by a PWM signal to 0-10V analog convertor
+   */
   class PWMDimmer : public Dimmer {
     public:
       virtual ~PWMDimmer() { end(); }
@@ -76,12 +79,16 @@ namespace Mycila {
 #endif
 
     protected:
-      virtual bool _apply() {
+      virtual bool _apply() override {
         if (!_online) {
           return ledcWrite(_pin, 0);
         }
         uint32_t duty = _dutyCycleFire * ((1 << _resolution) - 1);
         return ledcWrite(_pin, duty);
+      }
+
+      virtual bool _calculateHarmonics(float* array, size_t n) const override {
+        return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 
     private:

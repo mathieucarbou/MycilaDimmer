@@ -9,6 +9,9 @@
 #include <Wire.h>
 
 namespace Mycila {
+  /**
+   * @brief DFRobot DFR1071/DFR1073/DFR0971 I2C controlled 0-10V/0-5V dimmer implementation for voltage regulators controlled by a 0-10V/0-5V analog signal
+   */
   class DFRobotDimmer : public Dimmer {
     public:
       enum class SKU {
@@ -110,12 +113,16 @@ namespace Mycila {
 #endif
 
     protected:
-      virtual bool _apply() {
+      virtual bool _apply() override {
         if (!_online) {
           return _sendDutyCycle(_deviceAddress, 0) == ESP_OK;
         }
         uint16_t duty = _dutyCycleFire * ((1 << getResolution()) - 1);
         return _sendDutyCycle(_deviceAddress, duty) == ESP_OK;
+      }
+
+      virtual bool _calculateHarmonics(float* array, size_t n) const override {
+        return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 
     private:

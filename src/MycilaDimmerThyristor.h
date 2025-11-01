@@ -8,6 +8,9 @@
 #include <driver/gptimer_types.h>
 
 namespace Mycila {
+  /**
+   * @brief Thyristor (TRIAC) based dimmer implementation for TRIAC and Random SSR dimmers
+   */
   class ThyristorDimmer : public Dimmer {
     public:
       virtual ~ThyristorDimmer() { end(); }
@@ -98,7 +101,7 @@ namespace Mycila {
 #endif
 
     protected:
-      virtual bool _apply() {
+      virtual bool _apply() override {
         if (!_online || !_semiPeriod || _dutyCycleFire == 0) {
           _delay = UINT16_MAX;
           return _enabled;
@@ -109,6 +112,10 @@ namespace Mycila {
         }
         _delay = (1.0f - _dutyCycleFire) * static_cast<float>(_semiPeriod);
         return _enabled;
+      }
+
+      virtual bool _calculateHarmonics(float* array, size_t n) const override {
+        return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 
     private:
