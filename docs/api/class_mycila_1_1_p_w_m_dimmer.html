@@ -112,11 +112,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a1e03df6c8414c708adfb214ec9135e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PWM resolution in bits.  <br /></td></tr>
 <tr class="memitem:a80199f11c002b692348e99aa1767afa9" id="r_a80199f11c002b692348e99aa1767afa9"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a80199f11c002b692348e99aa1767afa9">getResolution</a> () const</td></tr>
 <tr class="memdesc:a80199f11c002b692348e99aa1767afa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the PWM resolution in bits.  <br /></td></tr>
-<tr class="memitem:a7544d46c5613d21168eae14807fb9cde" id="r_a7544d46c5613d21168eae14807fb9cde"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7544d46c5613d21168eae14807fb9cde">begin</a> ()</td></tr>
-<tr class="memdesc:a7544d46c5613d21168eae14807fb9cde"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable a dimmer on a specific GPIO pin.  <br /></td></tr>
-<tr class="memitem:acde7daf437a638f908a76bcb77396b94" id="r_acde7daf437a638f908a76bcb77396b94"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acde7daf437a638f908a76bcb77396b94">end</a> ()</td></tr>
-<tr class="memdesc:acde7daf437a638f908a76bcb77396b94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable the dimmer.  <br /></td></tr>
-<tr class="memitem:a3b2e6678c36c66a0355afdb29b22837a" id="r_a3b2e6678c36c66a0355afdb29b22837a"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3b2e6678c36c66a0355afdb29b22837a">type</a> () const</td></tr>
+<tr class="memitem:ac66ccf49a9ee6322f34f15a9eb7b7ead" id="r_ac66ccf49a9ee6322f34f15a9eb7b7ead"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac66ccf49a9ee6322f34f15a9eb7b7ead">begin</a> () override</td></tr>
+<tr class="memdesc:ac66ccf49a9ee6322f34f15a9eb7b7ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable a dimmer on a specific GPIO pin.  <br /></td></tr>
+<tr class="memitem:ab1c83c98bacc525f04d4af037ec2d378" id="r_ab1c83c98bacc525f04d4af037ec2d378"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab1c83c98bacc525f04d4af037ec2d378">end</a> () override</td></tr>
+<tr class="memdesc:ab1c83c98bacc525f04d4af037ec2d378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable the dimmer.  <br /></td></tr>
+<tr class="memitem:ab77db1b2c82cabbbb8166f4d61bc7108" id="r_ab77db1b2c82cabbbb8166f4d61bc7108"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab77db1b2c82cabbbb8166f4d61bc7108">type</a> () const override</td></tr>
+<tr class="memitem:a3d1118f11fe56f1274964855b378dbe8" id="r_a3d1118f11fe56f1274964855b378dbe8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3d1118f11fe56f1274964855b378dbe8">calculateMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float gridVoltage, float loadResistance) const override</td></tr>
 <tr class="inherit_header pub_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:af83b436ec8799d705dbf22265225beaf inherit pub_methods_class_mycila_1_1_dimmer" id="r_af83b436ec8799d705dbf22265225beaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#af83b436ec8799d705dbf22265225beaf">setDutyCycleLimit</a> (float limit)</td></tr>
 <tr class="memdesc:af83b436ec8799d705dbf22265225beaf inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit.  <br /></td></tr>
@@ -159,13 +160,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a915e8f46ca54bd45b13f7d2e13432938 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a915e8f46ca54bd45b13f7d2e13432938"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a915e8f46ca54bd45b13f7d2e13432938">getDutyCycleMapped</a> () const</td></tr>
 <tr class="memdesc:a915e8f46ca54bd45b13f7d2e13432938 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped power duty cycle from the currently user set duty cycle.  <br /></td></tr>
 <tr class="memitem:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer" id="r_a0f0513eebff6847195e79b893c96738c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a0f0513eebff6847195e79b893c96738c">getDutyCycleFire</a> () const</td></tr>
-<tr class="memdesc:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the real firing duty cycle applied to the dimmer in the range [0, 1].  <br /></td></tr>
+<tr class="memdesc:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the real firing duty cycle (conduction duty cycle) applied to the dimmer in the range [0, 1].  <br /></td></tr>
 <tr class="memitem:a6b34aab3c938759c82853fe5f917ee54 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a6b34aab3c938759c82853fe5f917ee54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a6b34aab3c938759c82853fe5f917ee54">calculateHarmonics</a> (float *array, size_t n) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a51dd23c43fc0449e0a2c265d4896cb1b" id="r_a51dd23c43fc0449e0a2c265d4896cb1b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a51dd23c43fc0449e0a2c265d4896cb1b">_apply</a> () override</td></tr>
-<tr class="memitem:af8bfc59207215ab1d32089930faba488" id="r_af8bfc59207215ab1d32089930faba488"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af8bfc59207215ab1d32089930faba488">_calculateHarmonics</a> (float *array, size_t n) const override</td></tr>
+<tr class="memitem:ab712ac8a69195375ffeadb39c74126c3" id="r_ab712ac8a69195375ffeadb39c74126c3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab712ac8a69195375ffeadb39c74126c3">_apply</a> () override</td></tr>
+<tr class="memitem:ad89ad3dbbe1df3f0c854484e918ffb37" id="r_ad89ad3dbbe1df3f0c854484e918ffb37"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad89ad3dbbe1df3f0c854484e918ffb37">_calculateHarmonics</a> (float *array, size_t n) const override</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -173,6 +174,7 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:ac7cc0363b00d51d0891de32813c766e4 inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_ac7cc0363b00d51d0891de32813c766e4"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#ac7cc0363b00d51d0891de32813c766e4">_lookupFiringDelay</a> (float dutyCycle, uint16_t semiPeriod)</td></tr>
 <tr class="memitem:a4a16a34b7cd031e3f9ea699af23c231f inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_a4a16a34b7cd031e3f9ea699af23c231f"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a4a16a34b7cd031e3f9ea699af23c231f">_contrain</a> (float amt, float low, float high)</td></tr>
 <tr class="memitem:aef3b9bade9ed97c7f6b563405c03d623 inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_aef3b9bade9ed97c7f6b563405c03d623"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#aef3b9bade9ed97c7f6b563405c03d623">_calculatePhaseControlHarmonics</a> (float dutyCycleFire, float *array, size_t n)</td></tr>
+<tr class="memitem:ab05cd7f3b41bce187a9c2fb01f55756b inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_ab05cd7f3b41bce187a9c2fb01f55756b"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#ab05cd7f3b41bce187a9c2fb01f55756b">_calculatePhaseControlMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float dutyCycleFire, float gridVoltage, float loadResistance)</td></tr>
 <tr class="inherit_header pro_attribs_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:a2212e403703545ca69d0a38d3105f83a inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a2212e403703545ca69d0a38d3105f83a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a2212e403703545ca69d0a38d3105f83a">_enabled</a> = false</td></tr>
 <tr class="memitem:ab6260c766739f7b991d6a84086a7926b inherit pro_attribs_class_mycila_1_1_dimmer" id="r_ab6260c766739f7b991d6a84086a7926b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#ab6260c766739f7b991d6a84086a7926b">_online</a> = false</td></tr>
@@ -217,8 +219,8 @@ Additional Inherited Members</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="a51dd23c43fc0449e0a2c265d4896cb1b" name="a51dd23c43fc0449e0a2c265d4896cb1b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51dd23c43fc0449e0a2c265d4896cb1b">&#9670;&#160;</a></span>_apply()</h2>
+<a id="ab712ac8a69195375ffeadb39c74126c3" name="ab712ac8a69195375ffeadb39c74126c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab712ac8a69195375ffeadb39c74126c3">&#9670;&#160;</a></span>_apply()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -227,7 +229,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool Mycila::PWMDimmer::_apply </td>
+          <td class="memname">bool Mycila::PWMDimmer::_apply </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -242,12 +244,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00082">82</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00086">86</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
 
 </div>
 </div>
-<a id="af8bfc59207215ab1d32089930faba488" name="af8bfc59207215ab1d32089930faba488"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af8bfc59207215ab1d32089930faba488">&#9670;&#160;</a></span>_calculateHarmonics()</h2>
+<a id="ad89ad3dbbe1df3f0c854484e918ffb37" name="ad89ad3dbbe1df3f0c854484e918ffb37"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad89ad3dbbe1df3f0c854484e918ffb37">&#9670;&#160;</a></span>_calculateHarmonics()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -256,7 +258,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool Mycila::PWMDimmer::_calculateHarmonics </td>
+          <td class="memname">bool Mycila::PWMDimmer::_calculateHarmonics </td>
           <td>(</td>
           <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
         </tr>
@@ -275,12 +277,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00090">90</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00094">94</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
 
 </div>
 </div>
-<a id="a7544d46c5613d21168eae14807fb9cde" name="a7544d46c5613d21168eae14807fb9cde"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7544d46c5613d21168eae14807fb9cde">&#9670;&#160;</a></span>begin()</h2>
+<a id="ac66ccf49a9ee6322f34f15a9eb7b7ead" name="ac66ccf49a9ee6322f34f15a9eb7b7ead"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac66ccf49a9ee6322f34f15a9eb7b7ead">&#9670;&#160;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -297,7 +299,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -313,8 +315,46 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="acde7daf437a638f908a76bcb77396b94" name="acde7daf437a638f908a76bcb77396b94"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acde7daf437a638f908a76bcb77396b94">&#9670;&#160;</a></span>end()</h2>
+<a id="a3d1118f11fe56f1274964855b378dbe8" name="a3d1118f11fe56f1274964855b378dbe8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3d1118f11fe56f1274964855b378dbe8">&#9670;&#160;</a></span>calculateMetrics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mycila::PWMDimmer::calculateMetrics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>metrics</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>gridVoltage</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>loadResistance</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00067">67</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
+
+</div>
+</div>
+<a id="ab1c83c98bacc525f04d4af037ec2d378" name="ab1c83c98bacc525f04d4af037ec2d378"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab1c83c98bacc525f04d4af037ec2d378">&#9670;&#160;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -331,7 +371,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -519,8 +559,8 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a id="a3b2e6678c36c66a0355afdb29b22837a" name="a3b2e6678c36c66a0355afdb29b22837a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3b2e6678c36c66a0355afdb29b22837a">&#9670;&#160;</a></span>type()</h2>
+<a id="ab77db1b2c82cabbbb8166f4d61bc7108" name="ab77db1b2c82cabbbb8166f4d61bc7108"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab77db1b2c82cabbbb8166f4d61bc7108">&#9670;&#160;</a></span>type()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -529,7 +569,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual const char * Mycila::PWMDimmer::type </td>
+          <td class="memname">const char * Mycila::PWMDimmer::type </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -537,7 +577,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
