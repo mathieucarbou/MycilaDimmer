@@ -79,7 +79,7 @@ namespace Mycila {
 #endif
 
     protected:
-      virtual bool _apply() override {
+      bool _apply() override {
         if (!_online) {
           return ledcWrite(_pin, 0);
         }
@@ -87,7 +87,7 @@ namespace Mycila {
         return ledcWrite(_pin, duty);
       }
 
-      virtual bool _calculateHarmonics(float* array, size_t n) const override {
+      bool _calculateHarmonics(float* array, size_t n) const override {
         return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 

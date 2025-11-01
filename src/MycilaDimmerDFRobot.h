@@ -113,7 +113,7 @@ namespace Mycila {
 #endif
 
     protected:
-      virtual bool _apply() override {
+      bool _apply() override {
         if (!_online) {
           return _sendDutyCycle(_deviceAddress, 0) == ESP_OK;
         }
@@ -121,7 +121,7 @@ namespace Mycila {
         return _sendDutyCycle(_deviceAddress, duty) == ESP_OK;
       }
 
-      virtual bool _calculateHarmonics(float* array, size_t n) const override {
+      bool _calculateHarmonics(float* array, size_t n) const override {
         return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 

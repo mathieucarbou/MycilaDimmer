@@ -101,7 +101,7 @@ namespace Mycila {
 #endif
 
     protected:
-      virtual bool _apply() override {
+      bool _apply() override {
         if (!_online || !_semiPeriod || _dutyCycleFire == 0) {
           _delay = UINT16_MAX;
           return _enabled;
@@ -114,7 +114,7 @@ namespace Mycila {
         return _enabled;
       }
 
-      virtual bool _calculateHarmonics(float* array, size_t n) const override {
+      bool _calculateHarmonics(float* array, size_t n) const override {
         return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 

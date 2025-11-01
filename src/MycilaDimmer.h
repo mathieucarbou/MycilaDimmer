@@ -4,10 +4,10 @@
  */
 #pragma once
 
-#define MYCILA_DIMMER_VERSION          "2.1.0"
+#define MYCILA_DIMMER_VERSION          "2.1.1"
 #define MYCILA_DIMMER_VERSION_MAJOR    2
 #define MYCILA_DIMMER_VERSION_MINOR    1
-#define MYCILA_DIMMER_VERSION_REVISION 0
+#define MYCILA_DIMMER_VERSION_REVISION 1
 
 #ifdef MYCILA_JSON_SUPPORT
   #include <ArduinoJson.h>
@@ -15,6 +15,8 @@
 
 #include <assert.h>
 #include <esp32-hal-gpio.h>
+
+#include <cstdio>
 
 namespace Mycila {
   class Dimmer {
@@ -351,8 +353,8 @@ namespace Mycila {
           const float n_plus_1 = n_f + 1.0f;
 
           // Compute Fourier coefficient
-          const float coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 - 
-                             cosf(n_plus_1 * firingAngle) / n_plus_1;
+          const float coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 -
+                              cosf(n_plus_1 * firingAngle) / n_plus_1;
 
           // Convert to percentage of fundamental
           array[i] = fabsf(coeff) * scale_factor;
@@ -371,8 +373,8 @@ namespace Mycila {
       virtual const char* type() const { return "virtual"; }
 
     protected:
-      virtual bool _apply() { return true; }
-      virtual bool _calculateHarmonics(float* array, size_t n) const {
+      bool _apply() override { return true; }
+      bool _calculateHarmonics(float* array, size_t n) const override {
         for (size_t i = 0; i < n; i++) {
           array[i] = 0.0f; // No harmonics for virtual dimmer
         }
