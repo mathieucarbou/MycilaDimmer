@@ -138,17 +138,20 @@ virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><b>type<
 <tr class="memdesc:a915e8f46ca54bd45b13f7d2e13432938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped power duty cycle from the currently user set duty cycle.  <br /></td></tr>
 <tr class="memitem:a0f0513eebff6847195e79b893c96738c" id="r_a0f0513eebff6847195e79b893c96738c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f0513eebff6847195e79b893c96738c">getDutyCycleFire</a> () const</td></tr>
 <tr class="memdesc:a0f0513eebff6847195e79b893c96738c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the real firing duty cycle applied to the dimmer in the range [0, 1].  <br /></td></tr>
-<tr class="memitem:a14673151aa694cec74a543ef9bf0a7fa" id="r_a14673151aa694cec74a543ef9bf0a7fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a14673151aa694cec74a543ef9bf0a7fa">readHarmonics</a> (float *array, size_t n) const</td></tr>
+<tr class="memitem:a6b34aab3c938759c82853fe5f917ee54" id="r_a6b34aab3c938759c82853fe5f917ee54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b34aab3c938759c82853fe5f917ee54">calculateHarmonics</a> (float *array, size_t n) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a2ab4c8a13e8b155ebf29531cc32ccb7a" id="r_a2ab4c8a13e8b155ebf29531cc32ccb7a"><td class="memItemLeft" align="right" valign="top"><a id="a2ab4c8a13e8b155ebf29531cc32ccb7a" name="a2ab4c8a13e8b155ebf29531cc32ccb7a"></a>
 virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>_apply</b> ()=0</td></tr>
+<tr class="memitem:a90ec20259165e9ee2f16441fc001e70d" id="r_a90ec20259165e9ee2f16441fc001e70d"><td class="memItemLeft" align="right" valign="top"><a id="a90ec20259165e9ee2f16441fc001e70d" name="a90ec20259165e9ee2f16441fc001e70d"></a>
+virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>_calculateHarmonics</b> (float *array, size_t n) const =0</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-static-methods" class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
 <tr class="memitem:ac7cc0363b00d51d0891de32813c766e4" id="r_ac7cc0363b00d51d0891de32813c766e4"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac7cc0363b00d51d0891de32813c766e4">_lookupFiringDelay</a> (float dutyCycle, uint16_t semiPeriod)</td></tr>
 <tr class="memitem:a4a16a34b7cd031e3f9ea699af23c231f" id="r_a4a16a34b7cd031e3f9ea699af23c231f"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4a16a34b7cd031e3f9ea699af23c231f">_contrain</a> (float amt, float low, float high)</td></tr>
+<tr class="memitem:aef3b9bade9ed97c7f6b563405c03d623" id="r_aef3b9bade9ed97c7f6b563405c03d623"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aef3b9bade9ed97c7f6b563405c03d623">_calculatePhaseControlHarmonics</a> (float dutyCycleFire, float *array, size_t n)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -194,6 +197,42 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="aef3b9bade9ed97c7f6b563405c03d623" name="aef3b9bade9ed97c7f6b563405c03d623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef3b9bade9ed97c7f6b563405c03d623">&#9670;&#160;</a></span>_calculatePhaseControlHarmonics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mycila::Dimmer::_calculatePhaseControlHarmonics </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dutyCycleFire</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00325">325</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+
+</div>
+</div>
 <a id="a4a16a34b7cd031e3f9ea699af23c231f" name="a4a16a34b7cd031e3f9ea699af23c231f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4a16a34b7cd031e3f9ea699af23c231f">&#9670;&#160;</a></span>_contrain()</h2>
 
@@ -226,7 +265,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00345">345</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00321">321</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -284,7 +323,38 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mycila_1_1_burst_fire_dimmer.html#a41beb318a373c5c1f8aab83f3c7c501e">Mycila::BurstFireDimmer</a>, <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#aee505bd9c8c5446e57be20d2d04f96cb">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#a7544d46c5613d21168eae14807fb9cde">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#ac49a5479c2f74f67078a2ebf9656e004">Mycila::ThyristorDimmer</a>.</p>
+<p>Implemented in <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#aee505bd9c8c5446e57be20d2d04f96cb">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#a7544d46c5613d21168eae14807fb9cde">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#ac49a5479c2f74f67078a2ebf9656e004">Mycila::ThyristorDimmer</a>.</p>
+
+</div>
+</div>
+<a id="a6b34aab3c938759c82853fe5f917ee54" name="a6b34aab3c938759c82853fe5f917ee54"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b34aab3c938759c82853fe5f917ee54">&#9670;&#160;</a></span>calculateHarmonics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mycila::Dimmer::calculateHarmonics </td>
+          <td>(</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00242">242</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -360,7 +430,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mycila_1_1_burst_fire_dimmer.html#a92ca9fab89ce5956bdd651a7aeb229c9">Mycila::BurstFireDimmer</a>, <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#a0ee77daca10f55d7a892ddff04ca7e0e">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#acde7daf437a638f908a76bcb77396b94">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#adaf608175ca2e9aea0e0a0b3678a4c34">Mycila::ThyristorDimmer</a>.</p>
+<p>Implemented in <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#a0ee77daca10f55d7a892ddff04ca7e0e">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#acde7daf437a638f908a76bcb77396b94">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#adaf608175ca2e9aea0e0a0b3678a4c34">Mycila::ThyristorDimmer</a>.</p>
 
 </div>
 </div>
@@ -804,37 +874,6 @@ If true is passed, the function validates that a semi-period is set or already e
 
 </div>
 </div>
-<a id="a14673151aa694cec74a543ef9bf0a7fa" name="a14673151aa694cec74a543ef9bf0a7fa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a14673151aa694cec74a543ef9bf0a7fa">&#9670;&#160;</a></span>readHarmonics()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Mycila::Dimmer::readHarmonics </td>
-          <td>(</td>
-          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;) const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00242">242</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
-
-</div>
-</div>
 <a id="aa159163ef95c8edd6e54b345e09b3d43" name="aa159163ef95c8edd6e54b345e09b3d43"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aa159163ef95c8edd6e54b345e09b3d43">&#9670;&#160;</a></span>setDutyCycle()</h2>
 
@@ -1026,7 +1065,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00332">332</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00307">307</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1050,7 +1089,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00333">333</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00308">308</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1074,7 +1113,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00334">334</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00309">309</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1098,7 +1137,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00336">336</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00311">311</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1122,7 +1161,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00335">335</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00310">310</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1146,7 +1185,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00329">329</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00304">304</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1170,7 +1209,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00330">330</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00305">305</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1194,7 +1233,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00338">338</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00313">313</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1218,7 +1257,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00339">339</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00314">314</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>

@@ -141,17 +141,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a915e8f46ca54bd45b13f7d2e13432938 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped power duty cycle from the currently user set duty cycle.  <br /></td></tr>
 <tr class="memitem:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer" id="r_a0f0513eebff6847195e79b893c96738c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a0f0513eebff6847195e79b893c96738c">getDutyCycleFire</a> () const</td></tr>
 <tr class="memdesc:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the real firing duty cycle applied to the dimmer in the range [0, 1].  <br /></td></tr>
-<tr class="memitem:a14673151aa694cec74a543ef9bf0a7fa inherit pub_methods_class_mycila_1_1_dimmer" id="r_a14673151aa694cec74a543ef9bf0a7fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a14673151aa694cec74a543ef9bf0a7fa">readHarmonics</a> (float *array, size_t n) const</td></tr>
+<tr class="memitem:a6b34aab3c938759c82853fe5f917ee54 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a6b34aab3c938759c82853fe5f917ee54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a6b34aab3c938759c82853fe5f917ee54">calculateHarmonics</a> (float *array, size_t n) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a7ff13c8c29e39ffadce44313b1e10b44" id="r_a7ff13c8c29e39ffadce44313b1e10b44"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7ff13c8c29e39ffadce44313b1e10b44">_apply</a> ()</td></tr>
+<tr class="memitem:acfd541f058048f0eb1de3e3ca1a8211e" id="r_acfd541f058048f0eb1de3e3ca1a8211e"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfd541f058048f0eb1de3e3ca1a8211e">_calculateHarmonics</a> (float *array, size_t n) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_static_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:ac7cc0363b00d51d0891de32813c766e4 inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_ac7cc0363b00d51d0891de32813c766e4"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#ac7cc0363b00d51d0891de32813c766e4">_lookupFiringDelay</a> (float dutyCycle, uint16_t semiPeriod)</td></tr>
 <tr class="memitem:a4a16a34b7cd031e3f9ea699af23c231f inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_a4a16a34b7cd031e3f9ea699af23c231f"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a4a16a34b7cd031e3f9ea699af23c231f">_contrain</a> (float amt, float low, float high)</td></tr>
+<tr class="memitem:aef3b9bade9ed97c7f6b563405c03d623 inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_aef3b9bade9ed97c7f6b563405c03d623"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#aef3b9bade9ed97c7f6b563405c03d623">_calculatePhaseControlHarmonics</a> (float dutyCycleFire, float *array, size_t n)</td></tr>
 <tr class="inherit_header pro_attribs_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:a2212e403703545ca69d0a38d3105f83a inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a2212e403703545ca69d0a38d3105f83a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a2212e403703545ca69d0a38d3105f83a">_enabled</a> = false</td></tr>
 <tr class="memitem:ab6260c766739f7b991d6a84086a7926b inherit pro_attribs_class_mycila_1_1_dimmer" id="r_ab6260c766739f7b991d6a84086a7926b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#ab6260c766739f7b991d6a84086a7926b">_online</a> = false</td></tr>
@@ -165,7 +167,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00350">350</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00365">365</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a410fe80dfb9f6c2d0eb118b962196d58" name="a410fe80dfb9f6c2d0eb118b962196d58"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a410fe80dfb9f6c2d0eb118b962196d58">&#9670;&#160;</a></span>~VirtualDimmer()</h2>
@@ -190,7 +192,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00352">352</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00367">367</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -220,7 +222,40 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00359">359</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00374">374</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+
+</div>
+</div>
+<a id="acfd541f058048f0eb1de3e3ca1a8211e" name="acfd541f058048f0eb1de3e3ca1a8211e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd541f058048f0eb1de3e3ca1a8211e">&#9670;&#160;</a></span>_calculateHarmonics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mycila::VirtualDimmer::_calculateHarmonics </td>
+          <td>(</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00375">375</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -249,7 +284,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00354">354</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00369">369</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +313,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00355">355</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00370">370</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -307,7 +342,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00356">356</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00371">371</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>

@@ -83,6 +83,11 @@ $(function() {
   <div class="headertitle"><div class="title">Mycila::ThyristorDimmer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p>Thyristor (TRIAC) based dimmer implementation for TRIAC and Random SSR dimmers.  
+ <a href="#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Mycila::ThyristorDimmer:</div>
 <div class="dyncontent">
@@ -156,7 +161,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a915e8f46ca54bd45b13f7d2e13432938 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped power duty cycle from the currently user set duty cycle.  <br /></td></tr>
 <tr class="memitem:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer" id="r_a0f0513eebff6847195e79b893c96738c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a0f0513eebff6847195e79b893c96738c">getDutyCycleFire</a> () const</td></tr>
 <tr class="memdesc:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the real firing duty cycle applied to the dimmer in the range [0, 1].  <br /></td></tr>
-<tr class="memitem:a14673151aa694cec74a543ef9bf0a7fa inherit pub_methods_class_mycila_1_1_dimmer" id="r_a14673151aa694cec74a543ef9bf0a7fa"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a14673151aa694cec74a543ef9bf0a7fa">readHarmonics</a> (float *array, size_t n) const</td></tr>
+<tr class="memitem:a6b34aab3c938759c82853fe5f917ee54 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a6b34aab3c938759c82853fe5f917ee54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a6b34aab3c938759c82853fe5f917ee54">calculateHarmonics</a> (float *array, size_t n) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -164,13 +169,15 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ae6f22be20a50507b586241c48d0531c5" id="r_ae6f22be20a50507b586241c48d0531c5"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae6f22be20a50507b586241c48d0531c5">_apply</a> ()</td></tr>
+<tr class="memitem:ae50ede53396228aafc80ff6c05810bb4" id="r_ae50ede53396228aafc80ff6c05810bb4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae50ede53396228aafc80ff6c05810bb4">_apply</a> () override</td></tr>
+<tr class="memitem:a41716a7bee350fda5ea53fa7247fbd51" id="r_a41716a7bee350fda5ea53fa7247fbd51"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a41716a7bee350fda5ea53fa7247fbd51">_calculateHarmonics</a> (float *array, size_t n) const override</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_static_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:ac7cc0363b00d51d0891de32813c766e4 inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_ac7cc0363b00d51d0891de32813c766e4"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#ac7cc0363b00d51d0891de32813c766e4">_lookupFiringDelay</a> (float dutyCycle, uint16_t semiPeriod)</td></tr>
 <tr class="memitem:a4a16a34b7cd031e3f9ea699af23c231f inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_a4a16a34b7cd031e3f9ea699af23c231f"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a4a16a34b7cd031e3f9ea699af23c231f">_contrain</a> (float amt, float low, float high)</td></tr>
+<tr class="memitem:aef3b9bade9ed97c7f6b563405c03d623 inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_aef3b9bade9ed97c7f6b563405c03d623"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#aef3b9bade9ed97c7f6b563405c03d623">_calculatePhaseControlHarmonics</a> (float dutyCycleFire, float *array, size_t n)</td></tr>
 <tr class="inherit_header pro_attribs_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:a2212e403703545ca69d0a38d3105f83a inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a2212e403703545ca69d0a38d3105f83a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a2212e403703545ca69d0a38d3105f83a">_enabled</a> = false</td></tr>
 <tr class="memitem:ab6260c766739f7b991d6a84086a7926b inherit pro_attribs_class_mycila_1_1_dimmer" id="r_ab6260c766739f7b991d6a84086a7926b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#ab6260c766739f7b991d6a84086a7926b">_online</a> = false</td></tr>
@@ -183,8 +190,9 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a0a373f111682d1210fb3ff269824188d inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a0a373f111682d1210fb3ff269824188d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_mycila_1_1_dimmer.html#a0a373f111682d1210fb3ff269824188d">_semiPeriod</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00011">11</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<div class="textblock"><p>Thyristor (TRIAC) based dimmer implementation for TRIAC and Random SSR dimmers. </p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00014">14</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a4e2785135580ff2e2decc46d7ee3387c" name="a4e2785135580ff2e2decc46d7ee3387c"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a4e2785135580ff2e2decc46d7ee3387c">&#9670;&#160;</a></span>~ThyristorDimmer()</h2>
@@ -209,13 +217,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00013">13</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00016">16</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ae6f22be20a50507b586241c48d0531c5" name="ae6f22be20a50507b586241c48d0531c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae6f22be20a50507b586241c48d0531c5">&#9670;&#160;</a></span>_apply()</h2>
+<a id="ae50ede53396228aafc80ff6c05810bb4" name="ae50ede53396228aafc80ff6c05810bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae50ede53396228aafc80ff6c05810bb4">&#9670;&#160;</a></span>_apply()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -232,14 +240,47 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00101">101</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00104">104</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+
+</div>
+</div>
+<a id="a41716a7bee350fda5ea53fa7247fbd51" name="a41716a7bee350fda5ea53fa7247fbd51"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a41716a7bee350fda5ea53fa7247fbd51">&#9670;&#160;</a></span>_calculateHarmonics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mycila::ThyristorDimmer::_calculateHarmonics </td>
+          <td>(</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00117">117</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -334,7 +375,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the firing delay in us of the dimmer in the range [0, semi-period] At 0% power, delay is equal to the semi-period: the dimmer is kept off At 100% power, the delay is 0 us: the dimmer is kept on This value is mostly used for TRIAC based dimmers but also in order to derive metrics based on the phase angle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00047">47</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00050">50</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -363,7 +404,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the phase angle in degrees (°) of the dimmer in the range [0, 180] At 0% power, the phase angle is equal to 180 At 100% power, the phase angle is equal to 0. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00054">54</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00057">57</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -392,7 +433,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the GPIO pin used for the dimmer. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00023">23</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00026">26</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -421,7 +462,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Get the semi-period of the grid frequency in us. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00039">39</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00042">42</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -490,7 +531,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Set the GPIO pin to use for the dimmer. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00018">18</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00021">21</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -519,7 +560,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Set the semi-period of the grid frequency in us. It cannot be zero and it is required for proper dimmer operation. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00028">28</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00031">31</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -548,7 +589,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Implements <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00071">71</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00074">74</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>

@@ -90,104 +90,108 @@ $(function() {
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#include &lt;Wire.h&gt;</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span> </div>
 <div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">namespace </span>Mycila {</div>
-<div class="foldopen" id="foldopen00012" data-start="{" data-end="};">
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html">   12</a></span>  <span class="keyword">class </span><a class="code hl_class" href="class_mycila_1_1_d_f_robot_dimmer.html">DFRobotDimmer</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_mycila_1_1_dimmer.html">Dimmer</a> {</div>
-<div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>      <span class="keyword">enum class</span> SKU {</div>
-<div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>        UNKNOWN,</div>
-<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>        <span class="comment">// 0-5V/10V output, 1-channel, I2C, 15-bit resolution, 99.99% accuracy</span></div>
-<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>        DFR1071_GP8211S,</div>
-<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        <span class="comment">// 0-5V/10V output, 2-channel, I2C, 15-bit resolution, 99.99% accuracy</span></div>
-<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        DFR1073_GP8413,</div>
-<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        <span class="comment">// 0-5V/10V output, 2-channel, I2C, 12-bit resolution, 99.90% accuracy</span></div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        DFR0971_GP8403,</div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>      };</div>
-<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>      <span class="keyword">enum class</span> Output {</div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>        RANGE_0_5V,</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>        RANGE_0_10V,</div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>      };</div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>      <span class="keyword">virtual</span> <a class="code hl_class" href="class_mycila_1_1_d_f_robot_dimmer.html">~DFRobotDimmer</a>() { <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a0ee77daca10f55d7a892ddff04ca7e0e">end</a>(); }</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>      <span class="keywordtype">void</span> setWire(TwoWire&amp; wire) { _wire = &amp;wire; }</div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>      TwoWire&amp; getWire()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> *_wire; }</div>
+<div class="foldopen" id="foldopen00015" data-start="{" data-end="};">
+<div class="line"><a id="l00015" name="l00015"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html">   15</a></span>  <span class="keyword">class </span><a class="code hl_class" href="class_mycila_1_1_d_f_robot_dimmer.html">DFRobotDimmer</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_mycila_1_1_dimmer.html">Dimmer</a> {</div>
+<div class="line"><a id="l00016" name="l00016"></a><span class="lineno">   16</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00017" name="l00017"></a><span class="lineno">   17</span>      <span class="keyword">enum class</span> SKU {</div>
+<div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span>        UNKNOWN,</div>
+<div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span>        <span class="comment">// 0-5V/10V output, 1-channel, I2C, 15-bit resolution, 99.99% accuracy</span></div>
+<div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span>        DFR1071_GP8211S,</div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span>        <span class="comment">// 0-5V/10V output, 2-channel, I2C, 15-bit resolution, 99.99% accuracy</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span>        DFR1073_GP8413,</div>
+<div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span>        <span class="comment">// 0-5V/10V output, 2-channel, I2C, 12-bit resolution, 99.90% accuracy</span></div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span>        DFR0971_GP8403,</div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>      };</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span>      <span class="keyword">enum class</span> Output {</div>
+<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>        RANGE_0_5V,</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>        RANGE_0_10V,</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>      };</div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
+<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>      <span class="keyword">virtual</span> <a class="code hl_class" href="class_mycila_1_1_d_f_robot_dimmer.html">~DFRobotDimmer</a>() { <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a0ee77daca10f55d7a892ddff04ca7e0e">end</a>(); }</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span> </div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      <span class="keywordtype">void</span> setSKU(SKU sku) { _sku = sku; }</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      SKU getSKU()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _sku; }</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span></div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html#a787206839fe862de890da60eb49db146">   41</a></span>      <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a787206839fe862de890da60eb49db146">setOutput</a>(Output output) { _output = output; }</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      Output getOutput()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _output; }</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span></div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html#a0bbc67b4737e18c386b6b28a2ba5c0c0">   48</a></span>      <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a0bbc67b4737e18c386b6b28a2ba5c0c0">setDeviceAddress</a>(uint8_t deviceAddress) { _deviceAddress = deviceAddress; }</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      uint8_t getDeviceAddress()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _deviceAddress; }</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span></div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html#a2b837feb23229c9adc26836f01131600">   58</a></span>      <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a2b837feb23229c9adc26836f01131600">setChannel</a>(uint8_t channel) { _channel = channel; }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>      uint8_t getChannel()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _channel; }</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span></div>
-<div class="foldopen" id="foldopen00064" data-start="{" data-end="}">
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">   64</a></span>      uint8_t <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">getResolution</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>        <span class="keywordflow">switch</span> (_sku) {</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>          <span class="keywordflow">case</span> SKU::DFR1071_GP8211S:</div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>            <span class="keywordflow">return</span> 15;</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>          <span class="keywordflow">case</span> SKU::DFR1073_GP8413:</div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>            <span class="keywordflow">return</span> 15;</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>          <span class="keywordflow">case</span> SKU::DFR0971_GP8403:</div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>            <span class="keywordflow">return</span> 12;</div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>          <span class="keywordflow">default</span>:</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>            <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        }</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      }</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      <span class="keywordtype">void</span> setWire(TwoWire&amp; wire) { _wire = &amp;wire; }</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      TwoWire&amp; getWire()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> *_wire; }</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      <span class="keywordtype">void</span> setSKU(SKU sku) { _sku = sku; }</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      SKU getSKU()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _sku; }</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span></div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html#a787206839fe862de890da60eb49db146">   44</a></span>      <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a787206839fe862de890da60eb49db146">setOutput</a>(Output output) { _output = output; }</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      Output getOutput()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _output; }</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span></div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html#a0bbc67b4737e18c386b6b28a2ba5c0c0">   51</a></span>      <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a0bbc67b4737e18c386b6b28a2ba5c0c0">setDeviceAddress</a>(uint8_t deviceAddress) { _deviceAddress = deviceAddress; }</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      uint8_t getDeviceAddress()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _deviceAddress; }</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html#a2b837feb23229c9adc26836f01131600">   61</a></span>      <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a2b837feb23229c9adc26836f01131600">setChannel</a>(uint8_t channel) { _channel = channel; }</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      uint8_t getChannel()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> _channel; }</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span></div>
+<div class="foldopen" id="foldopen00067" data-start="{" data-end="}">
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno"><a class="line" href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">   67</a></span>      uint8_t <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">getResolution</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        <span class="keywordflow">switch</span> (_sku) {</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>          <span class="keywordflow">case</span> SKU::DFR1071_GP8211S:</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>            <span class="keywordflow">return</span> 15;</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>          <span class="keywordflow">case</span> SKU::DFR1073_GP8413:</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>            <span class="keywordflow">return</span> 15;</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>          <span class="keywordflow">case</span> SKU::DFR0971_GP8403:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>            <span class="keywordflow">return</span> 12;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>          <span class="keywordflow">default</span>:</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>            <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>      }</div>
 </div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#aee505bd9c8c5446e57be20d2d04f96cb">begin</a>();</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span></div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a0ee77daca10f55d7a892ddff04ca7e0e">end</a>();</div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span> </div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>      <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* type()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;dfrobot&quot;</span>; }</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span> </div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span><span class="preprocessor">#ifdef MYCILA_JSON_SUPPORT</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00100" name="l00100"></a><span class="lineno">  100</span>      <span class="keywordtype">void</span> toJson(<span class="keyword">const</span> JsonObject&amp; root)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00101" name="l00101"></a><span class="lineno">  101</span>        Dimmer::toJson(root);</div>
-<div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>        root[<span class="stringliteral">&quot;dfrobot_sku&quot;</span>] = _sku == SKU::DFR1071_GP8211S ? <span class="stringliteral">&quot;DFR1071_GP8211S&quot;</span> : _sku == SKU::DFR1073_GP8413 ? <span class="stringliteral">&quot;DFR1073_GP8413&quot;</span></div>
-<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>                                                                               : _sku == SKU::DFR0971_GP8403 ? <span class="stringliteral">&quot;DFR0971_GP8403&quot;</span></div>
-<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>                                                                                                             : <span class="stringliteral">&quot;UNKNOWN&quot;</span>;</div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        root[<span class="stringliteral">&quot;dfrobot_output&quot;</span>] = _output == Output::RANGE_0_5V ? <span class="stringliteral">&quot;0-5V&quot;</span> : <span class="stringliteral">&quot;0-10V&quot;</span>;</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        root[<span class="stringliteral">&quot;dfrobot_i2c_address&quot;</span>] = _deviceAddress;</div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        root[<span class="stringliteral">&quot;dfrobot_channel&quot;</span>] = _channel;</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        root[<span class="stringliteral">&quot;dfrobot_resolution&quot;</span>] = <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">getResolution</a>();</div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>      }</div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span> </div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> _apply() {</div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="keywordflow">if</span> (!_online) {</div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>          <span class="keywordflow">return</span> _sendDutyCycle(_deviceAddress, 0) == ESP_OK;</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        }</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        uint16_t duty = _dutyCycleFire * ((1 &lt;&lt; <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">getResolution</a>()) - 1);</div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">return</span> _sendDutyCycle(_deviceAddress, duty) == ESP_OK;</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>      }</div>
-<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      SKU _sku = SKU::UNKNOWN;</div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>      Output _output = Output::RANGE_0_10V;</div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      TwoWire* _wire = &amp;Wire;</div>
-<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>      uint8_t _deviceAddress;</div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>      uint8_t _channel = 0;</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span></div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#aee505bd9c8c5446e57be20d2d04f96cb">begin</a>();</div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#a0ee77daca10f55d7a892ddff04ca7e0e">end</a>();</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span> </div>
+<div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>      <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* type()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;dfrobot&quot;</span>; }</div>
+<div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
+<div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span><span class="preprocessor">#ifdef MYCILA_JSON_SUPPORT</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>      <span class="keywordtype">void</span> toJson(<span class="keyword">const</span> JsonObject&amp; root)<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span>        Dimmer::toJson(root);</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>        root[<span class="stringliteral">&quot;dfrobot_sku&quot;</span>] = _sku == SKU::DFR1071_GP8211S ? <span class="stringliteral">&quot;DFR1071_GP8211S&quot;</span> : _sku == SKU::DFR1073_GP8413 ? <span class="stringliteral">&quot;DFR1073_GP8413&quot;</span></div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>                                                                               : _sku == SKU::DFR0971_GP8403 ? <span class="stringliteral">&quot;DFR0971_GP8403&quot;</span></div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>                                                                                                             : <span class="stringliteral">&quot;UNKNOWN&quot;</span>;</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        root[<span class="stringliteral">&quot;dfrobot_output&quot;</span>] = _output == Output::RANGE_0_5V ? <span class="stringliteral">&quot;0-5V&quot;</span> : <span class="stringliteral">&quot;0-10V&quot;</span>;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        root[<span class="stringliteral">&quot;dfrobot_i2c_address&quot;</span>] = _deviceAddress;</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        root[<span class="stringliteral">&quot;dfrobot_channel&quot;</span>] = _channel;</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        root[<span class="stringliteral">&quot;dfrobot_resolution&quot;</span>] = <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">getResolution</a>();</div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>      }</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> _apply()<span class="keyword"> override </span>{</div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="keywordflow">if</span> (!_online) {</div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>          <span class="keywordflow">return</span> _sendDutyCycle(_deviceAddress, 0) == ESP_OK;</div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        }</div>
+<div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span>        uint16_t duty = _dutyCycleFire * ((1 &lt;&lt; <a class="code hl_function" href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">getResolution</a>()) - 1);</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="keywordflow">return</span> _sendDutyCycle(_deviceAddress, duty) == ESP_OK;</div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>      }</div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span> </div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> _calculateHarmonics(<span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n)<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span>        <span class="keywordflow">return</span> _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>      }</div>
 <div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span> </div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>      uint8_t _sendDutyCycle(uint8_t address, uint16_t duty);</div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>      uint8_t _sendOutput(uint8_t address, Output output);</div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>      uint8_t _send(uint8_t address, uint8_t reg, uint8_t* buffer, <span class="keywordtype">size_t</span> size);</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      uint8_t _test(uint8_t address);</div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>  };</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>      SKU _sku = SKU::UNKNOWN;</div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>      Output _output = Output::RANGE_0_10V;</div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>      TwoWire* _wire = &amp;Wire;</div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>      uint8_t _deviceAddress;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>      uint8_t _channel = 0;</div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>      uint8_t _sendDutyCycle(uint8_t address, uint16_t duty);</div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>      uint8_t _sendOutput(uint8_t address, Output output);</div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>      uint8_t _send(uint8_t address, uint8_t reg, uint8_t* buffer, <span class="keywordtype">size_t</span> size);</div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>      uint8_t _test(uint8_t address);</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>  };</div>
 </div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>} <span class="comment">// namespace Mycila</span></div>
-<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html">Mycila::DFRobotDimmer</a></div><div class="ttdef"><b>Definition</b> <a href="#l00012">MycilaDimmerDFRobot.h:12</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_a0bbc67b4737e18c386b6b28a2ba5c0c0"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#a0bbc67b4737e18c386b6b28a2ba5c0c0">Mycila::DFRobotDimmer::setDeviceAddress</a></div><div class="ttdeci">void setDeviceAddress(uint8_t deviceAddress)</div><div class="ttdoc">I2C address of the device.</div><div class="ttdef"><b>Definition</b> <a href="#l00048">MycilaDimmerDFRobot.h:48</a></div></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>} <span class="comment">// namespace Mycila</span></div>
+<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html">Mycila::DFRobotDimmer</a></div><div class="ttdoc">DFRobot DFR1071/DFR1073/DFR0971 I2C controlled 0-10V/0-5V dimmer implementation for voltage regulator...</div><div class="ttdef"><b>Definition</b> <a href="#l00015">MycilaDimmerDFRobot.h:15</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_a0bbc67b4737e18c386b6b28a2ba5c0c0"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#a0bbc67b4737e18c386b6b28a2ba5c0c0">Mycila::DFRobotDimmer::setDeviceAddress</a></div><div class="ttdeci">void setDeviceAddress(uint8_t deviceAddress)</div><div class="ttdoc">I2C address of the device.</div><div class="ttdef"><b>Definition</b> <a href="#l00051">MycilaDimmerDFRobot.h:51</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_a0ee77daca10f55d7a892ddff04ca7e0e"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#a0ee77daca10f55d7a892ddff04ca7e0e">Mycila::DFRobotDimmer::end</a></div><div class="ttdeci">virtual void end()</div><div class="ttdoc">Disable the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_d_f_robot_8cpp_source.html#l00097">MycilaDimmerDFRobot.cpp:97</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_a2b837feb23229c9adc26836f01131600"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#a2b837feb23229c9adc26836f01131600">Mycila::DFRobotDimmer::setChannel</a></div><div class="ttdeci">void setChannel(uint8_t channel)</div><div class="ttdoc">Set channel number.</div><div class="ttdef"><b>Definition</b> <a href="#l00058">MycilaDimmerDFRobot.h:58</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_a787206839fe862de890da60eb49db146"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#a787206839fe862de890da60eb49db146">Mycila::DFRobotDimmer::setOutput</a></div><div class="ttdeci">void setOutput(Output output)</div><div class="ttdoc">Set output mode of the device: 0-5V or 0-10V.</div><div class="ttdef"><b>Definition</b> <a href="#l00041">MycilaDimmerDFRobot.h:41</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_ab64c2d69d31e919ba456ad90ccd14cf2"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">Mycila::DFRobotDimmer::getResolution</a></div><div class="ttdeci">uint8_t getResolution() const</div><div class="ttdoc">Get the PWM resolution in bits.</div><div class="ttdef"><b>Definition</b> <a href="#l00064">MycilaDimmerDFRobot.h:64</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_a2b837feb23229c9adc26836f01131600"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#a2b837feb23229c9adc26836f01131600">Mycila::DFRobotDimmer::setChannel</a></div><div class="ttdeci">void setChannel(uint8_t channel)</div><div class="ttdoc">Set channel number.</div><div class="ttdef"><b>Definition</b> <a href="#l00061">MycilaDimmerDFRobot.h:61</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_a787206839fe862de890da60eb49db146"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#a787206839fe862de890da60eb49db146">Mycila::DFRobotDimmer::setOutput</a></div><div class="ttdeci">void setOutput(Output output)</div><div class="ttdoc">Set output mode of the device: 0-5V or 0-10V.</div><div class="ttdef"><b>Definition</b> <a href="#l00044">MycilaDimmerDFRobot.h:44</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_ab64c2d69d31e919ba456ad90ccd14cf2"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#ab64c2d69d31e919ba456ad90ccd14cf2">Mycila::DFRobotDimmer::getResolution</a></div><div class="ttdeci">uint8_t getResolution() const</div><div class="ttdoc">Get the PWM resolution in bits.</div><div class="ttdef"><b>Definition</b> <a href="#l00067">MycilaDimmerDFRobot.h:67</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_d_f_robot_dimmer_html_aee505bd9c8c5446e57be20d2d04f96cb"><div class="ttname"><a href="class_mycila_1_1_d_f_robot_dimmer.html#aee505bd9c8c5446e57be20d2d04f96cb">Mycila::DFRobotDimmer::begin</a></div><div class="ttdeci">virtual void begin()</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_d_f_robot_8cpp_source.html#l00026">MycilaDimmerDFRobot.cpp:26</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00020">MycilaDimmer.h:20</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
