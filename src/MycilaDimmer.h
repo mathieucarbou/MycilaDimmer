@@ -325,10 +325,12 @@ namespace Mycila {
       static bool _calculatePhaseControlHarmonics(float dutyCycleFire, float* array, size_t n) {
         // getDutyCycleFire() returns the conduction angle normalized (0-1)
         // Convert to firing angle: α = π × (1 - conduction)
+        // At 50% power: α ≈ 90° (π/2), which gives maximum harmonics
         const float firingAngle = M_PI * (1.0f - dutyCycleFire);
-        const float sin_2a = sinf(2.0f * firingAngle);
 
-        // RMS of fundamental component: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]
+        // Calculate RMS of fundamental component (reference)
+        // Formula from Thierry Lequeu: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]
+        const float sin_2a = sinf(2.0f * firingAngle);
         const float i1_rms = sqrtf((2.0f / M_PI) * (M_PI - firingAngle + 0.5f * sin_2a));
 
         if (i1_rms <= 0.001f)
@@ -336,21 +338,21 @@ namespace Mycila {
 
         array[0] = 100.0f; // H1 (fundamental) = 100% reference
 
-        // Pre-compute constant values
-        static constexpr float inv_pi_2 = 2.0f / M_PI;
-        static constexpr float inv_sqrt2 = 0.70710678f; // 1/√2
-        const float scale_factor = inv_pi_2 * inv_sqrt2 * 100.0f / i1_rms;
+        // Pre-compute scale factor for efficiency
+        const float scale_factor = (2.0f / M_PI) * 0.70710678f * 100.0f / i1_rms;
 
         // Calculate odd harmonics (H3, H5, H7, ...)
-        // Formula: Hn% = (2/π√2) × |cos((n-1)α)/(n-1) - cos((n+1)α)/(n+1)| / I1_rms × 100
+        // Formula for phase-controlled resistive loads (IEEE standard):
+        // Hn = (2/π√2) × |cos((n-1)α)/(n-1) - cos((n+1)α)/(n+1)| / I1_rms × 100%
+        // This gives the correct harmonic magnitudes relative to the fundamental
         for (size_t i = 1; i < n; i++) {
           const float n_f = static_cast<float>(2 * i + 1); // 3, 5, 7, 9, ...
           const float n_minus_1 = n_f - 1.0f;
           const float n_plus_1 = n_f + 1.0f;
 
           // Compute Fourier coefficient
-          const float coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 -
-                              cosf(n_plus_1 * firingAngle) / n_plus_1;
+          const float coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 - 
+                             cosf(n_plus_1 * firingAngle) / n_plus_1;
 
           // Convert to percentage of fundamental
           array[i] = fabsf(coeff) * scale_factor;

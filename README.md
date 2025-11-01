@@ -375,6 +375,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 - [HARMONICS: CAUSES, EFFECTS AND MINIMIZATION](https://www.salicru.com/files/pagina/72/278/jn004a01_whitepaper-armonics_%281%29.pdf) (Ramon Pinyol, R&D Product Leader SALICRU)
 - [HARMONIQUES ET DEPOLLUTION DU RESEAU ELECTRIQUE](http://archives.univ-biskra.dz/bitstream/123456789/21913/1/BELHADJ%20KHEIRA%20ET%20BOUZIR%20NESSRINE.pdf) (BELHADJ KHEIRA ET BOUZIR NESSRINE)
 - [Impact de la pollution harmonique sur les matériels de réseau](https://theses.hal.science/tel-00441877/document) (Wilfried Frelin)
+- [Simulateur de Signal et Spectre](https://f1atb.fr/fr/routeur-photovoltaique-modes-de-regulation/)
 
 **TRIAC and Thyristors**
 
