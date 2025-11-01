@@ -85,7 +85,7 @@ $(function() {
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment"> */</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="preprocessor">#pragma once</span></div>
 <div class="line"><a id="l00006" name="l00006"></a><span class="lineno">    6</span> </div>
-<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define MYCILA_DIMMER_VERSION          &quot;2.2.0&quot;</span></div>
+<div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define MYCILA_DIMMER_VERSION          &quot;2.2.1&quot;</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define MYCILA_DIMMER_VERSION_MAJOR    2</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span><span class="preprocessor">#define MYCILA_DIMMER_VERSION_MINOR    2</span></div>
 <div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="preprocessor">#define MYCILA_DIMMER_VERSION_REVISION 0</span></div>
@@ -118,9 +118,9 @@ $(function() {
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      <span class="keyword">virtual</span> <a class="code hl_class" href="class_mycila_1_1_dimmer.html">~Dimmer</a>() {};</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> begin() = 0;</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> end() = 0;</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* type() <span class="keyword">const</span> = 0;</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> begin() { _enabled = <span class="keyword">true</span>; };</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> end() { _enabled = <span class="keyword">false</span>; };</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      <span class="keyword">virtual</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* type()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;virtual&quot;</span>; }</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      <span class="comment">// DIMMER CONFIG //</span></div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span></div>
@@ -276,7 +276,7 @@ $(function() {
 <div class="line"><a id="l00280" name="l00280"></a><span class="lineno">  280</span>        <span class="keywordflow">return</span> _calculateHarmonics(array, n);</div>
 <div class="line"><a id="l00281" name="l00281"></a><span class="lineno">  281</span>      }</div>
 <div class="line"><a id="l00282" name="l00282"></a><span class="lineno">  282</span> </div>
-<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> calculateMetrics(<a class="code hl_struct" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a>&amp; metrics, <span class="keywordtype">float</span> gridVoltage, <span class="keywordtype">float</span> loadResistance) <span class="keyword">const</span>;</div>
+<div class="line"><a id="l00283" name="l00283"></a><span class="lineno">  283</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> calculateMetrics(<a class="code hl_struct" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a>&amp; metrics, <span class="keywordtype">float</span> gridVoltage, <span class="keywordtype">float</span> loadResistance)<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <span class="keyword">false</span>; }</div>
 <div class="line"><a id="l00284" name="l00284"></a><span class="lineno">  284</span> </div>
 <div class="line"><a id="l00285" name="l00285"></a><span class="lineno">  285</span><span class="preprocessor">#ifdef MYCILA_JSON_SUPPORT</span><span class="preprocessor"></span></div>
 <div class="line"><a id="l00291" name="l00291"></a><span class="lineno">  291</span>      <span class="keyword">virtual</span> <span class="keywordtype">void</span> toJson(<span class="keyword">const</span> JsonObject&amp; root)<span class="keyword"> const </span>{</div>
@@ -319,121 +319,105 @@ $(function() {
 <div class="line"><a id="l00328" name="l00328"></a><span class="lineno">  328</span>      <span class="keywordtype">bool</span> _powerLUTEnabled = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00329" name="l00329"></a><span class="lineno">  329</span>      uint16_t _semiPeriod = 0;</div>
 <div class="line"><a id="l00330" name="l00330"></a><span class="lineno">  330</span> </div>
-<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> _apply() = 0;</div>
-<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> _calculateHarmonics(<span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span> </div>
-<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>      <span class="keyword">static</span> uint16_t _lookupFiringDelay(<span class="keywordtype">float</span> dutyCycle, uint16_t semiPeriod);</div>
-<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span> </div>
-<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>      <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">float</span> _contrain(<span class="keywordtype">float</span> amt, <span class="keywordtype">float</span> low, <span class="keywordtype">float</span> high) {</div>
-<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>        <span class="keywordflow">return</span> (amt &lt; low) ? low : ((amt &gt; high) ? high : amt);</div>
-<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span>      }</div>
-<div class="line"><a id="l00339" name="l00339"></a><span class="lineno">  339</span> </div>
-<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>      <span class="keyword">static</span> <span class="keywordtype">bool</span> _calculatePhaseControlHarmonics(<span class="keywordtype">float</span> dutyCycleFire, <span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n) {</div>
-<div class="line"><a id="l00341" name="l00341"></a><span class="lineno">  341</span>        <span class="comment">// getDutyCycleFire() returns the conduction angle normalized (0-1)</span></div>
-<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span>        <span class="comment">// Convert to firing angle: α = π × (1 - conduction)</span></div>
-<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>        <span class="comment">// At 50% power: α ≈ 90° (π/2), which gives maximum harmonics</span></div>
-<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> firingAngle = M_PI * (1.0f - dutyCycleFire);</div>
-<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span> </div>
-<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        <span class="comment">// Calculate RMS of fundamental component (reference)</span></div>
-<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>        <span class="comment">// Formula from Thierry Lequeu: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]</span></div>
-<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> sin_2a = sinf(2.0f * firingAngle);</div>
-<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> i1_rms = sqrtf((2.0f / M_PI) * (M_PI - firingAngle + 0.5f * sin_2a));</div>
-<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span> </div>
-<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        <span class="keywordflow">if</span> (i1_rms &lt;= 0.001f)</div>
-<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span> </div>
-<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span>        array[0] = 100.0f; <span class="comment">// H1 (fundamental) = 100% reference</span></div>
-<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span> </div>
-<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        <span class="comment">// Pre-compute scale factor for efficiency</span></div>
-<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> scale_factor = (2.0f / M_PI) * 0.70710678f * 100.0f / i1_rms;</div>
-<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span> </div>
-<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span>        <span class="comment">// Calculate odd harmonics (H3, H5, H7, ...)</span></div>
-<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="comment">// Formula for phase-controlled resistive loads (IEEE standard):</span></div>
-<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>        <span class="comment">// Hn = (2/π√2) × |cos((n-1)α)/(n-1) - cos((n+1)α)/(n+1)| / I1_rms × 100%</span></div>
-<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span>        <span class="comment">// This gives the correct harmonic magnitudes relative to the fundamental</span></div>
-<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; n; i++) {</div>
-<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_f = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(2 * i + 1); <span class="comment">// 3, 5, 7, 9, ...</span></div>
-<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_minus_1 = n_f - 1.0f;</div>
-<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_plus_1 = n_f + 1.0f;</div>
+<div class="line"><a id="l00331" name="l00331"></a><span class="lineno">  331</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> _apply() { <span class="keywordflow">return</span> _enabled; }</div>
+<div class="line"><a id="l00332" name="l00332"></a><span class="lineno">  332</span>      <span class="keyword">virtual</span> <span class="keywordtype">bool</span> _calculateHarmonics(<span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00333" name="l00333"></a><span class="lineno">  333</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++) {</div>
+<div class="line"><a id="l00334" name="l00334"></a><span class="lineno">  334</span>          array[i] = 0.0f; <span class="comment">// No harmonics for virtual dimmer</span></div>
+<div class="line"><a id="l00335" name="l00335"></a><span class="lineno">  335</span>        }</div>
+<div class="line"><a id="l00336" name="l00336"></a><span class="lineno">  336</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00337" name="l00337"></a><span class="lineno">  337</span>      }</div>
+<div class="line"><a id="l00338" name="l00338"></a><span class="lineno">  338</span></div>
+<div class="line"><a id="l00340" name="l00340"></a><span class="lineno">  340</span>      <span class="comment">// STATIC HELPERS //</span></div>
+<div class="line"><a id="l00342" name="l00342"></a><span class="lineno">  342</span> </div>
+<div class="line"><a id="l00343" name="l00343"></a><span class="lineno">  343</span>      <span class="keyword">static</span> uint16_t _lookupFiringDelay(<span class="keywordtype">float</span> dutyCycle, uint16_t semiPeriod);</div>
+<div class="line"><a id="l00344" name="l00344"></a><span class="lineno">  344</span> </div>
+<div class="line"><a id="l00345" name="l00345"></a><span class="lineno">  345</span>      <span class="keyword">static</span> <span class="keyword">inline</span> <span class="keywordtype">float</span> _contrain(<span class="keywordtype">float</span> amt, <span class="keywordtype">float</span> low, <span class="keywordtype">float</span> high) {</div>
+<div class="line"><a id="l00346" name="l00346"></a><span class="lineno">  346</span>        <span class="keywordflow">return</span> (amt &lt; low) ? low : ((amt &gt; high) ? high : amt);</div>
+<div class="line"><a id="l00347" name="l00347"></a><span class="lineno">  347</span>      }</div>
+<div class="line"><a id="l00348" name="l00348"></a><span class="lineno">  348</span> </div>
+<div class="line"><a id="l00349" name="l00349"></a><span class="lineno">  349</span>      <span class="keyword">static</span> <span class="keywordtype">bool</span> _calculatePhaseControlHarmonics(<span class="keywordtype">float</span> dutyCycleFire, <span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n) {</div>
+<div class="line"><a id="l00350" name="l00350"></a><span class="lineno">  350</span>        <span class="comment">// getDutyCycleFire() returns the conduction angle normalized (0-1)</span></div>
+<div class="line"><a id="l00351" name="l00351"></a><span class="lineno">  351</span>        <span class="comment">// Convert to firing angle: α = π × (1 - conduction)</span></div>
+<div class="line"><a id="l00352" name="l00352"></a><span class="lineno">  352</span>        <span class="comment">// At 50% power: α ≈ 90° (π/2), which gives maximum harmonics</span></div>
+<div class="line"><a id="l00353" name="l00353"></a><span class="lineno">  353</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> firingAngle = M_PI * (1.0f - dutyCycleFire);</div>
+<div class="line"><a id="l00354" name="l00354"></a><span class="lineno">  354</span> </div>
+<div class="line"><a id="l00355" name="l00355"></a><span class="lineno">  355</span>        <span class="comment">// Calculate RMS of fundamental component (reference)</span></div>
+<div class="line"><a id="l00356" name="l00356"></a><span class="lineno">  356</span>        <span class="comment">// Formula from Thierry Lequeu: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]</span></div>
+<div class="line"><a id="l00357" name="l00357"></a><span class="lineno">  357</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> sin_2a = sinf(2.0f * firingAngle);</div>
+<div class="line"><a id="l00358" name="l00358"></a><span class="lineno">  358</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> i1_rms = sqrtf((2.0f / M_PI) * (M_PI - firingAngle + 0.5f * sin_2a));</div>
+<div class="line"><a id="l00359" name="l00359"></a><span class="lineno">  359</span> </div>
+<div class="line"><a id="l00360" name="l00360"></a><span class="lineno">  360</span>        <span class="keywordflow">if</span> (i1_rms &lt;= 0.001f)</div>
+<div class="line"><a id="l00361" name="l00361"></a><span class="lineno">  361</span>          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00362" name="l00362"></a><span class="lineno">  362</span> </div>
+<div class="line"><a id="l00363" name="l00363"></a><span class="lineno">  363</span>        array[0] = 100.0f; <span class="comment">// H1 (fundamental) = 100% reference</span></div>
+<div class="line"><a id="l00364" name="l00364"></a><span class="lineno">  364</span> </div>
+<div class="line"><a id="l00365" name="l00365"></a><span class="lineno">  365</span>        <span class="comment">// Pre-compute scale factor for efficiency</span></div>
+<div class="line"><a id="l00366" name="l00366"></a><span class="lineno">  366</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> scale_factor = (2.0f / M_PI) * 0.70710678f * 100.0f / i1_rms;</div>
 <div class="line"><a id="l00367" name="l00367"></a><span class="lineno">  367</span> </div>
-<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>          <span class="comment">// Compute Fourier coefficient</span></div>
-<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 -</div>
-<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>                              cosf(n_plus_1 * firingAngle) / n_plus_1;</div>
-<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span> </div>
-<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>          <span class="comment">// Convert to percentage of fundamental</span></div>
-<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>          array[i] = fabsf(coeff) * scale_factor;</div>
-<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>        }</div>
-<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span> </div>
-<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>      }</div>
-<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span> </div>
-<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>      <span class="keyword">static</span> <span class="keywordtype">bool</span> _calculatePhaseControlMetrics(<a class="code hl_struct" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a>&amp; metrics, <span class="keywordtype">float</span> dutyCycleFire, <span class="keywordtype">float</span> gridVoltage, <span class="keywordtype">float</span> loadResistance) {</div>
-<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span>        <span class="keywordflow">if</span> (loadResistance &gt; 0 &amp;&amp; gridVoltage &gt; 0) {</div>
-<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>          <span class="keywordflow">if</span> (dutyCycleFire &gt; 0) {</div>
-<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> nominalPower = gridVoltage * gridVoltage / loadResistance;</div>
-<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>            <span class="keywordflow">if</span> (dutyCycleFire &gt;= 1.0f) {</div>
-<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span>              <span class="comment">// full power</span></div>
-<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>              metrics.powerFactor = 1.0f;</div>
-<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>              metrics.thdi = 0.0f;</div>
-<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span>              metrics.power = nominalPower;</div>
-<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>              metrics.voltage = gridVoltage;</div>
-<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>              metrics.current = gridVoltage / loadResistance;</div>
-<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>              metrics.apparentPower = nominalPower;</div>
-<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>              <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>              <span class="comment">// partial power</span></div>
-<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>              metrics.powerFactor = std::sqrt(dutyCycleFire);</div>
-<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>              metrics.thdi = 100.0f * std::sqrt(1 / dutyCycleFire - 1);</div>
-<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>              metrics.power = dutyCycleFire * nominalPower;</div>
-<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>              metrics.voltage = metrics.powerFactor * gridVoltage;</div>
-<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>              metrics.current = metrics.voltage / loadResistance;</div>
-<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>              metrics.apparentPower = gridVoltage * metrics.current;</div>
+<div class="line"><a id="l00368" name="l00368"></a><span class="lineno">  368</span>        <span class="comment">// Calculate odd harmonics (H3, H5, H7, ...)</span></div>
+<div class="line"><a id="l00369" name="l00369"></a><span class="lineno">  369</span>        <span class="comment">// Formula for phase-controlled resistive loads (IEEE standard):</span></div>
+<div class="line"><a id="l00370" name="l00370"></a><span class="lineno">  370</span>        <span class="comment">// Hn = (2/π√2) × |cos((n-1)α)/(n-1) - cos((n+1)α)/(n+1)| / I1_rms × 100%</span></div>
+<div class="line"><a id="l00371" name="l00371"></a><span class="lineno">  371</span>        <span class="comment">// This gives the correct harmonic magnitudes relative to the fundamental</span></div>
+<div class="line"><a id="l00372" name="l00372"></a><span class="lineno">  372</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; n; i++) {</div>
+<div class="line"><a id="l00373" name="l00373"></a><span class="lineno">  373</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_f = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(2 * i + 1); <span class="comment">// 3, 5, 7, 9, ...</span></div>
+<div class="line"><a id="l00374" name="l00374"></a><span class="lineno">  374</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_minus_1 = n_f - 1.0f;</div>
+<div class="line"><a id="l00375" name="l00375"></a><span class="lineno">  375</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_plus_1 = n_f + 1.0f;</div>
+<div class="line"><a id="l00376" name="l00376"></a><span class="lineno">  376</span> </div>
+<div class="line"><a id="l00377" name="l00377"></a><span class="lineno">  377</span>          <span class="comment">// Compute Fourier coefficient</span></div>
+<div class="line"><a id="l00378" name="l00378"></a><span class="lineno">  378</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 -</div>
+<div class="line"><a id="l00379" name="l00379"></a><span class="lineno">  379</span>                              cosf(n_plus_1 * firingAngle) / n_plus_1;</div>
+<div class="line"><a id="l00380" name="l00380"></a><span class="lineno">  380</span> </div>
+<div class="line"><a id="l00381" name="l00381"></a><span class="lineno">  381</span>          <span class="comment">// Convert to percentage of fundamental</span></div>
+<div class="line"><a id="l00382" name="l00382"></a><span class="lineno">  382</span>          array[i] = fabsf(coeff) * scale_factor;</div>
+<div class="line"><a id="l00383" name="l00383"></a><span class="lineno">  383</span>        }</div>
+<div class="line"><a id="l00384" name="l00384"></a><span class="lineno">  384</span> </div>
+<div class="line"><a id="l00385" name="l00385"></a><span class="lineno">  385</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00386" name="l00386"></a><span class="lineno">  386</span>      }</div>
+<div class="line"><a id="l00387" name="l00387"></a><span class="lineno">  387</span> </div>
+<div class="line"><a id="l00388" name="l00388"></a><span class="lineno">  388</span>      <span class="keyword">static</span> <span class="keywordtype">bool</span> _calculatePhaseControlMetrics(<a class="code hl_struct" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a>&amp; metrics, <span class="keywordtype">float</span> dutyCycleFire, <span class="keywordtype">float</span> gridVoltage, <span class="keywordtype">float</span> loadResistance) {</div>
+<div class="line"><a id="l00389" name="l00389"></a><span class="lineno">  389</span>        <span class="keywordflow">if</span> (loadResistance &gt; 0 &amp;&amp; gridVoltage &gt; 0) {</div>
+<div class="line"><a id="l00390" name="l00390"></a><span class="lineno">  390</span>          <span class="keywordflow">if</span> (dutyCycleFire &gt; 0) {</div>
+<div class="line"><a id="l00391" name="l00391"></a><span class="lineno">  391</span>            <span class="keyword">const</span> <span class="keywordtype">float</span> nominalPower = gridVoltage * gridVoltage / loadResistance;</div>
+<div class="line"><a id="l00392" name="l00392"></a><span class="lineno">  392</span>            <span class="keywordflow">if</span> (dutyCycleFire &gt;= 1.0f) {</div>
+<div class="line"><a id="l00393" name="l00393"></a><span class="lineno">  393</span>              <span class="comment">// full power</span></div>
+<div class="line"><a id="l00394" name="l00394"></a><span class="lineno">  394</span>              metrics.powerFactor = 1.0f;</div>
+<div class="line"><a id="l00395" name="l00395"></a><span class="lineno">  395</span>              metrics.thdi = 0.0f;</div>
+<div class="line"><a id="l00396" name="l00396"></a><span class="lineno">  396</span>              metrics.power = nominalPower;</div>
+<div class="line"><a id="l00397" name="l00397"></a><span class="lineno">  397</span>              metrics.voltage = gridVoltage;</div>
+<div class="line"><a id="l00398" name="l00398"></a><span class="lineno">  398</span>              metrics.current = gridVoltage / loadResistance;</div>
+<div class="line"><a id="l00399" name="l00399"></a><span class="lineno">  399</span>              metrics.apparentPower = nominalPower;</div>
 <div class="line"><a id="l00400" name="l00400"></a><span class="lineno">  400</span>              <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>            }</div>
-<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>          } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>            <span class="comment">// no power</span></div>
-<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>            metrics.voltage = 0.0f;</div>
-<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>            metrics.current = 0.0f;</div>
-<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>            metrics.power = 0.0f;</div>
-<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>            metrics.apparentPower = 0.0f;</div>
-<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>            metrics.powerFactor = NAN;</div>
-<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>            metrics.thdi = NAN;</div>
-<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>          }</div>
-<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>        }</div>
-<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>      }</div>
-<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>  };</div>
+<div class="line"><a id="l00401" name="l00401"></a><span class="lineno">  401</span>            } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00402" name="l00402"></a><span class="lineno">  402</span>              <span class="comment">// partial power</span></div>
+<div class="line"><a id="l00403" name="l00403"></a><span class="lineno">  403</span>              metrics.powerFactor = std::sqrt(dutyCycleFire);</div>
+<div class="line"><a id="l00404" name="l00404"></a><span class="lineno">  404</span>              metrics.thdi = 100.0f * std::sqrt(1 / dutyCycleFire - 1);</div>
+<div class="line"><a id="l00405" name="l00405"></a><span class="lineno">  405</span>              metrics.power = dutyCycleFire * nominalPower;</div>
+<div class="line"><a id="l00406" name="l00406"></a><span class="lineno">  406</span>              metrics.voltage = metrics.powerFactor * gridVoltage;</div>
+<div class="line"><a id="l00407" name="l00407"></a><span class="lineno">  407</span>              metrics.current = metrics.voltage / loadResistance;</div>
+<div class="line"><a id="l00408" name="l00408"></a><span class="lineno">  408</span>              metrics.apparentPower = gridVoltage * metrics.current;</div>
+<div class="line"><a id="l00409" name="l00409"></a><span class="lineno">  409</span>              <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00410" name="l00410"></a><span class="lineno">  410</span>            }</div>
+<div class="line"><a id="l00411" name="l00411"></a><span class="lineno">  411</span>          } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00412" name="l00412"></a><span class="lineno">  412</span>            <span class="comment">// no power</span></div>
+<div class="line"><a id="l00413" name="l00413"></a><span class="lineno">  413</span>            metrics.voltage = 0.0f;</div>
+<div class="line"><a id="l00414" name="l00414"></a><span class="lineno">  414</span>            metrics.current = 0.0f;</div>
+<div class="line"><a id="l00415" name="l00415"></a><span class="lineno">  415</span>            metrics.power = 0.0f;</div>
+<div class="line"><a id="l00416" name="l00416"></a><span class="lineno">  416</span>            metrics.apparentPower = 0.0f;</div>
+<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span>            metrics.powerFactor = NAN;</div>
+<div class="line"><a id="l00418" name="l00418"></a><span class="lineno">  418</span>            metrics.thdi = NAN;</div>
+<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>            <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>          }</div>
+<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span>        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>        }</div>
+<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>      }</div>
+<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>  };</div>
 </div>
-<div class="line"><a id="l00417" name="l00417"></a><span class="lineno">  417</span> </div>
-<div class="foldopen" id="foldopen00418" data-start="{" data-end="};">
-<div class="line"><a id="l00418" name="l00418"></a><span class="lineno"><a class="line" href="class_mycila_1_1_virtual_dimmer.html">  418</a></span>  <span class="keyword">class </span><a class="code hl_class" href="class_mycila_1_1_virtual_dimmer.html">VirtualDimmer</a> : <span class="keyword">public</span> <a class="code hl_class" href="class_mycila_1_1_dimmer.html">Dimmer</a> {</div>
-<div class="line"><a id="l00419" name="l00419"></a><span class="lineno">  419</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00420" name="l00420"></a><span class="lineno">  420</span>      <span class="keyword">virtual</span> <a class="code hl_class" href="class_mycila_1_1_virtual_dimmer.html">~VirtualDimmer</a>() { end(); }</div>
-<div class="line"><a id="l00421" name="l00421"></a><span class="lineno">  421</span> </div>
-<div class="line"><a id="l00422" name="l00422"></a><span class="lineno">  422</span>      <span class="keywordtype">void</span> begin()<span class="keyword"> override </span>{ _enabled = <span class="keyword">true</span>; }</div>
-<div class="line"><a id="l00423" name="l00423"></a><span class="lineno">  423</span>      <span class="keywordtype">void</span> end()<span class="keyword"> override </span>{ _enabled = <span class="keyword">false</span>; }</div>
-<div class="line"><a id="l00424" name="l00424"></a><span class="lineno">  424</span>      <span class="keyword">const</span> <span class="keywordtype">char</span>* type()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;virtual&quot;</span>; }</div>
-<div class="line"><a id="l00425" name="l00425"></a><span class="lineno">  425</span>      <span class="keywordtype">bool</span> calculateMetrics(<a class="code hl_struct" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a>&amp; metrics, <span class="keywordtype">float</span> gridVoltage, <span class="keywordtype">float</span> loadResistance)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span>      }</div>
-<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span> </div>
-<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span>      <span class="keywordtype">bool</span> _apply()<span class="keyword"> override </span>{ <span class="keywordflow">return</span> <span class="keyword">true</span>; }</div>
-<div class="line"><a id="l00431" name="l00431"></a><span class="lineno">  431</span>      <span class="keywordtype">bool</span> _calculateHarmonics(<span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00432" name="l00432"></a><span class="lineno">  432</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++) {</div>
-<div class="line"><a id="l00433" name="l00433"></a><span class="lineno">  433</span>          array[i] = 0.0f; <span class="comment">// No harmonics for virtual dimmer</span></div>
-<div class="line"><a id="l00434" name="l00434"></a><span class="lineno">  434</span>        }</div>
-<div class="line"><a id="l00435" name="l00435"></a><span class="lineno">  435</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00436" name="l00436"></a><span class="lineno">  436</span>      }</div>
-<div class="line"><a id="l00437" name="l00437"></a><span class="lineno">  437</span>  };</div>
-</div>
-<div class="line"><a id="l00438" name="l00438"></a><span class="lineno">  438</span>} <span class="comment">// namespace Mycila</span></div>
-<div class="line"><a id="l00439" name="l00439"></a><span class="lineno">  439</span> </div>
-<div class="line"><a id="l00440" name="l00440"></a><span class="lineno">  440</span><span class="preprocessor">#include &quot;MycilaDimmerDFRobot.h&quot;</span></div>
-<div class="line"><a id="l00441" name="l00441"></a><span class="lineno">  441</span><span class="preprocessor">#include &quot;MycilaDimmerPWM.h&quot;</span></div>
-<div class="line"><a id="l00442" name="l00442"></a><span class="lineno">  442</span><span class="preprocessor">#include &quot;MycilaDimmerThyristor.h&quot;</span></div>
+<div class="line"><a id="l00426" name="l00426"></a><span class="lineno">  426</span>} <span class="comment">// namespace Mycila</span></div>
+<div class="line"><a id="l00427" name="l00427"></a><span class="lineno">  427</span> </div>
+<div class="line"><a id="l00428" name="l00428"></a><span class="lineno">  428</span><span class="preprocessor">#include &quot;MycilaDimmerDFRobot.h&quot;</span></div>
+<div class="line"><a id="l00429" name="l00429"></a><span class="lineno">  429</span><span class="preprocessor">#include &quot;MycilaDimmerPWM.h&quot;</span></div>
+<div class="line"><a id="l00430" name="l00430"></a><span class="lineno">  430</span><span class="preprocessor">#include &quot;MycilaDimmerThyristor.h&quot;</span></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></div><div class="ttdef"><b>Definition</b> <a href="#l00022">MycilaDimmer.h:22</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_a04d71f45a6371457f6414af1d30a371e"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a04d71f45a6371457f6414af1d30a371e">Mycila::Dimmer::off</a></div><div class="ttdeci">void off()</div><div class="ttdoc">Turn off the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="#l00179">MycilaDimmer.h:179</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_a0f0513eebff6847195e79b893c96738c"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a0f0513eebff6847195e79b893c96738c">Mycila::Dimmer::getDutyCycleFire</a></div><div class="ttdeci">float getDutyCycleFire() const</div><div class="ttdoc">Get the real firing duty cycle (conduction duty cycle) applied to the dimmer in the range [0,...</div><div class="ttdef"><b>Definition</b> <a href="#l00245">MycilaDimmer.h:245</a></div></div>
@@ -456,7 +440,6 @@ $(function() {
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_ab936b1ffcb91cb3339ed8da8ba086895"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#ab936b1ffcb91cb3339ed8da8ba086895">Mycila::Dimmer::getDutyCycleMin</a></div><div class="ttdeci">float getDutyCycleMin() const</div><div class="ttdoc">Get the remapped &quot;0&quot; of the dimmer duty cycle.</div><div class="ttdef"><b>Definition</b> <a href="#l00086">MycilaDimmer.h:86</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_abe79bb19232cdede06774f88274672a6"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#abe79bb19232cdede06774f88274672a6">Mycila::Dimmer::setDutyCycleMax</a></div><div class="ttdeci">void setDutyCycleMax(float max)</div><div class="ttdoc">Duty remapping (equivalent to Shelly Dimmer remapping feature). Useful to calibrate the dimmer when u...</div><div class="ttdef"><b>Definition</b> <a href="#l00073">MycilaDimmer.h:73</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_af83b436ec8799d705dbf22265225beaf"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#af83b436ec8799d705dbf22265225beaf">Mycila::Dimmer::setDutyCycleLimit</a></div><div class="ttdeci">void setDutyCycleLimit(float limit)</div><div class="ttdoc">Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">MycilaDimmer.h:50</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_virtual_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_virtual_dimmer.html">Mycila::VirtualDimmer</a></div><div class="ttdef"><b>Definition</b> <a href="#l00418">MycilaDimmer.h:418</a></div></div>
 <div class="ttc" id="astruct_mycila_1_1_dimmer_1_1_metrics_html"><div class="ttname"><a href="struct_mycila_1_1_dimmer_1_1_metrics.html">Mycila::Dimmer::Metrics</a></div><div class="ttdef"><b>Definition</b> <a href="#l00024">MycilaDimmer.h:24</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

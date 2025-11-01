@@ -82,7 +82,7 @@ $(function() {
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a>  </div>
-  <div class="headertitle"><div class="title">Mycila::Dimmer Class Reference<span class="mlabels"><span class="mlabel abstract">abstract</span></span></div></div>
+  <div class="headertitle"><div class="title">Mycila::Dimmer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="dynheader">
@@ -97,10 +97,9 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a00117a54344017d53bb9154a66ecf0a6" id="r_a00117a54344017d53bb9154a66ecf0a6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a00117a54344017d53bb9154a66ecf0a6">begin</a> ()=0</td></tr>
-<tr class="memitem:ac2851640462c77c479a07e0dcf81f4b6" id="r_ac2851640462c77c479a07e0dcf81f4b6"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac2851640462c77c479a07e0dcf81f4b6">end</a> ()=0</td></tr>
-<tr class="memitem:a9ce687bbdccc959baa1477436cd54e69" id="r_a9ce687bbdccc959baa1477436cd54e69"><td class="memItemLeft" align="right" valign="top"><a id="a9ce687bbdccc959baa1477436cd54e69" name="a9ce687bbdccc959baa1477436cd54e69"></a>
-virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><b>type</b> () const =0</td></tr>
+<tr class="memitem:adbd39212e7c616c7137583f06eb95a17" id="r_adbd39212e7c616c7137583f06eb95a17"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbd39212e7c616c7137583f06eb95a17">begin</a> ()</td></tr>
+<tr class="memitem:a4108da25e47d5c15f307ab9ab0d91960" id="r_a4108da25e47d5c15f307ab9ab0d91960"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4108da25e47d5c15f307ab9ab0d91960">end</a> ()</td></tr>
+<tr class="memitem:a576ed69f3f6cf4be3baa58f536f9dd49" id="r_a576ed69f3f6cf4be3baa58f536f9dd49"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a576ed69f3f6cf4be3baa58f536f9dd49">type</a> () const</td></tr>
 <tr class="memitem:af83b436ec8799d705dbf22265225beaf" id="r_af83b436ec8799d705dbf22265225beaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af83b436ec8799d705dbf22265225beaf">setDutyCycleLimit</a> (float limit)</td></tr>
 <tr class="memdesc:af83b436ec8799d705dbf22265225beaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit.  <br /></td></tr>
 <tr class="memitem:a65e890fe02705d74cb3fb41387d843dc" id="r_a65e890fe02705d74cb3fb41387d843dc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a65e890fe02705d74cb3fb41387d843dc">setDutyCycleMin</a> (float min)</td></tr>
@@ -144,15 +143,12 @@ virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><b>type<
 <tr class="memitem:a0f0513eebff6847195e79b893c96738c" id="r_a0f0513eebff6847195e79b893c96738c"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0f0513eebff6847195e79b893c96738c">getDutyCycleFire</a> () const</td></tr>
 <tr class="memdesc:a0f0513eebff6847195e79b893c96738c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the real firing duty cycle (conduction duty cycle) applied to the dimmer in the range [0, 1].  <br /></td></tr>
 <tr class="memitem:a6b34aab3c938759c82853fe5f917ee54" id="r_a6b34aab3c938759c82853fe5f917ee54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b34aab3c938759c82853fe5f917ee54">calculateHarmonics</a> (float *array, size_t n) const</td></tr>
-<tr class="memitem:a8f298131932cb9d22e2a488c58c97358" id="r_a8f298131932cb9d22e2a488c58c97358"><td class="memItemLeft" align="right" valign="top"><a id="a8f298131932cb9d22e2a488c58c97358" name="a8f298131932cb9d22e2a488c58c97358"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>calculateMetrics</b> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float gridVoltage, float loadResistance) const</td></tr>
+<tr class="memitem:a8f298131932cb9d22e2a488c58c97358" id="r_a8f298131932cb9d22e2a488c58c97358"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f298131932cb9d22e2a488c58c97358">calculateMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float gridVoltage, float loadResistance) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:a2ab4c8a13e8b155ebf29531cc32ccb7a" id="r_a2ab4c8a13e8b155ebf29531cc32ccb7a"><td class="memItemLeft" align="right" valign="top"><a id="a2ab4c8a13e8b155ebf29531cc32ccb7a" name="a2ab4c8a13e8b155ebf29531cc32ccb7a"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>_apply</b> ()=0</td></tr>
-<tr class="memitem:a90ec20259165e9ee2f16441fc001e70d" id="r_a90ec20259165e9ee2f16441fc001e70d"><td class="memItemLeft" align="right" valign="top"><a id="a90ec20259165e9ee2f16441fc001e70d" name="a90ec20259165e9ee2f16441fc001e70d"></a>
-virtual bool&#160;</td><td class="memItemRight" valign="bottom"><b>_calculateHarmonics</b> (float *array, size_t n) const =0</td></tr>
+<tr class="memitem:a6fb5b41b3e299e1db9b2e1fae72e897c" id="r_a6fb5b41b3e299e1db9b2e1fae72e897c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fb5b41b3e299e1db9b2e1fae72e897c">_apply</a> ()</td></tr>
+<tr class="memitem:acb3ef362f8668b96c87a1bcd1ea132ae" id="r_acb3ef362f8668b96c87a1bcd1ea132ae"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acb3ef362f8668b96c87a1bcd1ea132ae">_calculateHarmonics</a> (float *array, size_t n) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-static-methods" class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
@@ -205,6 +201,64 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a6fb5b41b3e299e1db9b2e1fae72e897c" name="a6fb5b41b3e299e1db9b2e1fae72e897c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6fb5b41b3e299e1db9b2e1fae72e897c">&#9670;&#160;</a></span>_apply()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mycila::Dimmer::_apply </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00331">331</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+
+</div>
+</div>
+<a id="acb3ef362f8668b96c87a1bcd1ea132ae" name="acb3ef362f8668b96c87a1bcd1ea132ae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb3ef362f8668b96c87a1bcd1ea132ae">&#9670;&#160;</a></span>_calculateHarmonics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mycila::Dimmer::_calculateHarmonics </td>
+          <td>(</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00332">332</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+
+</div>
+</div>
 <a id="aef3b9bade9ed97c7f6b563405c03d623" name="aef3b9bade9ed97c7f6b563405c03d623"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aef3b9bade9ed97c7f6b563405c03d623">&#9670;&#160;</a></span>_calculatePhaseControlHarmonics()</h2>
 
@@ -237,7 +291,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00340">340</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00349">349</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -278,7 +332,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00379">379</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00388">388</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -314,7 +368,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00336">336</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00345">345</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -349,8 +403,8 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a00117a54344017d53bb9154a66ecf0a6" name="a00117a54344017d53bb9154a66ecf0a6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a00117a54344017d53bb9154a66ecf0a6">&#9670;&#160;</a></span>begin()</h2>
+<a id="adbd39212e7c616c7137583f06eb95a17" name="adbd39212e7c616c7137583f06eb95a17"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbd39212e7c616c7137583f06eb95a17">&#9670;&#160;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -367,12 +421,14 @@ Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#a17484950c67afc73b94b4f34c6fe4879">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#ac66ccf49a9ee6322f34f15a9eb7b7ead">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#a6b557778b509699aa57e617e1b600b17">Mycila::ThyristorDimmer</a>.</p>
+<p>Reimplemented in <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#a17484950c67afc73b94b4f34c6fe4879">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#ac66ccf49a9ee6322f34f15a9eb7b7ead">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#a6b557778b509699aa57e617e1b600b17">Mycila::ThyristorDimmer</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00037">37</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -404,6 +460,42 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00255">255</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+
+</div>
+</div>
+<a id="a8f298131932cb9d22e2a488c58c97358" name="a8f298131932cb9d22e2a488c58c97358"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8f298131932cb9d22e2a488c58c97358">&#9670;&#160;</a></span>calculateMetrics()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual bool Mycila::Dimmer::calculateMetrics </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>metrics</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>gridVoltage</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>loadResistance</em></span>&#160;) const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00283">283</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -456,8 +548,8 @@ If true is passed, the function validates that a semi-period is set or already e
 
 </div>
 </div>
-<a id="ac2851640462c77c479a07e0dcf81f4b6" name="ac2851640462c77c479a07e0dcf81f4b6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac2851640462c77c479a07e0dcf81f4b6">&#9670;&#160;</a></span>end()</h2>
+<a id="a4108da25e47d5c15f307ab9ab0d91960" name="a4108da25e47d5c15f307ab9ab0d91960"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4108da25e47d5c15f307ab9ab0d91960">&#9670;&#160;</a></span>end()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -474,12 +566,14 @@ If true is passed, the function validates that a semi-period is set or already e
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel pure-virtual">pure virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Implemented in <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#af29886b4c364adc366ca78d66d32d1d3">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#aeb0acda0ee498ff78561ae9d7d5c2e6a">Mycila::ThyristorDimmer</a>.</p>
+<p>Reimplemented in <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#af29886b4c364adc366ca78d66d32d1d3">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#aeb0acda0ee498ff78561ae9d7d5c2e6a">Mycila::ThyristorDimmer</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00038">38</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1090,6 +1184,33 @@ If true is passed, the function validates that a semi-period is set or already e
 <p>This flag can be used to temporarily disable the dimmer when not connected to the grid </p>
 
 <p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00156">156</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+
+</div>
+</div>
+<a id="a576ed69f3f6cf4be3baa58f536f9dd49" name="a576ed69f3f6cf4be3baa58f536f9dd49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a576ed69f3f6cf4be3baa58f536f9dd49">&#9670;&#160;</a></span>type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual const char * Mycila::Dimmer::type </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00039">39</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
