@@ -21,6 +21,17 @@
 namespace Mycila {
   class Dimmer {
     public:
+      typedef struct {
+          // Output voltage (dimmed)
+          float voltage = 0.0f;
+          float current = 0.0f;
+          float power = 0.0f;
+          float apparentPower = 0.0f;
+          float powerFactor = NAN;
+          float thdi = NAN;
+      } Metrics;
+
+    public:
       virtual ~Dimmer() {};
 
       virtual void begin() = 0;
@@ -224,7 +235,7 @@ namespace Mycila {
       float getDutyCycleMapped() const { return _dutyCycleMin + _dutyCycle * (_dutyCycleMax - _dutyCycleMin); }
 
       /**
-       * @brief Get the real firing duty cycle applied to the dimmer in the range [0, 1]
+       * @brief Get the real firing duty cycle (conduction duty cycle) applied to the dimmer in the range [0, 1]
        * @brief - At 0% power, the ratio is equal to 0.
        * @brief - At 100% power, the ratio is equal to 1.
        * @return The duty cycle applied on the hardware, or 0 if the dimmer is offline
@@ -233,9 +244,9 @@ namespace Mycila {
        */
       float getDutyCycleFire() const { return isOnline() ? _dutyCycleFire : 0.0f; }
 
-      ///////////////
-      // HARMONICS //
-      ///////////////
+      /////////////
+      // METRICS //
+      /////////////
 
       // Calculate harmonics based on dimmer firing angle for resistive loads
       // array[0] = H1 (fundamental), array[1] = H3, array[2] = H5, array[3] = H7, etc.
@@ -268,6 +279,8 @@ namespace Mycila {
 
         return _calculateHarmonics(array, n);
       }
+
+      virtual bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const;
 
 #ifdef MYCILA_JSON_SUPPORT
       /**
@@ -362,15 +375,56 @@ namespace Mycila {
 
         return true;
       }
+
+      static bool _calculatePhaseControlMetrics(Metrics& metrics, float dutyCycleFire, float gridVoltage, float loadResistance) {
+        if (loadResistance > 0 && gridVoltage > 0) {
+          if (dutyCycleFire > 0) {
+            const float nominalPower = gridVoltage * gridVoltage / loadResistance;
+            if (dutyCycleFire >= 1.0f) {
+              // full power
+              metrics.powerFactor = 1.0f;
+              metrics.thdi = 0.0f;
+              metrics.power = nominalPower;
+              metrics.voltage = gridVoltage;
+              metrics.current = gridVoltage / loadResistance;
+              metrics.apparentPower = nominalPower;
+              return true;
+            } else {
+              // partial power
+              metrics.powerFactor = std::sqrt(dutyCycleFire);
+              metrics.thdi = 100.0f * std::sqrt(1 / dutyCycleFire - 1);
+              metrics.power = dutyCycleFire * nominalPower;
+              metrics.voltage = metrics.powerFactor * gridVoltage;
+              metrics.current = metrics.voltage / loadResistance;
+              metrics.apparentPower = gridVoltage * metrics.current;
+              return true;
+            }
+          } else {
+            // no power
+            metrics.voltage = 0.0f;
+            metrics.current = 0.0f;
+            metrics.power = 0.0f;
+            metrics.apparentPower = 0.0f;
+            metrics.powerFactor = NAN;
+            metrics.thdi = NAN;
+            return true;
+          }
+        } else {
+          return false;
+        }
+      }
   };
 
   class VirtualDimmer : public Dimmer {
     public:
       virtual ~VirtualDimmer() { end(); }
 
-      virtual void begin() { _enabled = true; }
-      virtual void end() { _enabled = false; }
-      virtual const char* type() const { return "virtual"; }
+      void begin() override { _enabled = true; }
+      void end() override { _enabled = false; }
+      const char* type() const override { return "virtual"; }
+      bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const override {
+        return false;
+      }
 
     protected:
       bool _apply() override { return true; }

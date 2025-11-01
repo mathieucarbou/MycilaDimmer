@@ -83,16 +83,20 @@ namespace Mycila {
        * @warning Dimmer won't be enabled if pin is invalid
        * @warning Dimmer won't be activated until the ZCD is enabled
        */
-      virtual void begin();
+      void begin() override;
 
       /**
        * @brief Disable the dimmer
        *
        * @warning Dimmer won't be destroyed but won't turn on anymore even is a duty cycle is set.
        */
-      virtual void end();
+      void end() override;
 
-      virtual const char* type() const { return "dfrobot"; }
+      const char* type() const override { return "dfrobot"; }
+
+      bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const override {
+        return isOnline() && _calculatePhaseControlMetrics(metrics, _dutyCycleFire, gridVoltage, loadResistance);
+      }
 
 #ifdef MYCILA_JSON_SUPPORT
       /**
