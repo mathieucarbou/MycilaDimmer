@@ -133,14 +133,12 @@ $(function() {
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span><span class="preprocessor">#define TAG &quot;ZC_DIMMER&quot;</span></div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
 <div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="keyword">struct </span><a class="code hl_struct" href="struct_enabled_dimmer.html">EnabledDimmer</a>;</div>
-<div class="foldopen" id="foldopen00055" data-start="{" data-end="};">
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno"><a class="line" href="struct_enabled_dimmer.html">   55</a></span><span class="keyword">struct </span><a class="code hl_struct" href="struct_enabled_dimmer.html">EnabledDimmer</a> {</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    <a class="code hl_class" href="class_mycila_1_1_thyristor_dimmer.html">Mycila::ThyristorDimmer</a>* dimmer = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    <a class="code hl_struct" href="struct_enabled_dimmer.html">EnabledDimmer</a>* prev = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    <a class="code hl_struct" href="struct_enabled_dimmer.html">EnabledDimmer</a>* next = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span><span class="keyword">struct </span><a class="code hl_struct" href="struct_enabled_dimmer.html">EnabledDimmer</a> {</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>    Mycila::ThyristorDimmer* dimmer = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>    EnabledDimmer* prev = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>    EnabledDimmer* next = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>    uint16_t alarm_count = UINT16_MAX; <span class="comment">// when to fire the dimmer</span></div>
 <div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>};</div>
-</div>
 <div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
 <div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span><span class="keyword">static</span> <span class="keyword">struct </span><a class="code hl_struct" href="struct_enabled_dimmer.html">EnabledDimmer</a>* dimmers = <span class="keyword">nullptr</span>;</div>
 <div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span><span class="keyword">static</span> gptimer_handle_t fire_timer = <span class="keyword">nullptr</span>;</div>
@@ -394,12 +392,11 @@ $(function() {
 <div class="line"><a id="l00305" name="l00305"></a><span class="lineno">  305</span>  }</div>
 <div class="line"><a id="l00306" name="l00306"></a><span class="lineno">  306</span>}</div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_aa159163ef95c8edd6e54b345e09b3d43"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#aa159163ef95c8edd6e54b345e09b3d43">Mycila::Dimmer::setDutyCycle</a></div><div class="ttdeci">bool setDutyCycle(float dutyCycle)</div><div class="ttdoc">Set the power duty.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00188">MycilaDimmer.h:188</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html">Mycila::ThyristorDimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8h_source.html#l00011">MycilaDimmerThyristor.h:11</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_a39b9f1be2d0ace6ecaf323b175b6323c"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#a39b9f1be2d0ace6ecaf323b175b6323c">Mycila::ThyristorDimmer::getPin</a></div><div class="ttdeci">gpio_num_t getPin() const</div><div class="ttdoc">Get the GPIO pin used for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8h_source.html#l00023">MycilaDimmerThyristor.h:23</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_a5b09bdb65f3ee8676ecaf31290d24d6c"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#a5b09bdb65f3ee8676ecaf31290d24d6c">Mycila::ThyristorDimmer::onZeroCross</a></div><div class="ttdeci">static void onZeroCross(int16_t delayUntilZero, void *args)</div><div class="ttdef"><b>Definition</b> <a href="#l00101">MycilaDimmerThyristor.cpp:101</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_ac49a5479c2f74f67078a2ebf9656e004"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#ac49a5479c2f74f67078a2ebf9656e004">Mycila::ThyristorDimmer::begin</a></div><div class="ttdeci">virtual void begin()</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="#l00070">MycilaDimmerThyristor.cpp:70</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_adaf608175ca2e9aea0e0a0b3678a4c34"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#adaf608175ca2e9aea0e0a0b3678a4c34">Mycila::ThyristorDimmer::end</a></div><div class="ttdeci">virtual void end()</div><div class="ttdoc">Disable the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="#l00090">MycilaDimmerThyristor.cpp:90</a></div></div>
-<div class="ttc" id="astruct_enabled_dimmer_html"><div class="ttname"><a href="struct_enabled_dimmer.html">EnabledDimmer</a></div><div class="ttdef"><b>Definition</b> <a href="#l00055">MycilaDimmerThyristor.cpp:55</a></div></div>
+<div class="ttc" id="astruct_enabled_dimmer_html"><div class="ttname"><a href="struct_enabled_dimmer.html">EnabledDimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_burst_fire_8cpp_source.html#l00050">MycilaDimmerBurstFire.cpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

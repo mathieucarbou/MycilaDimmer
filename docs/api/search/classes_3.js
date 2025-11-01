@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['pwmdimmer_0',['PWMDimmer',['../class_mycila_1_1_p_w_m_dimmer.html',1,'Mycila']]]
+  ['gptimer_5fgroup_5ft_0',['gptimer_group_t',['../structgptimer__group__t.html',1,'']]],
+  ['gptimer_5ft_1',['gptimer_t',['../structgptimer__t.html',1,'']]]
 ];
