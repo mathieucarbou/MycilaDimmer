@@ -231,6 +231,78 @@ namespace Mycila {
        */
       float getDutyCycleFire() const { return isOnline() ? _dutyCycleFire : 0.0f; }
 
+      ///////////////
+      // HARMONICS //
+      ///////////////
+
+      // Calculate harmonics based on dimmer firing angle for resistive loads
+      // array[0] = H1 (fundamental), array[1] = H3, array[2] = H5, array[3] = H7, etc.
+      // Only odd harmonics are calculated (even harmonics are negligible for symmetric dimmers)
+      // Returns true if harmonics were calculated, false if dimmer is not active
+      bool readHarmonics(float* array, size_t n) const {
+        if (array == nullptr || n == 0)
+          return false;
+
+        // Check if dimmer is active and routing
+        if (!isOnline())
+          return false;
+
+        if (_dutyCycleFire <= 0.0f) {
+          for (size_t i = 0; i < n; i++) {
+            array[i] = 0.0f; // No power, no harmonics
+          }
+          return true;
+        }
+
+        if (_dutyCycleFire >= 1.0f) {
+          array[0] = 100.0f; // H1 (fundamental) = 100% reference
+          for (size_t i = 1; i < n; i++) {
+            array[i] = 0.0f; // No harmonics at full power
+          }
+          return true;
+        }
+
+        // Initialize all values to NAN
+        for (size_t i = 0; i < n; i++) {
+          array[i] = NAN;
+        }
+
+        // getDutyCycleFire() returns the conduction angle normalized (0-1)
+        // Convert to firing angle: α = π × (1 - conduction)
+        const float firingAngle = M_PI * (1.0f - _dutyCycleFire);
+        const float sin_2a = sinf(2.0f * firingAngle);
+
+        // RMS of fundamental component: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]
+        const float i1_rms = sqrtf((2.0f / M_PI) * (M_PI - firingAngle + 0.5f * sin_2a));
+
+        if (i1_rms <= 0.001f)
+          return false;
+
+        array[0] = 100.0f; // H1 (fundamental) = 100% reference
+
+        // Pre-compute constant values
+        static constexpr float inv_pi_2 = 2.0f / M_PI;
+        static constexpr float inv_sqrt2 = 0.70710678f; // 1/√2
+        const float scale_factor = inv_pi_2 * inv_sqrt2 * 100.0f / i1_rms;
+
+        // Calculate odd harmonics (H3, H5, H7, ...)
+        // Formula: Hn% = (2/π√2) × |cos((n-1)α)/(n-1) - cos((n+1)α)/(n+1)| / I1_rms × 100
+        for (size_t i = 1; i < n; i++) {
+          const float n_f = static_cast<float>(2 * i + 1); // 3, 5, 7, 9, ...
+          const float n_minus_1 = n_f - 1.0f;
+          const float n_plus_1 = n_f + 1.0f;
+
+          // Compute Fourier coefficient
+          const float coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 -
+                              cosf(n_plus_1 * firingAngle) / n_plus_1;
+
+          // Convert to percentage of fundamental
+          array[i] = fabsf(coeff) * scale_factor;
+        }
+
+        return true;
+      }
+
 #ifdef MYCILA_JSON_SUPPORT
       /**
        * @brief Serialize Dimmer information to a JSON object
