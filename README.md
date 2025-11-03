@@ -140,6 +140,10 @@ void loop() {
 
 Perfect for TRIAC and Random SSR control with **flicker-free progressive dimming**. Achieves smooth, continuous power control through precise phase angle control when paired with quality zero-cross detection circuits.
 
+|                                              ESP32                                              |                                   Random Solid State Relay                                   |                                          Heat Sink                                          |                              Zero-Cross Detection Module                              |
+| :---------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
+| <img src="https://yasolr.carbou.me/assets/img/hardware/ESP32_NodeMCU.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/Random_SSR.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/Heat_Sink.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/ZCD.jpeg" style="width:150px"> |
+
 ```cpp
 #include <MycilaDimmer.h>
 
@@ -174,7 +178,11 @@ If you want one, you can have a look at the [YaSolR Pro page](https://yasolr.car
 
 ### PWM Dimmer
 
-Standard PWM output for SSRs and other PWM-controlled devices.
+Standard PWM output for PWM to analog converters to control voltage regulators
+
+|                                              ESP32                                              |                                       Voltage Regulator                                       |                                            Heat Sink                                            |                                    PWM to Analog Converter                                    |
+| :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
+| <img src="https://yasolr.carbou.me/assets/img/hardware/ESP32_NodeMCU.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/LSA-H3P50YB.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/lsa_heat_sink.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/PWM_33_0-10.jpeg" style="width:150px"> |
 
 ```cpp
 #include <MycilaDimmer.h>
@@ -201,6 +209,10 @@ For example, this dimmer can be used with a [3.3V to 0-5V/0-10V signal converter
 
 **Flicker-free progressive dimming** using precision I2C DAC modules.
 Perfect for voltage regulator controlled devices ([LSA](https://aliexpress.com/item/32606780994.html), [LCTC](https://aliexpress.com/item/1005005008018888.html), etc) with 0-10V input, providing ultra-smooth dimming without any visible flickering thanks to high-resolution DAC output.
+
+|                                              ESP32                                              |                                       Voltage Regulator                                       |                                            Heat Sink                                            |                  [DFRobot DAC](https://www.dfrobot.com/blog-13458.html)                  |
+| :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------: |
+| <img src="https://yasolr.carbou.me/assets/img/hardware/ESP32_NodeMCU.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/LSA-H3P50YB.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/lsa_heat_sink.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/DFR0971.jpg" style="width:150px"> |
 
 ```cpp
 #include <MycilaDimmer.h>

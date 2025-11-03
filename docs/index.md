@@ -140,6 +140,10 @@ void loop() {
 
 Perfect for TRIAC and Random SSR control with **flicker-free progressive dimming**. Achieves smooth, continuous power control through precise phase angle control when paired with quality zero-cross detection circuits.
 
+|                                              ESP32                                              |                                   Random Solid State Relay                                   |                                          Heat Sink                                          |                              Zero-Cross Detection Module                              |
+| :---------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------: |
+| <img src="https://yasolr.carbou.me/assets/img/hardware/ESP32_NodeMCU.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/Random_SSR.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/Heat_Sink.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/ZCD.jpeg" style="width:150px"> |
+
 ```cpp
 #include <MycilaDimmer.h>
 
@@ -174,7 +178,11 @@ If you want one, you can have a look at the [YaSolR Pro page](https://yasolr.car
 
 ### PWM Dimmer
 
-Standard PWM output for SSRs and other PWM-controlled devices.
+Standard PWM output for PWM to analog converters to control voltage regulators
+
+|                                              ESP32                                              |                                       Voltage Regulator                                       |                                            Heat Sink                                            |                                    PWM to Analog Converter                                    |
+| :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: |
+| <img src="https://yasolr.carbou.me/assets/img/hardware/ESP32_NodeMCU.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/LSA-H3P50YB.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/lsa_heat_sink.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/PWM_33_0-10.jpeg" style="width:150px"> |
 
 ```cpp
 #include <MycilaDimmer.h>
@@ -201,6 +209,10 @@ For example, this dimmer can be used with a [3.3V to 0-5V/0-10V signal converter
 
 **Flicker-free progressive dimming** using precision I2C DAC modules.
 Perfect for voltage regulator controlled devices ([LSA](https://aliexpress.com/item/32606780994.html), [LCTC](https://aliexpress.com/item/1005005008018888.html), etc) with 0-10V input, providing ultra-smooth dimming without any visible flickering thanks to high-resolution DAC output.
+
+|                                              ESP32                                              |                                       Voltage Regulator                                       |                                            Heat Sink                                            |                  [DFRobot DAC](https://www.dfrobot.com/blog-13458.html)                  |
+| :---------------------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------: |
+| <img src="https://yasolr.carbou.me/assets/img/hardware/ESP32_NodeMCU.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/LSA-H3P50YB.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/lsa_heat_sink.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/DFR0971.jpg" style="width:150px"> |
 
 ```cpp
 #include <MycilaDimmer.h>
@@ -375,6 +387,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 - [HARMONICS: CAUSES, EFFECTS AND MINIMIZATION](https://www.salicru.com/files/pagina/72/278/jn004a01_whitepaper-armonics_%281%29.pdf) (Ramon Pinyol, R&D Product Leader SALICRU)
 - [HARMONIQUES ET DEPOLLUTION DU RESEAU ELECTRIQUE](http://archives.univ-biskra.dz/bitstream/123456789/21913/1/BELHADJ%20KHEIRA%20ET%20BOUZIR%20NESSRINE.pdf) (BELHADJ KHEIRA ET BOUZIR NESSRINE)
 - [Impact de la pollution harmonique sur les matériels de réseau](https://theses.hal.science/tel-00441877/document) (Wilfried Frelin)
+- [Simulateur de Signal et Spectre](https://f1atb.fr/fr/routeur-photovoltaique-modes-de-regulation/)
 
 **TRIAC and Thyristors**
 
