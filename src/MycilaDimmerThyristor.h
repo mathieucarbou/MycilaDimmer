@@ -30,7 +30,7 @@ namespace Mycila {
        */
       void setSemiPeriod(uint16_t semiPeriod) {
         if (semiPeriod == 0) {
-          ESP_LOGE("MycilaDimmerThyristor", "setSemiPeriod: semiPeriod must be > 0");
+          ESP_LOGE("ThyristorDimmer", "setSemiPeriod: semiPeriod must be > 0");
         }
         assert(semiPeriod > 0);
         _semiPeriod = semiPeriod;

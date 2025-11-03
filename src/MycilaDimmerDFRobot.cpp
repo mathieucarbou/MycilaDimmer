@@ -7,21 +7,7 @@
 // logging
 #include <esp32-hal-log.h>
 
-#ifdef MYCILA_LOGGER_SUPPORT
-  #include <MycilaLogger.h>
-extern Mycila::Logger logger;
-  #define LOGD(tag, format, ...) logger.debug(tag, format, ##__VA_ARGS__)
-  #define LOGI(tag, format, ...) logger.info(tag, format, ##__VA_ARGS__)
-  #define LOGW(tag, format, ...) logger.warn(tag, format, ##__VA_ARGS__)
-  #define LOGE(tag, format, ...) logger.error(tag, format, ##__VA_ARGS__)
-#else
-  #define LOGD(tag, format, ...) ESP_LOGD(tag, format, ##__VA_ARGS__)
-  #define LOGI(tag, format, ...) ESP_LOGI(tag, format, ##__VA_ARGS__)
-  #define LOGW(tag, format, ...) ESP_LOGW(tag, format, ##__VA_ARGS__)
-  #define LOGE(tag, format, ...) ESP_LOGE(tag, format, ##__VA_ARGS__)
-#endif
-
-#define TAG "DFR_DIMMER"
+#define TAG "DFRobotDimmer"
 
 void Mycila::DFRobotDimmer::begin() {
   if (_enabled)
@@ -29,31 +15,31 @@ void Mycila::DFRobotDimmer::begin() {
 
   uint8_t resolution = getResolution();
   if (!resolution) {
-    LOGE(TAG, "Disable DFRobot Dimmer: SKU not set!");
+    ESP_LOGE(TAG, "Disable DFRobot Dimmer: SKU not set!");
     return;
   }
 
   // sanity checks
   if (_sku == SKU::DFR1071_GP8211S) {
     if (_channel > 0) {
-      LOGW(TAG, "DFRobot DFR1071 (GP8211S) has only one channel: switching to channel 0");
+      ESP_LOGW(TAG, "DFRobot DFR1071 (GP8211S) has only one channel: switching to channel 0");
       _channel = 0;
     }
   }
 
   if (_channel > 2) {
-    LOGE(TAG, "Disable DFRobot Dimmer: invalid channel %d", _channel);
+    ESP_LOGE(TAG, "Disable DFRobot Dimmer: invalid channel %d", _channel);
     return;
   }
 
   // discovery
   bool found = false;
   if (_deviceAddress) {
-    LOGI(TAG, "Searching for DFRobot Dimmer @ 0x%02x...", _deviceAddress);
+    ESP_LOGI(TAG, "Searching for DFRobot Dimmer @ 0x%02x...", _deviceAddress);
     for (int i = 0; i < 3; i++) {
       uint8_t err = _test(_deviceAddress);
       if (err) {
-        LOGD(TAG, "DFRobot Dimmer @ 0x%02x: TwoWire communication error: %d", _deviceAddress, err);
+        ESP_LOGD(TAG, "DFRobot Dimmer @ 0x%02x: TwoWire communication error: %d", _deviceAddress, err);
         delay(10);
       } else {
         found = true;
@@ -62,7 +48,7 @@ void Mycila::DFRobotDimmer::begin() {
     }
 
   } else {
-    LOGI(TAG, "Searching for DFRobot Dimmer @ 0x58 up to 0x5F...");
+    ESP_LOGI(TAG, "Searching for DFRobot Dimmer @ 0x58 up to 0x5F...");
     for (uint8_t addr = 0x58; !found && addr <= 0x5F; addr++) {
       if (_test(addr) == ESP_OK) {
         _deviceAddress = addr;
@@ -73,18 +59,18 @@ void Mycila::DFRobotDimmer::begin() {
   }
 
   if (found) {
-    LOGI(TAG, "Found DFRobot Dimmer @ 0x%02x and channel %d", _deviceAddress, _channel);
+    ESP_LOGI(TAG, "Found DFRobot Dimmer @ 0x%02x and channel %d", _deviceAddress, _channel);
   } else if (_deviceAddress) {
-    LOGW(TAG, "DFRobot Dimmer @ 0x%02x: Unable to communicate with device", _deviceAddress);
+    ESP_LOGW(TAG, "DFRobot Dimmer @ 0x%02x: Unable to communicate with device", _deviceAddress);
   } else {
     _deviceAddress = 0x58;
-    LOGW(TAG, "DFRobot Dimmer no found! Using default address 0x58");
+    ESP_LOGW(TAG, "DFRobot Dimmer no found! Using default address 0x58");
   }
 
   // set output
   uint8_t err = _sendOutput(_deviceAddress, _output);
   if (err) {
-    LOGE(TAG, "Disable DFRobot Dimmer @ 0x%02x: Unable to set output voltage: TwoWire communication error: %d", _deviceAddress, err);
+    ESP_LOGE(TAG, "Disable DFRobot Dimmer @ 0x%02x: Unable to set output voltage: TwoWire communication error: %d", _deviceAddress, err);
     return;
   }
 
@@ -99,7 +85,7 @@ void Mycila::DFRobotDimmer::end() {
     return;
   _enabled = false;
   _online = false;
-  LOGI(TAG, "Disable DFRobot Dimmer @ 0x%02x", _deviceAddress);
+  ESP_LOGI(TAG, "Disable DFRobot Dimmer @ 0x%02x", _deviceAddress);
   _apply();
 }
 
@@ -127,12 +113,12 @@ uint8_t Mycila::DFRobotDimmer::_sendDutyCycle(uint8_t address, uint16_t duty) {
 uint8_t Mycila::DFRobotDimmer::_sendOutput(uint8_t address, Output output) {
   switch (output) {
     case Output::RANGE_0_5V: {
-      LOGI(TAG, "Set output range to 0-5V");
+      ESP_LOGI(TAG, "Set output range to 0-5V");
       uint8_t data = 0x00;
       return _send(address, 0x01, &data, 1);
     }
     case Output::RANGE_0_10V: {
-      LOGI(TAG, "Set output range to 0-10V");
+      ESP_LOGI(TAG, "Set output range to 0-10V");
       uint8_t data = 0x11;
       return _send(address, 0x01, &data, 1);
     }

@@ -20,20 +20,6 @@
 // timers
 #include "priv/inlined_gptimer.h"
 
-#ifdef MYCILA_LOGGER_SUPPORT
-  #include <MycilaLogger.h>
-extern Mycila::Logger logger;
-  #define LOGD(tag, format, ...) logger.debug(tag, format, ##__VA_ARGS__)
-  #define LOGI(tag, format, ...) logger.info(tag, format, ##__VA_ARGS__)
-  #define LOGW(tag, format, ...) logger.warn(tag, format, ##__VA_ARGS__)
-  #define LOGE(tag, format, ...) logger.error(tag, format, ##__VA_ARGS__)
-#else
-  #define LOGD(tag, format, ...) ESP_LOGD(tag, format, ##__VA_ARGS__)
-  #define LOGI(tag, format, ...) ESP_LOGI(tag, format, ##__VA_ARGS__)
-  #define LOGW(tag, format, ...) ESP_LOGW(tag, format, ##__VA_ARGS__)
-  #define LOGE(tag, format, ...) ESP_LOGE(tag, format, ##__VA_ARGS__)
-#endif
-
 #ifndef GPIO_IS_VALID_OUTPUT_GPIO
   #define GPIO_IS_VALID_OUTPUT_GPIO(gpio_num) ((gpio_num >= 0) && \
                                                (((1ULL << (gpio_num)) & SOC_GPIO_VALID_OUTPUT_GPIO_MASK) != 0))
@@ -49,7 +35,7 @@ extern Mycila::Logger logger;
 // delay_us = asin((330 * 0.03) / 325) / pi * 10000 = 97us
 #define PHASE_DELAY_MIN_US (90)
 
-#define TAG "ZC_DIMMER"
+#define TAG "ThyristorDimmer"
 
 struct EnabledDimmer;
 struct EnabledDimmer {
@@ -72,11 +58,11 @@ void Mycila::ThyristorDimmer::begin() {
     return;
 
   if (!GPIO_IS_VALID_OUTPUT_GPIO(_pin)) {
-    LOGE(TAG, "Disable ZC Dimmer: Invalid pin: %" PRId8, _pin);
+    ESP_LOGE(TAG, "Disable ZC Dimmer: Invalid pin: %" PRId8, _pin);
     return;
   }
 
-  LOGI(TAG, "Enable Thyristor Dimmer on pin %" PRId8, _pin);
+  ESP_LOGI(TAG, "Enable Thyristor Dimmer on pin %" PRId8, _pin);
 
   pinMode(_pin, OUTPUT);
   digitalWrite(_pin, LOW);
@@ -92,7 +78,7 @@ void Mycila::ThyristorDimmer::end() {
     return;
   _enabled = false;
   _online = false;
-  LOGI(TAG, "Disable ZC Dimmer on pin %" PRId8, _pin);
+  ESP_LOGI(TAG, "Disable ZC Dimmer on pin %" PRId8, _pin);
   _apply();
   _unregisterDimmer(this);
   digitalWrite(_pin, LOW);
@@ -223,7 +209,7 @@ bool ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::_fireTimerISR(gptimer_handle_t ti
 // add a dimmer to the list of managed dimmers
 void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
   if (dimmers == nullptr) {
-    LOGI(TAG, "Starting dimmer firing ISR");
+    ESP_LOGI(TAG, "Starting dimmer firing ISR");
 
     gptimer_config_t timer_config;
     timer_config.clk_src = GPTIMER_CLK_SRC_DEFAULT;
@@ -246,7 +232,7 @@ void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
     ESP_ERROR_CHECK(gptimer_start(fire_timer));
   }
 
-  LOGD(TAG, "Register new dimmer %p on pin %d", dimmer, dimmer->getPin());
+  ESP_LOGD(TAG, "Register new dimmer %p on pin %d", dimmer, dimmer->getPin());
 
 #if USE_DIMMER_LOCK
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
@@ -269,7 +255,7 @@ void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
 
 // remove a dimmer from the list of managed dimmers
 void Mycila::ThyristorDimmer::_unregisterDimmer(Mycila::ThyristorDimmer* dimmer) {
-  LOGD(TAG, "Unregister dimmer %p on pin %d", dimmer, dimmer->getPin());
+  ESP_LOGD(TAG, "Unregister dimmer %p on pin %d", dimmer, dimmer->getPin());
 
 #if USE_DIMMER_LOCK
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
@@ -297,7 +283,7 @@ void Mycila::ThyristorDimmer::_unregisterDimmer(Mycila::ThyristorDimmer* dimmer)
 #endif
 
   if (dimmers == nullptr) {
-    LOGI(TAG, "Stopping dimmer firing ISR");
+    ESP_LOGI(TAG, "Stopping dimmer firing ISR");
     gptimer_stop(fire_timer); // might be already stopped
     ESP_ERROR_CHECK(gptimer_disable(fire_timer));
     ESP_ERROR_CHECK(gptimer_del_timer(fire_timer));

@@ -118,7 +118,7 @@ namespace Mycila {
         } else {
           // semiPeriod == 0, use already set semi-period, must be >0
           if (_semiPeriod == 0) {
-            ESP_LOGE("MycilaDimmer", "enablePowerLUT: semiPeriod must be provided or must be already set when enabling power LUT");
+            ESP_LOGE("Dimmer", "enablePowerLUT: semiPeriod must be provided or must be already set when enabling power LUT");
           }
           assert(_semiPeriod > 0);
         }
