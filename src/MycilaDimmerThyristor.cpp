@@ -101,17 +101,22 @@ void ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::onZeroCross(int16_t delayUntilZer
   // go through all registered dimmers to prepare the next firing
   struct RegisteredDimmer* current = dimmers;
   while (current != nullptr) {
-    // if a delay is applied (dimmer is off - UINT16_MAX - or on with a delay > 0), turn off the triac and it will be turned on again later
-    if (current->dimmer->_delay)
+    if (current->dimmer->_delay) {
+      // if a delay is applied (dimmer is off (UINT16_MAX), or on with a delay > 0), turn off the triac and it will be turned on again later
       gpio_ll_set_level(&GPIO, current->dimmer->_pin, LOW);
-    // calculate the next firing time:
-    // - Dimmer is off (UINT16_MAX) => remainingDelay = UINT16_MAX (will not be fired)
-    // - Dimmer is on at full power (0) => remainingDelay = PHASE_DELAY (and we did not turned off the triac and it will be turned on again at the next ZC event + PHASE_DELAY
-    // - Dimmer is on with a delay > 0 => remainingDelay = delay or PHASE_DELAY_MIN_US if delay is too low
-    current->alarm_count = current->dimmer->_delay < PHASE_DELAY_MIN_US ? PHASE_DELAY_MIN_US : current->dimmer->_delay;
-    // keep the minimum time at which we have to fire a dimmer
-    if (current->alarm_count < fire_timer_alarm_cfg.alarm_count)
-      fire_timer_alarm_cfg.alarm_count = current->alarm_count;
+      // calculate the next firing time:
+      // - If Dimmer is off (UINT16_MAX) => current->alarm_count == UINT16_MAX => dimmer will not be fired
+      // - If Dimmer is on with a delay > 0 => check to be sure it is PHASE_DELAY_MIN_US minimum
+      current->alarm_count = current->dimmer->_delay < PHASE_DELAY_MIN_US ? PHASE_DELAY_MIN_US : current->dimmer->_delay;
+      // keep track the minimum delay at which we have to fire a dimmer
+      if (current->alarm_count < fire_timer_alarm_cfg.alarm_count)
+        fire_timer_alarm_cfg.alarm_count = current->alarm_count;
+    } else {
+      // no delay: dimmer has to be kept on: do nothing
+      gpio_ll_set_level(&GPIO, current->dimmer->_pin, HIGH);
+      // reset the alarm count to indicate that this dimmer was fired
+      current->alarm_count = UINT16_MAX;
+    }
     current = current->next;
   }
 
