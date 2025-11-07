@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['pwmdimmer_0',['PWMDimmer',['../class_mycila_1_1_p_w_m_dimmer.html',1,'Mycila']]]
+  ['off_0',['off',['../class_mycila_1_1_dimmer.html#a04d71f45a6371457f6414af1d30a371e',1,'Mycila::Dimmer']]],
+  ['on_1',['on',['../class_mycila_1_1_dimmer.html#a8275a7b7cf9417c2d143519452a88880',1,'Mycila::Dimmer']]],
+  ['onzerocross_2',['onZeroCross',['../class_mycila_1_1_cycle_stealing_dimmer.html#a62732800d376135ee711b9d2b2f826bf',1,'Mycila::CycleStealingDimmer::onZeroCross()'],['../class_mycila_1_1_thyristor_dimmer.html#a5b09bdb65f3ee8676ecaf31290d24d6c',1,'Mycila::ThyristorDimmer::onZeroCross()']]]
 ];

@@ -103,9 +103,9 @@ $(function() {
 <li>Understanding AC Dimming Methods<ul>
 <li>Dimming Method Comparison<ul>
 <li>Phase Control</li>
-<li>Burst Fire on Full Period</li>
-<li>Burst Fire on Semi-Period</li>
-<li>Stochastic Burst Fire (Coming Soon)</li>
+<li>Cycle Stealing on Full Period</li>
+<li>Cycle Stealing on Semi-Period</li>
+<li>Stochastic Cycle Stealing (Coming Soon)</li>
 </ul>
 </li>
 <li>Recommendations for Harmonic Mitigation (Phase Control)</li>
@@ -347,7 +347,7 @@ $(function() {
 <li>PWMDimmer: Generates PWM signal for converter for voltage regulators (LSA, LCTC) which perform internal phase control</li>
 <li>DFRobotDimmer: Outputs 0-10V analog signal to voltage regulators (LSA, LCTC) which perform internal phase control</li>
 </ul>
-<h3>Burst Fire on Full Period</h3>
+<h3>Cycle Stealing on Full Period</h3>
 <p><b>How it works:</b> Rapidly switches complete AC cycles on/off (20ms periods for 50Hz). For example, to achieve 50% power, alternates full power for 20ms, then turns off for 20ms, and so on.</p>
 <p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/burst_fire_20ms.jpeg" alt="" class="inline"/></p>
 <p><b>Advantages:</b></p>
@@ -371,13 +371,13 @@ $(function() {
 <li>❌ <b>Poor Accuracy</b>: Cannot achieve watt-level control precision</li>
 <li>❌ <b>Delayed Corrections</b>: By the time adjustment is applied, conditions may have changed</li>
 </ul>
-<h3>Burst Fire on Semi-Period</h3>
+<h3>Cycle Stealing on Semi-Period</h3>
 <p><b>How it works:</b> Switches at semi-period level (every 10ms for 50Hz) to double the control slots and improve response time. For example, to achieve 50% power, alternates full power and no power for 20ms, and 10ms, to avoid creating DC components.</p>
 <p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/burst_fire_10ms.jpeg" alt="" class="inline"/></p>
 <p><b>Advantages:</b></p>
 <ul>
-<li>✅ <b>Better Resolution</b>: Twice as many control slots compared to full-period burst fire</li>
-<li>✅ <b>Faster Response</b>: 2x quicker than full-period burst fire</li>
+<li>✅ <b>Better Resolution</b>: Twice as many control slots compared to full-period cycle stealing</li>
+<li>✅ <b>Faster Response</b>: 2x quicker than full-period cycle stealing</li>
 </ul>
 <p><b>Limitations:</b></p>
 <ul>
@@ -389,7 +389,7 @@ $(function() {
 </ul>
 </li>
 </ul>
-<h3>Stochastic Burst Fire (Coming Soon)</h3>
+<h3>Stochastic Cycle Stealing (Coming Soon)</h3>
 <p><b>How it works:</b> Probabilistic switching at each zero-cross. At each AC cycle, generates a random number (0-100) and compares it to the desired power level percentage. If the random number is lower, the full wave is allowed through; otherwise, it's blocked.</p>
 <p><b>Advantages:</b></p>
 <ul>
@@ -398,7 +398,7 @@ $(function() {
 <li>✅ <b>Minimal EMF Interference</b>: Zero-cross switching reduces electromagnetic interference</li>
 <li>✅ <b>Multi-Channel Safe</b>: Random switching prevents simultaneous current spikes across channels</li>
 <li>✅ <b>Even Distribution</b>: Over time, produces statistically accurate power output</li>
-<li>✅ <b>No Harmonics</b>: Preserves complete sine waves like traditional burst fire</li>
+<li>✅ <b>No Harmonics</b>: Preserves complete sine waves like traditional cycle stealing</li>
 </ul>
 <p><b>Limitations:</b></p>
 <ul>
@@ -432,7 +432,7 @@ $(function() {
 </ul>
 <p><b>Coming Soon:</b></p>
 <ul>
-<li>✅ BurstFireDimmer - Stochastic burst fire for common SSR (Zero-Cross / Sync ones) and TRIAC / Random SSR with zero-cross detection</li>
+<li>✅ CycleStealingDimmer - Stochastic cycle stealing for common SSR (Zero-Cross / Sync ones) and TRIAC / Random SSR with zero-cross detection</li>
 </ul>
 <h2>Choosing the Right Method</h2>
 <p><b>For Solar Routers &amp; High-Precision Applications:</b></p>

@@ -27,9 +27,9 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
 - [Understanding AC Dimming Methods](#understanding-ac-dimming-methods)
   - [Dimming Method Comparison](#dimming-method-comparison)
     - [Phase Control](#phase-control)
-    - [Burst Fire on Full Period](#burst-fire-on-full-period)
-    - [Burst Fire on Semi-Period](#burst-fire-on-semi-period)
-    - [Stochastic Burst Fire (Coming Soon)](#stochastic-burst-fire-coming-soon)
+    - [Cycle Stealing on Full Period](#cycle-stealing-on-full-period)
+    - [Cycle Stealing on Semi-Period](#cycle-stealing-on-semi-period)
+    - [Stochastic Cycle Stealing (Coming Soon)](#stochastic-cycle-stealing-coming-soon)
   - [Recommendations for Harmonic Mitigation (Phase Control)](#recommendations-for-harmonic-mitigation-phase-control)
   - [Current MycilaDimmer Support](#current-myciladimmer-support)
   - [Choosing the Right Method](#choosing-the-right-method)
@@ -272,7 +272,7 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 - PWMDimmer: Generates PWM signal for converter for voltage regulators (LSA, LCTC) which perform internal phase control
 - DFRobotDimmer: Outputs 0-10V analog signal to voltage regulators (LSA, LCTC) which perform internal phase control
 
-#### Burst Fire on Full Period
+#### Cycle Stealing on Full Period
 
 **How it works:** Rapidly switches complete AC cycles on/off (20ms periods for 50Hz). For example, to achieve 50% power, alternates full power for 20ms, then turns off for 20ms, and so on.
 
@@ -295,7 +295,7 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 - ❌ **Poor Accuracy**: Cannot achieve watt-level control precision
 - ❌ **Delayed Corrections**: By the time adjustment is applied, conditions may have changed
 
-#### Burst Fire on Semi-Period
+#### Cycle Stealing on Semi-Period
 
 **How it works:** Switches at semi-period level (every 10ms for 50Hz) to double the control slots and improve response time. For example, to achieve 50% power, alternates full power and no power for 20ms, and 10ms, to avoid creating DC components.
 
@@ -303,8 +303,8 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 
 **Advantages:**
 
-- ✅ **Better Resolution**: Twice as many control slots compared to full-period burst fire
-- ✅ **Faster Response**: 2x quicker than full-period burst fire
+- ✅ **Better Resolution**: Twice as many control slots compared to full-period cycle stealing
+- ✅ **Faster Response**: 2x quicker than full-period cycle stealing
 
 **Limitations:**
 
@@ -314,7 +314,7 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
   - Can unbalance grid network by drawing current asymmetrically if not properly balanced
   - **Can violate electrical regulation** - this method cannot be used in some countries where regulations forbid DC components on AC grids
 
-#### Stochastic Burst Fire (Coming Soon)
+#### Stochastic Cycle Stealing (Coming Soon)
 
 **How it works:** Probabilistic switching at each zero-cross. At each AC cycle, generates a random number (0-100) and compares it to the desired power level percentage. If the random number is lower, the full wave is allowed through; otherwise, it's blocked.
 
@@ -325,7 +325,7 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 - ✅ **Minimal EMF Interference**: Zero-cross switching reduces electromagnetic interference
 - ✅ **Multi-Channel Safe**: Random switching prevents simultaneous current spikes across channels
 - ✅ **Even Distribution**: Over time, produces statistically accurate power output
-- ✅ **No Harmonics**: Preserves complete sine waves like traditional burst fire
+- ✅ **No Harmonics**: Preserves complete sine waves like traditional cycle stealing
 
 **Limitations:**
 
@@ -361,7 +361,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 
 **Coming Soon:**
 
-- ✅ BurstFireDimmer - Stochastic burst fire for common SSR (Zero-Cross / Sync ones) and TRIAC / Random SSR with zero-cross detection
+- ✅ CycleStealingDimmer - Stochastic cycle stealing for common SSR (Zero-Cross / Sync ones) and TRIAC / Random SSR with zero-cross detection
 
 ### Choosing the Right Method
 
