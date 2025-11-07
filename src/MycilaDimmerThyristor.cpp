@@ -48,8 +48,7 @@ struct RegisteredDimmer {
 static struct RegisteredDimmer* dimmers = nullptr;
 static gptimer_handle_t fire_timer = nullptr;
 
-#define USE_DIMMER_LOCK 1
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
 static portMUX_TYPE dimmers_spinlock = portMUX_INITIALIZER_UNLOCKED;
 #endif
 
@@ -94,7 +93,7 @@ void ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::onZeroCross(int16_t delayUntilZer
     return;
   }
 
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
   // lock since we need to iterate over the list of dimmers
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
@@ -116,7 +115,7 @@ void ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::onZeroCross(int16_t delayUntilZer
     current = current->next;
   }
 
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
   // unlock the list of dimmers
   portEXIT_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
@@ -166,7 +165,7 @@ bool ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::_fireTimerISR(gptimer_handle_t ti
   do {
     fire_timer_alarm_cfg.alarm_count = UINT16_MAX;
 
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
     // lock since we need to iterate over the list of dimmers
     portENTER_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
@@ -190,7 +189,7 @@ bool ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::_fireTimerISR(gptimer_handle_t ti
       current = current->next;
     }
 
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
     // unlock the list of dimmers
     portEXIT_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
@@ -234,7 +233,7 @@ void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
 
   ESP_LOGD(TAG, "Register new dimmer %p on pin %d", dimmer, dimmer->getPin());
 
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
@@ -248,7 +247,7 @@ void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
     dimmers = first;
   }
 
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
   portEXIT_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 }
@@ -257,7 +256,7 @@ void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
 void Mycila::ThyristorDimmer::_unregisterDimmer(Mycila::ThyristorDimmer* dimmer) {
   ESP_LOGD(TAG, "Unregister dimmer %p on pin %d", dimmer, dimmer->getPin());
 
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
@@ -278,7 +277,7 @@ void Mycila::ThyristorDimmer::_unregisterDimmer(Mycila::ThyristorDimmer* dimmer)
     current = current->next;
   }
 
-#if USE_DIMMER_LOCK
+#ifndef MYCILA_DIMMER_NO_LOCK
   portEXIT_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
