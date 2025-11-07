@@ -100,7 +100,7 @@ $(function() {
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="preprocessor">                                        (((1ULL &lt;&lt; (gpio_num)) &amp; SOC_GPIO_VALID_GPIO_MASK) != 0))</span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span><span class="preprocessor">#endif</span></div>
 <div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span> </div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define TAG &quot;PWMDimmer&quot;</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define TAG &quot;PWM&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
 <div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_mycila_1_1_p_w_m_dimmer.html#ac66ccf49a9ee6322f34f15a9eb7b7ead">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_p_w_m_dimmer.html#ac66ccf49a9ee6322f34f15a9eb7b7ead">Mycila::PWMDimmer::begin</a>() {</div>
@@ -108,11 +108,11 @@ $(function() {
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordflow">if</span> (!GPIO_IS_VALID_OUTPUT_GPIO(_pin)) {</div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    ESP_LOGE(TAG, <span class="stringliteral">&quot;Disable PWM Dimmer: Invalid pin: %&quot;</span> PRId8, _pin);</div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    ESP_LOGE(TAG, <span class="stringliteral">&quot;Invalid pin: %&quot;</span> PRId8, _pin);</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  }</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  ESP_LOGI(TAG, <span class="stringliteral">&quot;Enable PWM Dimmer on pin %&quot;</span> PRId8, _pin);</div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  ESP_LOGI(TAG, <span class="stringliteral">&quot;Enable dimmer on pin %&quot;</span> PRId8, _pin);</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
 <div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>  pinMode(_pin, OUTPUT);</div>
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>  digitalWrite(_pin, LOW);</div>
@@ -135,7 +135,7 @@ $(function() {
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span>;</div>
 <div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  _enabled = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  _online = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  ESP_LOGI(TAG, <span class="stringliteral">&quot;Disable PWM Dimmer on pin %&quot;</span> PRId8, _pin);</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  ESP_LOGI(TAG, <span class="stringliteral">&quot;Disable dimmer on pin %&quot;</span> PRId8, _pin);</div>
 <div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  _apply();</div>
 <div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  ledcDetach(_pin);</div>
 <div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  pinMode(_pin, OUTPUT);</div>
