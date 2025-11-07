@@ -15,7 +15,7 @@ void Mycila::DFRobotDimmer::begin() {
 
   uint8_t resolution = getResolution();
   if (!resolution) {
-    ESP_LOGE(TAG, "Disable DFRobot Dimmer: SKU not set!");
+    ESP_LOGE(TAG, "SKU not set!");
     return;
   }
 
@@ -28,18 +28,18 @@ void Mycila::DFRobotDimmer::begin() {
   }
 
   if (_channel > 2) {
-    ESP_LOGE(TAG, "Disable DFRobot Dimmer: invalid channel %d", _channel);
+    ESP_LOGE(TAG, "Invalid channel %d", _channel);
     return;
   }
 
   // discovery
   bool found = false;
   if (_deviceAddress) {
-    ESP_LOGI(TAG, "Searching for DFRobot Dimmer @ 0x%02x...", _deviceAddress);
+    ESP_LOGI(TAG, "Searching for DFRobot @ 0x%02x...", _deviceAddress);
     for (int i = 0; i < 3; i++) {
       uint8_t err = _test(_deviceAddress);
       if (err) {
-        ESP_LOGD(TAG, "DFRobot Dimmer @ 0x%02x: TwoWire communication error: %d", _deviceAddress, err);
+        ESP_LOGD(TAG, "DFRobot @ 0x%02x: TwoWire communication error: %d", _deviceAddress, err);
         delay(10);
       } else {
         found = true;
@@ -48,7 +48,7 @@ void Mycila::DFRobotDimmer::begin() {
     }
 
   } else {
-    ESP_LOGI(TAG, "Searching for DFRobot Dimmer @ 0x58 up to 0x5F...");
+    ESP_LOGI(TAG, "Searching for DFRobot @ 0x58 up to 0x5F...");
     for (uint8_t addr = 0x58; !found && addr <= 0x5F; addr++) {
       if (_test(addr) == ESP_OK) {
         _deviceAddress = addr;
@@ -59,18 +59,18 @@ void Mycila::DFRobotDimmer::begin() {
   }
 
   if (found) {
-    ESP_LOGI(TAG, "Found DFRobot Dimmer @ 0x%02x and channel %d", _deviceAddress, _channel);
+    ESP_LOGI(TAG, "Found DFRobot @ 0x%02x and channel %d", _deviceAddress, _channel);
   } else if (_deviceAddress) {
-    ESP_LOGW(TAG, "DFRobot Dimmer @ 0x%02x: Unable to communicate with device", _deviceAddress);
+    ESP_LOGW(TAG, "DFRobot @ 0x%02x: Unable to communicate with device", _deviceAddress);
   } else {
     _deviceAddress = 0x58;
-    ESP_LOGW(TAG, "DFRobot Dimmer no found! Using default address 0x58");
+    ESP_LOGW(TAG, "DFRobot not found! Using default address 0x58");
   }
 
   // set output
   uint8_t err = _sendOutput(_deviceAddress, _output);
   if (err) {
-    ESP_LOGE(TAG, "Disable DFRobot Dimmer @ 0x%02x: Unable to set output voltage: TwoWire communication error: %d", _deviceAddress, err);
+    ESP_LOGE(TAG, "Disable DFRobot @ 0x%02x: Unable to set output voltage: TwoWire communication error: %d", _deviceAddress, err);
     return;
   }
 
@@ -85,7 +85,7 @@ void Mycila::DFRobotDimmer::end() {
     return;
   _enabled = false;
   _online = false;
-  ESP_LOGI(TAG, "Disable DFRobot Dimmer @ 0x%02x", _deviceAddress);
+  ESP_LOGI(TAG, "Disable DFRobot @ 0x%02x", _deviceAddress);
   _apply();
 }
 

@@ -26,11 +26,11 @@ void Mycila::PWMDimmer::begin() {
     return;
 
   if (!GPIO_IS_VALID_OUTPUT_GPIO(_pin)) {
-    ESP_LOGE(TAG, "Disable PWM Dimmer: Invalid pin: %" PRId8, _pin);
+    ESP_LOGE(TAG, "Invalid pin: %" PRId8, _pin);
     return;
   }
 
-  ESP_LOGI(TAG, "Enable PWM Dimmer on pin %" PRId8, _pin);
+  ESP_LOGI(TAG, "Enable dimmer on pin %" PRId8, _pin);
 
   pinMode(_pin, OUTPUT);
   digitalWrite(_pin, LOW);
@@ -51,7 +51,7 @@ void Mycila::PWMDimmer::end() {
     return;
   _enabled = false;
   _online = false;
-  ESP_LOGI(TAG, "Disable PWM Dimmer on pin %" PRId8, _pin);
+  ESP_LOGI(TAG, "Disable dimmer on pin %" PRId8, _pin);
   _apply();
   ledcDetach(_pin);
   pinMode(_pin, OUTPUT);

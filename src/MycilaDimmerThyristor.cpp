@@ -58,11 +58,11 @@ void Mycila::ThyristorDimmer::begin() {
     return;
 
   if (!GPIO_IS_VALID_OUTPUT_GPIO(_pin)) {
-    ESP_LOGE(TAG, "Disable ZC Dimmer: Invalid pin: %" PRId8, _pin);
+    ESP_LOGE(TAG, "Invalid pin: %" PRId8, _pin);
     return;
   }
 
-  ESP_LOGI(TAG, "Enable Thyristor Dimmer on pin %" PRId8, _pin);
+  ESP_LOGI(TAG, "Enable dimmer on pin %" PRId8, _pin);
 
   pinMode(_pin, OUTPUT);
   digitalWrite(_pin, LOW);
@@ -78,7 +78,7 @@ void Mycila::ThyristorDimmer::end() {
     return;
   _enabled = false;
   _online = false;
-  ESP_LOGI(TAG, "Disable ZC Dimmer on pin %" PRId8, _pin);
+  ESP_LOGI(TAG, "Disable dimmer on pin %" PRId8, _pin);
   _apply();
   _unregisterDimmer(this);
   digitalWrite(_pin, LOW);
