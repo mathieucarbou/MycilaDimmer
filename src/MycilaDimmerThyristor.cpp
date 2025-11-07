@@ -37,15 +37,15 @@
 
 #define TAG "ThyristorDimmer"
 
-struct EnabledDimmer;
-struct EnabledDimmer {
+struct RegisteredDimmer;
+struct RegisteredDimmer {
     Mycila::ThyristorDimmer* dimmer = nullptr;
-    EnabledDimmer* prev = nullptr;
-    EnabledDimmer* next = nullptr;
+    RegisteredDimmer* prev = nullptr;
+    RegisteredDimmer* next = nullptr;
     uint16_t alarm_count = UINT16_MAX; // when to fire the dimmer
 };
 
-static struct EnabledDimmer* dimmers = nullptr;
+static struct RegisteredDimmer* dimmers = nullptr;
 static gptimer_handle_t fire_timer = nullptr;
 
 #define USE_DIMMER_LOCK 1
@@ -100,7 +100,7 @@ void ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::onZeroCross(int16_t delayUntilZer
 #endif
 
   // go through all registered dimmers to prepare the next firing
-  struct EnabledDimmer* current = dimmers;
+  struct RegisteredDimmer* current = dimmers;
   while (current != nullptr) {
     // if a delay is applied (dimmer is off - UINT16_MAX - or on with a delay > 0), turn off the triac and it will be turned on again later
     if (current->dimmer->_delay)
@@ -172,7 +172,7 @@ bool ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::_fireTimerISR(gptimer_handle_t ti
 #endif
 
     // go through all registered dimmers and check the ones to fire
-    struct EnabledDimmer* current = dimmers;
+    struct RegisteredDimmer* current = dimmers;
     while (current != nullptr) {
       if (current->alarm_count != UINT16_MAX) {
         // this dimmer has not yet been fired (< UINT16_MAX)
@@ -239,10 +239,10 @@ void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
 #endif
 
   if (dimmers == nullptr) {
-    dimmers = new EnabledDimmer();
+    dimmers = new RegisteredDimmer();
     dimmers->dimmer = dimmer;
   } else {
-    struct EnabledDimmer* first = new EnabledDimmer();
+    struct RegisteredDimmer* first = new RegisteredDimmer();
     first->next = dimmers;
     dimmers->prev = first;
     dimmers = first;
@@ -261,7 +261,7 @@ void Mycila::ThyristorDimmer::_unregisterDimmer(Mycila::ThyristorDimmer* dimmer)
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
-  struct EnabledDimmer* current = dimmers;
+  struct RegisteredDimmer* current = dimmers;
   while (current != nullptr) {
     if (current->dimmer == dimmer) {
       if (current->prev != nullptr) {
