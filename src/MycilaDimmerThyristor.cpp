@@ -35,7 +35,7 @@
 // delay_us = asin((330 * 0.03) / 325) / pi * 10000 = 97us
 #define PHASE_DELAY_MIN_US (90)
 
-#define TAG "ThyristorDimmer"
+#define TAG "Thyristor"
 
 struct RegisteredDimmer;
 struct RegisteredDimmer {

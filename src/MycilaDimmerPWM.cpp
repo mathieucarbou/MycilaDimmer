@@ -19,7 +19,7 @@
                                         (((1ULL << (gpio_num)) & SOC_GPIO_VALID_GPIO_MASK) != 0))
 #endif
 
-#define TAG "PWMDimmer"
+#define TAG "PWM"
 
 void Mycila::PWMDimmer::begin() {
   if (_enabled)

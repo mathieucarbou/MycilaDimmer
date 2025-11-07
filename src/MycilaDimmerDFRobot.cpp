@@ -7,7 +7,7 @@
 // logging
 #include <esp32-hal-log.h>
 
-#define TAG "DFRobotDimmer"
+#define TAG "DFRobot"
 
 void Mycila::DFRobotDimmer::begin() {
   if (_enabled)
