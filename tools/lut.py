@@ -108,7 +108,7 @@ def format_cpp_table(table: List[int], table_size: int) -> str:
 
     return f"""// Auto-generated LUT of {table_size} entries
 #define FIRING_DELAYS_LEN {table_size}U
-static const uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {{
+static constexpr uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {{
   {table_content}
 }};"""
 

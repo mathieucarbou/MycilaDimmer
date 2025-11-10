@@ -63,7 +63,7 @@ The script includes built-in validation that checks:
 // Each entry maps duty cycle to TRIAC firing delay (16-bit values)
 
 #define FIRING_DELAYS_LEN 80U
-static const uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {
+static constexpr uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {
   0xffff, 0xdfd3, 0xd734, 0xd10c, 0xcc10, 0xc7cb, 0xc401, 0xc092, 0xbd69, 0xba76,
   // ... more values ...
   0x4588, 0x4295, 0x3f6c, 0x3bfd, 0x3833, 0x33ee, 0x2ef2, 0x28ca, 0x202b, 0x0000

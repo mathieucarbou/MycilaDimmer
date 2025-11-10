@@ -7,9 +7,9 @@
 #define DIMMER_RESOLUTION 12
 #define FIRING_DELAYS_LEN 200U
 
-static const uint32_t FIRING_DELAY_MAX = (1 << DIMMER_RESOLUTION) - 1;
-static const uint32_t FIRING_DELAYS_SCALE = (FIRING_DELAYS_LEN - 1U) * (1UL << (16 - DIMMER_RESOLUTION));
-static const uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {
+static constexpr uint32_t FIRING_DELAY_MAX = (1 << DIMMER_RESOLUTION) - 1;
+static constexpr uint32_t FIRING_DELAYS_SCALE = (FIRING_DELAYS_LEN - 1U) * (1UL << (16 - DIMMER_RESOLUTION));
+static constexpr uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {
   0xffff, 0xe877, 0xe240, 0xddd9, 0xda51, 0xd74f, 0xd4aa, 0xd248, 0xd01a, 0xce16,
   0xcc34, 0xca6e, 0xc8c0, 0xc728, 0xc5a1, 0xc42b, 0xc2c3, 0xc168, 0xc019, 0xbed3,
   0xbd98, 0xbc65, 0xbb3b, 0xba17, 0xb8fb, 0xb7e5, 0xb6d5, 0xb5ca, 0xb4c5, 0xb3c4,
