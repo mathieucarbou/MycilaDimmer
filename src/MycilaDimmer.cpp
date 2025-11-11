@@ -32,6 +32,8 @@ static constexpr uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {
   0x31e8, 0x2fe4, 0x2db6, 0x2b54, 0x28af, 0x25ad, 0x2225, 0x1dbe, 0x1787, 0x0000
 };
 
+static const char* H_LEVELS[] = {"H1", "H3", "H5", "H7", "H9", "H11", "H13", "H15", "H17", "H19", "H21"};
+
 // =============================================================================
 // Mycila::Dimmer
 // =============================================================================
@@ -43,5 +45,36 @@ uint16_t Mycila::Dimmer::_lookupFiringDelay(float dutyCycle, uint16_t semiPeriod
   uint32_t a = FIRING_DELAYS[index];
   uint32_t b = FIRING_DELAYS[index + 1];
   uint32_t delay = a - (((a - b) * (slot & 0xffff)) >> 16); // interpolate a b
-  return (delay * semiPeriod) >> 16; // scale to period
+  return (delay * semiPeriod) >> 16;                        // scale to period
 }
+
+#ifdef MYCILA_JSON_SUPPORT
+/**
+ * @brief Serialize Dimmer information to a JSON object
+ *
+ * @param root: the JSON object to serialize to
+ */
+void Mycila::Dimmer::toJson(const JsonObject& root) const {
+  root["type"] = type();
+  root["enabled"] = _enabled;
+  root["online"] = _online;
+  root["state"] = isOn() ? "on" : "off";
+  root["duty_cycle"] = _dutyCycle;
+  root["duty_cycle_mapped"] = getDutyCycleMapped();
+  root["duty_cycle_fire"] = _dutyCycleFire;
+  root["duty_cycle_limit"] = _dutyCycleLimit;
+  root["duty_cycle_min"] = _dutyCycleMin;
+  root["duty_cycle_max"] = _dutyCycleMax;
+  root["power_lut"] = _powerLUTEnabled;
+  root["power_lut_semi_period"] = _semiPeriod;
+  JsonObject harmonics = root["harmonics"].to<JsonObject>();
+  float* output = new float[11]; // H1 to H21
+  if (calculateHarmonics(output, 11)) {
+    for (size_t i = 0; i < 11; i++) {
+      if (!std::isnan(output[i])) {
+        harmonics[H_LEVELS[i]] = output[i];
+      }
+    }
+  }
+}
+#endif

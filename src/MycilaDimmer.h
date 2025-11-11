@@ -288,31 +288,7 @@ namespace Mycila {
        *
        * @param root: the JSON object to serialize to
        */
-      virtual void toJson(const JsonObject& root) const {
-        root["type"] = type();
-        root["enabled"] = _enabled;
-        root["online"] = _online;
-        root["state"] = isOn() ? "on" : "off";
-        root["duty_cycle"] = _dutyCycle;
-        root["duty_cycle_mapped"] = getDutyCycleMapped();
-        root["duty_cycle_fire"] = _dutyCycleFire;
-        root["duty_cycle_limit"] = _dutyCycleLimit;
-        root["duty_cycle_min"] = _dutyCycleMin;
-        root["duty_cycle_max"] = _dutyCycleMax;
-        root["power_lut"] = _powerLUTEnabled;
-        root["power_lut_semi_period"] = _semiPeriod;
-        JsonObject harmonics = root["harmonics"].to<JsonObject>();
-        float output[11]; // H1 to H21
-        if (calculateHarmonics(output, 11)) {
-          for (size_t i = 0; i < 11; i++) {
-            if (!std::isnan(output[i])) {
-              char key[8];
-              snprintf(key, sizeof(key), "H%d", static_cast<int>(2 * i + 1));
-              harmonics[key] = output[i];
-            }
-          }
-        }
-      }
+      virtual void toJson(const JsonObject& root) const;
 #endif
 
     protected:
