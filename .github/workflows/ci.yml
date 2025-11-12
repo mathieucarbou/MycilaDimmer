@@ -71,7 +71,7 @@ jobs:
         run: arduino-cli lib install ArduinoJson
 
       - name: Install MycilaPulseAnalyzer
-        run: ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true arduino-cli lib install --git-url https://github.com/mathieucarbou/MycilaPulseAnalyzer#v3.0.6
+        run: ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true arduino-cli lib install --git-url https://github.com/mathieucarbou/MycilaPulseAnalyzer#v3.0.10
 
       - name: Build DAC
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/DAC/DAC.ino"
@@ -86,13 +86,13 @@ jobs:
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/PWM/PWM.ino"
 
       - name: Build Thyristor
-        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/Thyristor/Thyristor.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/Thyristor/Thyristor.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1"
 
       - name: Build ThyristorAutoFrequency
-        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ThyristorAutoFrequency/ThyristorAutoFrequency.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ThyristorAutoFrequency/ThyristorAutoFrequency.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1"
 
       - name: Build ThyristorWithFS
-        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ThyristorWithFS/ThyristorWithFS.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1 -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1 -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1 -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1 -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1"
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ThyristorWithFS/ThyristorWithFS.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1"
 
   platformio:
     name: "pio:${{ matrix.board }}:${{ matrix.platform }}"

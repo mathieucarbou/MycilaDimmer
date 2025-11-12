@@ -88,9 +88,9 @@ $(function() {
 <div class="line"><a id="l00007" name="l00007"></a><span class="lineno">    7</span><span class="preprocessor">#define DIMMER_RESOLUTION 12</span></div>
 <div class="line"><a id="l00008" name="l00008"></a><span class="lineno">    8</span><span class="preprocessor">#define FIRING_DELAYS_LEN 200U</span></div>
 <div class="line"><a id="l00009" name="l00009"></a><span class="lineno">    9</span> </div>
-<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">static</span> <span class="keyword">const</span> uint32_t FIRING_DELAY_MAX = (1 &lt;&lt; DIMMER_RESOLUTION) - 1;</div>
-<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">static</span> <span class="keyword">const</span> uint32_t FIRING_DELAYS_SCALE = (FIRING_DELAYS_LEN - 1U) * (1UL &lt;&lt; (16 - DIMMER_RESOLUTION));</div>
-<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">static</span> <span class="keyword">const</span> uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {</div>
+<div class="line"><a id="l00010" name="l00010"></a><span class="lineno">   10</span><span class="keyword">static</span> <span class="keyword">constexpr</span> uint32_t FIRING_DELAY_MAX = (1 &lt;&lt; DIMMER_RESOLUTION) - 1;</div>
+<div class="line"><a id="l00011" name="l00011"></a><span class="lineno">   11</span><span class="keyword">static</span> <span class="keyword">constexpr</span> uint32_t FIRING_DELAYS_SCALE = (FIRING_DELAYS_LEN - 1U) * (1UL &lt;&lt; (16 - DIMMER_RESOLUTION));</div>
+<div class="line"><a id="l00012" name="l00012"></a><span class="lineno">   12</span><span class="keyword">static</span> <span class="keyword">constexpr</span> uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {</div>
 <div class="line"><a id="l00013" name="l00013"></a><span class="lineno">   13</span>  0xffff, 0xe877, 0xe240, 0xddd9, 0xda51, 0xd74f, 0xd4aa, 0xd248, 0xd01a, 0xce16,</div>
 <div class="line"><a id="l00014" name="l00014"></a><span class="lineno">   14</span>  0xcc34, 0xca6e, 0xc8c0, 0xc728, 0xc5a1, 0xc42b, 0xc2c3, 0xc168, 0xc019, 0xbed3,</div>
 <div class="line"><a id="l00015" name="l00015"></a><span class="lineno">   15</span>  0xbd98, 0xbc65, 0xbb3b, 0xba17, 0xb8fb, 0xb7e5, 0xb6d5, 0xb5ca, 0xb4c5, 0xb3c4,</div>
@@ -113,19 +113,47 @@ $(function() {
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span>  0x31e8, 0x2fe4, 0x2db6, 0x2b54, 0x28af, 0x25ad, 0x2225, 0x1dbe, 0x1787, 0x0000</div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>};</div>
 <div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span> </div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="comment">// =============================================================================</span></div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span><span class="comment">// Mycila::Dimmer</span></div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span><span class="keyword">static</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* H_LEVELS[] = {<span class="stringliteral">&quot;H1&quot;</span>, <span class="stringliteral">&quot;H3&quot;</span>, <span class="stringliteral">&quot;H5&quot;</span>, <span class="stringliteral">&quot;H7&quot;</span>, <span class="stringliteral">&quot;H9&quot;</span>, <span class="stringliteral">&quot;H11&quot;</span>, <span class="stringliteral">&quot;H13&quot;</span>, <span class="stringliteral">&quot;H15&quot;</span>, <span class="stringliteral">&quot;H17&quot;</span>, <span class="stringliteral">&quot;H19&quot;</span>, <span class="stringliteral">&quot;H21&quot;</span>};</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span> </div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span><span class="comment">// =============================================================================</span></div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>uint16_t Mycila::Dimmer::_lookupFiringDelay(<span class="keywordtype">float</span> dutyCycle, uint16_t semiPeriod) {</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  uint32_t duty = dutyCycle * FIRING_DELAY_MAX;</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>  uint32_t slot = duty * FIRING_DELAYS_SCALE + (FIRING_DELAYS_SCALE &gt;&gt; 1);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  uint32_t index = slot &gt;&gt; 16;</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  uint32_t a = FIRING_DELAYS[index];</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  uint32_t b = FIRING_DELAYS[index + 1];</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  uint32_t delay = a - (((a - b) * (slot &amp; 0xffff)) &gt;&gt; 16); <span class="comment">// interpolate a b</span></div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <span class="keywordflow">return</span> (delay * semiPeriod) &gt;&gt; 16; <span class="comment">// scale to period</span></div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span><span class="comment">// Mycila::Dimmer</span></div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span><span class="comment">// =============================================================================</span></div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>uint16_t Mycila::Dimmer::_lookupFiringDelay(<span class="keywordtype">float</span> dutyCycle, uint16_t semiPeriod) {</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>  uint32_t duty = dutyCycle * FIRING_DELAY_MAX;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  uint32_t slot = duty * FIRING_DELAYS_SCALE + (FIRING_DELAYS_SCALE &gt;&gt; 1);</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>  uint32_t index = slot &gt;&gt; 16;</div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  uint32_t a = FIRING_DELAYS[index];</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  uint32_t b = FIRING_DELAYS[index + 1];</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  uint32_t delay = a - (((a - b) * (slot &amp; 0xffff)) &gt;&gt; 16); <span class="comment">// interpolate a b</span></div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>  <span class="keywordflow">return</span> (delay * semiPeriod) &gt;&gt; 16;                        <span class="comment">// scale to period</span></div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#ifdef MYCILA_JSON_SUPPORT</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span><span class="keywordtype">void</span> Mycila::Dimmer::toJson(<span class="keyword">const</span> JsonObject&amp; root)<span class="keyword"> const </span>{</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  root[<span class="stringliteral">&quot;type&quot;</span>] = type();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  root[<span class="stringliteral">&quot;enabled&quot;</span>] = _enabled;</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>  root[<span class="stringliteral">&quot;online&quot;</span>] = _online;</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>  root[<span class="stringliteral">&quot;state&quot;</span>] = isOn() ? <span class="stringliteral">&quot;on&quot;</span> : <span class="stringliteral">&quot;off&quot;</span>;</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>  root[<span class="stringliteral">&quot;duty_cycle&quot;</span>] = _dutyCycle;</div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>  root[<span class="stringliteral">&quot;duty_cycle_mapped&quot;</span>] = getDutyCycleMapped();</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>  root[<span class="stringliteral">&quot;duty_cycle_fire&quot;</span>] = _dutyCycleFire;</div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>  root[<span class="stringliteral">&quot;duty_cycle_limit&quot;</span>] = _dutyCycleLimit;</div>
+<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span>  root[<span class="stringliteral">&quot;duty_cycle_min&quot;</span>] = _dutyCycleMin;</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>  root[<span class="stringliteral">&quot;duty_cycle_max&quot;</span>] = _dutyCycleMax;</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>  root[<span class="stringliteral">&quot;power_lut&quot;</span>] = _powerLUTEnabled;</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>  root[<span class="stringliteral">&quot;power_lut_semi_period&quot;</span>] = _semiPeriod;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>  JsonObject harmonics = root[<span class="stringliteral">&quot;harmonics&quot;</span>].to&lt;JsonObject&gt;();</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>  <span class="keywordtype">float</span>* output = <span class="keyword">new</span> <span class="keywordtype">float</span>[11]; <span class="comment">// H1 to H21</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>  <span class="keywordflow">if</span> (calculateHarmonics(output, 11)) {</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; 11; i++) {</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      <span class="keywordflow">if</span> (!std::isnan(output[i])) {</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>        harmonics[H_LEVELS[i]] = output[i];</div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      }</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    }</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>  }</div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span><span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
