@@ -401,6 +401,7 @@ namespace Mycila {
   };
 } // namespace Mycila
 
+#include "MycilaDimmerCycleStealing.h"
 #include "MycilaDimmerDFRobot.h"
 #include "MycilaDimmerPWM.h"
 #include "MycilaDimmerThyristor.h"
