@@ -126,6 +126,14 @@ namespace Mycila {
       gpio_num_t _pin = GPIO_NUM_NC;
       uint16_t _delay = UINT16_MAX; // this is the next firing delay to apply
 
+      struct RegisteredDimmer {
+          ThyristorDimmer* dimmer = nullptr;
+          RegisteredDimmer* prev = nullptr;
+          RegisteredDimmer* next = nullptr;
+          uint16_t alarm_count = UINT16_MAX; // when to fire the dimmer
+      };
+
+      static struct RegisteredDimmer* dimmers;
       static bool _fireTimerISR(gptimer_handle_t timer, const gptimer_alarm_event_data_t* event, void* arg);
       static void _registerDimmer(Mycila::ThyristorDimmer* dimmer);
       static void _unregisterDimmer(Mycila::ThyristorDimmer* dimmer);

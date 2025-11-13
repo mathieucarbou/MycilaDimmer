@@ -106,6 +106,13 @@ namespace Mycila {
       gpio_num_t _pin = GPIO_NUM_NC;
       bool _running = false;
 
+      struct RegisteredDimmer {
+          CycleStealingDimmer* dimmer = nullptr;
+          RegisteredDimmer* prev = nullptr;
+          RegisteredDimmer* next = nullptr;
+      };
+
+      static struct RegisteredDimmer* dimmers;
       static bool _fireTimerISR(gptimer_handle_t timer, const gptimer_alarm_event_data_t* event, void* arg);
       static void _registerDimmer(Mycila::CycleStealingDimmer* dimmer);
       static void _unregisterDimmer(Mycila::CycleStealingDimmer* dimmer);

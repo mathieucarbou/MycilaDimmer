@@ -37,20 +37,13 @@
 
 #define TAG "Thyristor"
 
-struct RegisteredDimmer;
-struct RegisteredDimmer {
-    Mycila::ThyristorDimmer* dimmer = nullptr;
-    RegisteredDimmer* prev = nullptr;
-    RegisteredDimmer* next = nullptr;
-    uint16_t alarm_count = UINT16_MAX; // when to fire the dimmer
-};
-
-static struct RegisteredDimmer* dimmers = nullptr;
 static gptimer_handle_t fire_timer = nullptr;
 
 #ifndef MYCILA_DIMMER_NO_LOCK
 static portMUX_TYPE dimmers_spinlock = portMUX_INITIALIZER_UNLOCKED;
 #endif
+
+Mycila::ThyristorDimmer::RegisteredDimmer* Mycila::ThyristorDimmer::dimmers = nullptr;
 
 void Mycila::ThyristorDimmer::begin() {
   if (_enabled)

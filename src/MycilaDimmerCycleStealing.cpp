@@ -32,20 +32,14 @@
 
 #define TAG "CycleStealing"
 
-struct RegisteredDimmer;
-struct RegisteredDimmer {
-    Mycila::CycleStealingDimmer* dimmer = nullptr;
-    RegisteredDimmer* prev = nullptr;
-    RegisteredDimmer* next = nullptr;
-};
-
-static struct RegisteredDimmer* dimmers = nullptr;
 static gptimer_handle_t fire_timer = nullptr;
 static bool isr_running = false; // Re-entry guard: only accessed from _fireTimerISR, no volatile needed
 
 #ifndef MYCILA_DIMMER_NO_LOCK
 static portMUX_TYPE dimmers_spinlock = portMUX_INITIALIZER_UNLOCKED;
 #endif
+
+Mycila::CycleStealingDimmer::RegisteredDimmer* Mycila::CycleStealingDimmer::dimmers = nullptr;
 
 void Mycila::CycleStealingDimmer::begin() {
   if (_enabled)
