@@ -531,6 +531,10 @@ For **Thyristor Dimmer** (IRAM safety):
 ```ini
 build_flags =
   -D CONFIG_ARDUINO_ISR_IRAM=1
+  -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1
+  -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1
+  -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1
+  -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1
 
 lib_deps =
   mathieucarbou/MycilaPulseAnalyzer
@@ -575,6 +579,10 @@ build_flags =
   -Wall -Wextra
   ; ThyristorDimmer specific flags
   -D CONFIG_ARDUINO_ISR_IRAM=1
+  -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1
+  -D CONFIG_GPTIMER_CTRL_FUNC_IN_IRAM=1
+  -D CONFIG_GPTIMER_ISR_IRAM_SAFE=1
+  -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1
 lib_deps =
   bblanchon/ArduinoJson
   mathieucarbou/MycilaPulseAnalyzer
