@@ -94,6 +94,9 @@ jobs:
       - name: Build ThyristorWithFS
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/ThyristorWithFS/ThyristorWithFS.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1"
 
+      - name: Build MultipleDimmers
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/MultipleDimmers/MultipleDimmers.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1"
+
   platformio:
     name: "pio:${{ matrix.board }}:${{ matrix.platform }}"
     runs-on: ubuntu-latest
@@ -148,3 +151,6 @@ jobs:
 
       - name: Build ThyristorWithFS
         run: PLATFORMIO_SRC_DIR=examples/ThyristorWithFS PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+
+      - name: Build MultipleDimmers
+        run: PLATFORMIO_SRC_DIR=examples/MultipleDimmers PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
