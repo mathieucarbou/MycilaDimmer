@@ -21,13 +21,13 @@
 
 #define TAG "PWM"
 
-void Mycila::PWMDimmer::begin() {
+bool Mycila::PWMDimmer::begin() {
   if (_enabled)
-    return;
+    return true;
 
   if (!GPIO_IS_VALID_OUTPUT_GPIO(_pin)) {
     ESP_LOGE(TAG, "Invalid pin: %" PRId8, _pin);
-    return;
+    return false;
   }
 
   ESP_LOGI(TAG, "Enable dimmer on pin %" PRId8, _pin);
@@ -39,11 +39,12 @@ void Mycila::PWMDimmer::begin() {
     _enabled = true;
   } else {
     ESP_LOGE(TAG, "Failed to attach ledc driver on pin %" PRId8, _pin);
-    return;
+    return false;
   }
 
   // restart with last saved value
   setDutyCycle(_dutyCycle);
+  return true;
 }
 
 void Mycila::PWMDimmer::end() {

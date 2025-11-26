@@ -53,7 +53,7 @@ namespace Mycila {
        * @warning Dimmer won't be enabled if pin is invalid
        * @warning Dimmer won't be activated until the ZCD is enabled
        */
-      void begin() override;
+      bool begin() override;
 
       /**
        * @brief Disable the dimmer

@@ -9,14 +9,14 @@
 
 #define TAG "DFRobot"
 
-void Mycila::DFRobotDimmer::begin() {
+bool Mycila::DFRobotDimmer::begin() {
   if (_enabled)
-    return;
+    return true;
 
   uint8_t resolution = getResolution();
   if (!resolution) {
     ESP_LOGE(TAG, "SKU not set!");
-    return;
+    return false;
   }
 
   // sanity checks
@@ -29,7 +29,7 @@ void Mycila::DFRobotDimmer::begin() {
 
   if (_channel > 2) {
     ESP_LOGE(TAG, "Invalid channel %d", _channel);
-    return;
+    return false;
   }
 
   // discovery
@@ -71,13 +71,15 @@ void Mycila::DFRobotDimmer::begin() {
   uint8_t err = _sendOutput(_deviceAddress, _output);
   if (err) {
     ESP_LOGE(TAG, "Disable DFRobot @ 0x%02x: Unable to set output voltage: TwoWire communication error: %d", _deviceAddress, err);
-    return;
+    return false;
   }
 
   _enabled = true;
 
   // restart with last saved value
   setDutyCycle(_dutyCycle);
+
+  return true;
 }
 
 void Mycila::DFRobotDimmer::end() {

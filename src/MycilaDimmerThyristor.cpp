@@ -45,13 +45,13 @@ static portMUX_TYPE dimmers_spinlock = portMUX_INITIALIZER_UNLOCKED;
 
 Mycila::ThyristorDimmer::RegisteredDimmer* Mycila::ThyristorDimmer::dimmers = nullptr;
 
-void Mycila::ThyristorDimmer::begin() {
+bool Mycila::ThyristorDimmer::begin() {
   if (_enabled)
-    return;
+    return true;
 
   if (!GPIO_IS_VALID_OUTPUT_GPIO(_pin)) {
     ESP_LOGE(TAG, "Invalid pin: %" PRId8, _pin);
-    return;
+    return false;
   }
 
   ESP_LOGI(TAG, "Enable dimmer on pin %" PRId8, _pin);
@@ -63,6 +63,7 @@ void Mycila::ThyristorDimmer::begin() {
 
   // restart with last saved value
   setDutyCycle(_dutyCycle);
+  return true;
 }
 
 void Mycila::ThyristorDimmer::end() {

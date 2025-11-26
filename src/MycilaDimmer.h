@@ -34,8 +34,11 @@ namespace Mycila {
     public:
       virtual ~Dimmer() {};
 
-      virtual void begin() { _enabled = true; };
-      virtual void end() { _enabled = false; };
+      virtual bool begin() {
+        _enabled = true;
+        return true;
+      }
+      virtual void end() { _enabled = false; }
       virtual const char* type() const { return "virtual"; }
 
       ///////////////////

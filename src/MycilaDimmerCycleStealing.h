@@ -43,7 +43,7 @@ namespace Mycila {
        *
        * @warning Dimmer won't be enabled if pin is invalid
        */
-      void begin() override;
+      bool begin() override;
 
       /**
        * @brief Disable the dimmer
