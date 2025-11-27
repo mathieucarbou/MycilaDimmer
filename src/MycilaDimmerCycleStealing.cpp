@@ -33,7 +33,8 @@
 #define TAG "CycleStealing"
 
 static gptimer_handle_t fire_timer = nullptr;
-static bool isr_running = false; // Re-entry guard: only accessed from _fireTimerISR, no volatile needed
+static bool inside_isr = false; // Re-entry guard: only accessed from _fireTimerISR, no volatile needed
+static uint16_t alarm_set = 0;  // Remember if the alarm is set or not, and if yes, to which value
 
 #ifndef MYCILA_DIMMER_NO_LOCK
 static portMUX_TYPE dimmers_spinlock = portMUX_INITIALIZER_UNLOCKED;
@@ -73,100 +74,51 @@ void Mycila::CycleStealingDimmer::end() {
   digitalWrite(_pin, LOW);
 }
 
-bool Mycila::CycleStealingDimmer::_apply() {
-  if (!_enabled)
-    return false;
-  if (!_online || !_semiPeriod || _dutyCycleFire == 0) {
-    if (_running) {
-      if (fire_timer != nullptr) {
-        ESP_ERROR_CHECK(gptimer_set_alarm_action(fire_timer, nullptr));
-      }
-      _running = false;
-    }
-  } else {
-    if (!_running) {
-      // Start the firing timer with a period equal to the semi-period
-      // If a ZCD is there, the start of the timer will be synced by the ZCD signal to be just before the 0V crossing
-      // Otherwise, we rely on the clock accuracy considering that a ZC dimmer can only activate or deactivate at 0V crossing
-      gptimer_alarm_config_t fire_timer_alarm_cfg = {
-        .alarm_count = _semiPeriod,
-        .reload_count = 0,
-        .flags = {.auto_reload_on_alarm = true}};
-      if (fire_timer != nullptr) {
-        ESP_ERROR_CHECK(gptimer_set_raw_count(fire_timer, 0));
-        ESP_ERROR_CHECK(gptimer_set_alarm_action(fire_timer, &fire_timer_alarm_cfg));
-      }
-      _running = true;
-    }
-  }
-  return true;
-}
-
 void ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::onZeroCross(int16_t delayUntilZero, void* arg) {
   // sync the firering timer to start a little before 0V crossing
-  if (inlined_gptimer_set_raw_count(fire_timer, 0) != ESP_OK) {
-    // failed to reset the timer: probably not initialized yet: just ignore this ZC event
-    return;
-  }
+  inlined_gptimer_set_raw_count(fire_timer, 0);
 }
 
 // Timer ISR to be called as soon as a dimmer needs to be fired
 bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_t timer, const gptimer_alarm_event_data_t* event, void* arg) {
   // Prevent re-entry: if this ISR takes longer than the timer period,
   // we must not allow concurrent execution which could cause race conditions
-  if (isr_running) {
+  if (inside_isr) {
     // ISR is already running - skip this alarm to prevent re-entry
     return false;
   }
-  isr_running = true;
+  inside_isr = true;
 
   // get the time we spent looping and eventually waiting for the lock
   uint64_t fire_timer_count_value;
   if (inlined_gptimer_get_raw_count(fire_timer, &fire_timer_count_value) != ESP_OK) {
     // failed to get the timer count: just ignore this event
-    isr_running = false;
+    inside_isr = false;
     return false;
   }
 
   // Note: if locking takes too long (more than semi-period), a new timer event may be triggered
-  // while we are still in this ISR, but it will be ignored by the isr_running guard
+  // while we are still in this ISR, but it will be ignored by the inside_isr guard
 
 #ifndef MYCILA_DIMMER_NO_LOCK
   // lock since we need to iterate over the list of dimmers
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
-  // go through all registered dimmers and compute the next action
-  struct RegisteredDimmer* current = dimmers;
-  while (current != nullptr) {
-    // if (current->alarm_count != UINT16_MAX) {
-    //   // this dimmer has not yet been fired (< UINT16_MAX)
-    //   if (current->alarm_count <= fire_timer_count_value) {
-    //     // timer alarm has reached this dimmer alarm => time to fire this dimmer
-    //     gpio_ll_set_level(&GPIO, current->dimmer->_pin, HIGH);
-    //     // reset the alarm count to indicate that this dimmer has been fired
-    //     current->alarm_count = UINT16_MAX;
-    //   } else {
-    //     // dimmer has to be fired later => keep the minimum time at which we have to fire a dimmer
-    //     if (current->alarm_count < fire_timer_alarm_cfg.alarm_count)
-    //       fire_timer_alarm_cfg.alarm_count = current->alarm_count;
-    //   }
-    // }
-    current = current->next;
-  }
+  // TODO - IMPLEMENT CYCLE STEALING LOGIC HERE
 
 #ifndef MYCILA_DIMMER_NO_LOCK
   // unlock the list of dimmers
   portEXIT_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
-  isr_running = false;
+  inside_isr = false;
   return false;
 }
 
 // add a dimmer to the list of managed dimmers
 void Mycila::CycleStealingDimmer::_registerDimmer(Mycila::CycleStealingDimmer* dimmer) {
-  if (dimmers == nullptr) {
+  if (fire_timer == nullptr) {
     ESP_LOGI(TAG, "Starting dimmer firing ISR");
 
     gptimer_config_t timer_config;
@@ -182,9 +134,10 @@ void Mycila::CycleStealingDimmer::_registerDimmer(Mycila::CycleStealingDimmer* d
     timer_config.flags.allow_pd = false;
 #endif
 
-    ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &fire_timer));
     gptimer_event_callbacks_t callbacks_config;
     callbacks_config.on_alarm = _fireTimerISR;
+
+    ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &fire_timer));
     ESP_ERROR_CHECK(gptimer_register_event_callbacks(fire_timer, &callbacks_config, nullptr));
     ESP_ERROR_CHECK(gptimer_enable(fire_timer));
     ESP_ERROR_CHECK(gptimer_start(fire_timer));
@@ -242,11 +195,43 @@ void Mycila::CycleStealingDimmer::_unregisterDimmer(Mycila::CycleStealingDimmer*
   portEXIT_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
-  if (dimmers == nullptr) {
+  if (dimmers == nullptr && fire_timer != nullptr) {
     ESP_LOGI(TAG, "Stopping dimmer firing ISR");
-    gptimer_stop(fire_timer); // might be already stopped
+    ESP_ERROR_CHECK(gptimer_set_alarm_action(fire_timer, nullptr));
+    ESP_ERROR_CHECK(gptimer_stop(fire_timer));
     ESP_ERROR_CHECK(gptimer_disable(fire_timer));
     ESP_ERROR_CHECK(gptimer_del_timer(fire_timer));
     fire_timer = nullptr;
   }
+}
+
+bool Mycila::CycleStealingDimmer::_apply() {
+  if (!_enabled)
+    return false;
+
+  // we have no semi-period (or we are disconnected) => make sure the alarm is disabled to not trigger ISR
+  if (_semiPeriod == 0 && alarm_set) {
+    if (fire_timer != nullptr) {
+      ESP_LOGD(TAG, "Disable firing timer alarm");
+      ESP_ERROR_CHECK(gptimer_set_alarm_action(fire_timer, nullptr));
+    }
+    alarm_set = 0;
+
+    // we have a semi-period to set and it's different from the current one => reset the alarm
+  } else if (_semiPeriod > 0 && alarm_set != _semiPeriod) {
+    if (fire_timer != nullptr) {
+      ESP_LOGD(TAG, "Enable firing timer alarm to %" PRIu16 " us", _semiPeriod);
+      gptimer_alarm_config_t fire_timer_alarm_cfg = {
+        .alarm_count = _semiPeriod,
+        .reload_count = 0,
+        .flags = {.auto_reload_on_alarm = true}};
+      ESP_ERROR_CHECK(gptimer_set_raw_count(fire_timer, 0));
+      ESP_ERROR_CHECK(gptimer_set_alarm_action(fire_timer, &fire_timer_alarm_cfg));
+      alarm_set = _semiPeriod;
+    } else {
+      alarm_set = 0;
+    }
+  }
+
+  return true;
 }
