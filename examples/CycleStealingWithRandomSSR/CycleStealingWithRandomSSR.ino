@@ -4,9 +4,7 @@
  */
 
 //
-// Example to use a Zero-Cross Detection based dimmer (TRIAC or Random SSR)
-//
-// This example also shows how to auto-detect the grid frequency (50Hz or 60Hz) using MycilaPulseAnalyzer library
+// Example to use a Cycle-Stealing dimmer with a Random Solid State Relay (SSR) and Zero-Cross Detection (ZCD)
 //
 
 #include <Arduino.h>
@@ -22,9 +20,13 @@
 #endif
 
 static Mycila::PulseAnalyzer pulseAnalyzer;
-static Mycila::CycleStealingDimmer* dimmer;
+static Mycila::CycleStealingDimmer dimmer;
 
-static void initZCD() {
+void setup() {
+  Serial.begin(115200);
+  while (!Serial)
+    continue;
+
   // Initialize the Zero-Cross Detection (ZCD)
   // You can use MycilaPulseAnalyzer library to detect zero-crossing events from the AC waveform
   // See MycilaPulseAnalyzer documentation for more details
@@ -43,25 +45,13 @@ static void initZCD() {
   pulseAnalyzer.onZeroCross(Mycila::CycleStealingDimmer::onZeroCross);
 
   pulseAnalyzer.begin(GPIO_ZCD); // GPIO connected to the ZCD output. This can be an input-only pin.
-}
 
-static Mycila::CycleStealingDimmer* createDimmer() {
-  Mycila::CycleStealingDimmer* dimmer = new Mycila::CycleStealingDimmer();
+  dimmer.setPin(GPIO_DIMMER);
 
-  // GPIO connected to the dimmer control pin (or Vcc of random SSR)
-  dimmer->setPin(GPIO_DIMMER);
-
-  return dimmer;
-}
-
-void setup() {
-  Serial.begin(115200);
-  while (!Serial)
-    continue;
-
-  initZCD();
-
-  dimmer = createDimmer();
+  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
+  // Since the semi-period is already set and is required for  Zero-Cross Detection based dimmers, we just need to enable the LUT.
+  // Note: using a power LUT requires to know the semi-period of the grid frequency.
+  dimmer.enablePowerLUT(true);
 
   while (!pulseAnalyzer.getNominalGridSemiPeriod()) {
     Serial.printf("Waiting for grid frequency detection...\n");
@@ -71,40 +61,31 @@ void setup() {
   Serial.printf("Grid frequency detected: %d Hz\n", pulseAnalyzer.getNominalGridFrequency());
   Mycila::Dimmer::setSemiPeriod(pulseAnalyzer.getNominalGridSemiPeriod());
 
-  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
-  // Since the semi-period is already set and is required for  Zero-Cross Detection based dimmers, we just need to enable the LUT.
-  // Note: using a power LUT requires to know the semi-period of the grid frequency.
-  dimmer->enablePowerLUT(true);
-
-  dimmer->begin();
-
-  dimmer->setOnline(true);
+  dimmer.begin();
+  dimmer.setOnline(true);
 
   Serial.printf("\nProgressive dimming...\n");
 
-  dimmer->setDutyCycleLimit(1);
-  dimmer->setDutyCycleMin(0);
-  dimmer->setDutyCycleMax(1);
-  dimmer->setDutyCycle(0);
+  dimmer.setDutyCycleLimit(1);
+  dimmer.setDutyCycleMin(0);
+  dimmer.setDutyCycleMax(1);
+  dimmer.setDutyCycle(0);
 
   Serial.println("0 => 100");
   for (int i = 0; i <= 1000; i++) {
-    dimmer->setDutyCycle(i / 1000.0f);
+    dimmer.setDutyCycle(i / 1000.0f);
     delay(10);
   }
   Serial.println("100 => 0");
   for (int i = 1000; i >= 0; i--) {
-    dimmer->setDutyCycle(i / 1000.0f);
+    dimmer.setDutyCycle(i / 1000.0f);
     delay(10);
   }
 
   Serial.println("Done!");
 
-  dimmer->end();
+  dimmer.end();
   pulseAnalyzer.end();
-
-  delete dimmer;
-  dimmer = nullptr;
 }
 
 void loop() {
