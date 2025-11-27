@@ -14,12 +14,10 @@
 #if defined(CONFIG_IDF_TARGET_ESP32)
   #define GPIO_DIMMER_1 GPIO_NUM_25
   #define GPIO_DIMMER_2 GPIO_NUM_26
-  #define GPIO_DIMMER_3 GPIO_NUM_27
   #define GPIO_ZCD      GPIO_NUM_35
 #else
   #define GPIO_DIMMER_1 GPIO_NUM_20
   #define GPIO_DIMMER_2 GPIO_NUM_21
-  #define GPIO_DIMMER_3 GPIO_NUM_22
   #define GPIO_ZCD      GPIO_NUM_8
 #endif
 
@@ -67,15 +65,15 @@ void setup() {
   dimmer2.begin();
   dimmer3.begin();
 
+  dimmer1.setDutyCycle(0);
+  dimmer2.setDutyCycle(0);
+  dimmer3.setDutyCycle(0);
+
   dimmer1.setOnline(true);
   dimmer2.setOnline(true);
   dimmer3.setOnline(true);
 
   Serial.printf("\nProgressive dimming...\n");
-
-  dimmer1.setDutyCycle(0);
-  dimmer2.setDutyCycle(0);
-  dimmer3.setDutyCycle(0);
 
   Serial.println("0 => 100");
   for (int i = 0; i <= 1000; i++) {

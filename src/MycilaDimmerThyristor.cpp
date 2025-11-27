@@ -240,10 +240,12 @@ void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
     dimmers = new RegisteredDimmer();
     dimmers->dimmer = dimmer;
   } else {
-    struct RegisteredDimmer* first = new RegisteredDimmer();
-    first->next = dimmers;
-    dimmers->prev = first;
-    dimmers = first;
+    struct RegisteredDimmer* additional = new RegisteredDimmer();
+    additional->dimmer = dimmer;
+    additional->next = dimmers;
+    additional->prev = nullptr;
+    dimmers->prev = additional;
+    dimmers = additional;
   }
 
 #ifndef MYCILA_DIMMER_NO_LOCK

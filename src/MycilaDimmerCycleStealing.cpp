@@ -43,7 +43,7 @@ Mycila::CycleStealingDimmer::RegisteredDimmer* Mycila::CycleStealingDimmer::dimm
 
 bool Mycila::CycleStealingDimmer::begin() {
   if (_enabled)
-    return _enabled;
+    return true;
 
   if (!GPIO_IS_VALID_OUTPUT_GPIO(_pin)) {
     ESP_LOGE(TAG, "Invalid pin: %" PRId8, _pin);
@@ -59,7 +59,6 @@ bool Mycila::CycleStealingDimmer::begin() {
 
   // restart with last saved value
   setDutyCycle(_dutyCycle);
-
   return true;
 }
 
@@ -201,10 +200,12 @@ void Mycila::CycleStealingDimmer::_registerDimmer(Mycila::CycleStealingDimmer* d
     dimmers = new RegisteredDimmer();
     dimmers->dimmer = dimmer;
   } else {
-    struct RegisteredDimmer* first = new RegisteredDimmer();
-    first->next = dimmers;
-    dimmers->prev = first;
-    dimmers = first;
+    struct RegisteredDimmer* additional = new RegisteredDimmer();
+    additional->dimmer = dimmer;
+    additional->next = dimmers;
+    additional->prev = nullptr;
+    dimmers->prev = additional;
+    dimmers = additional;
   }
 
 #ifndef MYCILA_DIMMER_NO_LOCK
