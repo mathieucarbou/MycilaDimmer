@@ -38,11 +38,6 @@ namespace Mycila {
 
       const char* type() const override { return "cycle-stealing"; }
 
-      bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const override {
-        // return isEnabled() && _calculatePhaseControlMetrics(metrics, _dutyCycleFire, gridVoltage, loadResistance);
-        return isEnabled();
-      }
-
       /**
        * Optional: Integration with a Zero-Cross Detection (ZCD) system
        *
@@ -56,7 +51,7 @@ namespace Mycila {
        *
        * When using MycilaPulseAnalyzer library, this callback can be registered like this:
        *
-       * pulseAnalyzer.onZeroCross(Mycila::Dimmer::onZeroCross);
+       * pulseAnalyzer.onZeroCross(Mycila::CycleStealingDimmer::onZeroCross);
        *
        * - When using your own ISR with the RobotDyn ZCD,      you can call this method with delayUntilZero == 200 since the length of the ZCD pulse is about  400 us.
        * - When using your own ISR with the ZCd from Daniel S, you can call this method with delayUntilZero == 550 since the length of the ZCD pulse is about 1100 us.
@@ -78,11 +73,12 @@ namespace Mycila {
     protected:
       bool _apply() override;
 
-      bool _calculateHarmonics(float* array, size_t n) const override {
-        for (size_t i = 0; i < n; i++) {
-          array[i] = 0.0f;
-        }
-        return true;
+      bool _calculateDimmerHarmonics(float* array, size_t n) const override {
+        // Unlike phase control (which distorts every cycle identically and creates standard odd harmonics like 3rd, 5th, 7th), cycle stealing creates sub-harmonics
+        // and inter-harmonics (frequencies below 50/60Hz or between standard multiples).
+        // Since the algorithm uses a dynamic Delta-Sigma modulator (Bresenham-like) rather than a fixed pattern length, the "period" of the repetition is not fixed
+        // or easily predicted without a complex simulation.
+        return false;
       }
 
     private:
@@ -92,6 +88,10 @@ namespace Mycila {
           CycleStealingDimmer* dimmer = nullptr;
           RegisteredDimmer* prev = nullptr;
           RegisteredDimmer* next = nullptr;
+          // Cycle stealing state tracking
+          bool semi_period_odd = false; // Track odd/even semi-periods for balance
+          float density_error = 0.0f;   // Accumulator for Bresenham algorithm
+          int8_t dc_balance = 0;        // DC component balance (-1: owes positive, 1: owes negative)
       };
 
       static struct RegisteredDimmer* dimmers;

@@ -4,9 +4,9 @@
  */
 #pragma once
 
-#define MYCILA_DIMMER_VERSION          "2.3.0"
+#define MYCILA_DIMMER_VERSION          "2.4.0"
 #define MYCILA_DIMMER_VERSION_MAJOR    2
-#define MYCILA_DIMMER_VERSION_MINOR    3
+#define MYCILA_DIMMER_VERSION_MINOR    4
 #define MYCILA_DIMMER_VERSION_REVISION 0
 
 #ifdef MYCILA_JSON_SUPPORT
@@ -16,6 +16,7 @@
 #include <assert.h>
 #include <esp32-hal-gpio.h>
 
+#include <cmath>
 #include <cstdio>
 
 namespace Mycila {
@@ -93,23 +94,6 @@ namespace Mycila {
        */
       float getDutyCycleMax() const { return _dutyCycleMax; }
 
-      ///////////////
-      // POWER LUT //
-      ///////////////
-
-      /**
-       * @brief Enable or disable the use of power LUT for this dimmer
-       * The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness.
-       * If disabled, a linear dimming curve will be used.
-       * @param enable : true to enable, false to disable
-       */
-      void enablePowerLUT(bool enable) { _powerLUTEnabled = enable; }
-
-      /**
-       * @brief Check if the power LUT is enabled
-       */
-      bool isPowerLUTEnabled() const { return _powerLUTEnabled; }
-
       /////////////////
       // SEMi-PERIOD //
       /////////////////
@@ -137,9 +121,9 @@ namespace Mycila {
 
       /**
        * @brief Returns true if the dimmer is online
-       * @brief A dimmer is considered online if it is enabled, marked online, and, if power LUT is enabled, it must have a valid semi-period set.
+       * @brief A dimmer is considered online if it is enabled, marked online
        */
-      bool isOnline() const { return _enabled && _online && (!_powerLUTEnabled || _semiPeriod > 0); }
+      virtual bool isOnline() const { return _enabled && _online; }
 
       /**
        * @brief Set the online status of the dimmer
@@ -190,25 +174,11 @@ namespace Mycila {
        *
        * @param dutyCycle: the power duty cycle in the range [0.0, 1.0]
        */
-      bool setDutyCycle(float dutyCycle) {
+      virtual bool setDutyCycle(float dutyCycle) {
         // Apply limit and save the wanted duty cycle.
         // It will only be applied when dimmer will be on.
         _dutyCycle = _contrain(dutyCycle, 0, _dutyCycleLimit);
-
-        const float mapped = getDutyCycleMapped();
-
-        if (_powerLUTEnabled) {
-          if (mapped == 0) {
-            _dutyCycleFire = 0.0f;
-          } else if (mapped == 1) {
-            _dutyCycleFire = 1.0f;
-          } else {
-            _dutyCycleFire = _semiPeriod > 0 ? (1.0f - static_cast<float>(_lookupFiringDelay(mapped, _semiPeriod)) / static_cast<float>(_semiPeriod)) : mapped;
-          }
-        } else {
-          _dutyCycleFire = mapped;
-        }
-
+        _dutyCycleFire = getDutyCycleMapped();
         return isOnline() && _apply();
       }
 
@@ -240,6 +210,11 @@ namespace Mycila {
       // METRICS //
       /////////////
 
+      virtual float getPowerRatio() const {
+        // For a linear dimmer, the power ratio is directly proportional to the duty cycle
+        return getDutyCycleFire();
+      }
+
       // Calculate harmonics based on dimmer firing angle for resistive loads
       // array[0] = H1 (fundamental), array[1] = H3, array[2] = H5, array[3] = H7, etc.
       // Only odd harmonics are calculated (even harmonics are negligible for symmetric dimmers)
@@ -248,15 +223,17 @@ namespace Mycila {
         if (array == nullptr || n == 0)
           return false;
 
+        float duty = getDutyCycleFire();
+
         // Check if dimmer is active and routing
-        if (!isOnline() || _dutyCycleFire <= 0.0f) {
+        if (duty <= 0.0f) {
           for (size_t i = 0; i < n; i++) {
             array[i] = 0.0f; // No power, no harmonics
           }
           return true;
         }
 
-        if (_dutyCycleFire >= 1.0f) {
+        if (duty >= 1.0f) {
           array[0] = 100.0f; // H1 (fundamental) = 100% reference
           for (size_t i = 1; i < n; i++) {
             array[i] = 0.0f; // No harmonics at full power
@@ -269,10 +246,53 @@ namespace Mycila {
           array[i] = NAN;
         }
 
-        return _calculateHarmonics(array, n);
+        return _calculateDimmerHarmonics(array, n);
       }
 
-      virtual bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const { return false; }
+      bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const {
+        if (!_enabled || loadResistance <= 0 || gridVoltage <= 0) {
+          return false;
+        }
+
+        const float powerRatio = getPowerRatio();
+
+        if (powerRatio <= 0) {
+          // no power
+          metrics.apparentPower = 0.0f;
+          metrics.current = 0.0f;
+          metrics.power = 0.0f;
+          metrics.powerFactor = NAN;
+          metrics.thdi = NAN;
+          metrics.voltage = 0.0f;
+          return true;
+        }
+
+        if (powerRatio >= 1) {
+          // full power
+          const float nominalPower = gridVoltage * gridVoltage / loadResistance;
+          metrics.apparentPower = nominalPower;
+          metrics.current = gridVoltage / loadResistance;
+          metrics.power = nominalPower;
+          metrics.powerFactor = 1.0f;
+          metrics.thdi = 0.0f;
+          metrics.voltage = gridVoltage;
+          return true;
+        }
+
+        const float nominalPower = gridVoltage * gridVoltage / loadResistance;
+
+        metrics.power = powerRatio * nominalPower;
+        metrics.powerFactor = std::sqrt(powerRatio);
+        metrics.voltage = metrics.powerFactor * gridVoltage;
+        metrics.current = metrics.voltage / loadResistance;
+        metrics.apparentPower = gridVoltage * metrics.current;
+
+        // THDi calculation for resistive load:
+        // PF = 1 / sqrt(1 + THDi^2) => THDi = sqrt(1/PF^2 - 1)
+        metrics.thdi = 100.0f * std::sqrt(1.0f / (metrics.powerFactor * metrics.powerFactor) - 1.0f);
+
+        return true;
+      }
 
 #ifdef MYCILA_JSON_SUPPORT
       /**
@@ -280,7 +300,30 @@ namespace Mycila {
        *
        * @param root: the JSON object to serialize to
        */
-      virtual void toJson(const JsonObject& root) const;
+      virtual void toJson(const JsonObject& root) const {
+        static const char* H_LEVELS[] = {"H1", "H3", "H5", "H7", "H9", "H11", "H13", "H15", "H17", "H19", "H21"};
+
+        root["type"] = type();
+        root["enabled"] = isEnabled();
+        root["online"] = isOnline();
+        root["state"] = isOn() ? "on" : "off";
+        root["semi_period"] = getSemiPeriod();
+        root["duty_cycle"] = getDutyCycle();
+        root["duty_cycle_mapped"] = getDutyCycleMapped();
+        root["duty_cycle_fire"] = getDutyCycleFire();
+        root["duty_cycle_limit"] = getDutyCycleLimit();
+        root["duty_cycle_min"] = getDutyCycleMin();
+        root["duty_cycle_max"] = getDutyCycleMax();
+        JsonObject harmonics = root["harmonics"].to<JsonObject>();
+        float* output = new float[11]; // H1 to H21
+        if (calculateHarmonics(output, 11)) {
+          for (size_t i = 0; i < 11; i++) {
+            if (!std::isnan(output[i])) {
+              harmonics[H_LEVELS[i]] = output[i];
+            }
+          }
+        }
+      }
 #endif
 
     protected:
@@ -293,14 +336,13 @@ namespace Mycila {
       float _dutyCycleMin = 0.0f;
       float _dutyCycleMax = 1.0f;
 
-      bool _powerLUTEnabled = false;
-
-      static uint16_t _semiPeriod;
+      inline static uint16_t _semiPeriod = 0;
 
       virtual bool _apply() { return _enabled; }
-      virtual bool _calculateHarmonics(float* array, size_t n) const {
+
+      virtual bool _calculateDimmerHarmonics(float* array, size_t n) const {
         for (size_t i = 0; i < n; i++) {
-          array[i] = 0.0f; // No harmonics for virtual dimmer
+          array[i] = 0.0f; // No harmonics for default dimmer
         }
         return true;
       }
@@ -309,87 +351,8 @@ namespace Mycila {
       // STATIC HELPERS //
       ////////////////////
 
-      static uint16_t _lookupFiringDelay(float dutyCycle, uint16_t semiPeriod);
-
       static inline float _contrain(float amt, float low, float high) {
         return (amt < low) ? low : ((amt > high) ? high : amt);
-      }
-
-      static bool _calculatePhaseControlHarmonics(float dutyCycleFire, float* array, size_t n) {
-        // getDutyCycleFire() returns the conduction angle normalized (0-1)
-        // Convert to firing angle: α = π × (1 - conduction)
-        // At 50% power: α ≈ 90° (π/2), which gives maximum harmonics
-        const float firingAngle = M_PI * (1.0f - dutyCycleFire);
-
-        // Calculate RMS of fundamental component (reference)
-        // Formula from Thierry Lequeu: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]
-        const float sin_2a = sinf(2.0f * firingAngle);
-        const float i1_rms = sqrtf((2.0f / M_PI) * (M_PI - firingAngle + 0.5f * sin_2a));
-
-        if (i1_rms <= 0.001f)
-          return false;
-
-        array[0] = 100.0f; // H1 (fundamental) = 100% reference
-
-        // Pre-compute scale factor for efficiency
-        const float scale_factor = (2.0f / M_PI) * 0.70710678f * 100.0f / i1_rms;
-
-        // Calculate odd harmonics (H3, H5, H7, ...)
-        // Formula for phase-controlled resistive loads (IEEE standard):
-        // Hn = (2/π√2) × |cos((n-1)α)/(n-1) - cos((n+1)α)/(n+1)| / I1_rms × 100%
-        // This gives the correct harmonic magnitudes relative to the fundamental
-        for (size_t i = 1; i < n; i++) {
-          const float n_f = static_cast<float>(2 * i + 1); // 3, 5, 7, 9, ...
-          const float n_minus_1 = n_f - 1.0f;
-          const float n_plus_1 = n_f + 1.0f;
-
-          // Compute Fourier coefficient
-          const float coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 -
-                              cosf(n_plus_1 * firingAngle) / n_plus_1;
-
-          // Convert to percentage of fundamental
-          array[i] = fabsf(coeff) * scale_factor;
-        }
-
-        return true;
-      }
-
-      static bool _calculatePhaseControlMetrics(Metrics& metrics, float dutyCycleFire, float gridVoltage, float loadResistance) {
-        if (loadResistance > 0 && gridVoltage > 0) {
-          if (dutyCycleFire > 0) {
-            const float nominalPower = gridVoltage * gridVoltage / loadResistance;
-            if (dutyCycleFire >= 1.0f) {
-              // full power
-              metrics.powerFactor = 1.0f;
-              metrics.thdi = 0.0f;
-              metrics.power = nominalPower;
-              metrics.voltage = gridVoltage;
-              metrics.current = gridVoltage / loadResistance;
-              metrics.apparentPower = nominalPower;
-              return true;
-            } else {
-              // partial power
-              metrics.powerFactor = std::sqrt(dutyCycleFire);
-              metrics.thdi = 100.0f * std::sqrt(1 / dutyCycleFire - 1);
-              metrics.power = dutyCycleFire * nominalPower;
-              metrics.voltage = metrics.powerFactor * gridVoltage;
-              metrics.current = metrics.voltage / loadResistance;
-              metrics.apparentPower = gridVoltage * metrics.current;
-              return true;
-            }
-          } else {
-            // no power
-            metrics.voltage = 0.0f;
-            metrics.current = 0.0f;
-            metrics.power = 0.0f;
-            metrics.apparentPower = 0.0f;
-            metrics.powerFactor = NAN;
-            metrics.thdi = NAN;
-            return true;
-          }
-        } else {
-          return false;
-        }
       }
   };
 } // namespace Mycila

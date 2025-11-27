@@ -22,13 +22,13 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
 - [Quick Start](#quick-start)
 - [Dimmer Types](#dimmer-types)
   - [Thyristor Dimmer](#thyristor-dimmer)
+  - [Cycle Stealing Dimmer](#cycle-stealing-dimmer)
   - [PWM Dimmer](#pwm-dimmer)
   - [DFRobot DAC Dimmer](#dfrobot-dac-dimmer)
 - [Understanding AC Dimming Methods](#understanding-ac-dimming-methods)
   - [Dimming Method Comparison](#dimming-method-comparison)
     - [Phase Control](#phase-control)
-    - [Cycle Stealing on Full Period](#cycle-stealing-on-full-period)
-    - [Cycle Stealing on Semi-Period](#cycle-stealing-on-semi-period)
+    - [Cycle Stealing (Delta-Sigma)](#cycle-stealing-delta-sigma)
   - [Recommendations for Harmonic Mitigation (Phase Control)](#recommendations-for-harmonic-mitigation-phase-control)
   - [Current MycilaDimmer Support](#current-myciladimmer-support)
   - [Choosing the Right Method](#choosing-the-right-method)
@@ -36,6 +36,7 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
 - [API Reference](#api-reference)
   - [Common API (All Dimmer Types)](#common-api-all-dimmer-types)
   - [Thyristor Dimmer Specific](#thyristor-dimmer-specific)
+  - [Cycle Stealing Dimmer Specific](#cycle-stealing-dimmer-specific)
   - [PWM Dimmer Specific](#pwm-dimmer-specific)
   - [DFRobot DAC Dimmer Specific](#dfrobot-dac-dimmer-specific)
   - [Advanced Features](#advanced-features)
@@ -175,6 +176,37 @@ The Zero-Cross Detector mounted on DIN Rail mount from Daniel is is very good an
 I sometimes buy it in bulk from PCBWay.
 If you want one, you can have a look at the [YaSolR Pro page](https://yasolr.carbou.me/pro#available-hardware) for the stock status.
 
+### Cycle Stealing Dimmer
+
+Perfect for resistive loads (heaters, water tank heaters) control with **zero noise**. Uses an advanced First-Order Delta-Sigma Modulator (Bresenham's algorithm) to distribute power evenly across AC cycles while strictly maintaining DC balance on the grid.
+
+|                                              ESP32                                              |                                Solid State Relay (Zero-Cross)                                |                                          Heat Sink                                          |
+| :---------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------: |
+| <img src="https://yasolr.carbou.me/assets/img/hardware/ESP32_NodeMCU.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/SSR_40A_DA.jpeg" style="width:150px"> | <img src="https://yasolr.carbou.me/assets/img/hardware/Heat_Sink.jpeg" style="width:150px"> |
+
+```cpp
+#include <MycilaDimmer.h>
+
+Mycila::CycleStealingDimmer dimmer;
+
+void setup() {
+  dimmer.setPin(GPIO_NUM_26);
+  Mycila::Dimmer::setSemiPeriod(10000); // 50Hz AC
+  dimmer.begin();
+
+  // If using a Random SSR (non zero-cross), you must provide ZCD signal:
+  // pulseAnalyzer.onZeroCross(Mycila::CycleStealingDimmer::onZeroCross);
+}
+```
+
+**Features:**
+
+- **Zero Noise**: Switches only at zero-crossings, generating virtually no electrical noise
+- **DC Balance**: Advanced algorithm ensures equal positive and negative half-cycles to prevent grid DC offset
+- **High Resolution**: Delta-Sigma modulation provides precise power control closer to 1% steps
+- **Resistive Loads**: Ideal for water heaters, oil radiators, and other thermal loads
+- **Hardware**: Works with standard Zero-Cross SSRs (cheaper) or Random SSRs with ZCD
+
 ### PWM Dimmer
 
 Standard PWM output for PWM to analog converters to control voltage regulators
@@ -271,47 +303,26 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 - PWMDimmer: Generates PWM signal for converter for voltage regulators (LSA, LCTC) which perform internal phase control
 - DFRobotDimmer: Outputs 0-10V analog signal to voltage regulators (LSA, LCTC) which perform internal phase control
 
-#### Cycle Stealing on Full Period
+#### Cycle Stealing (Delta-Sigma)
 
-**How it works:** Rapidly switches complete AC cycles on/off (20ms periods for 50Hz). For example, to achieve 50% power, alternates full power for 20ms, then turns off for 20ms, and so on.
-
-![](https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/cycle_stealing_20ms.jpeg)
-
-**Advantages:**
-
-- ✅ **No Harmonics**: Preserves complete sine waves, generates minimal harmonic distortion
-- ✅ **Simple Implementation**: Basic on/off switching logic
-- ✅ **Compatible with many common SSRs** (Zero-Cross / Sync ones): Can use simpler, cheaper SSRs
-
-**Limitations:**
-
-- ❌ **Flickering**: Visible light can flicker and voltage fluctuations can affect nearby devices
-  - Caused by sudden high current draw creating voltage drops
-  - Can impact micro-inverters and other sensitive electronics
-- ❌ **Slow Response**: Limited precision due to coarse time slots
-  - Example: 50 slots in 1-second window for 50Hz = 60W resolution for 3000W load
-- ❌ **Heat Dissipation**: Rapid switching generates more heat in SSR
-- ❌ **Poor Accuracy**: Cannot achieve watt-level control precision
-- ❌ **Delayed Corrections**: By the time adjustment is applied, conditions may have changed
-
-#### Cycle Stealing on Semi-Period
-
-**How it works:** Switches at semi-period level (every 10ms for 50Hz) to double the control slots and improve response time. For example, to achieve 50% power, alternates full power and no power for 20ms, and 10ms, to avoid creating DC components.
+**How it works:** Instead of chopping the sine wave, Cycle Stealing delivers complete half-cycles of power to the load.
+This library uses an advanced **First-Order Delta-Sigma Modulator (Bresenham's algorithm)** to optimally distribute ON/OFF cycles.
+Crucially, it enforces **DC Balance**, ensuring that for every positive half-cycle consumed, a negative one is also consumed, preventing DC offset on the grid.
 
 ![](https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/cycle_stealing_10ms.jpeg)
 
 **Advantages:**
 
-- ✅ **Better Resolution**: Twice as many control slots compared to full-period cycle stealing
-- ✅ **Faster Response**: 2x quicker than full-period cycle stealing
+- ✅ **Zero Noise**: Switches exactly at zero-crossing, generating virtually no EMF / RFI noise. Ideal for sensitive environments.
+- ✅ **Grid Friendly**: Strictly maintains DC balance, avoiding transformer saturation and grid asymmetry issues common with simpler cycle stealing implementations.
+- ✅ **High Compatible**: Works with standard Zero-Cross SSRs (cheaper and more common) as well as Random SSRs/TRIACs.
+- ✅ **Fast Response**: The accumulator-based algorithm responds to duty cycle changes instantly, without waiting for a fixed time window to close.
 
 **Limitations:**
 
-- ❌ **All Full-Period Limitations**: Still suffers from flickering, heat, and inaccuracy but to a lesser extent
-- ❌ **DC Component**: Critical regulatory violation in some countries
-  - Can create dangerous DC components on AC grid (current asymmetry drawn only one side of the waveform for a short time)
-  - Can unbalance grid network by drawing current asymmetrically if not properly balanced
-  - **Can violate electrical regulation** - this method cannot be used in some countries where regulations forbid DC components on AC grids
+- ❌ **Flickering**: Not suitable for lighting. The rapid on/off pulsing causes visible flicker in bulbs.
+- ❌ **Sub-Harmonics**: Generates inter-harmonics and sub-harmonics (frequencies below 50/60Hz) which can be harder to filter than standard odd harmonics.
+- ❌ **Thermal Inertia Required**: Only suitable for purely resistive loads with high thermal inertia (water heaters, oil radiators, floor heating).
 
 ### Recommendations for Harmonic Mitigation (Phase Control)
 
@@ -455,9 +466,13 @@ void setChannel(uint8_t channel);      // Set DAC channel (0 or 1 for dual-chann
 ### Advanced Features
 
 ```cpp
+// Cycle Stealing Dimmer Specific
+void setPin(gpio_num_t pin);           // Set output GPIO pin
+static void onZeroCross(int16_t delayUntilZero, void* arg); // Zero-cross callback (only if using random SSR/TRIAC)
+
 // Duty Cycle Remapping (Hardware Calibration)
-dimmer.setDutyCycleMin(0.1);  // 0% now maps to 10%
-dimmer.setDutyCycleMax(0.9);  // 100% now maps to 90%
+dimmer.setDutyCycleMin(0.1); // 0% now maps to 10%
+dimmer.setDutyCycleMax(0.9); // 100% now maps to 90%
 
 // Safety Limiting
 dimmer.setDutyCycleLimit(0.8); // Never exceed 80% power
@@ -466,22 +481,22 @@ dimmer.setDutyCycleLimit(0.8); // Never exceed 80% power
 // Choose between LINEAR or POWER LUT dimming at runtime!
 //
 // LINEAR MODE (default, disabled):
-//   - Direct phase angle control
-//   - 50% duty cycle = 50% phase delay
-//   - Non-linear relationship between duty cycle and actual power output
-//   - Use when you need direct phase control or working with non-resistive loads
+// - Direct phase angle control
+// - 50% duty cycle = 50% phase delay
+// - Non-linear relationship between duty cycle and actual power output
+// - Use when you need direct phase control or working with non-resistive loads
 //
 // POWER LUT MODE (enabled):
-//   - Non-linear curve that matches real power output of resistive loads
-//   - 50% duty cycle ≈ 50% actual power consumption
-//   - Also provides more natural dimming that matches human brightness perception
-//   - Best for resistive loads (heating elements, incandescent bulbs) where
-//     you want predictable power control
+// - Non-linear curve that matches real power output of resistive loads
+// - 50% duty cycle ≈ 50% actual power consumption
+// - Also provides more natural dimming that matches human brightness perception
+// - Best for resistive loads (heating elements, incandescent bulbs) where
+// you want predictable power control
 //
 // Important: Semi-period MUST be set before enabling Power LUT!
-Mycila::Dimmer::setSemiPeriod(10000);  // Set semi-period first (10000us for 50Hz, 8333us for 60Hz)
-dimmer.enablePowerLUT(true);           // Enable Power LUT mode
-dimmer.enablePowerLUT(false);          // Switch to linear phase angle mode
+Mycila::Dimmer::setSemiPeriod(10000); // Set semi-period first (10000us for 50Hz, 8333us for 60Hz)
+dimmer.enablePowerLUT(true); // Enable Power LUT mode
+dimmer.enablePowerLUT(false); // Switch to linear phase angle mode
 bool isUsing = dimmer.isPowerLUTEnabled(); // Check current mode
 
 // Online Status Control

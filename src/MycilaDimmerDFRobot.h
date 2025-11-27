@@ -4,7 +4,7 @@
  */
 #pragma once
 
-#include "MycilaDimmer.h"
+#include "MycilaDimmerPhaseControl.h"
 
 #include <Wire.h>
 
@@ -12,7 +12,7 @@ namespace Mycila {
   /**
    * @brief DFRobot DFR1071/DFR1073/DFR0971 I2C controlled 0-10V/0-5V dimmer implementation for voltage regulators controlled by a 0-10V/0-5V analog signal
    */
-  class DFRobotDimmer : public Dimmer {
+  class DFRobotDimmer : public PhaseControlDimmer {
     public:
       enum class SKU {
         UNKNOWN,
@@ -94,10 +94,6 @@ namespace Mycila {
 
       const char* type() const override { return "dfrobot"; }
 
-      bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const override {
-        return isEnabled() && _calculatePhaseControlMetrics(metrics, _dutyCycleFire, gridVoltage, loadResistance);
-      }
-
 #ifdef MYCILA_JSON_SUPPORT
       /**
        * @brief Serialize Dimmer information to a JSON object
@@ -105,7 +101,7 @@ namespace Mycila {
        * @param root: the JSON object to serialize to
        */
       void toJson(const JsonObject& root) const override {
-        Dimmer::toJson(root);
+        PhaseControlDimmer::toJson(root);
         root["sku"] = _sku == SKU::DFR1071_GP8211S ? "DFR1071_GP8211S" : _sku == SKU::DFR1073_GP8413 ? "DFR1073_GP8413"
                                                                                : _sku == SKU::DFR0971_GP8403 ? "DFR0971_GP8403"
                                                                                                              : "UNKNOWN";
@@ -118,15 +114,11 @@ namespace Mycila {
 
     protected:
       bool _apply() override {
-        if (!_online) {
+        if (!isOnline()) {
           return _sendDutyCycle(_deviceAddress, 0) == ESP_OK;
         }
-        uint16_t duty = _dutyCycleFire * ((1 << getResolution()) - 1);
+        uint16_t duty = getDutyCycleFire() * ((1 << getResolution()) - 1);
         return _sendDutyCycle(_deviceAddress, duty) == ESP_OK;
-      }
-
-      bool _calculateHarmonics(float* array, size_t n) const override {
-        return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 
     private:

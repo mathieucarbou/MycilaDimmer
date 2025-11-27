@@ -4,14 +4,14 @@
  */
 #pragma once
 
-#include "MycilaDimmer.h"
+#include "MycilaDimmerPhaseControl.h"
 #include <driver/gptimer_types.h>
 
 namespace Mycila {
   /**
    * @brief Thyristor (TRIAC) based dimmer implementation for TRIAC and Random SSR dimmers
    */
-  class ThyristorDimmer : public Dimmer {
+  class ThyristorDimmer : public PhaseControlDimmer {
     public:
       virtual ~ThyristorDimmer() { end(); }
 
@@ -57,16 +57,12 @@ namespace Mycila {
 
       const char* type() const override { return "thyristor"; }
 
-      bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const override {
-        return isEnabled() && _calculatePhaseControlMetrics(metrics, _dutyCycleFire, gridVoltage, loadResistance);
-      }
-
       /**
        * Callback to be called when a zero-crossing event is detected.
        *
        * - When using MycilaPulseAnalyzer library, this callback can be registered like this:
        *
-       * pulseAnalyzer.onZeroCross(Mycila::Dimmer::onZeroCross);
+       * pulseAnalyzer.onZeroCross(Mycila::ThyristorDimmer::onZeroCross);
        *
        * - When using your own ISR with the RobotDyn ZCD,      you can call this method with delayUntilZero == 200 since the length of the ZCD pulse is about  400 us.
        * - When using your own ISR with the ZCd from Daniel S, you can call this method with delayUntilZero == 550 since the length of the ZCD pulse is about 1100 us.
@@ -80,7 +76,7 @@ namespace Mycila {
        * @param root: the JSON object to serialize to
        */
       void toJson(const JsonObject& root) const override {
-        Dimmer::toJson(root);
+        PhaseControlDimmer::toJson(root);
         root["pin"] = _pin;
         root["firing_delay"] = getFiringDelay();
         root["firing_angle"] = getPhaseAngle();
@@ -89,20 +85,17 @@ namespace Mycila {
 
     protected:
       bool _apply() override {
-        if (!_online || !_semiPeriod || _dutyCycleFire == 0) {
+        float duty = getDutyCycleFire();
+        if (!isOnline() || duty == 0) {
           _delay = UINT16_MAX;
           return _enabled;
         }
-        if (_dutyCycleFire == 1) {
+        if (duty == 1) {
           _delay = 0;
           return _enabled;
         }
-        _delay = (1.0f - _dutyCycleFire) * static_cast<float>(_semiPeriod);
+        _delay = (1.0f - duty) * static_cast<float>(_semiPeriod);
         return _enabled;
-      }
-
-      bool _calculateHarmonics(float* array, size_t n) const override {
-        return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 
     private:

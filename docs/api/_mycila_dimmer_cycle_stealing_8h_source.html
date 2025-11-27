@@ -103,38 +103,38 @@ $(function() {
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_cycle_stealing_dimmer.html#a45ae13f8dde4a574404c21d3e3747bbb">end</a>() <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      <span class="keyword">const</span> <span class="keywordtype">char</span>* type()<span class="keyword"> const override </span>{ <span class="keywordflow">return</span> <span class="stringliteral">&quot;cycle-stealing&quot;</span>; }</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      <span class="keywordtype">bool</span> calculateMetrics(Metrics&amp; metrics, <span class="keywordtype">float</span> gridVoltage, <span class="keywordtype">float</span> loadResistance)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>        <span class="comment">// return isEnabled() &amp;&amp; _calculatePhaseControlMetrics(metrics, _dutyCycleFire, gridVoltage, loadResistance);</span></div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>        <span class="keywordflow">return</span> <a class="code hl_function" href="class_mycila_1_1_dimmer.html#a5912fd1ebbeff4444b37247a7b2791f4">isEnabled</a>();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      }</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span></div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_cycle_stealing_dimmer.html#a62732800d376135ee711b9d2b2f826bf">onZeroCross</a>(int16_t delayUntilZero, <span class="keywordtype">void</span>* args);</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span> </div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span><span class="preprocessor">#ifdef MYCILA_JSON_SUPPORT</span><span class="preprocessor"></span></div>
-<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      <span class="keywordtype">void</span> toJson(<span class="keyword">const</span> JsonObject&amp; root)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>        Dimmer::toJson(root);</div>
-<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>        root[<span class="stringliteral">&quot;pin&quot;</span>] = _pin;</div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      }</div>
-<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span><span class="preprocessor">#endif</span></div>
-<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span> </div>
-<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>    <span class="keyword">protected</span>:</div>
-<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>      <span class="keywordtype">bool</span> _apply() <span class="keyword">override</span>;</div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
-<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>      <span class="keywordtype">bool</span> _calculateHarmonics(<span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; n; i++) {</div>
-<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span>          array[i] = 0.0f;</div>
-<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>        }</div>
-<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span>      }</div>
-<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span> </div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      gpio_num_t _pin = GPIO_NUM_NC;</div>
-<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      <span class="keyword">struct </span>RegisteredDimmer {</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>          CycleStealingDimmer* dimmer = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>          RegisteredDimmer* prev = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>          RegisteredDimmer* next = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span></div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>      <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_cycle_stealing_dimmer.html#a62732800d376135ee711b9d2b2f826bf">onZeroCross</a>(int16_t delayUntilZero, <span class="keywordtype">void</span>* args);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span><span class="preprocessor">#ifdef MYCILA_JSON_SUPPORT</span><span class="preprocessor"></span></div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      <span class="keywordtype">void</span> toJson(<span class="keyword">const</span> JsonObject&amp; root)<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span>        Dimmer::toJson(root);</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>        root[<span class="stringliteral">&quot;pin&quot;</span>] = _pin;</div>
+<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span>      }</div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span> </div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>    <span class="keyword">protected</span>:</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      <span class="keywordtype">bool</span> _apply() <span class="keyword">override</span>;</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span> </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span>      <span class="keywordtype">bool</span> _calculateDimmerHarmonics(<span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n)<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>        <span class="comment">// Unlike phase control (which distorts every cycle identically and creates standard odd harmonics like 3rd, 5th, 7th), cycle stealing creates sub-harmonics</span></div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span>        <span class="comment">// and inter-harmonics (frequencies below 50/60Hz or between standard multiples).</span></div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>        <span class="comment">// Since the algorithm uses a dynamic Delta-Sigma modulator (Bresenham-like) rather than a fixed pattern length, the &quot;period&quot; of the repetition is not fixed</span></div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span>        <span class="comment">// or easily predicted without a complex simulation.</span></div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>        <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span>      }</div>
+<div class="line"><a id="l00083" name="l00083"></a><span class="lineno">   83</span> </div>
+<div class="line"><a id="l00084" name="l00084"></a><span class="lineno">   84</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00085" name="l00085"></a><span class="lineno">   85</span>      gpio_num_t _pin = GPIO_NUM_NC;</div>
+<div class="line"><a id="l00086" name="l00086"></a><span class="lineno">   86</span> </div>
+<div class="line"><a id="l00087" name="l00087"></a><span class="lineno">   87</span>      <span class="keyword">struct </span>RegisteredDimmer {</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>          CycleStealingDimmer* dimmer = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>          RegisteredDimmer* prev = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span>          RegisteredDimmer* next = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>          <span class="comment">// Cycle stealing state tracking</span></div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>          <span class="keywordtype">bool</span> semi_period_odd = <span class="keyword">false</span>; <span class="comment">// Track odd/even semi-periods for balance</span></div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>          <span class="keywordtype">float</span> density_error = 0.0f;   <span class="comment">// Accumulator for Bresenham algorithm</span></div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>          int8_t dc_balance = 0;        <span class="comment">// DC component balance (-1: owes positive, 1: owes negative)</span></div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span>      };</div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span> </div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      <span class="keyword">static</span> <span class="keyword">struct </span>RegisteredDimmer* dimmers;</div>
@@ -150,8 +150,7 @@ $(function() {
 <div class="ttc" id="aclass_mycila_1_1_cycle_stealing_dimmer_html_a62732800d376135ee711b9d2b2f826bf"><div class="ttname"><a href="class_mycila_1_1_cycle_stealing_dimmer.html#a62732800d376135ee711b9d2b2f826bf">Mycila::CycleStealingDimmer::onZeroCross</a></div><div class="ttdeci">static void onZeroCross(int16_t delayUntilZero, void *args)</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_cycle_stealing_8cpp_source.html#l00077">MycilaDimmerCycleStealing.cpp:77</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_cycle_stealing_dimmer_html_ad82d2ae3c01162a8b388c625602ad5df"><div class="ttname"><a href="class_mycila_1_1_cycle_stealing_dimmer.html#ad82d2ae3c01162a8b388c625602ad5df">Mycila::CycleStealingDimmer::setPin</a></div><div class="ttdeci">void setPin(gpio_num_t pin)</div><div class="ttdoc">Set the GPIO pin to use for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="#l00018">MycilaDimmerCycleStealing.h:18</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_cycle_stealing_dimmer_html_af83c8f0bf0d08c86aa7b02f43594a930"><div class="ttname"><a href="class_mycila_1_1_cycle_stealing_dimmer.html#af83c8f0bf0d08c86aa7b02f43594a930">Mycila::CycleStealingDimmer::getPin</a></div><div class="ttdeci">gpio_num_t getPin() const</div><div class="ttdoc">Get the GPIO pin used for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="#l00023">MycilaDimmerCycleStealing.h:23</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00022">MycilaDimmer.h:22</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_a5912fd1ebbeff4444b37247a7b2791f4"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a5912fd1ebbeff4444b37247a7b2791f4">Mycila::Dimmer::isEnabled</a></div><div class="ttdeci">bool isEnabled() const</div><div class="ttdoc">Check if the dimmer is enabled (if it was able to initialize correctly).</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00136">MycilaDimmer.h:136</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00023">MycilaDimmer.h:23</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

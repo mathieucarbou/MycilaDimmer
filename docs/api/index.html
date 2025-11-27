@@ -96,6 +96,7 @@ $(function() {
 <li>Quick Start</li>
 <li>Dimmer Types<ul>
 <li>Thyristor Dimmer</li>
+<li>Cycle Stealing Dimmer</li>
 <li>PWM Dimmer</li>
 <li>DFRobot DAC Dimmer</li>
 </ul>
@@ -103,8 +104,7 @@ $(function() {
 <li>Understanding AC Dimming Methods<ul>
 <li>Dimming Method Comparison<ul>
 <li>Phase Control</li>
-<li>Cycle Stealing on Full Period</li>
-<li>Cycle Stealing on Semi-Period</li>
+<li>Cycle Stealing (Delta-Sigma)</li>
 </ul>
 </li>
 <li>Recommendations for Harmonic Mitigation (Phase Control)</li>
@@ -116,6 +116,7 @@ $(function() {
 <li>API Reference<ul>
 <li>Common API (All Dimmer Types)</li>
 <li>Thyristor Dimmer Specific</li>
+<li>Cycle Stealing Dimmer Specific</li>
 <li>PWM Dimmer Specific</li>
 <li>DFRobot DAC Dimmer Specific</li>
 <li>Advanced Features</li>
@@ -201,20 +202,20 @@ $(function() {
 <div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_p_w_m_dimmer.html#a314ba911ac20a6902e4723ae9cfe1299">begin</a>();</div>
 <div class="line"> </div>
 <div class="line">  <span class="comment">// Set 50% power</span></div>
-<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#aa159163ef95c8edd6e54b345e09b3d43">setDutyCycle</a>(0.5);</div>
+<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_phase_control_dimmer.html#a431d427af2d3421f25ff1c11db579532">setDutyCycle</a>(0.5);</div>
 <div class="line">}</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">void</span> loop() {</div>
 <div class="line">  <span class="comment">// Gradually increase power</span></div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">float</span> power = 0.0; power &lt;= 1.0; power += 0.1) {</div>
-<div class="line">    dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#aa159163ef95c8edd6e54b345e09b3d43">setDutyCycle</a>(power);</div>
+<div class="line">    dimmer.<a class="code hl_function" href="class_mycila_1_1_phase_control_dimmer.html#a431d427af2d3421f25ff1c11db579532">setDutyCycle</a>(power);</div>
 <div class="line">    delay(1000);</div>
 <div class="line">  }</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_aa159163ef95c8edd6e54b345e09b3d43"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#aa159163ef95c8edd6e54b345e09b3d43">Mycila::Dimmer::setDutyCycle</a></div><div class="ttdeci">bool setDutyCycle(float dutyCycle)</div><div class="ttdoc">Set the power duty.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00193">MycilaDimmer.h:193</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html">Mycila::PWMDimmer</a></div><div class="ttdoc">PWM based dimmer implementation for voltage regulators controlled by a PWM signal to 0-10V analog con...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_p_w_m_8h_source.html#l00016">MycilaDimmerPWM.h:16</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html_a04eda47bd3b808743674eb3fc034aac7"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html#a04eda47bd3b808743674eb3fc034aac7">Mycila::PWMDimmer::setPin</a></div><div class="ttdeci">void setPin(gpio_num_t pin)</div><div class="ttdoc">Set the GPIO pin to use for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_p_w_m_8h_source.html#l00023">MycilaDimmerPWM.h:23</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html_a314ba911ac20a6902e4723ae9cfe1299"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html#a314ba911ac20a6902e4723ae9cfe1299">Mycila::PWMDimmer::begin</a></div><div class="ttdeci">bool begin() override</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_p_w_m_8cpp_source.html#l00024">MycilaDimmerPWM.cpp:24</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_phase_control_dimmer_html_a431d427af2d3421f25ff1c11db579532"><div class="ttname"><a href="class_mycila_1_1_phase_control_dimmer.html#a431d427af2d3421f25ff1c11db579532">Mycila::PhaseControlDimmer::setDutyCycle</a></div><div class="ttdeci">bool setDutyCycle(float dutyCycle) override</div><div class="ttdoc">Set the power duty, eventually remapped by the power LUT if enabled.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_phase_control_8h_source.html#l00050">MycilaDimmerPhaseControl.h:50</a></div></div>
 </div><!-- fragment --><h1>Dimmer Types</h1>
 <h2>Thyristor Dimmer</h2>
 <p>Perfect for TRIAC and Random SSR control with <b>flicker-free progressive dimming</b>. Achieves smooth, continuous power control through precise phase angle control when paired with quality zero-cross detection circuits.</p>
@@ -236,7 +237,7 @@ $(function() {
 <div class="line">  <span class="comment">// Register with external zero-cross detector</span></div>
 <div class="line">  pulseAnalyzer.onZeroCross(<a class="code hl_function" href="class_mycila_1_1_thyristor_dimmer.html#a5b09bdb65f3ee8676ecaf31290d24d6c">Mycila::ThyristorDimmer::onZeroCross</a>);</div>
 <div class="line">}</div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_a10c7e14e08ab36dc3b480c33d908740e"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a10c7e14e08ab36dc3b480c33d908740e">Mycila::Dimmer::setSemiPeriod</a></div><div class="ttdeci">static void setSemiPeriod(uint16_t semiPeriod)</div><div class="ttdoc">Set the semi-period of the grid frequency in us for this dimmer. This is mandatory when using power L...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00127">MycilaDimmer.h:127</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_dimmer_html_a10c7e14e08ab36dc3b480c33d908740e"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a10c7e14e08ab36dc3b480c33d908740e">Mycila::Dimmer::setSemiPeriod</a></div><div class="ttdeci">static void setSemiPeriod(uint16_t semiPeriod)</div><div class="ttdoc">Set the semi-period of the grid frequency in us for this dimmer. This is mandatory when using power L...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00111">MycilaDimmer.h:111</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html">Mycila::ThyristorDimmer</a></div><div class="ttdoc">Thyristor (TRIAC) based dimmer implementation for TRIAC and Random SSR dimmers.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8h_source.html#l00014">MycilaDimmerThyristor.h:14</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_a5b09bdb65f3ee8676ecaf31290d24d6c"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#a5b09bdb65f3ee8676ecaf31290d24d6c">Mycila::ThyristorDimmer::onZeroCross</a></div><div class="ttdeci">static void onZeroCross(int16_t delayUntilZero, void *args)</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8cpp_source.html#l00080">MycilaDimmerThyristor.cpp:80</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_thyristor_dimmer_html_a6ea7401605120ef604f0f5fdb255b58e"><div class="ttname"><a href="class_mycila_1_1_thyristor_dimmer.html#a6ea7401605120ef604f0f5fdb255b58e">Mycila::ThyristorDimmer::setPin</a></div><div class="ttdeci">void setPin(gpio_num_t pin)</div><div class="ttdoc">Set the GPIO pin to use for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_thyristor_8h_source.html#l00021">MycilaDimmerThyristor.h:21</a></div></div>
@@ -257,6 +258,37 @@ $(function() {
 </li>
 </ul>
 <p>The Zero-Cross Detector mounted on DIN Rail mount from Daniel is is very good and reliable. I sometimes buy it in bulk from PCBWay. If you want one, you can have a look at the <a href="https://yasolr.carbou.me/pro#available-hardware">YaSolR Pro page</a> for the stock status.</p>
+<h2>Cycle Stealing Dimmer</h2>
+<p>Perfect for resistive loads (heaters, water tank heaters) control with <b>zero noise</b>. Uses an advanced First-Order Delta-Sigma Modulator (Bresenham's algorithm) to distribute power evenly across AC cycles while strictly maintaining DC balance on the grid.</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadCenter">ESP32  </th><th class="markdownTableHeadCenter">Solid State Relay (Zero-Cross)  </th><th class="markdownTableHeadCenter">Heat Sink  </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyCenter"><img src="https://yasolr.carbou.me/assets/img/hardware/ESP32_NodeMCU.jpeg" alt="" style="width:150px" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://yasolr.carbou.me/assets/img/hardware/SSR_40A_DA.jpeg" alt="" style="width:150px" class="inline"/>  </td><td class="markdownTableBodyCenter"><img src="https://yasolr.carbou.me/assets/img/hardware/Heat_Sink.jpeg" alt="" style="width:150px" class="inline"/>  </td></tr>
+</table>
+<div class="fragment"><div class="line"><span class="preprocessor">#include &lt;MycilaDimmer.h&gt;</span></div>
+<div class="line"> </div>
+<div class="line"><a class="code hl_class" href="class_mycila_1_1_cycle_stealing_dimmer.html">Mycila::CycleStealingDimmer</a> dimmer;</div>
+<div class="line"> </div>
+<div class="line"><span class="keywordtype">void</span> setup() {</div>
+<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_cycle_stealing_dimmer.html#ad82d2ae3c01162a8b388c625602ad5df">setPin</a>(GPIO_NUM_26);</div>
+<div class="line">  <a class="code hl_function" href="class_mycila_1_1_dimmer.html#a10c7e14e08ab36dc3b480c33d908740e">Mycila::Dimmer::setSemiPeriod</a>(10000); <span class="comment">// 50Hz AC</span></div>
+<div class="line">  dimmer.<a class="code hl_function" href="class_mycila_1_1_cycle_stealing_dimmer.html#a478af9dbe8d3d1dfd7a4000238f68ebb">begin</a>();</div>
+<div class="line"> </div>
+<div class="line">  <span class="comment">// If using a Random SSR (non zero-cross), you must provide ZCD signal:</span></div>
+<div class="line">  <span class="comment">// pulseAnalyzer.onZeroCross(Mycila::CycleStealingDimmer::onZeroCross);</span></div>
+<div class="line">}</div>
+<div class="ttc" id="aclass_mycila_1_1_cycle_stealing_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_cycle_stealing_dimmer.html">Mycila::CycleStealingDimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_cycle_stealing_8h_source.html#l00011">MycilaDimmerCycleStealing.h:11</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_cycle_stealing_dimmer_html_a478af9dbe8d3d1dfd7a4000238f68ebb"><div class="ttname"><a href="class_mycila_1_1_cycle_stealing_dimmer.html#a478af9dbe8d3d1dfd7a4000238f68ebb">Mycila::CycleStealingDimmer::begin</a></div><div class="ttdeci">bool begin() override</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_cycle_stealing_8cpp_source.html#l00045">MycilaDimmerCycleStealing.cpp:45</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_cycle_stealing_dimmer_html_ad82d2ae3c01162a8b388c625602ad5df"><div class="ttname"><a href="class_mycila_1_1_cycle_stealing_dimmer.html#ad82d2ae3c01162a8b388c625602ad5df">Mycila::CycleStealingDimmer::setPin</a></div><div class="ttdeci">void setPin(gpio_num_t pin)</div><div class="ttdoc">Set the GPIO pin to use for the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_cycle_stealing_8h_source.html#l00018">MycilaDimmerCycleStealing.h:18</a></div></div>
+</div><!-- fragment --><p><b>Features:</b></p>
+<ul>
+<li><b>Zero Noise</b>: Switches only at zero-crossings, generating virtually no electrical noise</li>
+<li><b>DC Balance</b>: Advanced algorithm ensures equal positive and negative half-cycles to prevent grid DC offset</li>
+<li><b>High Resolution</b>: Delta-Sigma modulation provides precise power control closer to 1% steps</li>
+<li><b>Resistive Loads</b>: Ideal for water heaters, oil radiators, and other thermal loads</li>
+<li><b>Hardware</b>: Works with standard Zero-Cross SSRs (cheaper) or Random SSRs with ZCD</li>
+</ul>
 <h2>PWM Dimmer</h2>
 <p>Standard PWM output for PWM to analog converters to control voltage regulators</p>
 <table class="markdownTable">
@@ -346,47 +378,21 @@ $(function() {
 <li>PWMDimmer: Generates PWM signal for converter for voltage regulators (LSA, LCTC) which perform internal phase control</li>
 <li>DFRobotDimmer: Outputs 0-10V analog signal to voltage regulators (LSA, LCTC) which perform internal phase control</li>
 </ul>
-<h3>Cycle Stealing on Full Period</h3>
-<p><b>How it works:</b> Rapidly switches complete AC cycles on/off (20ms periods for 50Hz). For example, to achieve 50% power, alternates full power for 20ms, then turns off for 20ms, and so on.</p>
-<p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/cycle_stealing_20ms.jpeg" alt="" class="inline"/></p>
-<p><b>Advantages:</b></p>
-<ul>
-<li>✅ <b>No Harmonics</b>: Preserves complete sine waves, generates minimal harmonic distortion</li>
-<li>✅ <b>Simple Implementation</b>: Basic on/off switching logic</li>
-<li>✅ <b>Compatible with many common SSRs</b> (Zero-Cross / Sync ones): Can use simpler, cheaper SSRs</li>
-</ul>
-<p><b>Limitations:</b></p>
-<ul>
-<li>❌ <b>Flickering</b>: Visible light can flicker and voltage fluctuations can affect nearby devices<ul>
-<li>Caused by sudden high current draw creating voltage drops</li>
-<li>Can impact micro-inverters and other sensitive electronics</li>
-</ul>
-</li>
-<li>❌ <b>Slow Response</b>: Limited precision due to coarse time slots<ul>
-<li>Example: 50 slots in 1-second window for 50Hz = 60W resolution for 3000W load</li>
-</ul>
-</li>
-<li>❌ <b>Heat Dissipation</b>: Rapid switching generates more heat in SSR</li>
-<li>❌ <b>Poor Accuracy</b>: Cannot achieve watt-level control precision</li>
-<li>❌ <b>Delayed Corrections</b>: By the time adjustment is applied, conditions may have changed</li>
-</ul>
-<h3>Cycle Stealing on Semi-Period</h3>
-<p><b>How it works:</b> Switches at semi-period level (every 10ms for 50Hz) to double the control slots and improve response time. For example, to achieve 50% power, alternates full power and no power for 20ms, and 10ms, to avoid creating DC components.</p>
+<h3>Cycle Stealing (Delta-Sigma)</h3>
+<p><b>How it works:</b> Instead of chopping the sine wave, Cycle Stealing delivers complete half-cycles of power to the load. This library uses an advanced <b>First-Order Delta-Sigma Modulator (Bresenham's algorithm)</b> to optimally distribute ON/OFF cycles. Crucially, it enforces <b>DC Balance</b>, ensuring that for every positive half-cycle consumed, a negative one is also consumed, preventing DC offset on the grid.</p>
 <p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/cycle_stealing_10ms.jpeg" alt="" class="inline"/></p>
 <p><b>Advantages:</b></p>
 <ul>
-<li>✅ <b>Better Resolution</b>: Twice as many control slots compared to full-period cycle stealing</li>
-<li>✅ <b>Faster Response</b>: 2x quicker than full-period cycle stealing</li>
+<li>✅ <b>Zero Noise</b>: Switches exactly at zero-crossing, generating virtually no EMF / RFI noise. Ideal for sensitive environments.</li>
+<li>✅ <b>Grid Friendly</b>: Strictly maintains DC balance, avoiding transformer saturation and grid asymmetry issues common with simpler cycle stealing implementations.</li>
+<li>✅ <b>High Compatible</b>: Works with standard Zero-Cross SSRs (cheaper and more common) as well as Random SSRs/TRIACs.</li>
+<li>✅ <b>Fast Response</b>: The accumulator-based algorithm responds to duty cycle changes instantly, without waiting for a fixed time window to close.</li>
 </ul>
 <p><b>Limitations:</b></p>
 <ul>
-<li>❌ <b>All Full-Period Limitations</b>: Still suffers from flickering, heat, and inaccuracy but to a lesser extent</li>
-<li>❌ <b>DC Component</b>: Critical regulatory violation in some countries<ul>
-<li>Can create dangerous DC components on AC grid (current asymmetry drawn only one side of the waveform for a short time)</li>
-<li>Can unbalance grid network by drawing current asymmetrically if not properly balanced</li>
-<li><b>Can violate electrical regulation</b> - this method cannot be used in some countries where regulations forbid DC components on AC grids</li>
-</ul>
-</li>
+<li>❌ <b>Flickering</b>: Not suitable for lighting. The rapid on/off pulsing causes visible flicker in bulbs.</li>
+<li>❌ <b>Sub-Harmonics</b>: Generates inter-harmonics and sub-harmonics (frequencies below 50/60Hz) which can be harder to filter than standard odd harmonics.</li>
+<li>❌ <b>Thermal Inertia Required</b>: Only suitable for purely resistive loads with high thermal inertia (water heaters, oil radiators, floor heating).</li>
 </ul>
 <h2>Recommendations for Harmonic Mitigation (Phase Control)</h2>
 <p>When using phase control, harmonics can be reduced or partially mitigated through several approaches. Examples (but not limited to):</p>
@@ -506,9 +512,13 @@ $(function() {
 <div class="line"><span class="keywordtype">void</span> setDeviceAddress(uint8_t addr);   <span class="comment">// Set I2C address (default: 0x58)</span></div>
 <div class="line"><span class="keywordtype">void</span> setChannel(uint8_t channel);      <span class="comment">// Set DAC channel (0 or 1 for dual-channel)</span></div>
 </div><!-- fragment --><h2>Advanced Features</h2>
-<div class="fragment"><div class="line"><span class="comment">// Duty Cycle Remapping (Hardware Calibration)</span></div>
-<div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#a65e890fe02705d74cb3fb41387d843dc">setDutyCycleMin</a>(0.1);  <span class="comment">// 0% now maps to 10%</span></div>
-<div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#abe79bb19232cdede06774f88274672a6">setDutyCycleMax</a>(0.9);  <span class="comment">// 100% now maps to 90%</span></div>
+<div class="fragment"><div class="line"><span class="comment">// Cycle Stealing Dimmer Specific</span></div>
+<div class="line"><span class="keywordtype">void</span> setPin(gpio_num_t pin);           <span class="comment">// Set output GPIO pin</span></div>
+<div class="line"><span class="keyword">static</span> <span class="keywordtype">void</span> onZeroCross(int16_t delayUntilZero, <span class="keywordtype">void</span>* arg); <span class="comment">// Zero-cross callback (only if using random SSR/TRIAC)</span></div>
+<div class="line"> </div>
+<div class="line"><span class="comment">// Duty Cycle Remapping (Hardware Calibration)</span></div>
+<div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#a65e890fe02705d74cb3fb41387d843dc">setDutyCycleMin</a>(0.1); <span class="comment">// 0% now maps to 10%</span></div>
+<div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#abe79bb19232cdede06774f88274672a6">setDutyCycleMax</a>(0.9); <span class="comment">// 100% now maps to 90%</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Safety Limiting</span></div>
 <div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#af83b436ec8799d705dbf22265225beaf">setDutyCycleLimit</a>(0.8); <span class="comment">// Never exceed 80% power</span></div>
@@ -517,23 +527,23 @@ $(function() {
 <div class="line"><span class="comment">// Choose between LINEAR or POWER LUT dimming at runtime!</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">// LINEAR MODE (default, disabled):</span></div>
-<div class="line"><span class="comment">//   - Direct phase angle control</span></div>
-<div class="line"><span class="comment">//   - 50% duty cycle = 50% phase delay</span></div>
-<div class="line"><span class="comment">//   - Non-linear relationship between duty cycle and actual power output</span></div>
-<div class="line"><span class="comment">//   - Use when you need direct phase control or working with non-resistive loads</span></div>
+<div class="line"><span class="comment">// - Direct phase angle control</span></div>
+<div class="line"><span class="comment">// - 50% duty cycle = 50% phase delay</span></div>
+<div class="line"><span class="comment">// - Non-linear relationship between duty cycle and actual power output</span></div>
+<div class="line"><span class="comment">// - Use when you need direct phase control or working with non-resistive loads</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">// POWER LUT MODE (enabled):</span></div>
-<div class="line"><span class="comment">//   - Non-linear curve that matches real power output of resistive loads</span></div>
-<div class="line"><span class="comment">//   - 50% duty cycle ≈ 50% actual power consumption</span></div>
-<div class="line"><span class="comment">//   - Also provides more natural dimming that matches human brightness perception</span></div>
-<div class="line"><span class="comment">//   - Best for resistive loads (heating elements, incandescent bulbs) where</span></div>
-<div class="line"><span class="comment">//     you want predictable power control</span></div>
+<div class="line"><span class="comment">// - Non-linear curve that matches real power output of resistive loads</span></div>
+<div class="line"><span class="comment">// - 50% duty cycle ≈ 50% actual power consumption</span></div>
+<div class="line"><span class="comment">// - Also provides more natural dimming that matches human brightness perception</span></div>
+<div class="line"><span class="comment">// - Best for resistive loads (heating elements, incandescent bulbs) where</span></div>
+<div class="line"><span class="comment">// you want predictable power control</span></div>
 <div class="line"><span class="comment">//</span></div>
 <div class="line"><span class="comment">// Important: Semi-period MUST be set before enabling Power LUT!</span></div>
-<div class="line"><a class="code hl_function" href="class_mycila_1_1_dimmer.html#a10c7e14e08ab36dc3b480c33d908740e">Mycila::Dimmer::setSemiPeriod</a>(10000);  <span class="comment">// Set semi-period first (10000us for 50Hz, 8333us for 60Hz)</span></div>
-<div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#aec1b0f949ddf81ed798247fd3c74fbfa">enablePowerLUT</a>(<span class="keyword">true</span>);           <span class="comment">// Enable Power LUT mode</span></div>
-<div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#aec1b0f949ddf81ed798247fd3c74fbfa">enablePowerLUT</a>(<span class="keyword">false</span>);          <span class="comment">// Switch to linear phase angle mode</span></div>
-<div class="line"><span class="keywordtype">bool</span> isUsing = dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#a838a358149e8ee1dc7a101d64b45e0ac">isPowerLUTEnabled</a>(); <span class="comment">// Check current mode</span></div>
+<div class="line"><a class="code hl_function" href="class_mycila_1_1_dimmer.html#a10c7e14e08ab36dc3b480c33d908740e">Mycila::Dimmer::setSemiPeriod</a>(10000); <span class="comment">// Set semi-period first (10000us for 50Hz, 8333us for 60Hz)</span></div>
+<div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_phase_control_dimmer.html#aa20d3cdec048767dff71208a72bdc940">enablePowerLUT</a>(<span class="keyword">true</span>); <span class="comment">// Enable Power LUT mode</span></div>
+<div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_phase_control_dimmer.html#aa20d3cdec048767dff71208a72bdc940">enablePowerLUT</a>(<span class="keyword">false</span>); <span class="comment">// Switch to linear phase angle mode</span></div>
+<div class="line"><span class="keywordtype">bool</span> isUsing = dimmer.<a class="code hl_function" href="class_mycila_1_1_phase_control_dimmer.html#a48cf62a536f65ce9b6eae8f5bbfe6d0d">isPowerLUTEnabled</a>(); <span class="comment">// Check current mode</span></div>
 <div class="line"> </div>
 <div class="line"><span class="comment">// Online Status Control</span></div>
 <div class="line">dimmer.<a class="code hl_function" href="class_mycila_1_1_dimmer.html#a7dfc096d101bd15b5948d1e398fdc236">setOnline</a>(<span class="keyword">false</span>); <span class="comment">// Temporarily disable dimmer (e.g., when grid disconnected)</span></div>
@@ -545,12 +555,12 @@ $(function() {
 <div class="line">dimmer.toJson(doc.to&lt;JsonObject&gt;());</div>
 <div class="line">serializeJson(doc, Serial);</div>
 <div class="line"><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_a65e890fe02705d74cb3fb41387d843dc"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a65e890fe02705d74cb3fb41387d843dc">Mycila::Dimmer::setDutyCycleMin</a></div><div class="ttdeci">void setDutyCycleMin(float min)</div><div class="ttdoc">Duty remapping (equivalent to Shelly Dimmer remapping feature). Useful to calibrate the dimmer when u...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00065">MycilaDimmer.h:65</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_a7dfc096d101bd15b5948d1e398fdc236"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a7dfc096d101bd15b5948d1e398fdc236">Mycila::Dimmer::setOnline</a></div><div class="ttdeci">void setOnline(bool online)</div><div class="ttdoc">Set the online status of the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00148">MycilaDimmer.h:148</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_a838a358149e8ee1dc7a101d64b45e0ac"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a838a358149e8ee1dc7a101d64b45e0ac">Mycila::Dimmer::isPowerLUTEnabled</a></div><div class="ttdeci">bool isPowerLUTEnabled() const</div><div class="ttdoc">Check if the power LUT is enabled.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00111">MycilaDimmer.h:111</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_abe79bb19232cdede06774f88274672a6"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#abe79bb19232cdede06774f88274672a6">Mycila::Dimmer::setDutyCycleMax</a></div><div class="ttdeci">void setDutyCycleMax(float max)</div><div class="ttdoc">Duty remapping (equivalent to Shelly Dimmer remapping feature). Useful to calibrate the dimmer when u...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00076">MycilaDimmer.h:76</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_aec1b0f949ddf81ed798247fd3c74fbfa"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#aec1b0f949ddf81ed798247fd3c74fbfa">Mycila::Dimmer::enablePowerLUT</a></div><div class="ttdeci">void enablePowerLUT(bool enable)</div><div class="ttdoc">Enable or disable the use of power LUT for this dimmer The power LUT provides a non-linear dimming cu...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00106">MycilaDimmer.h:106</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_af83b436ec8799d705dbf22265225beaf"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#af83b436ec8799d705dbf22265225beaf">Mycila::Dimmer::setDutyCycleLimit</a></div><div class="ttdeci">void setDutyCycleLimit(float limit)</div><div class="ttdoc">Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00053">MycilaDimmer.h:53</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_dimmer_html_a65e890fe02705d74cb3fb41387d843dc"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a65e890fe02705d74cb3fb41387d843dc">Mycila::Dimmer::setDutyCycleMin</a></div><div class="ttdeci">void setDutyCycleMin(float min)</div><div class="ttdoc">Duty remapping (equivalent to Shelly Dimmer remapping feature). Useful to calibrate the dimmer when u...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00066">MycilaDimmer.h:66</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_dimmer_html_a7dfc096d101bd15b5948d1e398fdc236"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a7dfc096d101bd15b5948d1e398fdc236">Mycila::Dimmer::setOnline</a></div><div class="ttdeci">void setOnline(bool online)</div><div class="ttdoc">Set the online status of the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00132">MycilaDimmer.h:132</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_dimmer_html_abe79bb19232cdede06774f88274672a6"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#abe79bb19232cdede06774f88274672a6">Mycila::Dimmer::setDutyCycleMax</a></div><div class="ttdeci">void setDutyCycleMax(float max)</div><div class="ttdoc">Duty remapping (equivalent to Shelly Dimmer remapping feature). Useful to calibrate the dimmer when u...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00077">MycilaDimmer.h:77</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_dimmer_html_af83b436ec8799d705dbf22265225beaf"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#af83b436ec8799d705dbf22265225beaf">Mycila::Dimmer::setDutyCycleLimit</a></div><div class="ttdeci">void setDutyCycleLimit(float limit)</div><div class="ttdoc">Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00054">MycilaDimmer.h:54</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_phase_control_dimmer_html_a48cf62a536f65ce9b6eae8f5bbfe6d0d"><div class="ttname"><a href="class_mycila_1_1_phase_control_dimmer.html#a48cf62a536f65ce9b6eae8f5bbfe6d0d">Mycila::PhaseControlDimmer::isPowerLUTEnabled</a></div><div class="ttdeci">bool isPowerLUTEnabled() const</div><div class="ttdoc">Check if the power LUT is enabled.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_phase_control_8h_source.html#l00029">MycilaDimmerPhaseControl.h:29</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_phase_control_dimmer_html_aa20d3cdec048767dff71208a72bdc940"><div class="ttname"><a href="class_mycila_1_1_phase_control_dimmer.html#aa20d3cdec048767dff71208a72bdc940">Mycila::PhaseControlDimmer::enablePowerLUT</a></div><div class="ttdeci">void enablePowerLUT(bool enable)</div><div class="ttdoc">Enable or disable the use of power LUT for this phase-control dimmer The power LUT provides a non-lin...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_phase_control_8h_source.html#l00024">MycilaDimmerPhaseControl.h:24</a></div></div>
 </div><!-- fragment --><h1>Configuration</h1>
 <h2>Build Flags</h2>
 <p>For <b>Thyristor Dimmer</b> (IRAM safety):</p>

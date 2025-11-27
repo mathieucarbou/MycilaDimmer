@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.16.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MycilaJSY: Mycila::PWMDimmer Class Reference</title>
+<title>MycilaJSY: Mycila::PhaseControlDimmer Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -71,63 +71,45 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><b>Mycila</b></li><li class="navelem"><a href="class_mycila_1_1_p_w_m_dimmer.html">PWMDimmer</a></li>  </ul>
+<li class="navelem"><b>Mycila</b></li><li class="navelem"><a href="class_mycila_1_1_phase_control_dimmer.html">PhaseControlDimmer</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div id="doc-content">
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pro-methods">Protected Member Functions</a>  </div>
-  <div class="headertitle"><div class="title">Mycila::PWMDimmer Class Reference</div></div>
+<a href="#pro-methods">Protected Member Functions</a> &#124;
+<a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a>  </div>
+  <div class="headertitle"><div class="title">Mycila::PhaseControlDimmer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
-
-<p>PWM based dimmer implementation for voltage regulators controlled by a PWM signal to 0-10V analog convertor.  
- <a href="#details">More...</a></p>
-
-<p><code>#include &lt;<a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>&gt;</code></p>
 <div class="dynheader">
-Inheritance diagram for Mycila::PWMDimmer:</div>
+Inheritance diagram for Mycila::PhaseControlDimmer:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_mycila_1_1_p_w_m_dimmer__inherit__graph.png" border="0" usemap="#a_mycila_1_1_p_w_m_dimmer_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
+<div class="center"><img src="class_mycila_1_1_phase_control_dimmer__inherit__graph.png" border="0" usemap="#a_mycila_1_1_phase_control_dimmer_inherit__map" loading="lazy" alt="Inheritance graph"/></div>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <div class="dynheader">
-Collaboration diagram for Mycila::PWMDimmer:</div>
+Collaboration diagram for Mycila::PhaseControlDimmer:</div>
 <div class="dyncontent">
-<div class="center"><img src="class_mycila_1_1_p_w_m_dimmer__coll__graph.png" border="0" usemap="#a_mycila_1_1_p_w_m_dimmer_coll__map" loading="lazy" alt="Collaboration graph"/></div>
+<div class="center"><img src="class_mycila_1_1_phase_control_dimmer__coll__graph.png" border="0" usemap="#a_mycila_1_1_phase_control_dimmer_coll__map" loading="lazy" alt="Collaboration graph"/></div>
 <center><span class="legend">[<a href="graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a04eda47bd3b808743674eb3fc034aac7" id="r_a04eda47bd3b808743674eb3fc034aac7"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a04eda47bd3b808743674eb3fc034aac7">setPin</a> (gpio_num_t pin)</td></tr>
-<tr class="memdesc:a04eda47bd3b808743674eb3fc034aac7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the GPIO pin to use for the dimmer.  <br /></td></tr>
-<tr class="memitem:abb1aed226515de9353ee37939d54a96e" id="r_abb1aed226515de9353ee37939d54a96e"><td class="memItemLeft">gpio_num_t&#160;</td><td class="memItemRight"><a class="el" href="#abb1aed226515de9353ee37939d54a96e">getPin</a> () const</td></tr>
-<tr class="memdesc:abb1aed226515de9353ee37939d54a96e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the GPIO pin used for the dimmer.  <br /></td></tr>
-<tr class="memitem:a4de79584bffb1a77bba14a97e6c22d81" id="r_a4de79584bffb1a77bba14a97e6c22d81"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a4de79584bffb1a77bba14a97e6c22d81">setFrequency</a> (uint32_t frequency)</td></tr>
-<tr class="memdesc:a4de79584bffb1a77bba14a97e6c22d81"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PWM frequency in Hz.  <br /></td></tr>
-<tr class="memitem:ae33f46712aec8126b2f4c7b72969ff92" id="r_ae33f46712aec8126b2f4c7b72969ff92"><td class="memItemLeft">uint32_t&#160;</td><td class="memItemRight"><a class="el" href="#ae33f46712aec8126b2f4c7b72969ff92">getFrequency</a> () const</td></tr>
-<tr class="memdesc:ae33f46712aec8126b2f4c7b72969ff92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the PWM frequency in Hz.  <br /></td></tr>
-<tr class="memitem:a1e03df6c8414c708adfb214ec9135e7c" id="r_a1e03df6c8414c708adfb214ec9135e7c"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a1e03df6c8414c708adfb214ec9135e7c">setResolution</a> (uint8_t resolution)</td></tr>
-<tr class="memdesc:a1e03df6c8414c708adfb214ec9135e7c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the PWM resolution in bits.  <br /></td></tr>
-<tr class="memitem:a80199f11c002b692348e99aa1767afa9" id="r_a80199f11c002b692348e99aa1767afa9"><td class="memItemLeft">uint8_t&#160;</td><td class="memItemRight"><a class="el" href="#a80199f11c002b692348e99aa1767afa9">getResolution</a> () const</td></tr>
-<tr class="memdesc:a80199f11c002b692348e99aa1767afa9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the PWM resolution in bits.  <br /></td></tr>
-<tr class="memitem:a314ba911ac20a6902e4723ae9cfe1299" id="r_a314ba911ac20a6902e4723ae9cfe1299"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a314ba911ac20a6902e4723ae9cfe1299">begin</a> () override</td></tr>
-<tr class="memdesc:a314ba911ac20a6902e4723ae9cfe1299"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable a dimmer on a specific GPIO pin.  <br /></td></tr>
-<tr class="memitem:ab1c83c98bacc525f04d4af037ec2d378" id="r_ab1c83c98bacc525f04d4af037ec2d378"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#ab1c83c98bacc525f04d4af037ec2d378">end</a> () override</td></tr>
-<tr class="memdesc:ab1c83c98bacc525f04d4af037ec2d378"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable the dimmer.  <br /></td></tr>
-<tr class="memitem:ab77db1b2c82cabbbb8166f4d61bc7108" id="r_ab77db1b2c82cabbbb8166f4d61bc7108"><td class="memItemLeft">const char *&#160;</td><td class="memItemRight"><a class="el" href="#ab77db1b2c82cabbbb8166f4d61bc7108">type</a> () const override</td></tr>
-<tr class="inherit_header pub_methods_class_mycila_1_1_phase_control_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_mycila_1_1_phase_control_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_mycila_1_1_phase_control_dimmer.html">Mycila::PhaseControlDimmer</a></td></tr>
-<tr class="memitem:aa20d3cdec048767dff71208a72bdc940 inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_aa20d3cdec048767dff71208a72bdc940"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#aa20d3cdec048767dff71208a72bdc940">enablePowerLUT</a> (bool enable)</td></tr>
-<tr class="memdesc:aa20d3cdec048767dff71208a72bdc940 inherit pub_methods_class_mycila_1_1_phase_control_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable the use of power LUT for this phase-control dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used.  <br /></td></tr>
-<tr class="memitem:a48cf62a536f65ce9b6eae8f5bbfe6d0d inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_a48cf62a536f65ce9b6eae8f5bbfe6d0d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a48cf62a536f65ce9b6eae8f5bbfe6d0d">isPowerLUTEnabled</a> () const</td></tr>
-<tr class="memdesc:a48cf62a536f65ce9b6eae8f5bbfe6d0d inherit pub_methods_class_mycila_1_1_phase_control_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the power LUT is enabled.  <br /></td></tr>
-<tr class="memitem:a60aecb7734f6eca2a96d5605f6a65d73 inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_a60aecb7734f6eca2a96d5605f6a65d73"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a60aecb7734f6eca2a96d5605f6a65d73">isOnline</a> () const override</td></tr>
-<tr class="memdesc:a60aecb7734f6eca2a96d5605f6a65d73 inherit pub_methods_class_mycila_1_1_phase_control_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the dimmer is online.  <br /></td></tr>
-<tr class="memitem:a431d427af2d3421f25ff1c11db579532 inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_a431d427af2d3421f25ff1c11db579532"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a431d427af2d3421f25ff1c11db579532">setDutyCycle</a> (float dutyCycle) override</td></tr>
-<tr class="memdesc:a431d427af2d3421f25ff1c11db579532 inherit pub_methods_class_mycila_1_1_phase_control_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty, eventually remapped by the power LUT if enabled.  <br /></td></tr>
-<tr class="memitem:a7cccaf1bc81b180abb84745f2a3580ce inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_a7cccaf1bc81b180abb84745f2a3580ce"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a7cccaf1bc81b180abb84745f2a3580ce">getPowerRatio</a> () const override</td></tr>
+<tr class="memitem:aa20d3cdec048767dff71208a72bdc940" id="r_aa20d3cdec048767dff71208a72bdc940"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa20d3cdec048767dff71208a72bdc940">enablePowerLUT</a> (bool enable)</td></tr>
+<tr class="memdesc:aa20d3cdec048767dff71208a72bdc940"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable the use of power LUT for this phase-control dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used.  <br /></td></tr>
+<tr class="memitem:a48cf62a536f65ce9b6eae8f5bbfe6d0d" id="r_a48cf62a536f65ce9b6eae8f5bbfe6d0d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a48cf62a536f65ce9b6eae8f5bbfe6d0d">isPowerLUTEnabled</a> () const</td></tr>
+<tr class="memdesc:a48cf62a536f65ce9b6eae8f5bbfe6d0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the power LUT is enabled.  <br /></td></tr>
+<tr class="memitem:a60aecb7734f6eca2a96d5605f6a65d73" id="r_a60aecb7734f6eca2a96d5605f6a65d73"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a60aecb7734f6eca2a96d5605f6a65d73">isOnline</a> () const override</td></tr>
+<tr class="memdesc:a60aecb7734f6eca2a96d5605f6a65d73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the dimmer is online.  <br /></td></tr>
+<tr class="memitem:a431d427af2d3421f25ff1c11db579532" id="r_a431d427af2d3421f25ff1c11db579532"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a431d427af2d3421f25ff1c11db579532">setDutyCycle</a> (float dutyCycle) override</td></tr>
+<tr class="memdesc:a431d427af2d3421f25ff1c11db579532"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty, eventually remapped by the power LUT if enabled.  <br /></td></tr>
+<tr class="memitem:a7cccaf1bc81b180abb84745f2a3580ce" id="r_a7cccaf1bc81b180abb84745f2a3580ce"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a7cccaf1bc81b180abb84745f2a3580ce">getPowerRatio</a> () const override</td></tr>
 <tr class="inherit_header pub_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
+<tr class="memitem:a54fd1a618e053fc51434775fe92f2166 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a54fd1a618e053fc51434775fe92f2166"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a54fd1a618e053fc51434775fe92f2166">begin</a> ()</td></tr>
+<tr class="memitem:a4108da25e47d5c15f307ab9ab0d91960 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a4108da25e47d5c15f307ab9ab0d91960"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a4108da25e47d5c15f307ab9ab0d91960">end</a> ()</td></tr>
+<tr class="memitem:a576ed69f3f6cf4be3baa58f536f9dd49 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a576ed69f3f6cf4be3baa58f536f9dd49"><td class="memItemLeft">virtual const char *&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a576ed69f3f6cf4be3baa58f536f9dd49">type</a> () const</td></tr>
 <tr class="memitem:af83b436ec8799d705dbf22265225beaf inherit pub_methods_class_mycila_1_1_dimmer" id="r_af83b436ec8799d705dbf22265225beaf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#af83b436ec8799d705dbf22265225beaf">setDutyCycleLimit</a> (float limit)</td></tr>
 <tr class="memdesc:af83b436ec8799d705dbf22265225beaf inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit.  <br /></td></tr>
 <tr class="memitem:a65e890fe02705d74cb3fb41387d843dc inherit pub_methods_class_mycila_1_1_dimmer" id="r_a65e890fe02705d74cb3fb41387d843dc"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a65e890fe02705d74cb3fb41387d843dc">setDutyCycleMin</a> (float min)</td></tr>
@@ -165,23 +147,19 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:ab712ac8a69195375ffeadb39c74126c3" id="r_ab712ac8a69195375ffeadb39c74126c3"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ab712ac8a69195375ffeadb39c74126c3">_apply</a> () override</td></tr>
-<tr class="inherit_header pro_methods_class_mycila_1_1_phase_control_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_mycila_1_1_phase_control_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_phase_control_dimmer.html">Mycila::PhaseControlDimmer</a></td></tr>
-<tr class="memitem:a34b284641f49ccbca1a703314a705172 inherit pro_methods_class_mycila_1_1_phase_control_dimmer" id="r_a34b284641f49ccbca1a703314a705172"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a34b284641f49ccbca1a703314a705172">_calculateDimmerHarmonics</a> (float *array, size_t n) const override</td></tr>
+<tr class="memitem:a34b284641f49ccbca1a703314a705172" id="r_a34b284641f49ccbca1a703314a705172"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a34b284641f49ccbca1a703314a705172">_calculateDimmerHarmonics</a> (float *array, size_t n) const override</td></tr>
+<tr class="inherit_header pro_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
+<tr class="memitem:a6fb5b41b3e299e1db9b2e1fae72e897c inherit pro_methods_class_mycila_1_1_dimmer" id="r_a6fb5b41b3e299e1db9b2e1fae72e897c"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a6fb5b41b3e299e1db9b2e1fae72e897c">_apply</a> ()</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_static_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Public Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
-<tr class="memitem:a518d3f8796875645cfab0c395b9c90df inherit pub_static_methods_class_mycila_1_1_dimmer" id="r_a518d3f8796875645cfab0c395b9c90df"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a518d3f8796875645cfab0c395b9c90df">getSemiPeriod</a> ()</td></tr>
-<tr class="memdesc:a518d3f8796875645cfab0c395b9c90df inherit pub_static_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the semi-period in us used for the power LUT calculations. If LUT is disabled, returns 0.  <br /></td></tr>
-<tr class="memitem:a10c7e14e08ab36dc3b480c33d908740e inherit pub_static_methods_class_mycila_1_1_dimmer" id="r_a10c7e14e08ab36dc3b480c33d908740e"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a10c7e14e08ab36dc3b480c33d908740e">setSemiPeriod</a> (uint16_t semiPeriod)</td></tr>
-<tr class="memdesc:a10c7e14e08ab36dc3b480c33d908740e inherit pub_static_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the semi-period of the grid frequency in us for this dimmer. This is mandatory when using power LUT.  <br /></td></tr>
-<tr class="inherit_header pro_static_methods_class_mycila_1_1_phase_control_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_methods_class_mycila_1_1_phase_control_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_phase_control_dimmer.html">Mycila::PhaseControlDimmer</a></td></tr>
-<tr class="memitem:a414d8faa3681717833e3f72b05f824ab inherit pro_static_methods_class_mycila_1_1_phase_control_dimmer" id="r_a414d8faa3681717833e3f72b05f824ab"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a414d8faa3681717833e3f72b05f824ab">_lookupFiringDelay</a> (float dutyCycle)</td></tr>
+<tr class="heading"><td colspan="2"><h2 id="header-pro-static-methods" class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
+Static Protected Member Functions</h2></td></tr>
+<tr class="memitem:a414d8faa3681717833e3f72b05f824ab" id="r_a414d8faa3681717833e3f72b05f824ab"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#a414d8faa3681717833e3f72b05f824ab">_lookupFiringDelay</a> (float dutyCycle)</td></tr>
 <tr class="inherit_header pro_static_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:a4a16a34b7cd031e3f9ea699af23c231f inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_a4a16a34b7cd031e3f9ea699af23c231f"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a4a16a34b7cd031e3f9ea699af23c231f">_contrain</a> (float amt, float low, float high)</td></tr>
-<tr class="inherit_header pro_attribs_class_mycila_1_1_phase_control_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_mycila_1_1_phase_control_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="class_mycila_1_1_phase_control_dimmer.html">Mycila::PhaseControlDimmer</a></td></tr>
-<tr class="memitem:a9325bd1c8ec7cf6ea73312e1b3f6604b inherit pro_attribs_class_mycila_1_1_phase_control_dimmer" id="r_a9325bd1c8ec7cf6ea73312e1b3f6604b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a9325bd1c8ec7cf6ea73312e1b3f6604b">_powerLUTEnabled</a> = false</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
+<tr class="memitem:a9325bd1c8ec7cf6ea73312e1b3f6604b" id="r_a9325bd1c8ec7cf6ea73312e1b3f6604b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a9325bd1c8ec7cf6ea73312e1b3f6604b">_powerLUTEnabled</a> = false</td></tr>
 <tr class="inherit_header pro_attribs_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:a2212e403703545ca69d0a38d3105f83a inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a2212e403703545ca69d0a38d3105f83a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a2212e403703545ca69d0a38d3105f83a">_enabled</a> = false</td></tr>
 <tr class="memitem:ab6260c766739f7b991d6a84086a7926b inherit pro_attribs_class_mycila_1_1_dimmer" id="r_ab6260c766739f7b991d6a84086a7926b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#ab6260c766739f7b991d6a84086a7926b">_online</a> = false</td></tr>
@@ -190,16 +168,23 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a88e7e2ba34272990ce56058b170737dd inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a88e7e2ba34272990ce56058b170737dd"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a88e7e2ba34272990ce56058b170737dd">_dutyCycleLimit</a> = 1.0f</td></tr>
 <tr class="memitem:a85bfbf3fc1aa9e539abe22be3eeec368 inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a85bfbf3fc1aa9e539abe22be3eeec368"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a85bfbf3fc1aa9e539abe22be3eeec368">_dutyCycleMin</a> = 0.0f</td></tr>
 <tr class="memitem:a8c4c1126eb9e8429e97886970c1aa076 inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a8c4c1126eb9e8429e97886970c1aa076"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a8c4c1126eb9e8429e97886970c1aa076">_dutyCycleMax</a> = 1.0f</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
+Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pub_static_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Public Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
+<tr class="memitem:a518d3f8796875645cfab0c395b9c90df inherit pub_static_methods_class_mycila_1_1_dimmer" id="r_a518d3f8796875645cfab0c395b9c90df"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a518d3f8796875645cfab0c395b9c90df">getSemiPeriod</a> ()</td></tr>
+<tr class="memdesc:a518d3f8796875645cfab0c395b9c90df inherit pub_static_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the semi-period in us used for the power LUT calculations. If LUT is disabled, returns 0.  <br /></td></tr>
+<tr class="memitem:a10c7e14e08ab36dc3b480c33d908740e inherit pub_static_methods_class_mycila_1_1_dimmer" id="r_a10c7e14e08ab36dc3b480c33d908740e"><td class="memItemLeft">static void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a10c7e14e08ab36dc3b480c33d908740e">setSemiPeriod</a> (uint16_t semiPeriod)</td></tr>
+<tr class="memdesc:a10c7e14e08ab36dc3b480c33d908740e inherit pub_static_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the semi-period of the grid frequency in us for this dimmer. This is mandatory when using power LUT.  <br /></td></tr>
 <tr class="inherit_header pro_static_attribs_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Protected Attributes inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:a0a373f111682d1210fb3ff269824188d inherit pro_static_attribs_class_mycila_1_1_dimmer" id="r_a0a373f111682d1210fb3ff269824188d"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a0a373f111682d1210fb3ff269824188d">_semiPeriod</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>PWM based dimmer implementation for voltage regulators controlled by a PWM signal to 0-10V analog convertor. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00016">16</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00010">10</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4058fef5468d8d27bab0c99885f2a0ed" name="a4058fef5468d8d27bab0c99885f2a0ed"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4058fef5468d8d27bab0c99885f2a0ed">&#9670;&#160;</a></span>~PWMDimmer()</h2>
+<a id="a6c4cd8ed9117e8726533828029fbad4e" name="a6c4cd8ed9117e8726533828029fbad4e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c4cd8ed9117e8726533828029fbad4e">&#9670;&#160;</a></span>~PhaseControlDimmer()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -208,7 +193,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual Mycila::PWMDimmer::~PWMDimmer </td>
+          <td class="memname">virtual Mycila::PhaseControlDimmer::~PhaseControlDimmer </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -221,13 +206,13 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00018">18</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00012">12</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
 
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
-<a id="ab712ac8a69195375ffeadb39c74126c3" name="ab712ac8a69195375ffeadb39c74126c3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab712ac8a69195375ffeadb39c74126c3">&#9670;&#160;</a></span>_apply()</h2>
+<a id="a34b284641f49ccbca1a703314a705172" name="a34b284641f49ccbca1a703314a705172"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34b284641f49ccbca1a703314a705172">&#9670;&#160;</a></span>_calculateDimmerHarmonics()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -236,10 +221,14 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Mycila::PWMDimmer::_apply </td>
+          <td class="memname">bool Mycila::PhaseControlDimmer::_calculateDimmerHarmonics </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;) const</td>
         </tr>
       </table>
   </td>
@@ -251,12 +240,12 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00082">82</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00107">107</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
 
 </div>
 </div>
-<a id="a314ba911ac20a6902e4723ae9cfe1299" name="a314ba911ac20a6902e4723ae9cfe1299"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a314ba911ac20a6902e4723ae9cfe1299">&#9670;&#160;</a></span>begin()</h2>
+<a id="a414d8faa3681717833e3f72b05f824ab" name="a414d8faa3681717833e3f72b05f824ab"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a414d8faa3681717833e3f72b05f824ab">&#9670;&#160;</a></span>_lookupFiringDelay()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -265,32 +254,25 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Mycila::PWMDimmer::begin </td>
+          <td class="memname">uint16_t Mycila::PhaseControlDimmer::_lookupFiringDelay </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dutyCycle</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel protected">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enable a dimmer on a specific GPIO pin. </p>
-<dl class="section warning"><dt>Warning</dt><dd><a class="el" href="class_mycila_1_1_dimmer.html">Dimmer</a> won't be enabled if pin is invalid </dd>
-<dd>
-<a class="el" href="class_mycila_1_1_dimmer.html">Dimmer</a> won't be activated until the ZCD is enabled </dd></dl>
-
-<p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8cpp_source.html#l00024">24</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8cpp_source.html">MycilaDimmerPWM.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8cpp_source.html#l00042">42</a> of file <a class="el" href="_mycila_dimmer_phase_control_8cpp_source.html">MycilaDimmerPhaseControl.cpp</a>.</p>
 
 </div>
 </div>
-<a id="ab1c83c98bacc525f04d4af037ec2d378" name="ab1c83c98bacc525f04d4af037ec2d378"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab1c83c98bacc525f04d4af037ec2d378">&#9670;&#160;</a></span>end()</h2>
+<a id="aa20d3cdec048767dff71208a72bdc940" name="aa20d3cdec048767dff71208a72bdc940"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa20d3cdec048767dff71208a72bdc940">&#9670;&#160;</a></span>enablePowerLUT()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,128 +281,9 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Mycila::PWMDimmer::end </td>
+          <td class="memname">void Mycila::PhaseControlDimmer::enablePowerLUT </td>
           <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Disable the dimmer. </p>
-<dl class="section warning"><dt>Warning</dt><dd><a class="el" href="class_mycila_1_1_dimmer.html">Dimmer</a> won't be destroyed but won't turn on anymore even is a duty cycle is set. </dd></dl>
-
-<p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8cpp_source.html#l00050">50</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8cpp_source.html">MycilaDimmerPWM.cpp</a>.</p>
-
-</div>
-</div>
-<a id="ae33f46712aec8126b2f4c7b72969ff92" name="ae33f46712aec8126b2f4c7b72969ff92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae33f46712aec8126b2f4c7b72969ff92">&#9670;&#160;</a></span>getFrequency()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t Mycila::PWMDimmer::getFrequency </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the PWM frequency in Hz. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00038">38</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
-
-</div>
-</div>
-<a id="abb1aed226515de9353ee37939d54a96e" name="abb1aed226515de9353ee37939d54a96e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abb1aed226515de9353ee37939d54a96e">&#9670;&#160;</a></span>getPin()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">gpio_num_t Mycila::PWMDimmer::getPin </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the GPIO pin used for the dimmer. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00028">28</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
-
-</div>
-</div>
-<a id="a80199f11c002b692348e99aa1767afa9" name="a80199f11c002b692348e99aa1767afa9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a80199f11c002b692348e99aa1767afa9">&#9670;&#160;</a></span>getResolution()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint8_t Mycila::PWMDimmer::getResolution </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Get the PWM resolution in bits. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00048">48</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
-
-</div>
-</div>
-<a id="a4de79584bffb1a77bba14a97e6c22d81" name="a4de79584bffb1a77bba14a97e6c22d81"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4de79584bffb1a77bba14a97e6c22d81">&#9670;&#160;</a></span>setFrequency()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Mycila::PWMDimmer::setFrequency </td>
-          <td>(</td>
-          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>frequency</em></span></td><td>)</td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -431,14 +294,20 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Set the PWM frequency in Hz. </p>
+<p>Enable or disable the use of power LUT for this phase-control dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">enable</td><td>: true to enable, false to disable </td></tr>
+  </table>
+  </dd>
+</dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00033">33</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00024">24</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
 
 </div>
 </div>
-<a id="a04eda47bd3b808743674eb3fc034aac7" name="a04eda47bd3b808743674eb3fc034aac7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a04eda47bd3b808743674eb3fc034aac7">&#9670;&#160;</a></span>setPin()</h2>
+<a id="a7cccaf1bc81b180abb84745f2a3580ce" name="a7cccaf1bc81b180abb84745f2a3580ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cccaf1bc81b180abb84745f2a3580ce">&#9670;&#160;</a></span>getPowerRatio()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -447,65 +316,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Mycila::PWMDimmer::setPin </td>
-          <td>(</td>
-          <td class="paramtype">gpio_num_t</td>          <td class="paramname"><span class="paramname"><em>pin</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the GPIO pin to use for the dimmer. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00023">23</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
-
-</div>
-</div>
-<a id="a1e03df6c8414c708adfb214ec9135e7c" name="a1e03df6c8414c708adfb214ec9135e7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1e03df6c8414c708adfb214ec9135e7c">&#9670;&#160;</a></span>setResolution()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Mycila::PWMDimmer::setResolution </td>
-          <td>(</td>
-          <td class="paramtype">uint8_t</td>          <td class="paramname"><span class="paramname"><em>resolution</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Set the PWM resolution in bits. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00043">43</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
-
-</div>
-</div>
-<a id="ab77db1b2c82cabbbb8166f4d61bc7108" name="ab77db1b2c82cabbbb8166f4d61bc7108"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab77db1b2c82cabbbb8166f4d61bc7108">&#9670;&#160;</a></span>type()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">const char * Mycila::PWMDimmer::type </td>
+          <td class="memname">float Mycila::PhaseControlDimmer::getPowerRatio </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -520,13 +331,136 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html#l00065">65</a> of file <a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00076">76</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
+
+</div>
+</div>
+<a id="a60aecb7734f6eca2a96d5605f6a65d73" name="a60aecb7734f6eca2a96d5605f6a65d73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60aecb7734f6eca2a96d5605f6a65d73">&#9670;&#160;</a></span>isOnline()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mycila::PhaseControlDimmer::isOnline </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns true if the dimmer is online. </p>
+<p>A phase-control dimmer is considered online if it is enabled, marked online, and, if power LUT is enabled, it must have a valid semi-period set. </p>
+
+<p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html#a7141a09aef5e3896f7378061cfc6c337">Mycila::Dimmer</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00039">39</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
+
+</div>
+</div>
+<a id="a48cf62a536f65ce9b6eae8f5bbfe6d0d" name="a48cf62a536f65ce9b6eae8f5bbfe6d0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a48cf62a536f65ce9b6eae8f5bbfe6d0d">&#9670;&#160;</a></span>isPowerLUTEnabled()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mycila::PhaseControlDimmer::isPowerLUTEnabled </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Check if the power LUT is enabled. </p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00029">29</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
+
+</div>
+</div>
+<a id="a431d427af2d3421f25ff1c11db579532" name="a431d427af2d3421f25ff1c11db579532"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a431d427af2d3421f25ff1c11db579532">&#9670;&#160;</a></span>setDutyCycle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mycila::PhaseControlDimmer::setDutyCycle </td>
+          <td>(</td>
+          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dutyCycle</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the power duty, eventually remapped by the power LUT if enabled. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dutyCycle</td><td>the power duty cycle in the range [0.0, 1.0] </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html#ae0ef5805b0a6911171f379a0945bfa5c">Mycila::Dimmer</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00050">50</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Field Documentation</h2>
+<a id="a9325bd1c8ec7cf6ea73312e1b3f6604b" name="a9325bd1c8ec7cf6ea73312e1b3f6604b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9325bd1c8ec7cf6ea73312e1b3f6604b">&#9670;&#160;</a></span>_powerLUTEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Mycila::PhaseControlDimmer::_powerLUTEnabled = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_phase_control_8h_source.html#l00103">103</a> of file <a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a>.</p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>src/<a class="el" href="_mycila_dimmer_p_w_m_8h_source.html">MycilaDimmerPWM.h</a></li>
-<li>src/<a class="el" href="_mycila_dimmer_p_w_m_8cpp_source.html">MycilaDimmerPWM.cpp</a></li>
+<li>src/<a class="el" href="_mycila_dimmer_phase_control_8h_source.html">MycilaDimmerPhaseControl.h</a></li>
+<li>src/<a class="el" href="_mycila_dimmer_phase_control_8cpp_source.html">MycilaDimmerPhaseControl.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

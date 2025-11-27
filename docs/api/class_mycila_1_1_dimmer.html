@@ -114,14 +114,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab936b1ffcb91cb3339ed8da8ba086895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped "0" of the dimmer duty cycle.  <br /></td></tr>
 <tr class="memitem:a38579bf14b9e375b89e54970bbae16d1" id="r_a38579bf14b9e375b89e54970bbae16d1"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a38579bf14b9e375b89e54970bbae16d1">getDutyCycleMax</a> () const</td></tr>
 <tr class="memdesc:a38579bf14b9e375b89e54970bbae16d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped "1" of the dimmer duty cycle.  <br /></td></tr>
-<tr class="memitem:aec1b0f949ddf81ed798247fd3c74fbfa" id="r_aec1b0f949ddf81ed798247fd3c74fbfa"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aec1b0f949ddf81ed798247fd3c74fbfa">enablePowerLUT</a> (bool enable)</td></tr>
-<tr class="memdesc:aec1b0f949ddf81ed798247fd3c74fbfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable the use of power LUT for this dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used.  <br /></td></tr>
-<tr class="memitem:a838a358149e8ee1dc7a101d64b45e0ac" id="r_a838a358149e8ee1dc7a101d64b45e0ac"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a838a358149e8ee1dc7a101d64b45e0ac">isPowerLUTEnabled</a> () const</td></tr>
-<tr class="memdesc:a838a358149e8ee1dc7a101d64b45e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the power LUT is enabled.  <br /></td></tr>
 <tr class="memitem:a5912fd1ebbeff4444b37247a7b2791f4" id="r_a5912fd1ebbeff4444b37247a7b2791f4"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a5912fd1ebbeff4444b37247a7b2791f4">isEnabled</a> () const</td></tr>
 <tr class="memdesc:a5912fd1ebbeff4444b37247a7b2791f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dimmer is enabled (if it was able to initialize correctly).  <br /></td></tr>
-<tr class="memitem:a294e00edffad2242018cebf9e871c41c" id="r_a294e00edffad2242018cebf9e871c41c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a294e00edffad2242018cebf9e871c41c">isOnline</a> () const</td></tr>
-<tr class="memdesc:a294e00edffad2242018cebf9e871c41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the dimmer is online.  <br /></td></tr>
+<tr class="memitem:a7141a09aef5e3896f7378061cfc6c337" id="r_a7141a09aef5e3896f7378061cfc6c337"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a7141a09aef5e3896f7378061cfc6c337">isOnline</a> () const</td></tr>
+<tr class="memdesc:a7141a09aef5e3896f7378061cfc6c337"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the dimmer is online.  <br /></td></tr>
 <tr class="memitem:a7dfc096d101bd15b5948d1e398fdc236" id="r_a7dfc096d101bd15b5948d1e398fdc236"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a7dfc096d101bd15b5948d1e398fdc236">setOnline</a> (bool online)</td></tr>
 <tr class="memdesc:a7dfc096d101bd15b5948d1e398fdc236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the online status of the dimmer.  <br /></td></tr>
 <tr class="memitem:a8275a7b7cf9417c2d143519452a88880" id="r_a8275a7b7cf9417c2d143519452a88880"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a8275a7b7cf9417c2d143519452a88880">on</a> ()</td></tr>
@@ -134,16 +130,17 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a45ffba29874e10e48ea48f247d61628b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dimmer is on.  <br /></td></tr>
 <tr class="memitem:aaf5694660dfeec4f9131133324edf223" id="r_aaf5694660dfeec4f9131133324edf223"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aaf5694660dfeec4f9131133324edf223">isOnAtFullPower</a> () const</td></tr>
 <tr class="memdesc:aaf5694660dfeec4f9131133324edf223"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dimmer is on at full power.  <br /></td></tr>
-<tr class="memitem:aa159163ef95c8edd6e54b345e09b3d43" id="r_aa159163ef95c8edd6e54b345e09b3d43"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#aa159163ef95c8edd6e54b345e09b3d43">setDutyCycle</a> (float dutyCycle)</td></tr>
-<tr class="memdesc:aa159163ef95c8edd6e54b345e09b3d43"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty.  <br /></td></tr>
+<tr class="memitem:ae0ef5805b0a6911171f379a0945bfa5c" id="r_ae0ef5805b0a6911171f379a0945bfa5c"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#ae0ef5805b0a6911171f379a0945bfa5c">setDutyCycle</a> (float dutyCycle)</td></tr>
+<tr class="memdesc:ae0ef5805b0a6911171f379a0945bfa5c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty.  <br /></td></tr>
 <tr class="memitem:a717feacc41caacea0681e2fa6816e18c" id="r_a717feacc41caacea0681e2fa6816e18c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a717feacc41caacea0681e2fa6816e18c">getDutyCycle</a> () const</td></tr>
 <tr class="memdesc:a717feacc41caacea0681e2fa6816e18c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the power duty cycle configured for the dimmer by teh user.  <br /></td></tr>
 <tr class="memitem:a915e8f46ca54bd45b13f7d2e13432938" id="r_a915e8f46ca54bd45b13f7d2e13432938"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a915e8f46ca54bd45b13f7d2e13432938">getDutyCycleMapped</a> () const</td></tr>
 <tr class="memdesc:a915e8f46ca54bd45b13f7d2e13432938"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped power duty cycle from the currently user set duty cycle.  <br /></td></tr>
 <tr class="memitem:a0f0513eebff6847195e79b893c96738c" id="r_a0f0513eebff6847195e79b893c96738c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a0f0513eebff6847195e79b893c96738c">getDutyCycleFire</a> () const</td></tr>
 <tr class="memdesc:a0f0513eebff6847195e79b893c96738c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the real firing duty cycle (conduction duty cycle) applied to the dimmer in the range [0, 1].  <br /></td></tr>
+<tr class="memitem:acbc25eec2438b85782838265f9e8b8d3" id="r_acbc25eec2438b85782838265f9e8b8d3"><td class="memItemLeft">virtual float&#160;</td><td class="memItemRight"><a class="el" href="#acbc25eec2438b85782838265f9e8b8d3">getPowerRatio</a> () const</td></tr>
 <tr class="memitem:a6b34aab3c938759c82853fe5f917ee54" id="r_a6b34aab3c938759c82853fe5f917ee54"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a6b34aab3c938759c82853fe5f917ee54">calculateHarmonics</a> (float *array, size_t n) const</td></tr>
-<tr class="memitem:a8f298131932cb9d22e2a488c58c97358" id="r_a8f298131932cb9d22e2a488c58c97358"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a8f298131932cb9d22e2a488c58c97358">calculateMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float gridVoltage, float loadResistance) const</td></tr>
+<tr class="memitem:ae182ed0b25be3e4b82a1e6772e201e24" id="r_ae182ed0b25be3e4b82a1e6772e201e24"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#ae182ed0b25be3e4b82a1e6772e201e24">calculateMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float gridVoltage, float loadResistance) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -155,14 +152,11 @@ Static Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a6fb5b41b3e299e1db9b2e1fae72e897c" id="r_a6fb5b41b3e299e1db9b2e1fae72e897c"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#a6fb5b41b3e299e1db9b2e1fae72e897c">_apply</a> ()</td></tr>
-<tr class="memitem:acb3ef362f8668b96c87a1bcd1ea132ae" id="r_acb3ef362f8668b96c87a1bcd1ea132ae"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#acb3ef362f8668b96c87a1bcd1ea132ae">_calculateHarmonics</a> (float *array, size_t n) const</td></tr>
+<tr class="memitem:ac663b5f99852d96721f95aaa855cf499" id="r_ac663b5f99852d96721f95aaa855cf499"><td class="memItemLeft">virtual bool&#160;</td><td class="memItemRight"><a class="el" href="#ac663b5f99852d96721f95aaa855cf499">_calculateDimmerHarmonics</a> (float *array, size_t n) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-static-methods" class="groupheader"><a id="pro-static-methods" name="pro-static-methods"></a>
 Static Protected Member Functions</h2></td></tr>
-<tr class="memitem:ac7cc0363b00d51d0891de32813c766e4" id="r_ac7cc0363b00d51d0891de32813c766e4"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="#ac7cc0363b00d51d0891de32813c766e4">_lookupFiringDelay</a> (float dutyCycle, uint16_t semiPeriod)</td></tr>
 <tr class="memitem:a4a16a34b7cd031e3f9ea699af23c231f" id="r_a4a16a34b7cd031e3f9ea699af23c231f"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="#a4a16a34b7cd031e3f9ea699af23c231f">_contrain</a> (float amt, float low, float high)</td></tr>
-<tr class="memitem:aef3b9bade9ed97c7f6b563405c03d623" id="r_aef3b9bade9ed97c7f6b563405c03d623"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#aef3b9bade9ed97c7f6b563405c03d623">_calculatePhaseControlHarmonics</a> (float dutyCycleFire, float *array, size_t n)</td></tr>
-<tr class="memitem:ab05cd7f3b41bce187a9c2fb01f55756b" id="r_ab05cd7f3b41bce187a9c2fb01f55756b"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="#ab05cd7f3b41bce187a9c2fb01f55756b">_calculatePhaseControlMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float dutyCycleFire, float gridVoltage, float loadResistance)</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -173,7 +167,6 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a88e7e2ba34272990ce56058b170737dd" id="r_a88e7e2ba34272990ce56058b170737dd"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a88e7e2ba34272990ce56058b170737dd">_dutyCycleLimit</a> = 1.0f</td></tr>
 <tr class="memitem:a85bfbf3fc1aa9e539abe22be3eeec368" id="r_a85bfbf3fc1aa9e539abe22be3eeec368"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a85bfbf3fc1aa9e539abe22be3eeec368">_dutyCycleMin</a> = 0.0f</td></tr>
 <tr class="memitem:a8c4c1126eb9e8429e97886970c1aa076" id="r_a8c4c1126eb9e8429e97886970c1aa076"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="#a8c4c1126eb9e8429e97886970c1aa076">_dutyCycleMax</a> = 1.0f</td></tr>
-<tr class="memitem:a64fc1ef90019e8828e8a5aef7f648cce" id="r_a64fc1ef90019e8828e8a5aef7f648cce"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a64fc1ef90019e8828e8a5aef7f648cce">_powerLUTEnabled</a> = false</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-static-attribs" class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
 Static Protected Attributes</h2></td></tr>
@@ -181,7 +174,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00022">22</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00023">23</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 </div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad13ce419d205132904899d442cb96d94" name="ad13ce419d205132904899d442cb96d94"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad13ce419d205132904899d442cb96d94">&#9670;&#160;</a></span>~Dimmer()</h2>
@@ -206,7 +199,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00035">35</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00036">36</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -234,12 +227,12 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00300">300</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00341">341</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
-<a id="acb3ef362f8668b96c87a1bcd1ea132ae" name="acb3ef362f8668b96c87a1bcd1ea132ae"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#acb3ef362f8668b96c87a1bcd1ea132ae">&#9670;&#160;</a></span>_calculateHarmonics()</h2>
+<a id="ac663b5f99852d96721f95aaa855cf499" name="ac663b5f99852d96721f95aaa855cf499"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac663b5f99852d96721f95aaa855cf499">&#9670;&#160;</a></span>_calculateDimmerHarmonics()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,7 +241,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool Mycila::Dimmer::_calculateHarmonics </td>
+          <td class="memname">virtual bool Mycila::Dimmer::_calculateDimmerHarmonics </td>
           <td>(</td>
           <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
         </tr>
@@ -265,84 +258,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00301">301</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
-
-</div>
-</div>
-<a id="aef3b9bade9ed97c7f6b563405c03d623" name="aef3b9bade9ed97c7f6b563405c03d623"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aef3b9bade9ed97c7f6b563405c03d623">&#9670;&#160;</a></span>_calculatePhaseControlHarmonics()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Mycila::Dimmer::_calculatePhaseControlHarmonics </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dutyCycleFire</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00318">318</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
-
-</div>
-</div>
-<a id="ab05cd7f3b41bce187a9c2fb01f55756b" name="ab05cd7f3b41bce187a9c2fb01f55756b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab05cd7f3b41bce187a9c2fb01f55756b">&#9670;&#160;</a></span>_calculatePhaseControlMetrics()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Mycila::Dimmer::_calculatePhaseControlMetrics </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>metrics</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dutyCycleFire</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>gridVoltage</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>loadResistance</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00357">357</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00343">343</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -378,38 +294,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00314">314</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
-
-</div>
-</div>
-<a id="ac7cc0363b00d51d0891de32813c766e4" name="ac7cc0363b00d51d0891de32813c766e4"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac7cc0363b00d51d0891de32813c766e4">&#9670;&#160;</a></span>_lookupFiringDelay()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint16_t Mycila::Dimmer::_lookupFiringDelay </td>
-          <td>(</td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dutyCycle</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>semiPeriod</em></span>&#160;)</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8cpp_source.html#l00044">44</a> of file <a class="el" href="_mycila_dimmer_8cpp_source.html">MycilaDimmer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00354">354</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -438,7 +323,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_mycila_1_1_cycle_stealing_dimmer.html#a478af9dbe8d3d1dfd7a4000238f68ebb">Mycila::CycleStealingDimmer</a>, <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#ab4d84864138a2eb32f57361b6f5fc202">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#a314ba911ac20a6902e4723ae9cfe1299">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#ae6a65f0467eadbbb9a21a5d2fb2cda89">Mycila::ThyristorDimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00037">37</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00038">38</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -469,12 +354,12 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00247">247</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00222">222</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
-<a id="a8f298131932cb9d22e2a488c58c97358" name="a8f298131932cb9d22e2a488c58c97358"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8f298131932cb9d22e2a488c58c97358">&#9670;&#160;</a></span>calculateMetrics()</h2>
+<a id="ae182ed0b25be3e4b82a1e6772e201e24" name="ae182ed0b25be3e4b82a1e6772e201e24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae182ed0b25be3e4b82a1e6772e201e24">&#9670;&#160;</a></span>calculateMetrics()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -483,7 +368,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual bool Mycila::Dimmer::calculateMetrics </td>
+          <td class="memname">bool Mycila::Dimmer::calculateMetrics </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>metrics</em></span>, </td>
         </tr>
@@ -500,47 +385,12 @@ Static Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00275">275</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
-
-</div>
-</div>
-<a id="aec1b0f949ddf81ed798247fd3c74fbfa" name="aec1b0f949ddf81ed798247fd3c74fbfa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aec1b0f949ddf81ed798247fd3c74fbfa">&#9670;&#160;</a></span>enablePowerLUT()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Mycila::Dimmer::enablePowerLUT </td>
-          <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
 <span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enable or disable the use of power LUT for this dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">enable</td><td>: true to enable, false to disable </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00106">106</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00252">252</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -569,7 +419,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Reimplemented in <a class="el" href="class_mycila_1_1_cycle_stealing_dimmer.html#a45ae13f8dde4a574404c21d3e3747bbb">Mycila::CycleStealingDimmer</a>, <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#af29886b4c364adc366ca78d66d32d1d3">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#aeb0acda0ee498ff78561ae9d7d5c2e6a">Mycila::ThyristorDimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00041">41</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00042">42</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -598,7 +448,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Get the power duty cycle configured for the dimmer by teh user. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00222">222</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00192">192</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -632,7 +482,7 @@ Static Protected Attributes</h2></td></tr>
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00237">237</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00207">207</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -661,7 +511,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Get the power duty cycle limit of the dimmer. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00084">84</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00085">85</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -690,7 +540,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Get the remapped power duty cycle from the currently user set duty cycle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00227">227</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00197">197</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -719,7 +569,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Get the remapped "1" of the dimmer duty cycle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00094">94</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00095">95</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -748,7 +598,34 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Get the remapped "0" of the dimmer duty cycle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00089">89</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00090">90</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+
+</div>
+</div>
+<a id="acbc25eec2438b85782838265f9e8b8d3" name="acbc25eec2438b85782838265f9e8b8d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acbc25eec2438b85782838265f9e8b8d3">&#9670;&#160;</a></span>getPowerRatio()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual float Mycila::Dimmer::getPowerRatio </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00213">213</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -777,7 +654,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Get the semi-period in us used for the power LUT calculations. If LUT is disabled, returns 0. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00120">120</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00104">104</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -806,7 +683,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Check if the dimmer is enabled (if it was able to initialize correctly). </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00136">136</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00120">120</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -835,7 +712,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Check if the dimmer is off. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00176">176</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00160">160</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -864,7 +741,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Check if the dimmer is on. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00181">181</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00165">165</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -893,12 +770,12 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Check if the dimmer is on at full power. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00186">186</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00170">170</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
-<a id="a294e00edffad2242018cebf9e871c41c" name="a294e00edffad2242018cebf9e871c41c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a294e00edffad2242018cebf9e871c41c">&#9670;&#160;</a></span>isOnline()</h2>
+<a id="a7141a09aef5e3896f7378061cfc6c337" name="a7141a09aef5e3896f7378061cfc6c337"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7141a09aef5e3896f7378061cfc6c337">&#9670;&#160;</a></span>isOnline()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -907,7 +784,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Mycila::Dimmer::isOnline </td>
+          <td class="memname">virtual bool Mycila::Dimmer::isOnline </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td> const</td>
@@ -915,44 +792,17 @@ Static Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Returns true if the dimmer is online. </p>
-<p>A dimmer is considered online if it is enabled, marked online, and, if power LUT is enabled, it must have a valid semi-period set. </p>
+<p>A dimmer is considered online if it is enabled, marked online </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00142">142</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p>Reimplemented in <a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a60aecb7734f6eca2a96d5605f6a65d73">Mycila::PhaseControlDimmer</a>.</p>
 
-</div>
-</div>
-<a id="a838a358149e8ee1dc7a101d64b45e0ac" name="a838a358149e8ee1dc7a101d64b45e0ac"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a838a358149e8ee1dc7a101d64b45e0ac">&#9670;&#160;</a></span>isPowerLUTEnabled()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Mycila::Dimmer::isPowerLUTEnabled </td>
-          <td>(</td>
-          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Check if the power LUT is enabled. </p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00111">111</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00126">126</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -981,7 +831,7 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Turn off the dimmer. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00171">171</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00155">155</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1010,12 +860,12 @@ Static Protected Attributes</h2></td></tr>
 
 <p>Turn on the dimmer at full power. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00166">166</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00150">150</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
-<a id="aa159163ef95c8edd6e54b345e09b3d43" name="aa159163ef95c8edd6e54b345e09b3d43"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa159163ef95c8edd6e54b345e09b3d43">&#9670;&#160;</a></span>setDutyCycle()</h2>
+<a id="ae0ef5805b0a6911171f379a0945bfa5c" name="ae0ef5805b0a6911171f379a0945bfa5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0ef5805b0a6911171f379a0945bfa5c">&#9670;&#160;</a></span>setDutyCycle()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -1024,7 +874,7 @@ Static Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Mycila::Dimmer::setDutyCycle </td>
+          <td class="memname">virtual bool Mycila::Dimmer::setDutyCycle </td>
           <td>(</td>
           <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>dutyCycle</em></span></td><td>)</td>
           <td></td>
@@ -1032,7 +882,7 @@ Static Protected Attributes</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel virtual">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -1045,7 +895,9 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00193">193</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p>Reimplemented in <a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a431d427af2d3421f25ff1c11db579532">Mycila::PhaseControlDimmer</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00177">177</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1080,7 +932,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00053">53</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00054">54</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1115,7 +967,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00076">76</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00077">77</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1150,7 +1002,7 @@ Static Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00065">65</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00066">66</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1180,7 +1032,7 @@ Static Protected Attributes</h2></td></tr>
 <p>Set the online status of the dimmer. </p>
 <p>This flag can be used to temporarily disable the dimmer when not connected to the grid </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00148">148</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00132">132</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1211,7 +1063,7 @@ Static Protected Attributes</h2></td></tr>
 <p>Typical values are 10000 for 50Hz and 8333 for 60Hz.</p>
 <p>The value can also come from MycilaPulseAnalyzer </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00127">127</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00111">111</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1238,7 +1090,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00042">42</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00043">43</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1263,7 +1115,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00290">290</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00333">333</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1287,7 +1139,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00291">291</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00334">334</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1311,7 +1163,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00292">292</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00335">335</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1335,7 +1187,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00294">294</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00337">337</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1359,7 +1211,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00293">293</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00336">336</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1383,7 +1235,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00287">287</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00330">330</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1407,31 +1259,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00288">288</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
-
-</div>
-</div>
-<a id="a64fc1ef90019e8828e8a5aef7f648cce" name="a64fc1ef90019e8828e8a5aef7f648cce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64fc1ef90019e8828e8a5aef7f648cce">&#9670;&#160;</a></span>_powerLUTEnabled</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Mycila::Dimmer::_powerLUTEnabled = false</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00296">296</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00331">331</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1455,7 +1283,7 @@ Static Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00298">298</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00339">339</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>

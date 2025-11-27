@@ -105,7 +105,72 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
-  // TODO - IMPLEMENT CYCLE STEALING LOGIC HERE
+  // Semi-period cycle stealing with balanced control
+  // Each semi-period (10ms for 50Hz), we decide whether to conduct or not
+  // To avoid DC components, we must balance positive and negative half-cycles
+
+  struct RegisteredDimmer* current = dimmers;
+  while (current != nullptr) {
+    CycleStealingDimmer* dimmer = current->dimmer;
+    float dutyCycle = dimmer->getDutyCycleFire();
+
+    // Full power: always conduct
+    if (dutyCycle >= 1.0f) {
+      gpio_ll_set_level(&GPIO, dimmer->_pin, HIGH);
+      current->semi_period_odd = !current->semi_period_odd;
+      current = current->next;
+      continue;
+    }
+
+    // Zero power: never conduct
+    if (dutyCycle <= 0.0f) {
+      gpio_ll_set_level(&GPIO, dimmer->_pin, LOW);
+      current->semi_period_odd = !current->semi_period_odd;
+      current = current->next;
+      continue;
+    }
+
+    // Cycle stealing algorithm with DC balance
+    // Sliding window approach (Bresenham) with polarity balancing
+
+    // Accumulate the energy deficit
+    current->density_error += dutyCycle;
+
+    bool should_conduct = false;
+
+    // Check if we have enough accumulated error to fire a pulse
+    if (current->density_error >= 1.0f) {
+      // We want to fire. Check DC balance constraints.
+      // semi_period_odd: True (Odd/Positive), False (Even/Negative)
+      // dc_balance: 0 (Balanced), >0 (Excess Positive), <0 (Excess Negative)
+      // Optimization: We define Odd as Positive (+1) and Even as Negative (-1)
+      int8_t phase_val = current->semi_period_odd ? 1 : -1;
+
+      // Rule:
+      // 1. If balanced (0), we can fire. We will create a debt.
+      // 2. If unbalanced, we can ONLY fire if it reduces the imbalance (opposite sign).
+
+      bool helps_balance = (current->dc_balance == 0) ||
+                           (current->dc_balance > 0 && phase_val < 0) ||
+                           (current->dc_balance < 0 && phase_val > 0);
+
+      if (helps_balance) {
+        should_conduct = true;
+        current->dc_balance += phase_val;
+        current->density_error -= 1.0f;
+      } else {
+        // We need to fire for power, but it would worsen the DC imbalance.
+        // Wait for the next semi-period (which will have opposite polarity).
+        should_conduct = false;
+      }
+    }
+
+    // Apply the decision
+    gpio_ll_set_level(&GPIO, dimmer->_pin, should_conduct ? HIGH : LOW);
+    current->semi_period_odd = !current->semi_period_odd;
+
+    current = current->next;
+  }
 
 #ifndef MYCILA_DIMMER_NO_LOCK
   // unlock the list of dimmers

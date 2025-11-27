@@ -4,7 +4,7 @@
  */
 #pragma once
 
-#include "MycilaDimmer.h"
+#include "MycilaDimmerPhaseControl.h"
 
 #define MYCILA_DIMMER_PWM_RESOLUTION 12   // 12 bits resolution => 0-4095 watts
 #define MYCILA_DIMMER_PWM_FREQUENCY  1000 // 1 kHz
@@ -13,7 +13,7 @@ namespace Mycila {
   /**
    * @brief PWM based dimmer implementation for voltage regulators controlled by a PWM signal to 0-10V analog convertor
    */
-  class PWMDimmer : public Dimmer {
+  class PWMDimmer : public PhaseControlDimmer {
     public:
       virtual ~PWMDimmer() { end(); }
 
@@ -64,10 +64,6 @@ namespace Mycila {
 
       const char* type() const override { return "pwm"; }
 
-      bool calculateMetrics(Metrics& metrics, float gridVoltage, float loadResistance) const override {
-        return isEnabled() && _calculatePhaseControlMetrics(metrics, _dutyCycleFire, gridVoltage, loadResistance);
-      }
-
 #ifdef MYCILA_JSON_SUPPORT
       /**
        * @brief Serialize Dimmer information to a JSON object
@@ -75,7 +71,7 @@ namespace Mycila {
        * @param root: the JSON object to serialize to
        */
       void toJson(const JsonObject& root) const override {
-        Dimmer::toJson(root);
+        PhaseControlDimmer::toJson(root);
         root["pin"] = static_cast<int>(_pin);
         root["frequency"] = _frequency;
         root["resolution"] = _resolution;
@@ -84,15 +80,11 @@ namespace Mycila {
 
     protected:
       bool _apply() override {
-        if (!_online) {
+        if (!isOnline()) {
           return ledcWrite(_pin, 0);
         }
-        uint32_t duty = _dutyCycleFire * ((1 << _resolution) - 1);
+        uint32_t duty = getDutyCycleFire() * ((1 << _resolution) - 1);
         return ledcWrite(_pin, duty);
-      }
-
-      bool _calculateHarmonics(float* array, size_t n) const override {
-        return _calculatePhaseControlHarmonics(_dutyCycleFire, array, n);
       }
 
     private:

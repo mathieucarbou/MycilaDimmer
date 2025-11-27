@@ -114,7 +114,16 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aeb0acda0ee498ff78561ae9d7d5c2e6a" id="r_aeb0acda0ee498ff78561ae9d7d5c2e6a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aeb0acda0ee498ff78561ae9d7d5c2e6a">end</a> () override</td></tr>
 <tr class="memdesc:aeb0acda0ee498ff78561ae9d7d5c2e6a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Disable the dimmer.  <br /></td></tr>
 <tr class="memitem:afda1af88f34b1c0126525d7ca17bdfb8" id="r_afda1af88f34b1c0126525d7ca17bdfb8"><td class="memItemLeft">const char *&#160;</td><td class="memItemRight"><a class="el" href="#afda1af88f34b1c0126525d7ca17bdfb8">type</a> () const override</td></tr>
-<tr class="memitem:a1793f96091f8de1cd2ce0101bb024425" id="r_a1793f96091f8de1cd2ce0101bb024425"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1793f96091f8de1cd2ce0101bb024425">calculateMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float gridVoltage, float loadResistance) const override</td></tr>
+<tr class="inherit_header pub_methods_class_mycila_1_1_phase_control_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_mycila_1_1_phase_control_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_mycila_1_1_phase_control_dimmer.html">Mycila::PhaseControlDimmer</a></td></tr>
+<tr class="memitem:aa20d3cdec048767dff71208a72bdc940 inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_aa20d3cdec048767dff71208a72bdc940"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#aa20d3cdec048767dff71208a72bdc940">enablePowerLUT</a> (bool enable)</td></tr>
+<tr class="memdesc:aa20d3cdec048767dff71208a72bdc940 inherit pub_methods_class_mycila_1_1_phase_control_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable the use of power LUT for this phase-control dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used.  <br /></td></tr>
+<tr class="memitem:a48cf62a536f65ce9b6eae8f5bbfe6d0d inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_a48cf62a536f65ce9b6eae8f5bbfe6d0d"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a48cf62a536f65ce9b6eae8f5bbfe6d0d">isPowerLUTEnabled</a> () const</td></tr>
+<tr class="memdesc:a48cf62a536f65ce9b6eae8f5bbfe6d0d inherit pub_methods_class_mycila_1_1_phase_control_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the power LUT is enabled.  <br /></td></tr>
+<tr class="memitem:a60aecb7734f6eca2a96d5605f6a65d73 inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_a60aecb7734f6eca2a96d5605f6a65d73"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a60aecb7734f6eca2a96d5605f6a65d73">isOnline</a> () const override</td></tr>
+<tr class="memdesc:a60aecb7734f6eca2a96d5605f6a65d73 inherit pub_methods_class_mycila_1_1_phase_control_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the dimmer is online.  <br /></td></tr>
+<tr class="memitem:a431d427af2d3421f25ff1c11db579532 inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_a431d427af2d3421f25ff1c11db579532"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a431d427af2d3421f25ff1c11db579532">setDutyCycle</a> (float dutyCycle) override</td></tr>
+<tr class="memdesc:a431d427af2d3421f25ff1c11db579532 inherit pub_methods_class_mycila_1_1_phase_control_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty, eventually remapped by the power LUT if enabled.  <br /></td></tr>
+<tr class="memitem:a7cccaf1bc81b180abb84745f2a3580ce inherit pub_methods_class_mycila_1_1_phase_control_dimmer" id="r_a7cccaf1bc81b180abb84745f2a3580ce"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a7cccaf1bc81b180abb84745f2a3580ce">getPowerRatio</a> () const override</td></tr>
 <tr class="inherit_header pub_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:af83b436ec8799d705dbf22265225beaf inherit pub_methods_class_mycila_1_1_dimmer" id="r_af83b436ec8799d705dbf22265225beaf"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#af83b436ec8799d705dbf22265225beaf">setDutyCycleLimit</a> (float limit)</td></tr>
 <tr class="memdesc:af83b436ec8799d705dbf22265225beaf inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit.  <br /></td></tr>
@@ -128,14 +137,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab936b1ffcb91cb3339ed8da8ba086895 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped "0" of the dimmer duty cycle.  <br /></td></tr>
 <tr class="memitem:a38579bf14b9e375b89e54970bbae16d1 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a38579bf14b9e375b89e54970bbae16d1"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a38579bf14b9e375b89e54970bbae16d1">getDutyCycleMax</a> () const</td></tr>
 <tr class="memdesc:a38579bf14b9e375b89e54970bbae16d1 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped "1" of the dimmer duty cycle.  <br /></td></tr>
-<tr class="memitem:aec1b0f949ddf81ed798247fd3c74fbfa inherit pub_methods_class_mycila_1_1_dimmer" id="r_aec1b0f949ddf81ed798247fd3c74fbfa"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#aec1b0f949ddf81ed798247fd3c74fbfa">enablePowerLUT</a> (bool enable)</td></tr>
-<tr class="memdesc:aec1b0f949ddf81ed798247fd3c74fbfa inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable the use of power LUT for this dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used.  <br /></td></tr>
-<tr class="memitem:a838a358149e8ee1dc7a101d64b45e0ac inherit pub_methods_class_mycila_1_1_dimmer" id="r_a838a358149e8ee1dc7a101d64b45e0ac"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a838a358149e8ee1dc7a101d64b45e0ac">isPowerLUTEnabled</a> () const</td></tr>
-<tr class="memdesc:a838a358149e8ee1dc7a101d64b45e0ac inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the power LUT is enabled.  <br /></td></tr>
 <tr class="memitem:a5912fd1ebbeff4444b37247a7b2791f4 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a5912fd1ebbeff4444b37247a7b2791f4"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a5912fd1ebbeff4444b37247a7b2791f4">isEnabled</a> () const</td></tr>
 <tr class="memdesc:a5912fd1ebbeff4444b37247a7b2791f4 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dimmer is enabled (if it was able to initialize correctly).  <br /></td></tr>
-<tr class="memitem:a294e00edffad2242018cebf9e871c41c inherit pub_methods_class_mycila_1_1_dimmer" id="r_a294e00edffad2242018cebf9e871c41c"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a294e00edffad2242018cebf9e871c41c">isOnline</a> () const</td></tr>
-<tr class="memdesc:a294e00edffad2242018cebf9e871c41c inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the dimmer is online.  <br /></td></tr>
 <tr class="memitem:a7dfc096d101bd15b5948d1e398fdc236 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a7dfc096d101bd15b5948d1e398fdc236"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a7dfc096d101bd15b5948d1e398fdc236">setOnline</a> (bool online)</td></tr>
 <tr class="memdesc:a7dfc096d101bd15b5948d1e398fdc236 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the online status of the dimmer.  <br /></td></tr>
 <tr class="memitem:a8275a7b7cf9417c2d143519452a88880 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a8275a7b7cf9417c2d143519452a88880"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a8275a7b7cf9417c2d143519452a88880">on</a> ()</td></tr>
@@ -148,8 +151,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a45ffba29874e10e48ea48f247d61628b inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dimmer is on.  <br /></td></tr>
 <tr class="memitem:aaf5694660dfeec4f9131133324edf223 inherit pub_methods_class_mycila_1_1_dimmer" id="r_aaf5694660dfeec4f9131133324edf223"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#aaf5694660dfeec4f9131133324edf223">isOnAtFullPower</a> () const</td></tr>
 <tr class="memdesc:aaf5694660dfeec4f9131133324edf223 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dimmer is on at full power.  <br /></td></tr>
-<tr class="memitem:aa159163ef95c8edd6e54b345e09b3d43 inherit pub_methods_class_mycila_1_1_dimmer" id="r_aa159163ef95c8edd6e54b345e09b3d43"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#aa159163ef95c8edd6e54b345e09b3d43">setDutyCycle</a> (float dutyCycle)</td></tr>
-<tr class="memdesc:aa159163ef95c8edd6e54b345e09b3d43 inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the power duty.  <br /></td></tr>
 <tr class="memitem:a717feacc41caacea0681e2fa6816e18c inherit pub_methods_class_mycila_1_1_dimmer" id="r_a717feacc41caacea0681e2fa6816e18c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a717feacc41caacea0681e2fa6816e18c">getDutyCycle</a> () const</td></tr>
 <tr class="memdesc:a717feacc41caacea0681e2fa6816e18c inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the power duty cycle configured for the dimmer by teh user.  <br /></td></tr>
 <tr class="memitem:a915e8f46ca54bd45b13f7d2e13432938 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a915e8f46ca54bd45b13f7d2e13432938"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a915e8f46ca54bd45b13f7d2e13432938">getDutyCycleMapped</a> () const</td></tr>
@@ -157,6 +158,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer" id="r_a0f0513eebff6847195e79b893c96738c"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a0f0513eebff6847195e79b893c96738c">getDutyCycleFire</a> () const</td></tr>
 <tr class="memdesc:a0f0513eebff6847195e79b893c96738c inherit pub_methods_class_mycila_1_1_dimmer"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the real firing duty cycle (conduction duty cycle) applied to the dimmer in the range [0, 1].  <br /></td></tr>
 <tr class="memitem:a6b34aab3c938759c82853fe5f917ee54 inherit pub_methods_class_mycila_1_1_dimmer" id="r_a6b34aab3c938759c82853fe5f917ee54"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a6b34aab3c938759c82853fe5f917ee54">calculateHarmonics</a> (float *array, size_t n) const</td></tr>
+<tr class="memitem:ae182ed0b25be3e4b82a1e6772e201e24 inherit pub_methods_class_mycila_1_1_dimmer" id="r_ae182ed0b25be3e4b82a1e6772e201e24"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#ae182ed0b25be3e4b82a1e6772e201e24">calculateMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float gridVoltage, float loadResistance) const</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -170,15 +172,17 @@ Static Public Member Functions</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a1fe34a978cd88893d7a005ac3fb15cd5" id="r_a1fe34a978cd88893d7a005ac3fb15cd5"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1fe34a978cd88893d7a005ac3fb15cd5">_apply</a> () override</td></tr>
-<tr class="memitem:af9b72a5a7d25bffe590dde0d2454af33" id="r_af9b72a5a7d25bffe590dde0d2454af33"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#af9b72a5a7d25bffe590dde0d2454af33">_calculateHarmonics</a> (float *array, size_t n) const override</td></tr>
+<tr class="inherit_header pro_methods_class_mycila_1_1_phase_control_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_methods_class_mycila_1_1_phase_control_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_phase_control_dimmer.html">Mycila::PhaseControlDimmer</a></td></tr>
+<tr class="memitem:a34b284641f49ccbca1a703314a705172 inherit pro_methods_class_mycila_1_1_phase_control_dimmer" id="r_a34b284641f49ccbca1a703314a705172"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a34b284641f49ccbca1a703314a705172">_calculateDimmerHarmonics</a> (float *array, size_t n) const override</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
+<tr class="inherit_header pro_static_methods_class_mycila_1_1_phase_control_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_methods_class_mycila_1_1_phase_control_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_phase_control_dimmer.html">Mycila::PhaseControlDimmer</a></td></tr>
+<tr class="memitem:a414d8faa3681717833e3f72b05f824ab inherit pro_static_methods_class_mycila_1_1_phase_control_dimmer" id="r_a414d8faa3681717833e3f72b05f824ab"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a414d8faa3681717833e3f72b05f824ab">_lookupFiringDelay</a> (float dutyCycle)</td></tr>
 <tr class="inherit_header pro_static_methods_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_methods_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Protected Member Functions inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
-<tr class="memitem:ac7cc0363b00d51d0891de32813c766e4 inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_ac7cc0363b00d51d0891de32813c766e4"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#ac7cc0363b00d51d0891de32813c766e4">_lookupFiringDelay</a> (float dutyCycle, uint16_t semiPeriod)</td></tr>
 <tr class="memitem:a4a16a34b7cd031e3f9ea699af23c231f inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_a4a16a34b7cd031e3f9ea699af23c231f"><td class="memItemLeft">static float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a4a16a34b7cd031e3f9ea699af23c231f">_contrain</a> (float amt, float low, float high)</td></tr>
-<tr class="memitem:aef3b9bade9ed97c7f6b563405c03d623 inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_aef3b9bade9ed97c7f6b563405c03d623"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#aef3b9bade9ed97c7f6b563405c03d623">_calculatePhaseControlHarmonics</a> (float dutyCycleFire, float *array, size_t n)</td></tr>
-<tr class="memitem:ab05cd7f3b41bce187a9c2fb01f55756b inherit pro_static_methods_class_mycila_1_1_dimmer" id="r_ab05cd7f3b41bce187a9c2fb01f55756b"><td class="memItemLeft">static bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#ab05cd7f3b41bce187a9c2fb01f55756b">_calculatePhaseControlMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float dutyCycleFire, float gridVoltage, float loadResistance)</td></tr>
+<tr class="inherit_header pro_attribs_class_mycila_1_1_phase_control_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_mycila_1_1_phase_control_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="class_mycila_1_1_phase_control_dimmer.html">Mycila::PhaseControlDimmer</a></td></tr>
+<tr class="memitem:a9325bd1c8ec7cf6ea73312e1b3f6604b inherit pro_attribs_class_mycila_1_1_phase_control_dimmer" id="r_a9325bd1c8ec7cf6ea73312e1b3f6604b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_phase_control_dimmer.html#a9325bd1c8ec7cf6ea73312e1b3f6604b">_powerLUTEnabled</a> = false</td></tr>
 <tr class="inherit_header pro_attribs_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:a2212e403703545ca69d0a38d3105f83a inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a2212e403703545ca69d0a38d3105f83a"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a2212e403703545ca69d0a38d3105f83a">_enabled</a> = false</td></tr>
 <tr class="memitem:ab6260c766739f7b991d6a84086a7926b inherit pro_attribs_class_mycila_1_1_dimmer" id="r_ab6260c766739f7b991d6a84086a7926b"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#ab6260c766739f7b991d6a84086a7926b">_online</a> = false</td></tr>
@@ -187,7 +191,6 @@ Additional Inherited Members</h2></td></tr>
 <tr class="memitem:a88e7e2ba34272990ce56058b170737dd inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a88e7e2ba34272990ce56058b170737dd"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a88e7e2ba34272990ce56058b170737dd">_dutyCycleLimit</a> = 1.0f</td></tr>
 <tr class="memitem:a85bfbf3fc1aa9e539abe22be3eeec368 inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a85bfbf3fc1aa9e539abe22be3eeec368"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a85bfbf3fc1aa9e539abe22be3eeec368">_dutyCycleMin</a> = 0.0f</td></tr>
 <tr class="memitem:a8c4c1126eb9e8429e97886970c1aa076 inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a8c4c1126eb9e8429e97886970c1aa076"><td class="memItemLeft">float&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a8c4c1126eb9e8429e97886970c1aa076">_dutyCycleMax</a> = 1.0f</td></tr>
-<tr class="memitem:a64fc1ef90019e8828e8a5aef7f648cce inherit pro_attribs_class_mycila_1_1_dimmer" id="r_a64fc1ef90019e8828e8a5aef7f648cce"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a64fc1ef90019e8828e8a5aef7f648cce">_powerLUTEnabled</a> = false</td></tr>
 <tr class="inherit_header pro_static_attribs_class_mycila_1_1_dimmer"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_static_attribs_class_mycila_1_1_dimmer')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Protected Attributes inherited from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></td></tr>
 <tr class="memitem:a0a373f111682d1210fb3ff269824188d inherit pro_static_attribs_class_mycila_1_1_dimmer" id="r_a0a373f111682d1210fb3ff269824188d"><td class="memItemLeft">static uint16_t&#160;</td><td class="memItemRight"><a class="el" href="class_mycila_1_1_dimmer.html#a0a373f111682d1210fb3ff269824188d">_semiPeriod</a> = 0</td></tr>
 </table>
@@ -249,40 +252,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00091">91</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
-
-</div>
-</div>
-<a id="af9b72a5a7d25bffe590dde0d2454af33" name="af9b72a5a7d25bffe590dde0d2454af33"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af9b72a5a7d25bffe590dde0d2454af33">&#9670;&#160;</a></span>_calculateHarmonics()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Mycila::ThyristorDimmer::_calculateHarmonics </td>
-          <td>(</td>
-          <td class="paramtype">float *</td>          <td class="paramname"><span class="paramname"><em>array</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>n</em></span>&#160;) const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel protected">protected</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00104">104</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00087">87</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -317,44 +287,6 @@ Additional Inherited Members</h2></td></tr>
 <p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8cpp_source.html#l00048">48</a> of file <a class="el" href="_mycila_dimmer_thyristor_8cpp_source.html">MycilaDimmerThyristor.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a1793f96091f8de1cd2ce0101bb024425" name="a1793f96091f8de1cd2ce0101bb024425"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1793f96091f8de1cd2ce0101bb024425">&#9670;&#160;</a></span>calculateMetrics()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Mycila::ThyristorDimmer::calculateMetrics </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>metrics</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>gridVoltage</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float</td>          <td class="paramname"><span class="paramname"><em>loadResistance</em></span>&#160;) const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel override">override</span><span class="mlabel virtual">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Reimplemented from <a class="el" href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a>.</p>
-
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_thyristor_8h_source.html#l00060">60</a> of file <a class="el" href="_mycila_dimmer_thyristor_8h_source.html">MycilaDimmerThyristor.h</a>.</p>
 
 </div>
 </div>
@@ -507,7 +439,7 @@ Additional Inherited Members</h2></td></tr>
 <ul>
 <li>When using MycilaPulseAnalyzer library, this callback can be registered like this:</li>
 </ul>
-<p>pulseAnalyzer.onZeroCross(Mycila::Dimmer::onZeroCross);</p>
+<p>pulseAnalyzer.onZeroCross(Mycila::ThyristorDimmer::onZeroCross);</p>
 <ul>
 <li>When using your own ISR with the RobotDyn ZCD, you can call this method with delayUntilZero == 200 since the length of the ZCD pulse is about 400 us.</li>
 <li>When using your own ISR with the ZCd from Daniel S, you can call this method with delayUntilZero == 550 since the length of the ZCD pulse is about 1100 us. </li>
