@@ -23,22 +23,6 @@ namespace Mycila {
       gpio_num_t getPin() const { return _pin; }
 
       /**
-       * @brief Set the semi-period of the grid frequency in us. It cannot be zero and it is required for proper dimmer operation.
-       */
-      void setSemiPeriod(uint16_t semiPeriod) {
-        if (semiPeriod == 0) {
-          ESP_LOGE("CycleStealing", "setSemiPeriod: semiPeriod must be > 0");
-        }
-        assert(semiPeriod > 0);
-        _semiPeriod = semiPeriod;
-      }
-
-      /**
-       * @brief Get the semi-period of the grid frequency in us
-       */
-      uint16_t getSemiPeriod() const { return _semiPeriod; }
-
-      /**
        * @brief Enable a dimmer on a specific GPIO pin
        *
        * @warning Dimmer won't be enabled if pin is invalid
@@ -87,8 +71,7 @@ namespace Mycila {
        */
       void toJson(const JsonObject& root) const override {
         Dimmer::toJson(root);
-        root["dimmer_pin"] = _pin;
-        root["dimmer_semi_period"] = _semiPeriod;
+        root["pin"] = _pin;
       }
 #endif
 

@@ -32,7 +32,9 @@ void setup() {
   dimmer = createDimmer();
   dimmer->setDutyCycleMin(0.05f); // remap 5% to 95%
   dimmer->setDutyCycleMax(0.95f);
-  dimmer->enablePowerLUT(true, 10000); // 10000us semi-period for 50Hz
+  dimmer->enablePowerLUT(true);
+  Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
+  // Mycila::Dimmer::setSemiPeriod(8333);  // 60Hz grid frequency
   dimmer->begin();
   dimmer->setOnline(true);
 

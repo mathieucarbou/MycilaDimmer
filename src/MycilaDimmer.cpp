@@ -39,6 +39,8 @@ static constexpr uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {
 // Mycila::Dimmer
 // =============================================================================
 
+uint16_t Mycila::Dimmer::_semiPeriod = 0;
+
 uint16_t Mycila::Dimmer::_lookupFiringDelay(float dutyCycle, uint16_t semiPeriod) {
   uint32_t duty = dutyCycle * FIRING_DELAY_MAX;
   uint32_t slot = duty * FIRING_DELAYS_SCALE + (FIRING_DELAYS_SCALE >> 1);
@@ -69,7 +71,7 @@ void Mycila::Dimmer::toJson(const JsonObject& root) const {
   root["duty_cycle_min"] = _dutyCycleMin;
   root["duty_cycle_max"] = _dutyCycleMax;
   root["power_lut"] = _powerLUTEnabled;
-  root["power_lut_semi_period"] = _semiPeriod;
+  root["semi_period"] = _semiPeriod;
   JsonObject harmonics = root["harmonics"].to<JsonObject>();
   float* output = new float[11]; // H1 to H21
   if (calculateHarmonics(output, 11)) {

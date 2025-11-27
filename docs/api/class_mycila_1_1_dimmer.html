@@ -79,9 +79,11 @@ $(function() {
   <div class="summary">
 <a href="#nested-classes">Data Structures</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-static-methods">Static Protected Member Functions</a> &#124;
-<a href="#pro-attribs">Protected Attributes</a>  </div>
+<a href="#pro-attribs">Protected Attributes</a> &#124;
+<a href="#pro-static-attribs">Static Protected Attributes</a>  </div>
   <div class="headertitle"><div class="title">Mycila::Dimmer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
@@ -97,7 +99,7 @@ Data Structures</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adbd39212e7c616c7137583f06eb95a17" id="r_adbd39212e7c616c7137583f06eb95a17"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbd39212e7c616c7137583f06eb95a17">begin</a> ()</td></tr>
+<tr class="memitem:a54fd1a618e053fc51434775fe92f2166" id="r_a54fd1a618e053fc51434775fe92f2166"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a54fd1a618e053fc51434775fe92f2166">begin</a> ()</td></tr>
 <tr class="memitem:a4108da25e47d5c15f307ab9ab0d91960" id="r_a4108da25e47d5c15f307ab9ab0d91960"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4108da25e47d5c15f307ab9ab0d91960">end</a> ()</td></tr>
 <tr class="memitem:a576ed69f3f6cf4be3baa58f536f9dd49" id="r_a576ed69f3f6cf4be3baa58f536f9dd49"><td class="memItemLeft" align="right" valign="top">virtual const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a576ed69f3f6cf4be3baa58f536f9dd49">type</a> () const</td></tr>
 <tr class="memitem:af83b436ec8799d705dbf22265225beaf" id="r_af83b436ec8799d705dbf22265225beaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af83b436ec8799d705dbf22265225beaf">setDutyCycleLimit</a> (float limit)</td></tr>
@@ -112,16 +114,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ab936b1ffcb91cb3339ed8da8ba086895"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped "0" of the dimmer duty cycle.  <br /></td></tr>
 <tr class="memitem:a38579bf14b9e375b89e54970bbae16d1" id="r_a38579bf14b9e375b89e54970bbae16d1"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a38579bf14b9e375b89e54970bbae16d1">getDutyCycleMax</a> () const</td></tr>
 <tr class="memdesc:a38579bf14b9e375b89e54970bbae16d1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the remapped "1" of the dimmer duty cycle.  <br /></td></tr>
-<tr class="memitem:ab6e2373fd4450073598d09778bc1a4ce" id="r_ab6e2373fd4450073598d09778bc1a4ce"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ab6e2373fd4450073598d09778bc1a4ce">enablePowerLUT</a> (bool enable, uint16_t semiPeriod=0)</td></tr>
-<tr class="memdesc:ab6e2373fd4450073598d09778bc1a4ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable the use of power LUT for dimmer curve The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used.  <br /></td></tr>
+<tr class="memitem:aec1b0f949ddf81ed798247fd3c74fbfa" id="r_aec1b0f949ddf81ed798247fd3c74fbfa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aec1b0f949ddf81ed798247fd3c74fbfa">enablePowerLUT</a> (bool enable)</td></tr>
+<tr class="memdesc:aec1b0f949ddf81ed798247fd3c74fbfa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enable or disable the use of power LUT for this dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used.  <br /></td></tr>
 <tr class="memitem:a838a358149e8ee1dc7a101d64b45e0ac" id="r_a838a358149e8ee1dc7a101d64b45e0ac"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a838a358149e8ee1dc7a101d64b45e0ac">isPowerLUTEnabled</a> () const</td></tr>
 <tr class="memdesc:a838a358149e8ee1dc7a101d64b45e0ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the power LUT is enabled.  <br /></td></tr>
-<tr class="memitem:a2f84ecb5b5fbd7b775e0a4b47e9cff92" id="r_a2f84ecb5b5fbd7b775e0a4b47e9cff92"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2f84ecb5b5fbd7b775e0a4b47e9cff92">getPowerLUTSemiPeriod</a> () const</td></tr>
-<tr class="memdesc:a2f84ecb5b5fbd7b775e0a4b47e9cff92"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the semi-period in us used for the power LUT calculations. If LUT is disabled, returns 0.  <br /></td></tr>
 <tr class="memitem:a5912fd1ebbeff4444b37247a7b2791f4" id="r_a5912fd1ebbeff4444b37247a7b2791f4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5912fd1ebbeff4444b37247a7b2791f4">isEnabled</a> () const</td></tr>
 <tr class="memdesc:a5912fd1ebbeff4444b37247a7b2791f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Check if the dimmer is enabled (if it was able to initialize correctly).  <br /></td></tr>
 <tr class="memitem:a294e00edffad2242018cebf9e871c41c" id="r_a294e00edffad2242018cebf9e871c41c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a294e00edffad2242018cebf9e871c41c">isOnline</a> () const</td></tr>
-<tr class="memdesc:a294e00edffad2242018cebf9e871c41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the dimmer is marked online.  <br /></td></tr>
+<tr class="memdesc:a294e00edffad2242018cebf9e871c41c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns true if the dimmer is online.  <br /></td></tr>
 <tr class="memitem:a7dfc096d101bd15b5948d1e398fdc236" id="r_a7dfc096d101bd15b5948d1e398fdc236"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7dfc096d101bd15b5948d1e398fdc236">setOnline</a> (bool online)</td></tr>
 <tr class="memdesc:a7dfc096d101bd15b5948d1e398fdc236"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the online status of the dimmer.  <br /></td></tr>
 <tr class="memitem:a8275a7b7cf9417c2d143519452a88880" id="r_a8275a7b7cf9417c2d143519452a88880"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8275a7b7cf9417c2d143519452a88880">on</a> ()</td></tr>
@@ -145,6 +145,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6b34aab3c938759c82853fe5f917ee54" id="r_a6b34aab3c938759c82853fe5f917ee54"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b34aab3c938759c82853fe5f917ee54">calculateHarmonics</a> (float *array, size_t n) const</td></tr>
 <tr class="memitem:a8f298131932cb9d22e2a488c58c97358" id="r_a8f298131932cb9d22e2a488c58c97358"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8f298131932cb9d22e2a488c58c97358">calculateMetrics</a> (<a class="el" href="struct_mycila_1_1_dimmer_1_1_metrics.html">Metrics</a> &amp;metrics, float gridVoltage, float loadResistance) const</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pub-static-methods" class="groupheader"><a id="pub-static-methods" name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a518d3f8796875645cfab0c395b9c90df" id="r_a518d3f8796875645cfab0c395b9c90df"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a518d3f8796875645cfab0c395b9c90df">getSemiPeriod</a> ()</td></tr>
+<tr class="memdesc:a518d3f8796875645cfab0c395b9c90df"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the semi-period in us used for the power LUT calculations. If LUT is disabled, returns 0.  <br /></td></tr>
+<tr class="memitem:a10c7e14e08ab36dc3b480c33d908740e" id="r_a10c7e14e08ab36dc3b480c33d908740e"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a10c7e14e08ab36dc3b480c33d908740e">setSemiPeriod</a> (uint16_t semiPeriod)</td></tr>
+<tr class="memdesc:a10c7e14e08ab36dc3b480c33d908740e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set the semi-period of the grid frequency in us for this dimmer. This is mandatory when using power LUT.  <br /></td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-methods" class="groupheader"><a id="pro-methods" name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:a6fb5b41b3e299e1db9b2e1fae72e897c" id="r_a6fb5b41b3e299e1db9b2e1fae72e897c"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6fb5b41b3e299e1db9b2e1fae72e897c">_apply</a> ()</td></tr>
@@ -167,7 +174,10 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a85bfbf3fc1aa9e539abe22be3eeec368" id="r_a85bfbf3fc1aa9e539abe22be3eeec368"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a85bfbf3fc1aa9e539abe22be3eeec368">_dutyCycleMin</a> = 0.0f</td></tr>
 <tr class="memitem:a8c4c1126eb9e8429e97886970c1aa076" id="r_a8c4c1126eb9e8429e97886970c1aa076"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a8c4c1126eb9e8429e97886970c1aa076">_dutyCycleMax</a> = 1.0f</td></tr>
 <tr class="memitem:a64fc1ef90019e8828e8a5aef7f648cce" id="r_a64fc1ef90019e8828e8a5aef7f648cce"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a64fc1ef90019e8828e8a5aef7f648cce">_powerLUTEnabled</a> = false</td></tr>
-<tr class="memitem:a0a373f111682d1210fb3ff269824188d" id="r_a0a373f111682d1210fb3ff269824188d"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a373f111682d1210fb3ff269824188d">_semiPeriod</a> = 0</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pro-static-attribs" class="groupheader"><a id="pro-static-attribs" name="pro-static-attribs"></a>
+Static Protected Attributes</h2></td></tr>
+<tr class="memitem:a0a373f111682d1210fb3ff269824188d" id="r_a0a373f111682d1210fb3ff269824188d"><td class="memItemLeft" align="right" valign="top">static uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0a373f111682d1210fb3ff269824188d">_semiPeriod</a> = 0</td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock">
@@ -224,7 +234,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00307">307</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00300">300</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -255,7 +265,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00308">308</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00301">301</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -291,7 +301,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00325">325</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00318">318</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -332,7 +342,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00364">364</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00357">357</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -368,7 +378,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00321">321</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00314">314</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -399,12 +409,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8cpp_source.html#l00218">218</a> of file <a class="el" href="_mycila_dimmer_8cpp_source.html">MycilaDimmer.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8cpp_source.html#l00044">44</a> of file <a class="el" href="_mycila_dimmer_8cpp_source.html">MycilaDimmer.cpp</a>.</p>
 
 </div>
 </div>
-<a id="adbd39212e7c616c7137583f06eb95a17" name="adbd39212e7c616c7137583f06eb95a17"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#adbd39212e7c616c7137583f06eb95a17">&#9670;&#160;</a></span>begin()</h2>
+<a id="a54fd1a618e053fc51434775fe92f2166" name="a54fd1a618e053fc51434775fe92f2166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a54fd1a618e053fc51434775fe92f2166">&#9670;&#160;</a></span>begin()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -413,7 +423,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">virtual void Mycila::Dimmer::begin </td>
+          <td class="memname">virtual bool Mycila::Dimmer::begin </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
           <td></td>
@@ -426,7 +436,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Reimplemented in <a class="el" href="class_mycila_1_1_cycle_stealing_dimmer.html#a37cb43d04a0e306a1166a31a01a15be6">Mycila::CycleStealingDimmer</a>, <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#a17484950c67afc73b94b4f34c6fe4879">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#ac66ccf49a9ee6322f34f15a9eb7b7ead">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#a6b557778b509699aa57e617e1b600b17">Mycila::ThyristorDimmer</a>.</p>
+<p>Reimplemented in <a class="el" href="class_mycila_1_1_cycle_stealing_dimmer.html#a478af9dbe8d3d1dfd7a4000238f68ebb">Mycila::CycleStealingDimmer</a>, <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#ab4d84864138a2eb32f57361b6f5fc202">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#a314ba911ac20a6902e4723ae9cfe1299">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#ae6a65f0467eadbbb9a21a5d2fb2cda89">Mycila::ThyristorDimmer</a>.</p>
 
 <p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00037">37</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
@@ -459,7 +469,7 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00255">255</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00247">247</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -495,12 +505,12 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00283">283</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00275">275</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
-<a id="ab6e2373fd4450073598d09778bc1a4ce" name="ab6e2373fd4450073598d09778bc1a4ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab6e2373fd4450073598d09778bc1a4ce">&#9670;&#160;</a></span>enablePowerLUT()</h2>
+<a id="aec1b0f949ddf81ed798247fd3c74fbfa" name="aec1b0f949ddf81ed798247fd3c74fbfa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec1b0f949ddf81ed798247fd3c74fbfa">&#9670;&#160;</a></span>enablePowerLUT()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -511,12 +521,8 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">void Mycila::Dimmer::enablePowerLUT </td>
           <td>(</td>
-          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>enable</em></span></td><td>)</td>
           <td></td>
-          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>semiPeriod</em></span><span class="paramdefsep"> = </span><span class="paramdefval">0</span>&#160;)</td>
         </tr>
       </table>
   </td>
@@ -526,25 +532,15 @@ Protected Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Enable or disable the use of power LUT for dimmer curve The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used. </p>
+<p>Enable or disable the use of power LUT for this dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">enable</td><td>: true to enable, false to disable </td></tr>
-    <tr><td class="paramname">semiPeriod</td><td>: the semi-period of the grid frequency in us (10000 for 50Hz, 8333 for 60Hz). </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>If false is passed, the semi-period parameter is ignored and the already set semi-period is kept unchanged. </dd>
-<dd>
-If true is passed, the function validates that a semi-period is set or already exists: </dd>
-<dd>
-- if a semi-period is provided (&gt;0), it will be used </dd>
-<dd>
-- if no semi-period is provided (0), the already set semi-period will be used (must be &gt;0) </dd>
-<dd>
-- if no semi-period is provided and no semi-period was set, an assertion will fail </dd></dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00109">109</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00106">106</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -573,7 +569,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Reimplemented in <a class="el" href="class_mycila_1_1_cycle_stealing_dimmer.html#a45ae13f8dde4a574404c21d3e3747bbb">Mycila::CycleStealingDimmer</a>, <a class="el" href="class_mycila_1_1_d_f_robot_dimmer.html#af29886b4c364adc366ca78d66d32d1d3">Mycila::DFRobotDimmer</a>, <a class="el" href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">Mycila::PWMDimmer</a>, and <a class="el" href="class_mycila_1_1_thyristor_dimmer.html#aeb0acda0ee498ff78561ae9d7d5c2e6a">Mycila::ThyristorDimmer</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00038">38</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00041">41</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -602,7 +598,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Get the power duty cycle configured for the dimmer by teh user. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00230">230</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00222">222</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -636,7 +632,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </li>
 </ul>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00245">245</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00237">237</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -665,7 +661,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Get the power duty cycle limit of the dimmer. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00081">81</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00084">84</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -694,7 +690,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Get the remapped power duty cycle from the currently user set duty cycle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00235">235</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00227">227</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -723,7 +719,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Get the remapped "1" of the dimmer duty cycle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00091">91</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00094">94</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -752,12 +748,12 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Get the remapped "0" of the dimmer duty cycle. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00086">86</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00089">89</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
-<a id="a2f84ecb5b5fbd7b775e0a4b47e9cff92" name="a2f84ecb5b5fbd7b775e0a4b47e9cff92"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a2f84ecb5b5fbd7b775e0a4b47e9cff92">&#9670;&#160;</a></span>getPowerLUTSemiPeriod()</h2>
+<a id="a518d3f8796875645cfab0c395b9c90df" name="a518d3f8796875645cfab0c395b9c90df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a518d3f8796875645cfab0c395b9c90df">&#9670;&#160;</a></span>getSemiPeriod()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -766,22 +762,22 @@ If true is passed, the function validates that a semi-period is set or already e
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">uint16_t Mycila::Dimmer::getPowerLUTSemiPeriod </td>
+          <td class="memname">uint16_t Mycila::Dimmer::getSemiPeriod </td>
           <td>(</td>
           <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel inline">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Get the semi-period in us used for the power LUT calculations. If LUT is disabled, returns 0. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00136">136</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00120">120</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -810,7 +806,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Check if the dimmer is enabled (if it was able to initialize correctly). </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00145">145</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00136">136</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -839,7 +835,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Check if the dimmer is off. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00184">184</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00176">176</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -868,7 +864,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Check if the dimmer is on. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00189">189</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00181">181</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -897,7 +893,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Check if the dimmer is on at full power. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00194">194</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00186">186</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -924,9 +920,10 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p>Returns true if the dimmer is marked online. </p>
+<p>Returns true if the dimmer is online. </p>
+<p>A dimmer is considered online if it is enabled, marked online, and, if power LUT is enabled, it must have a valid semi-period set. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00150">150</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00142">142</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -955,7 +952,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Check if the power LUT is enabled. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00131">131</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00111">111</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -984,7 +981,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Turn off the dimmer. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00179">179</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00171">171</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1013,7 +1010,7 @@ If true is passed, the function validates that a semi-period is set or already e
 
 <p>Turn on the dimmer at full power. </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00174">174</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00166">166</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1048,7 +1045,7 @@ If true is passed, the function validates that a semi-period is set or already e
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00201">201</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00193">193</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1083,7 +1080,7 @@ If true is passed, the function validates that a semi-period is set or already e
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00050">50</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00053">53</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1118,7 +1115,7 @@ If true is passed, the function validates that a semi-period is set or already e
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00073">73</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00076">76</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1153,7 +1150,7 @@ If true is passed, the function validates that a semi-period is set or already e
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00062">62</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00065">65</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1183,7 +1180,38 @@ If true is passed, the function validates that a semi-period is set or already e
 <p>Set the online status of the dimmer. </p>
 <p>This flag can be used to temporarily disable the dimmer when not connected to the grid </p>
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00156">156</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00148">148</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+
+</div>
+</div>
+<a id="a10c7e14e08ab36dc3b480c33d908740e" name="a10c7e14e08ab36dc3b480c33d908740e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10c7e14e08ab36dc3b480c33d908740e">&#9670;&#160;</a></span>setSemiPeriod()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Mycila::Dimmer::setSemiPeriod </td>
+          <td>(</td>
+          <td class="paramtype">uint16_t</td>          <td class="paramname"><span class="paramname"><em>semiPeriod</em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel inline">inline</span><span class="mlabel static">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Set the semi-period of the grid frequency in us for this dimmer. This is mandatory when using power LUT. </p>
+<p>Typical values are 10000 for 50Hz and 8333 for 60Hz.</p>
+<p>The value can also come from MycilaPulseAnalyzer </p>
+
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00127">127</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1210,7 +1238,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00039">39</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00042">42</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1235,7 +1263,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00298">298</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00290">290</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1259,7 +1287,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00299">299</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00291">291</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1283,7 +1311,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00300">300</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00292">292</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1307,7 +1335,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00302">302</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00294">294</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1331,7 +1359,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00301">301</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00293">293</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1355,7 +1383,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00295">295</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00287">287</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1379,7 +1407,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00296">296</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00288">288</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1403,7 +1431,7 @@ If true is passed, the function validates that a semi-period is set or already e
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00304">304</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00296">296</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>
@@ -1422,12 +1450,12 @@ If true is passed, the function validates that a semi-period is set or already e
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel protected">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00305">305</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="_mycila_dimmer_8h_source.html#l00298">298</a> of file <a class="el" href="_mycila_dimmer_8h_source.html">MycilaDimmer.h</a>.</p>
 
 </div>
 </div>

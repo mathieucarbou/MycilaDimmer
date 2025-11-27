@@ -59,7 +59,10 @@ void setup() {
   pulseAnalyzer.onZeroCross(Mycila::ThyristorDimmer::onZeroCross);
   pulseAnalyzer.begin(GPIO_ZCD);
 
-  dimmer.setSemiPeriod(10000); // 50Hz grid frequency
+  // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
+  Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
+  // Mycila::Dimmer::setSemiPeriod(8333);  // 60Hz grid frequency
+
   dimmer.enablePowerLUT(true); // Enable power LUT for better dimming curve
   dimmer.setPin(GPIO_DIMMER);
   dimmer.begin();

@@ -42,8 +42,9 @@ void setup() {
 
   // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
   // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
-  dimmer->enablePowerLUT(true, 10000); // 50Hz grid frequency
-  // dimmer->enablePowerLUT(true, 8333);  // 60Hz grid frequency
+  dimmer->enablePowerLUT(true);
+  Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
+  // Mycila::Dimmer::setSemiPeriod(8333);  // 60Hz grid frequency
 
   // Start the PWM
   dimmer->begin();
@@ -54,7 +55,7 @@ void setup() {
   Serial.printf("\nConfig:\n");
   Serial.printf(" - Limit: %d %%\n", static_cast<int>(dimmer->getDutyCycleLimit() * 100));
   Serial.printf(" - Remapping: 0 %% => %d %% - 100 %% => %d %%\n", static_cast<int>(dimmer->getDutyCycleMin() * 100), static_cast<int>(dimmer->getDutyCycleMax() * 100));
-  Serial.printf(" - Semi-period: %" PRIu16 " us\n", dimmer->getPowerLUTSemiPeriod());
+  Serial.printf(" - Semi-period: %" PRIu16 " us\n", dimmer->getSemiPeriod());
 
   for (int i = 0; i <= 100; i += 10) {
     dimmer->setDutyCycle(i / 100.0f);
@@ -75,7 +76,7 @@ void setup() {
   Serial.printf("\nConfig:\n");
   Serial.printf(" - Limit: %d %%\n", static_cast<int>(dimmer->getDutyCycleLimit() * 100));
   Serial.printf(" - Remapping: 0 %% => %d %% - 100 %% => %d %%\n", static_cast<int>(dimmer->getDutyCycleMin() * 100), static_cast<int>(dimmer->getDutyCycleMax() * 100));
-  Serial.printf(" - Semi-period: %" PRIu16 " us\n", dimmer->getPowerLUTSemiPeriod());
+  Serial.printf(" - Semi-period: %" PRIu16 " us\n", dimmer->getSemiPeriod());
 
   for (int i = 0; i <= 100; i += 10) {
     dimmer->setDutyCycle(i / 100.0f);

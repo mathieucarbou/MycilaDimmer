@@ -29,7 +29,6 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
     - [Phase Control](#phase-control)
     - [Cycle Stealing on Full Period](#cycle-stealing-on-full-period)
     - [Cycle Stealing on Semi-Period](#cycle-stealing-on-semi-period)
-    - [Stochastic Cycle Stealing (Coming Soon)](#stochastic-cycle-stealing-coming-soon)
   - [Recommendations for Harmonic Mitigation (Phase Control)](#recommendations-for-harmonic-mitigation-phase-control)
   - [Current MycilaDimmer Support](#current-myciladimmer-support)
   - [Choosing the Right Method](#choosing-the-right-method)
@@ -151,7 +150,7 @@ Mycila::ThyristorDimmer dimmer;
 
 void setup() {
   dimmer.setPin(GPIO_NUM_26);
-  dimmer.setSemiPeriod(10000); // 50Hz AC (10ms semi-period)
+  Mycila::Dimmer::setSemiPeriod(10000); // 50Hz AC (10ms semi-period) - shared across all dimmers
   dimmer.begin();
 
   // Register with external zero-cross detector
@@ -314,32 +313,6 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
   - Can unbalance grid network by drawing current asymmetrically if not properly balanced
   - **Can violate electrical regulation** - this method cannot be used in some countries where regulations forbid DC components on AC grids
 
-#### Stochastic Cycle Stealing (Coming Soon)
-
-**How it works:** Probabilistic switching at each zero-cross. At each AC cycle, generates a random number (0-100) and compares it to the desired power level percentage. If the random number is lower, the full wave is allowed through; otherwise, it's blocked.
-
-**Advantages:**
-
-- ✅ **No DC Component**: Always switches at zero-cross on full waves, maintains grid balance
-- ✅ **Eliminates Periodic Flickering**: Random distribution prevents visible periodic patterns
-- ✅ **Minimal EMF Interference**: Zero-cross switching reduces electromagnetic interference
-- ✅ **Multi-Channel Safe**: Random switching prevents simultaneous current spikes across channels
-- ✅ **Even Distribution**: Over time, produces statistically accurate power output
-- ✅ **No Harmonics**: Preserves complete sine waves like traditional cycle stealing
-
-**Limitations:**
-
-- ⚠️ **Less Precise**: Statistical accuracy over time, not instant watt-level precision
-- ⚠️ **Requires More Cycles**: Needs multiple AC cycles to reach target power level
-- ⚠️ **Not for Fast-Response Systems**: Better suited for thermal/heating applications with slower dynamics
-
-**Use Cases:**
-
-- Multi-channel heating systems
-- Temperature control with PID regulation
-- Applications where eliminating flicker is more important than instant precision
-- Systems sensitive to EMF interference
-
 ### Recommendations for Harmonic Mitigation (Phase Control)
 
 When using phase control, harmonics can be reduced or partially mitigated through several approaches. Examples (but not limited to):
@@ -358,10 +331,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 - ✅ ThyristorDimmer - TRIAC/Random SSR with zero-cross detection
 - ✅ PWMDimmer - PWM output for voltage regulators (LSA, LCTC)
 - ✅ DFRobotDimmer - I2C DAC for voltage regulators (LSA, LCTC)
-
-**Coming Soon:**
-
-- ✅ CycleStealingDimmer - Stochastic cycle stealing for common SSR (Zero-Cross / Sync ones) and TRIAC / Random SSR with zero-cross detection
+- ✅ CycleStealingDimmer - Balanced semi-period cycle stealing for common SSR (Zero-Cross / Sync ones) and TRIAC / Random SSR with zero-cross detection
 
 ### Choosing the Right Method
 
@@ -442,9 +412,12 @@ float getDutyCycleMin() const;         // Get current min
 float getDutyCycleMax() const;         // Get current max
 
 // Dimming Curve (Power LUT)
-void enablePowerLUT(bool enable, uint16_t semiPeriod = 0); // Enable/disable perceptual LUT (default: false)
+void enablePowerLUT(bool enable);       // Enable/disable perceptual LUT (default: false)
 bool isPowerLUTEnabled() const;         // Check if LUT is enabled
-uint16_t getPowerLUTSemiPeriod() const; // Get LUT semi-period (us)
+
+// Grid Semi-Period (static, shared across all dimmers)
+static void setSemiPeriod(uint16_t semiPeriod); // Set grid semi-period in microseconds
+static uint16_t getSemiPeriod();        // Get semi-period (us)
 
 // Measurements
 float getDutyCycleFire() const;         // Actual firing ratio (0-1)
@@ -458,7 +431,6 @@ void toJson(const JsonObject& root) const; // Serialize to JSON
 
 ```cpp
 void setPin(gpio_num_t pin);           // Set output GPIO pin
-void setSemiPeriod(uint16_t semiPeriod); // Set grid semi-period (us)
 static void onZeroCross(int16_t delayUntilZero, void* arg); // Zero-cross callback
 ```
 
@@ -506,8 +478,10 @@ dimmer.setDutyCycleLimit(0.8); // Never exceed 80% power
 //   - Best for resistive loads (heating elements, incandescent bulbs) where
 //     you want predictable power control
 //
-dimmer.enablePowerLUT(true, 10000);   // Enable Power LUT mode (semi-period: 10000us for 50Hz, 8333us for 60Hz)
-dimmer.enablePowerLUT(false);         // Switch to linear phase angle mode
+// Important: Semi-period MUST be set before enabling Power LUT!
+Mycila::Dimmer::setSemiPeriod(10000);  // Set semi-period first (10000us for 50Hz, 8333us for 60Hz)
+dimmer.enablePowerLUT(true);           // Enable Power LUT mode
+dimmer.enablePowerLUT(false);          // Switch to linear phase angle mode
 bool isUsing = dimmer.isPowerLUTEnabled(); // Check current mode
 
 // Online Status Control
@@ -598,19 +572,19 @@ lib_deps =
 
 ### Common Issues
 
-**Thyristor Dimmer Not Working**
+#### Thyristor Dimmer Not Working
 
 - Ensure IRAM build flags are set
-- Check semi-period is configured (`setSemiPeriod()`)
+- Check semi-period is configured (`Mycila::Dimmer::setSemiPeriod()`)
 - Verify zero-cross signal is connected and working
 
-**PWM Output Not Visible**
+#### PWM Output Not Visible
 
 - Check GPIO pin configuration
 - Verify PWM frequency and resolution settings
 - Use oscilloscope or LED to test output
 
-**DFRobot Module Not Responding**
+#### DFRobot Module Not Responding
 
 - Verify I2C wiring (SDA, SCL, power, ground)
 - Check device address with I2C scanner

@@ -76,9 +76,9 @@ namespace Mycila {
        */
       void toJson(const JsonObject& root) const override {
         Dimmer::toJson(root);
-        root["pwm_pin"] = static_cast<int>(_pin);
-        root["pwm_frequency"] = _frequency;
-        root["pwm_resolution"] = _resolution;
+        root["pin"] = static_cast<int>(_pin);
+        root["frequency"] = _frequency;
+        root["resolution"] = _resolution;
       }
 #endif
 

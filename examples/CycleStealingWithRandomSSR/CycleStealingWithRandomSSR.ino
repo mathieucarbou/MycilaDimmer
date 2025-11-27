@@ -69,7 +69,7 @@ void setup() {
   }
 
   Serial.printf("Grid frequency detected: %d Hz\n", pulseAnalyzer.getNominalGridFrequency());
-  dimmer->setSemiPeriod(pulseAnalyzer.getNominalGridSemiPeriod());
+  Mycila::Dimmer::setSemiPeriod(pulseAnalyzer.getNominalGridSemiPeriod());
 
   // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
   // Since the semi-period is already set and is required for  Zero-Cross Detection based dimmers, we just need to enable the LUT.

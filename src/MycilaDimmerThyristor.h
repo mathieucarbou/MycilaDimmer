@@ -26,22 +26,6 @@ namespace Mycila {
       gpio_num_t getPin() const { return _pin; }
 
       /**
-       * @brief Set the semi-period of the grid frequency in us. It cannot be zero and it is required for proper dimmer operation.
-       */
-      void setSemiPeriod(uint16_t semiPeriod) {
-        if (semiPeriod == 0) {
-          ESP_LOGE("Thyristor", "setSemiPeriod: semiPeriod must be > 0");
-        }
-        assert(semiPeriod > 0);
-        _semiPeriod = semiPeriod;
-      }
-
-      /**
-       * @brief Get the semi-period of the grid frequency in us
-       */
-      uint16_t getSemiPeriod() const { return _semiPeriod; }
-
-      /**
        * @brief Get the firing delay in us of the dimmer in the range [0, semi-period]
        * At 0% power, delay is equal to the semi-period: the dimmer is kept off
        * At 100% power, the delay is 0 us: the dimmer is kept on
@@ -97,10 +81,9 @@ namespace Mycila {
        */
       void toJson(const JsonObject& root) const override {
         Dimmer::toJson(root);
-        root["dimmer_pin"] = _pin;
-        root["dimmer_semi_period"] = _semiPeriod;
-        root["dimmer_firing_delay"] = getFiringDelay();
-        root["dimmer_firing_angle"] = getPhaseAngle();
+        root["pin"] = _pin;
+        root["firing_delay"] = getFiringDelay();
+        root["firing_angle"] = getPhaseAngle();
       }
 #endif
 

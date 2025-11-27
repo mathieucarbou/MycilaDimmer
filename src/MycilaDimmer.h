@@ -98,45 +98,33 @@ namespace Mycila {
       ///////////////
 
       /**
-       * @brief Enable or disable the use of power LUT for dimmer curve
+       * @brief Enable or disable the use of power LUT for this dimmer
        * The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness.
        * If disabled, a linear dimming curve will be used.
        * @param enable : true to enable, false to disable
-       * @param semiPeriod : the semi-period of the grid frequency in us (10000 for 50Hz, 8333 for 60Hz).
-       * @note If false is passed, the semi-period parameter is ignored and the already set semi-period is kept unchanged.
-       * @note If true is passed, the function validates that a semi-period is set or already exists:
-       * @note - if a semi-period is provided (>0), it will be used
-       * @note - if no semi-period is provided (0), the already set semi-period will be used (must be >0)
-       * @note - if no semi-period is provided and no semi-period was set, an assertion will fail
        */
-      void enablePowerLUT(bool enable, uint16_t semiPeriod = 0) {
-        if (!enable) {
-          _powerLUTEnabled = false;
-          return;
-        }
-        // Enabling the LUT
-        if (semiPeriod > 0) {
-          // A semi-period is provided, use it
-          _semiPeriod = semiPeriod;
-        } else {
-          // semiPeriod == 0, use already set semi-period, must be >0
-          if (_semiPeriod == 0) {
-            ESP_LOGE("Dimmer", "enablePowerLUT: semiPeriod must be provided or must be already set when enabling power LUT");
-          }
-          assert(_semiPeriod > 0);
-        }
-        _powerLUTEnabled = true;
-      }
+      void enablePowerLUT(bool enable) { _powerLUTEnabled = enable; }
 
       /**
        * @brief Check if the power LUT is enabled
        */
       bool isPowerLUTEnabled() const { return _powerLUTEnabled; }
 
+      /////////////////
+      // SEMi-PERIOD //
+      /////////////////
+
       /**
        * @brief Get the semi-period in us used for the power LUT calculations. If LUT is disabled, returns 0.
        */
-      uint16_t getPowerLUTSemiPeriod() const { return _powerLUTEnabled ? _semiPeriod : 0; }
+      static uint16_t getSemiPeriod() { return _semiPeriod; }
+
+      /**
+       * @brief Set the semi-period of the grid frequency in us for this dimmer. This is mandatory when using power LUT.
+       * @brief Typical values are 10000 for 50Hz and 8333 for 60Hz.
+       * @brief The value can also come from MycilaPulseAnalyzer
+       */
+      static void setSemiPeriod(uint16_t semiPeriod) { _semiPeriod = semiPeriod; }
 
       ///////////////////
       // DIMMER STATES //
@@ -148,9 +136,10 @@ namespace Mycila {
       bool isEnabled() const { return _enabled; }
 
       /**
-       * @brief Returns true if the dimmer is marked online
+       * @brief Returns true if the dimmer is online
+       * @brief A dimmer is considered online if it is enabled, marked online, and, if power LUT is enabled, it must have a valid semi-period set.
        */
-      bool isOnline() const { return _enabled && _online; }
+      bool isOnline() const { return _enabled && _online && (!_powerLUTEnabled || _semiPeriod > 0); }
 
       /**
        * @brief Set the online status of the dimmer
@@ -214,7 +203,7 @@ namespace Mycila {
           } else if (mapped == 1) {
             _dutyCycleFire = 1.0f;
           } else {
-            _dutyCycleFire = 1.0f - static_cast<float>(_lookupFiringDelay(mapped, _semiPeriod)) / static_cast<float>(_semiPeriod);
+            _dutyCycleFire = _semiPeriod > 0 ? (1.0f - static_cast<float>(_lookupFiringDelay(mapped, _semiPeriod)) / static_cast<float>(_semiPeriod)) : mapped;
           }
         } else {
           _dutyCycleFire = mapped;
@@ -305,7 +294,8 @@ namespace Mycila {
       float _dutyCycleMax = 1.0f;
 
       bool _powerLUTEnabled = false;
-      uint16_t _semiPeriod = 0;
+
+      static uint16_t _semiPeriod;
 
       virtual bool _apply() { return _enabled; }
       virtual bool _calculateHarmonics(float* array, size_t n) const {

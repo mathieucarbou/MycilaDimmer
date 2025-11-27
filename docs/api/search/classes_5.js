@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['registereddimmer_0',['RegisteredDimmer',['../struct_registered_dimmer.html',1,'']]]
+  ['thyristordimmer_0',['ThyristorDimmer',['../class_mycila_1_1_thyristor_dimmer.html',1,'Mycila']]]
 ];

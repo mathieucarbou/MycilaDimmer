@@ -56,9 +56,10 @@ void setup() {
 
   // Configure dimmers according to detected grid frequency and use power LUT based dimming
   Serial.printf("Grid frequency detected: %d Hz\n", pulseAnalyzer.getNominalGridFrequency());
-  dimmer1.enablePowerLUT(true, pulseAnalyzer.getNominalGridSemiPeriod());
-  dimmer2.enablePowerLUT(true, pulseAnalyzer.getNominalGridSemiPeriod());
-  dimmer3.enablePowerLUT(true, pulseAnalyzer.getNominalGridSemiPeriod());
+  Mycila::Dimmer::setSemiPeriod(pulseAnalyzer.getNominalGridSemiPeriod());
+  dimmer1.enablePowerLUT(true);
+  dimmer2.enablePowerLUT(true);
+  dimmer3.enablePowerLUT(true);
 
   // Start dimmers
   dimmer1.begin();

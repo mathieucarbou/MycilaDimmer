@@ -11,5 +11,5 @@ var searchData=
   ['setoutput_8',['setOutput',['../class_mycila_1_1_d_f_robot_dimmer.html#a787206839fe862de890da60eb49db146',1,'Mycila::DFRobotDimmer']]],
   ['setpin_9',['setPin',['../class_mycila_1_1_cycle_stealing_dimmer.html#ad82d2ae3c01162a8b388c625602ad5df',1,'Mycila::CycleStealingDimmer::setPin()'],['../class_mycila_1_1_p_w_m_dimmer.html#a04eda47bd3b808743674eb3fc034aac7',1,'Mycila::PWMDimmer::setPin()'],['../class_mycila_1_1_thyristor_dimmer.html#a6ea7401605120ef604f0f5fdb255b58e',1,'Mycila::ThyristorDimmer::setPin()']]],
   ['setresolution_10',['setResolution',['../class_mycila_1_1_p_w_m_dimmer.html#a1e03df6c8414c708adfb214ec9135e7c',1,'Mycila::PWMDimmer']]],
-  ['setsemiperiod_11',['setSemiPeriod',['../class_mycila_1_1_cycle_stealing_dimmer.html#ae428f9b7037faaaecd6cbfa1db01bccb',1,'Mycila::CycleStealingDimmer::setSemiPeriod()'],['../class_mycila_1_1_thyristor_dimmer.html#aaf06ed2c2bc8e2ab9e103f928b623a35',1,'Mycila::ThyristorDimmer::setSemiPeriod()']]]
+  ['setsemiperiod_11',['setSemiPeriod',['../class_mycila_1_1_dimmer.html#a10c7e14e08ab36dc3b480c33d908740e',1,'Mycila::Dimmer']]]
 ];

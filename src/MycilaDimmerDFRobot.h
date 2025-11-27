@@ -106,13 +106,13 @@ namespace Mycila {
        */
       void toJson(const JsonObject& root) const override {
         Dimmer::toJson(root);
-        root["dfrobot_sku"] = _sku == SKU::DFR1071_GP8211S ? "DFR1071_GP8211S" : _sku == SKU::DFR1073_GP8413 ? "DFR1073_GP8413"
+        root["sku"] = _sku == SKU::DFR1071_GP8211S ? "DFR1071_GP8211S" : _sku == SKU::DFR1073_GP8413 ? "DFR1073_GP8413"
                                                                                : _sku == SKU::DFR0971_GP8403 ? "DFR0971_GP8403"
                                                                                                              : "UNKNOWN";
-        root["dfrobot_output"] = _output == Output::RANGE_0_5V ? "0-5V" : "0-10V";
-        root["dfrobot_i2c_address"] = _deviceAddress;
-        root["dfrobot_channel"] = _channel;
-        root["dfrobot_resolution"] = getResolution();
+        root["output"] = _output == Output::RANGE_0_5V ? "0-5V" : "0-10V";
+        root["i2c_address"] = _deviceAddress;
+        root["channel"] = _channel;
+        root["resolution"] = getResolution();
       }
 #endif
 

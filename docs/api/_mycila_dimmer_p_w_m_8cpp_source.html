@@ -103,13 +103,13 @@ $(function() {
 <div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define TAG &quot;PWM&quot;</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
 <div class="foldopen" id="foldopen00024" data-start="{" data-end="}">
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_mycila_1_1_p_w_m_dimmer.html#ac66ccf49a9ee6322f34f15a9eb7b7ead">   24</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_p_w_m_dimmer.html#ac66ccf49a9ee6322f34f15a9eb7b7ead">Mycila::PWMDimmer::begin</a>() {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno"><a class="line" href="class_mycila_1_1_p_w_m_dimmer.html#a314ba911ac20a6902e4723ae9cfe1299">   24</a></span><span class="keywordtype">bool</span> <a class="code hl_function" href="class_mycila_1_1_p_w_m_dimmer.html#a314ba911ac20a6902e4723ae9cfe1299">Mycila::PWMDimmer::begin</a>() {</div>
 <div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span>  <span class="keywordflow">if</span> (_enabled)</div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span>    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span>  <span class="keywordflow">if</span> (!GPIO_IS_VALID_OUTPUT_GPIO(_pin)) {</div>
 <div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span>    ESP_LOGE(TAG, <span class="stringliteral">&quot;Invalid pin: %&quot;</span> PRId8, _pin);</div>
-<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>  }</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>  ESP_LOGI(TAG, <span class="stringliteral">&quot;Enable dimmer on pin %&quot;</span> PRId8, _pin);</div>
@@ -121,30 +121,31 @@ $(function() {
 <div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    _enabled = <span class="keyword">true</span>;</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>  } <span class="keywordflow">else</span> {</div>
 <div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    ESP_LOGE(TAG, <span class="stringliteral">&quot;Failed to attach ledc driver on pin %&quot;</span> PRId8, _pin);</div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>  }</div>
 <div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
 <div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>  <span class="comment">// restart with last saved value</span></div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>  <a class="code hl_function" href="class_mycila_1_1_dimmer.html#aa159163ef95c8edd6e54b345e09b3d43">setDutyCycle</a>(_dutyCycle);</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>}</div>
 </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="foldopen" id="foldopen00049" data-start="{" data-end="}">
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno"><a class="line" href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">   49</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">Mycila::PWMDimmer::end</a>() {</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>  <span class="keywordflow">if</span> (!_enabled)</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>    <span class="keywordflow">return</span>;</div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>  _enabled = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  _online = <span class="keyword">false</span>;</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  ESP_LOGI(TAG, <span class="stringliteral">&quot;Disable dimmer on pin %&quot;</span> PRId8, _pin);</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  _apply();</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  ledcDetach(_pin);</div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  pinMode(_pin, OUTPUT);</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  digitalWrite(_pin, LOW);</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>}</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
+<div class="foldopen" id="foldopen00050" data-start="{" data-end="}">
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">   50</a></span><span class="keywordtype">void</span> <a class="code hl_function" href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">Mycila::PWMDimmer::end</a>() {</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>  <span class="keywordflow">if</span> (!_enabled)</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keywordflow">return</span>;</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>  _enabled = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>  _online = <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>  ESP_LOGI(TAG, <span class="stringliteral">&quot;Disable dimmer on pin %&quot;</span> PRId8, _pin);</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>  _apply();</div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>  ledcDetach(_pin);</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>  pinMode(_pin, OUTPUT);</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>  digitalWrite(_pin, LOW);</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>}</div>
 </div>
-<div class="ttc" id="aclass_mycila_1_1_dimmer_html_aa159163ef95c8edd6e54b345e09b3d43"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#aa159163ef95c8edd6e54b345e09b3d43">Mycila::Dimmer::setDutyCycle</a></div><div class="ttdeci">bool setDutyCycle(float dutyCycle)</div><div class="ttdoc">Set the power duty.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00201">MycilaDimmer.h:201</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html_ab1c83c98bacc525f04d4af037ec2d378"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">Mycila::PWMDimmer::end</a></div><div class="ttdeci">void end() override</div><div class="ttdoc">Disable the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="#l00049">MycilaDimmerPWM.cpp:49</a></div></div>
-<div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html_ac66ccf49a9ee6322f34f15a9eb7b7ead"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html#ac66ccf49a9ee6322f34f15a9eb7b7ead">Mycila::PWMDimmer::begin</a></div><div class="ttdeci">void begin() override</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="#l00024">MycilaDimmerPWM.cpp:24</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_dimmer_html_aa159163ef95c8edd6e54b345e09b3d43"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#aa159163ef95c8edd6e54b345e09b3d43">Mycila::Dimmer::setDutyCycle</a></div><div class="ttdeci">bool setDutyCycle(float dutyCycle)</div><div class="ttdoc">Set the power duty.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00193">MycilaDimmer.h:193</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html_a314ba911ac20a6902e4723ae9cfe1299"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html#a314ba911ac20a6902e4723ae9cfe1299">Mycila::PWMDimmer::begin</a></div><div class="ttdeci">bool begin() override</div><div class="ttdoc">Enable a dimmer on a specific GPIO pin.</div><div class="ttdef"><b>Definition</b> <a href="#l00024">MycilaDimmerPWM.cpp:24</a></div></div>
+<div class="ttc" id="aclass_mycila_1_1_p_w_m_dimmer_html_ab1c83c98bacc525f04d4af037ec2d378"><div class="ttname"><a href="class_mycila_1_1_p_w_m_dimmer.html#ab1c83c98bacc525f04d4af037ec2d378">Mycila::PWMDimmer::end</a></div><div class="ttdeci">void end() override</div><div class="ttdoc">Disable the dimmer.</div><div class="ttdef"><b>Definition</b> <a href="#l00050">MycilaDimmerPWM.cpp:50</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

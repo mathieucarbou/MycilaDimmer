@@ -45,14 +45,8 @@ static void initZCD() {
 
 static Mycila::ThyristorDimmer* createDimmer() {
   Mycila::ThyristorDimmer* dimmer = new Mycila::ThyristorDimmer();
-
   // GPIO connected to the dimmer control pin (or Vcc of random SSR)
   dimmer->setPin(GPIO_DIMMER);
-
-  // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
-  dimmer->setSemiPeriod(10000); // 50Hz grid frequency
-  // dimmer.setSemiPeriod(8333);  // 60Hz grid frequency
-
   return dimmer;
 }
 
@@ -62,6 +56,10 @@ void setup() {
     continue;
 
   initZCD();
+
+  // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
+  Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
+  // Mycila::Dimmer::setSemiPeriod(8333);  // 60Hz grid frequency
 
   dimmer = createDimmer();
 
