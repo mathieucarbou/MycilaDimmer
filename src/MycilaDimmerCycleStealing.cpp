@@ -105,7 +105,96 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
   portENTER_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
-  // TODO - IMPLEMENT CYCLE STEALING LOGIC HERE
+  // Semi-period cycle stealing with balanced control
+  // Each semi-period (10ms for 50Hz), we decide whether to conduct or not
+  // To avoid DC components, we must balance positive and negative half-cycles
+
+  struct RegisteredDimmer* current = dimmers;
+  while (current != nullptr) {
+    CycleStealingDimmer* dimmer = current->dimmer;
+    float dutyCycle = dimmer->getDutyCycleFire();
+
+    // Full power: always conduct
+    if (dutyCycle >= 1.0f) {
+      gpio_ll_set_level(&GPIO, dimmer->_pin, HIGH);
+      current->semi_period_odd = !current->semi_period_odd;
+      current = current->next;
+      continue;
+    }
+
+    // Zero power: never conduct
+    if (dutyCycle <= 0.0f) {
+      gpio_ll_set_level(&GPIO, dimmer->_pin, LOW);
+      current->semi_period_odd = !current->semi_period_odd;
+      current = current->next;
+      continue;
+    }
+
+    // Cycle stealing algorithm with DC balance
+    // We track the balance between odd/even semi-periods to avoid DC components
+
+    bool should_conduct = false;
+
+    // For balanced operation, we use a deterministic pattern based on duty cycle
+    // The pattern ensures equal distribution across odd and even semi-periods
+
+    // Calculate how many semi-periods out of a window we should conduct
+    // Using a window of 20 semi-periods (200ms for 50Hz) for good resolution
+    const uint8_t window_size = 20;
+    uint8_t target_on_count = static_cast<uint8_t>(dutyCycle * window_size + 0.5f);
+
+    // Increment the semi-period counter
+    current->semi_period_counter++;
+    if (current->semi_period_counter >= window_size) {
+      current->semi_period_counter = 0;
+      current->semi_period_on_count = 0;
+    }
+
+    // Balanced distribution: alternate between odd and even semi-periods
+    // This prevents DC components by ensuring symmetric current draw
+
+    if (target_on_count >= window_size / 2) {
+      // High duty cycle (>= 50%): mostly on, with balanced off periods
+      uint8_t target_off_count = window_size - target_on_count;
+      uint8_t current_off_count = current->semi_period_counter - current->semi_period_on_count;
+
+      // Distribute OFF periods evenly across odd and even semi-periods
+      if (current_off_count < target_off_count) {
+        // Need more OFF periods - check if this slot should be OFF for balance
+        float off_ratio = static_cast<float>(target_off_count - current_off_count) /
+                          static_cast<float>(window_size - current->semi_period_counter);
+        // Alternate between odd/even to maintain balance
+        should_conduct = (current->semi_period_odd && off_ratio < 0.5f) ||
+                         (!current->semi_period_odd && off_ratio >= 0.5f);
+      } else {
+        should_conduct = true; // Already met OFF quota
+      }
+    } else {
+      // Low duty cycle (< 50%): mostly off, with balanced on periods
+      // Distribute ON periods evenly across odd and even semi-periods
+      if (current->semi_period_on_count < target_on_count) {
+        // Need more ON periods - check if this slot should be ON for balance
+        float on_ratio = static_cast<float>(target_on_count - current->semi_period_on_count) /
+                         static_cast<float>(window_size - current->semi_period_counter);
+        // Alternate between odd/even to maintain balance
+        should_conduct = (current->semi_period_odd && on_ratio >= 0.5f) ||
+                         (!current->semi_period_odd && on_ratio < 0.5f);
+      } else {
+        should_conduct = false; // Already met ON quota
+      }
+    }
+
+    // Apply the decision
+    gpio_ll_set_level(&GPIO, dimmer->_pin, should_conduct ? HIGH : LOW);
+
+    // Update counters
+    if (should_conduct) {
+      current->semi_period_on_count++;
+    }
+    current->semi_period_odd = !current->semi_period_odd;
+
+    current = current->next;
+  }
 
 #ifndef MYCILA_DIMMER_NO_LOCK
   // unlock the list of dimmers

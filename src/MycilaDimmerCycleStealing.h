@@ -92,6 +92,10 @@ namespace Mycila {
           CycleStealingDimmer* dimmer = nullptr;
           RegisteredDimmer* prev = nullptr;
           RegisteredDimmer* next = nullptr;
+          // Cycle stealing state tracking
+          bool semi_period_odd = false;     // Track odd/even semi-periods for balance
+          uint8_t semi_period_counter = 0;  // Counter within the window
+          uint8_t semi_period_on_count = 0; // Number of ON semi-periods in current window
       };
 
       static struct RegisteredDimmer* dimmers;
