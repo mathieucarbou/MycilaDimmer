@@ -32,7 +32,7 @@ namespace Mycila {
       } Metrics;
 
     public:
-      virtual ~Dimmer() {};
+      virtual ~Dimmer() { end(); };
 
       virtual bool begin() {
         _enabled = true;

@@ -4,11 +4,11 @@
  */
 
 //
-// Example to use a Cycle-Stealing dimmer with a Random Solid State Relay (SSR) and Zero-Cross Detection (ZCD)
+// Example to use a Cycle-Stealing dimmer with a Random Solid State Relay (SSR) and Zero-Cross Detection (ZCD) circuit
 //
 
 #include <Arduino.h>
-#include <MycilaDimmer.h>
+#include <MycilaDimmers.h>
 #include <MycilaPulseAnalyzer.h>
 
 #if defined(CONFIG_IDF_TARGET_ESP32)
@@ -47,11 +47,6 @@ void setup() {
   pulseAnalyzer.begin(GPIO_ZCD); // GPIO connected to the ZCD output. This can be an input-only pin.
 
   dimmer.setPin(GPIO_DIMMER);
-
-  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
-  // Since the semi-period is already set and is required for  Zero-Cross Detection based dimmers, we just need to enable the LUT.
-  // Note: using a power LUT requires to know the semi-period of the grid frequency.
-  dimmer.enablePowerLUT(true);
 
   while (!pulseAnalyzer.getNominalGridSemiPeriod()) {
     Serial.printf("Waiting for grid frequency detection...\n");

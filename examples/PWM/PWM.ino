@@ -8,7 +8,7 @@
 //
 
 #include <Arduino.h>
-#include <MycilaDimmer.h>
+#include <MycilaDimmers.h>
 
 #if defined(CONFIG_IDF_TARGET_ESP32)
   #define GPIO_DIMMER GPIO_NUM_25
@@ -28,6 +28,9 @@ static Mycila::Dimmer* createDimmer() {
   // PWM resolution: for a dimmer, 12 bits (0-4095) is enough to precisely handle a water heater for example of 4000W
   dimmer->setResolution(12);
 
+  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
+  dimmer->enablePowerLUT(true);
+
   return dimmer;
 }
 
@@ -40,9 +43,7 @@ void setup() {
 
   dimmer = createDimmer();
 
-  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
   // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
-  dimmer->enablePowerLUT(true);
   Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
   // Mycila::Dimmer::setSemiPeriod(8333);  // 60Hz grid frequency
 

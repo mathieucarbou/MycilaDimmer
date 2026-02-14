@@ -8,7 +8,7 @@
 //
 
 #include <Arduino.h>
-#include <MycilaDimmer.h>
+#include <MycilaDimmers.h>
 #include <Wire.h>
 
 static Mycila::Dimmer* createDimmer() {
@@ -30,6 +30,9 @@ static Mycila::Dimmer* createDimmer() {
   // dimmer.setSKU(Mycila::DFRobotDimmer::SKU::DFR1071_GP8211S);
   // dimmer.setSKU(Mycila::DFRobotDimmer::SKU::DFR1073_GP8413);
 
+  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
+  dimmer->enablePowerLUT(true);
+
   return dimmer;
 }
 
@@ -42,9 +45,7 @@ void setup() {
 
   dimmer = createDimmer();
 
-  // Enable power LUT (Look-Up Table) for better dimming according to human eye perception and real power curve.
   // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
-  dimmer->enablePowerLUT(true);
   Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
   // Mycila::Dimmer::setSemiPeriod(8333);  // 60Hz grid frequency
 

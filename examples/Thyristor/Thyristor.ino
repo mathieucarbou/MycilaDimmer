@@ -8,7 +8,7 @@
 //
 
 #include <Arduino.h>
-#include <MycilaDimmer.h>
+#include <MycilaDimmers.h>
 #include <MycilaPulseAnalyzer.h>
 
 #if defined(CONFIG_IDF_TARGET_ESP32)

@@ -9,7 +9,7 @@
 
 #include <Arduino.h>
 #include <ArduinoJson.h>
-#include <MycilaDimmer.h>
+#include <MycilaDimmers.h>
 #include <Wire.h>
 
 static Mycila::Dimmer* createDimmer() {
@@ -19,6 +19,7 @@ static Mycila::Dimmer* createDimmer() {
   dimmer->setOutput(Mycila::DFRobotDimmer::Output::RANGE_0_10V);
   dimmer->setChannel(1);
   dimmer->setSKU(Mycila::DFRobotDimmer::SKU::DFR0971_GP8403);
+  dimmer->enablePowerLUT(true);
   return dimmer;
 }
 
@@ -32,7 +33,6 @@ void setup() {
   dimmer = createDimmer();
   dimmer->setDutyCycleMin(0.05f); // remap 5% to 95%
   dimmer->setDutyCycleMax(0.95f);
-  dimmer->enablePowerLUT(true);
   Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
   // Mycila::Dimmer::setSemiPeriod(8333);  // 60Hz grid frequency
   dimmer->begin();
