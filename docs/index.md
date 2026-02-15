@@ -309,6 +309,8 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 This library uses an advanced **First-Order Delta-Sigma Modulator (Bresenham's algorithm)** to optimally distribute ON/OFF cycles.
 Crucially, it enforces **DC Balance**, ensuring that for every positive half-cycle consumed, a negative one is also consumed, preventing DC offset on the grid.
 
+[Read more about how Cycle Stealing is implemented in MycilaDimmer library here](https://mathieu.carbou.me/MycilaDimmer/cycle_stealing)
+
 ![](https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/cycle_stealing_10ms.jpeg)
 
 **Advantages:**
