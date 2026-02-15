@@ -32,7 +32,7 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
   - [Recommendations for Harmonic Mitigation (Phase Control)](#recommendations-for-harmonic-mitigation-phase-control)
   - [Current MycilaDimmer Support](#current-myciladimmer-support)
   - [Choosing the Right Method](#choosing-the-right-method)
-- [References and Further Reading](#references-and-further-reading)
+  - [References and Further Reading](#references-and-further-reading)
 - [API Reference](#api-reference)
   - [Common API (All Dimmer Types)](#common-api-all-dimmer-types)
   - [Thyristor Dimmer Specific](#thyristor-dimmer-specific)
@@ -43,7 +43,7 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
 - [Configuration](#configuration)
   - [Build Flags](#build-flags)
 - [Examples](#examples)
-- [Build Configuration](#build-configuration)
+- [Development](#development)
   - [PlatformIO Configuration](#platformio-configuration)
   - [Dependencies](#dependencies)
 - [Troubleshooting](#troubleshooting)
@@ -357,7 +357,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 - Suitable when precise dimming is not required
 - No harmonics, but no variable power control
 
-## References and Further Reading
+### References and Further Reading
 
 **Harmonics**
 
@@ -550,7 +550,7 @@ The library includes comprehensive examples:
 - **[ThyristorAutoFrequency Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorAutoFrequency/)** - Automatic detection of frequency and semi-period
 - **[ThyristorWithFS Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorWithFS/)** - File system integration
 
-## Build Configuration
+## Development
 
 ### PlatformIO Configuration
 
