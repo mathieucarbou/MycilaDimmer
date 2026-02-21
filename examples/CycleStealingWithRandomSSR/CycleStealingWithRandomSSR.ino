@@ -78,11 +78,15 @@ void setup() {
   }
 
   Serial.println("Done!");
-
-  dimmer.end();
-  pulseAnalyzer.end();
 }
 
 void loop() {
-  vTaskDelete(NULL);
+  while (Serial.available()) {
+    String command = Serial.readStringUntil('\n');
+    command.trim();
+    if (command.endsWith("\r"))
+      command.remove(command.length() - 1);
+    dimmer.setDutyCycle(constrain(command.toFloat(), 0, 1));
+    Serial.printf("Duty cycle set to %.2f%%\n", dimmer.getDutyCycle() * 100);
+  }
 }

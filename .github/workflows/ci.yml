@@ -78,6 +78,12 @@ jobs:
       - name: Install MycilaPulseAnalyzer
         run: ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true arduino-cli lib install --git-url https://github.com/mathieucarbou/MycilaPulseAnalyzer#v3.0.10
 
+      - name: CycleStealingWithSyncSSRC
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/CycleStealingWithSyncSSR/CycleStealingWithSyncSSR.ino"
+
+      - name: Build CycleStealingWithRandomSSR
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/CycleStealingWithRandomSSR/CycleStealingWithRandomSSR.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1"
+
       - name: Build DAC
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/DAC/DAC.ino"
 
@@ -135,6 +141,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install --upgrade platformio
           pip install --upgrade intelhex
+
+      - name: Build CycleStealingWithSyncSSRC
+        run: PLATFORMIO_SRC_DIR=examples/CycleStealingWithSyncSSRC PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
+
+      - name: Build CycleStealingWithRandomSSR
+        run: PLATFORMIO_SRC_DIR=examples/CycleStealingWithRandomSSR PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
 
       - name: Build DAC
         run: PLATFORMIO_SRC_DIR=examples/DAC PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
