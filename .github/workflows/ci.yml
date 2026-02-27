@@ -78,7 +78,7 @@ jobs:
       - name: Install MycilaPulseAnalyzer
         run: ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true arduino-cli lib install --git-url https://github.com/mathieucarbou/MycilaPulseAnalyzer#v3.0.10
 
-      - name: CycleStealingWithSyncSSRC
+      - name: CycleStealingWithSyncSSR
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/CycleStealingWithSyncSSR/CycleStealingWithSyncSSR.ino"
 
       - name: Build CycleStealingWithRandomSSR
@@ -142,8 +142,8 @@ jobs:
           pip install --upgrade platformio
           pip install --upgrade intelhex
 
-      - name: Build CycleStealingWithSyncSSRC
-        run: PLATFORMIO_SRC_DIR=examples/CycleStealingWithSyncSSRC PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
+      - name: Build CycleStealingWithSyncSSR
+        run: PLATFORMIO_SRC_DIR=examples/CycleStealingWithSyncSSR PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
 
       - name: Build CycleStealingWithRandomSSR
         run: PLATFORMIO_SRC_DIR=examples/CycleStealingWithRandomSSR PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
