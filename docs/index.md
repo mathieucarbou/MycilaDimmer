@@ -36,18 +36,20 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
 - [API Reference](#api-reference)
   - [Common API (All Dimmer Types)](#common-api-all-dimmer-types)
   - [Thyristor Dimmer Specific](#thyristor-dimmer-specific)
-  - [Cycle Stealing Dimmer Specific](#cycle-stealing-dimmer-specific)
   - [PWM Dimmer Specific](#pwm-dimmer-specific)
   - [DFRobot DAC Dimmer Specific](#dfrobot-dac-dimmer-specific)
   - [Advanced Features](#advanced-features)
 - [Configuration](#configuration)
   - [Build Flags](#build-flags)
 - [Examples](#examples)
-- [Build Configuration](#build-configuration)
+- [Development](#development)
   - [PlatformIO Configuration](#platformio-configuration)
   - [Dependencies](#dependencies)
 - [Troubleshooting](#troubleshooting)
   - [Common Issues](#common-issues)
+    - [Thyristor Dimmer Not Working](#thyristor-dimmer-not-working)
+    - [PWM Output Not Visible](#pwm-output-not-visible)
+    - [DFRobot Module Not Responding](#dfrobot-module-not-responding)
 - [Contributing](#contributing)
   - [Development Setup](#development-setup)
 - [License](#license)
@@ -384,6 +386,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 - [Learn: PV Diversion](https://docs.openenergymonitor.org/pv-diversion/)
 - [Optimized Random Integral Wave AC Control Algorithm for AC heaters](https://tsltd.github.io)
 - [Cycle Stealing Control](https://www.renesas.com/en/document/apn/1164-cycle-stealing-control) (Vladimir Veljkovic)
+- [Read more about how Cycle Stealing is implemented in MycilaDimmer library here](https://mathieu.carbou.me/MycilaDimmer/cycle_stealing)
 
 **Solar Router using this library:**
 
@@ -552,7 +555,7 @@ The library includes comprehensive examples:
 - **[ThyristorAutoFrequency Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorAutoFrequency/)** - Automatic detection of frequency and semi-period
 - **[ThyristorWithFS Example](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorWithFS/)** - File system integration
 
-## Build Configuration
+## Development
 
 ### PlatformIO Configuration
 

@@ -32,11 +32,10 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
   - [Recommendations for Harmonic Mitigation (Phase Control)](#recommendations-for-harmonic-mitigation-phase-control)
   - [Current MycilaDimmer Support](#current-myciladimmer-support)
   - [Choosing the Right Method](#choosing-the-right-method)
-  - [References and Further Reading](#references-and-further-reading)
+- [References and Further Reading](#references-and-further-reading)
 - [API Reference](#api-reference)
   - [Common API (All Dimmer Types)](#common-api-all-dimmer-types)
   - [Thyristor Dimmer Specific](#thyristor-dimmer-specific)
-  - [Cycle Stealing Dimmer Specific](#cycle-stealing-dimmer-specific)
   - [PWM Dimmer Specific](#pwm-dimmer-specific)
   - [DFRobot DAC Dimmer Specific](#dfrobot-dac-dimmer-specific)
   - [Advanced Features](#advanced-features)
@@ -48,6 +47,9 @@ A comprehensive ESP32/Arduino library for controlling AC power devices including
   - [Dependencies](#dependencies)
 - [Troubleshooting](#troubleshooting)
   - [Common Issues](#common-issues)
+    - [Thyristor Dimmer Not Working](#thyristor-dimmer-not-working)
+    - [PWM Output Not Visible](#pwm-output-not-visible)
+    - [DFRobot Module Not Responding](#dfrobot-module-not-responding)
 - [Contributing](#contributing)
   - [Development Setup](#development-setup)
 - [License](#license)
@@ -309,6 +311,8 @@ When controlling AC power devices like TRIACs, SSRs, and voltage regulators, the
 This library uses an advanced **First-Order Delta-Sigma Modulator (Bresenham's algorithm)** to optimally distribute ON/OFF cycles.
 Crucially, it enforces **DC Balance**, ensuring that for every positive half-cycle consumed, a negative one is also consumed, preventing DC offset on the grid.
 
+[Read more about how Cycle Stealing is implemented in MycilaDimmer library here](https://mathieu.carbou.me/MycilaDimmer/cycle_stealing)
+
 ![](https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/cycle_stealing_10ms.jpeg)
 
 **Advantages:**
@@ -357,7 +361,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 - Suitable when precise dimming is not required
 - No harmonics, but no variable power control
 
-### References and Further Reading
+## References and Further Reading
 
 **Harmonics**
 
@@ -382,6 +386,7 @@ When using phase control, harmonics can be reduced or partially mitigated throug
 - [Learn: PV Diversion](https://docs.openenergymonitor.org/pv-diversion/)
 - [Optimized Random Integral Wave AC Control Algorithm for AC heaters](https://tsltd.github.io)
 - [Cycle Stealing Control](https://www.renesas.com/en/document/apn/1164-cycle-stealing-control) (Vladimir Veljkovic)
+- [Read more about how Cycle Stealing is implemented in MycilaDimmer library here](https://mathieu.carbou.me/MycilaDimmer/cycle_stealing)
 
 **Solar Router using this library:**
 
