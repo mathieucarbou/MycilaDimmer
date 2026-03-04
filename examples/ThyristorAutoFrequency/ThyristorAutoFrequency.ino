@@ -14,7 +14,8 @@
 #include <MycilaPulseAnalyzer.h>
 
 #if defined(CONFIG_IDF_TARGET_ESP32)
-  #define GPIO_DIMMER GPIO_NUM_25
+  #define GPIO_DIMMER GPIO_NUM_25 // RobotDyn (TRIAC)
+  // #define GPIO_DIMMER GPIO_NUM_26 // Random SSR
   #define GPIO_ZCD    GPIO_NUM_35
 #else
   #define GPIO_DIMMER GPIO_NUM_20
@@ -35,7 +36,7 @@ static void initZCD() {
   // you can reuse it and call Mycila::ThyristorDimmer::onZeroCross() from your own ISR.
 
   // Default valu is: -150 us
-  // Sends the Zero-Cross even 150 us before the real zero-crossing point of teh voltage
+  // Sends the Zero-Cross event 150 us before the real zero-crossing point of  the  voltage
   pulseAnalyzer.setZeroCrossEventShift(-150);
 
   // Link the ZCD system to our dimmer
