@@ -520,7 +520,7 @@ serializeJson(doc, Serial);
 
 ### Build Flags
 
-For **Thyristor Dimmer** (IRAM safety):
+For **Thyristor Dimmer** and **Cycle Stealing Dimmer with ZCD** (IRAM safety):
 
 ```ini
 build_flags =
