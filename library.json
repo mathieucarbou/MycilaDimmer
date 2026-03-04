@@ -15,7 +15,7 @@
   "license": "MIT",
   "frameworks": "arduino",
   "platforms": ["espressif32"],
-  "headers": "MycilaDimmer.h",
+  "headers": "MycilaDimmers.h",
   "export": {
     "include": [
       "examples",
