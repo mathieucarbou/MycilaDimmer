@@ -101,15 +101,15 @@ void ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::onZeroCross(int16_t delayUntilZer
       // calculate the next firing time:
       // - If Dimmer is off (UINT16_MAX) => current->alarm_count == UINT16_MAX => dimmer will not be fired
       // - If Dimmer is on with a delay > 0 => check to be sure it is PHASE_DELAY_MIN_US minimum
-      current->alarm_count = current->dimmer->_delay < PHASE_DELAY_MIN_US ? PHASE_DELAY_MIN_US : current->dimmer->_delay;
+      current->dimmer->alarm_count = current->dimmer->_delay < PHASE_DELAY_MIN_US ? PHASE_DELAY_MIN_US : current->dimmer->_delay;
       // keep track the minimum delay at which we have to fire a dimmer
-      if (current->alarm_count < fire_timer_alarm_cfg.alarm_count)
-        fire_timer_alarm_cfg.alarm_count = current->alarm_count;
+      if (current->dimmer->alarm_count < fire_timer_alarm_cfg.alarm_count)
+        fire_timer_alarm_cfg.alarm_count = current->dimmer->alarm_count;
     } else {
       // no delay: dimmer has to be kept on: do nothing
       gpio_ll_set_level(&GPIO, current->dimmer->_pin, HIGH);
       // reset the alarm count to indicate that this dimmer was fired
-      current->alarm_count = UINT16_MAX;
+      current->dimmer->alarm_count = UINT16_MAX;
     }
     current = current->next;
   }
@@ -172,17 +172,17 @@ bool ARDUINO_ISR_ATTR Mycila::ThyristorDimmer::_fireTimerISR(gptimer_handle_t ti
     // go through all registered dimmers and check the ones to fire
     struct RegisteredDimmer* current = dimmers;
     while (current != nullptr) {
-      if (current->alarm_count != UINT16_MAX) {
+      if (current->dimmer->alarm_count != UINT16_MAX) {
         // this dimmer has not yet been fired (< UINT16_MAX)
-        if (current->alarm_count <= fire_timer_count_value) {
+        if (current->dimmer->alarm_count <= fire_timer_count_value) {
           // timer alarm has reached this dimmer alarm => time to fire this dimmer
           gpio_ll_set_level(&GPIO, current->dimmer->_pin, HIGH);
           // reset the alarm count to indicate that this dimmer has been fired
-          current->alarm_count = UINT16_MAX;
+          current->dimmer->alarm_count = UINT16_MAX;
         } else {
           // dimmer has to be fired later => keep the minimum time at which we have to fire a dimmer
-          if (current->alarm_count < fire_timer_alarm_cfg.alarm_count)
-            fire_timer_alarm_cfg.alarm_count = current->alarm_count;
+          if (current->dimmer->alarm_count < fire_timer_alarm_cfg.alarm_count)
+            fire_timer_alarm_cfg.alarm_count = current->dimmer->alarm_count;
         }
       }
       current = current->next;
@@ -222,9 +222,10 @@ void Mycila::ThyristorDimmer::_registerDimmer(Mycila::ThyristorDimmer* dimmer) {
     timer_config.flags.allow_pd = false;
 #endif
 
-    ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &fire_timer));
     gptimer_event_callbacks_t callbacks_config;
     callbacks_config.on_alarm = _fireTimerISR;
+
+    ESP_ERROR_CHECK(gptimer_new_timer(&timer_config, &fire_timer));
     ESP_ERROR_CHECK(gptimer_register_event_callbacks(fire_timer, &callbacks_config, nullptr));
     ESP_ERROR_CHECK(gptimer_enable(fire_timer));
     ESP_ERROR_CHECK(gptimer_start(fire_timer));
