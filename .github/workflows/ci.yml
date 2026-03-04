@@ -78,11 +78,11 @@ jobs:
       - name: Install MycilaPulseAnalyzer
         run: ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true arduino-cli lib install --git-url https://github.com/mathieucarbou/MycilaPulseAnalyzer#v3.0.10
 
-      - name: CycleStealingWithSyncSSR
-        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/CycleStealingWithSyncSSR/CycleStealingWithSyncSSR.ino"
+      - name: CycleStealing
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/CycleStealing/CycleStealing.ino"
 
-      - name: Build CycleStealingWithRandomSSR
-        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/CycleStealingWithRandomSSR/CycleStealingWithRandomSSR.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1"
+      - name: Build CycleStealingWithZCD
+        run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/CycleStealingWithZCD/CycleStealingWithZCD.ino" --build-property build.extra_flags="-D CONFIG_ARDUINO_ISR_IRAM=1"
 
       - name: Build DAC
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/DAC/DAC.ino"
@@ -142,11 +142,11 @@ jobs:
           pip install --upgrade platformio
           pip install --upgrade intelhex
 
-      - name: Build CycleStealingWithSyncSSR
-        run: PLATFORMIO_SRC_DIR=examples/CycleStealingWithSyncSSR PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
+      - name: Build CycleStealing
+        run: PLATFORMIO_SRC_DIR=examples/CycleStealing PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci
 
-      - name: Build CycleStealingWithRandomSSR
-        run: PLATFORMIO_SRC_DIR=examples/CycleStealingWithRandomSSR PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
+      - name: Build CycleStealingWithZCD
+        run: PLATFORMIO_SRC_DIR=examples/CycleStealingWithZCD PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci-zcd
 
       - name: Build DAC
         run: PLATFORMIO_SRC_DIR=examples/DAC PIO_BOARD=${{ matrix.board }} PIO_PLATFORM=${{ matrix.platform }} pio run -e ci

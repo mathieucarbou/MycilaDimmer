@@ -11,7 +11,8 @@
 #include <MycilaDimmers.h>
 
 #if defined(CONFIG_IDF_TARGET_ESP32)
-  #define GPIO_DIMMER GPIO_NUM_26
+  // #define GPIO_DIMMER GPIO_NUM_25 // RobotDyn
+  #define GPIO_DIMMER GPIO_NUM_26 // synchronous SSR
 #else
   #define GPIO_DIMMER GPIO_NUM_20
 #endif
@@ -23,10 +24,10 @@ void setup() {
   while (!Serial)
     continue;
 
-  dimmer.setPin(GPIO_DIMMER);
-
   // Cycle Stealing dimmer requires to set the grid semi-period
   Mycila::Dimmer::setSemiPeriod(10000); // 10ms for 50Hz grid, 8.33ms for 60Hz grid
+
+  dimmer.setPin(GPIO_DIMMER);
 
   dimmer.begin();
   dimmer.setOnline(true);
@@ -61,4 +62,5 @@ void loop() {
     dimmer.setDutyCycle(constrain(command.toFloat(), 0, 1));
     Serial.printf("Duty cycle set to %.2f%%\n", dimmer.getDutyCycle() * 100);
   }
+  delay(200);
 }
