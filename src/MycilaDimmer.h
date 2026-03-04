@@ -187,7 +187,7 @@ namespace Mycila {
       ////////////////
 
       /**
-       * @brief Get the power duty cycle configured for the dimmer by teh user
+       * @brief Get the power duty cycle configured for the dimmer by  the  user
        */
       float getDutyCycle() const { return _dutyCycle; }
 
