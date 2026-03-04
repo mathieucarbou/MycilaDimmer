@@ -116,7 +116,6 @@ $(function() {
 <li>API Reference<ul>
 <li>Common API (All Dimmer Types)</li>
 <li>Thyristor Dimmer Specific</li>
-<li>Cycle Stealing Dimmer Specific</li>
 <li>PWM Dimmer Specific</li>
 <li>DFRobot DAC Dimmer Specific</li>
 <li>Advanced Features</li>
@@ -127,13 +126,18 @@ $(function() {
 </ul>
 </li>
 <li>Examples</li>
-<li>Build Configuration<ul>
+<li>Development<ul>
 <li>PlatformIO Configuration</li>
 <li>Dependencies</li>
 </ul>
 </li>
 <li>Troubleshooting<ul>
-<li>Common Issues</li>
+<li>Common Issues<ul>
+<li>Thyristor Dimmer Not Working</li>
+<li>PWM Output Not Visible</li>
+<li>DFRobot Module Not Responding</li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Contributing<ul>
@@ -380,6 +384,7 @@ $(function() {
 </ul>
 <h3>Cycle Stealing (Delta-Sigma)</h3>
 <p><b>How it works:</b> Instead of chopping the sine wave, Cycle Stealing delivers complete half-cycles of power to the load. This library uses an advanced <b>First-Order Delta-Sigma Modulator (Bresenham's algorithm)</b> to optimally distribute ON/OFF cycles. Crucially, it enforces <b>DC Balance</b>, ensuring that for every positive half-cycle consumed, a negative one is also consumed, preventing DC offset on the grid.</p>
+<p><a href="https://mathieu.carbou.me/MycilaDimmer/cycle_stealing">Read more about how Cycle Stealing is implemented in MycilaDimmer library here</a></p>
 <p><img src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/cycle_stealing_10ms.jpeg" alt="" class="inline"/></p>
 <p><b>Advantages:</b></p>
 <ul>
@@ -448,6 +453,7 @@ $(function() {
 <li><a href="https://docs.openenergymonitor.org/pv-diversion/">Learn: PV Diversion</a></li>
 <li><a href="https://tsltd.github.io">Optimized Random Integral Wave AC Control Algorithm for AC heaters</a></li>
 <li><a href="https://www.renesas.com/en/document/apn/1164-cycle-stealing-control">Cycle Stealing Control</a> (Vladimir Veljkovic)</li>
+<li><a href="https://mathieu.carbou.me/MycilaDimmer/cycle_stealing">Read more about how Cycle Stealing is implemented in MycilaDimmer library here</a></li>
 </ul>
 <p><b>Solar Router using this library:</b></p>
 <ul>
@@ -563,7 +569,7 @@ $(function() {
 <div class="ttc" id="aclass_mycila_1_1_phase_control_dimmer_html_aa20d3cdec048767dff71208a72bdc940"><div class="ttname"><a href="class_mycila_1_1_phase_control_dimmer.html#aa20d3cdec048767dff71208a72bdc940">Mycila::PhaseControlDimmer::enablePowerLUT</a></div><div class="ttdeci">void enablePowerLUT(bool enable)</div><div class="ttdoc">Enable or disable the use of power LUT for this phase-control dimmer The power LUT provides a non-lin...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_phase_control_8h_source.html#l00024">MycilaDimmerPhaseControl.h:24</a></div></div>
 </div><!-- fragment --><h1>Configuration</h1>
 <h2>Build Flags</h2>
-<p>For <b>Thyristor Dimmer</b> (IRAM safety):</p>
+<p>For <b>Thyristor Dimmer</b> and <b>Cycle Stealing Dimmer with ZCD</b> (IRAM safety):</p>
 <div class="fragment"><div class="line">build_flags =</div>
 <div class="line">  -D CONFIG_ARDUINO_ISR_IRAM=1</div>
 <div class="line">  -D CONFIG_GPTIMER_ISR_HANDLER_IN_IRAM=1</div>
@@ -589,7 +595,7 @@ $(function() {
 <li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorAutoFrequency/">ThyristorAutoFrequency Example</a></b> - Automatic detection of frequency and semi-period</li>
 <li><b><a href="https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorWithFS/">ThyristorWithFS Example</a></b> - File system integration</li>
 </ul>
-<h1>Build Configuration</h1>
+<h1>Development</h1>
 <h2>PlatformIO Configuration</h2>
 <div class="fragment"><div class="line">[platformio]</div>
 <div class="line">lib_dir = .</div>

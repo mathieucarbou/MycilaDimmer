@@ -155,49 +155,88 @@ $(function() {
 <div class="line"><a id="l00102" name="l00102"></a><span class="lineno">  102</span>    <span class="keyword">protected</span>:</div>
 <div class="line"><a id="l00103" name="l00103"></a><span class="lineno">  103</span>      <span class="keywordtype">bool</span> _powerLUTEnabled = <span class="keyword">false</span>;</div>
 <div class="line"><a id="l00104" name="l00104"></a><span class="lineno">  104</span> </div>
-<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      <span class="keyword">static</span> uint16_t _lookupFiringDelay(<span class="keywordtype">float</span> dutyCycle);</div>
-<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span> </div>
-<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>      <span class="keywordtype">bool</span> _calculateDimmerHarmonics(<span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n)<span class="keyword"> const override </span>{</div>
-<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        <span class="comment">// getDutyCycleFire() returns the conduction angle normalized (0-1)</span></div>
-<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        <span class="comment">// Convert to firing angle: α = π × (1 - conduction)</span></div>
-<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        <span class="comment">// At 50% power: α ≈ 90° (π/2), which gives maximum harmonics</span></div>
-<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> firingAngle = M_PI * (1.0f - _dutyCycleFire);</div>
-<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span> </div>
-<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>        <span class="comment">// Calculate RMS of fundamental component (reference)</span></div>
-<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span>        <span class="comment">// Formula from Thierry Lequeu: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]</span></div>
-<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> sin_2a = sinf(2.0f * firingAngle);</div>
-<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> i1_rms = sqrtf((2.0f / M_PI) * (M_PI - firingAngle + 0.5f * sin_2a));</div>
-<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span> </div>
-<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="keywordflow">if</span> (i1_rms &lt;= 0.001f)</div>
-<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00105" name="l00105"></a><span class="lineno">  105</span>      <span class="keyword">static</span> uint16_t _lookupFiringDelay(<span class="keywordtype">float</span> dutyCycle) {</div>
+<div class="line"><a id="l00106" name="l00106"></a><span class="lineno">  106</span>        uint32_t duty = dutyCycle * FIRING_DELAY_MAX;</div>
+<div class="line"><a id="l00107" name="l00107"></a><span class="lineno">  107</span>        uint32_t slot = duty * FIRING_DELAYS_SCALE + (FIRING_DELAYS_SCALE &gt;&gt; 1);</div>
+<div class="line"><a id="l00108" name="l00108"></a><span class="lineno">  108</span>        uint32_t index = slot &gt;&gt; 16;</div>
+<div class="line"><a id="l00109" name="l00109"></a><span class="lineno">  109</span>        uint32_t a = FIRING_DELAYS[index];</div>
+<div class="line"><a id="l00110" name="l00110"></a><span class="lineno">  110</span>        uint32_t b = FIRING_DELAYS[index + 1];</div>
+<div class="line"><a id="l00111" name="l00111"></a><span class="lineno">  111</span>        uint32_t delay = a - (((a - b) * (slot &amp; 0xffff)) &gt;&gt; 16); <span class="comment">// interpolate a b</span></div>
+<div class="line"><a id="l00112" name="l00112"></a><span class="lineno">  112</span>        <span class="keywordflow">return</span> (delay * _semiPeriod) &gt;&gt; 16;</div>
+<div class="line"><a id="l00113" name="l00113"></a><span class="lineno">  113</span>      }</div>
+<div class="line"><a id="l00114" name="l00114"></a><span class="lineno">  114</span> </div>
+<div class="line"><a id="l00115" name="l00115"></a><span class="lineno">  115</span>      <span class="keywordtype">bool</span> _calculateDimmerHarmonics(<span class="keywordtype">float</span>* array, <span class="keywordtype">size_t</span> n)<span class="keyword"> const override </span>{</div>
+<div class="line"><a id="l00116" name="l00116"></a><span class="lineno">  116</span>        <span class="comment">// getDutyCycleFire() returns the conduction angle normalized (0-1)</span></div>
+<div class="line"><a id="l00117" name="l00117"></a><span class="lineno">  117</span>        <span class="comment">// Convert to firing angle: α = π × (1 - conduction)</span></div>
+<div class="line"><a id="l00118" name="l00118"></a><span class="lineno">  118</span>        <span class="comment">// At 50% power: α ≈ 90° (π/2), which gives maximum harmonics</span></div>
+<div class="line"><a id="l00119" name="l00119"></a><span class="lineno">  119</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> firingAngle = M_PI * (1.0f - _dutyCycleFire);</div>
 <div class="line"><a id="l00120" name="l00120"></a><span class="lineno">  120</span> </div>
-<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        array[0] = 100.0f; <span class="comment">// H1 (fundamental) = 100% reference</span></div>
-<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span> </div>
-<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="comment">// Pre-compute scale factor for efficiency</span></div>
-<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> scale_factor = (2.0f / M_PI) * 0.70710678f * 100.0f / i1_rms;</div>
+<div class="line"><a id="l00121" name="l00121"></a><span class="lineno">  121</span>        <span class="comment">// Calculate RMS of fundamental component (reference)</span></div>
+<div class="line"><a id="l00122" name="l00122"></a><span class="lineno">  122</span>        <span class="comment">// Formula from Thierry Lequeu: I1_rms = (1/π) × √[2(π - α + ½sin(2α))]</span></div>
+<div class="line"><a id="l00123" name="l00123"></a><span class="lineno">  123</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> sin_2a = sinf(2.0f * firingAngle);</div>
+<div class="line"><a id="l00124" name="l00124"></a><span class="lineno">  124</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> i1_rms = sqrtf((2.0f / M_PI) * (M_PI - firingAngle + 0.5f * sin_2a));</div>
 <div class="line"><a id="l00125" name="l00125"></a><span class="lineno">  125</span> </div>
-<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="comment">// Calculate odd harmonics (H3, H5, H7, ...)</span></div>
-<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>        <span class="comment">// Formula for phase-controlled resistive loads (IEEE standard):</span></div>
-<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span>        <span class="comment">// Hn = (2/π√2) × |cos((n-1)α)/(n-1) - cos((n+1)α)/(n+1)| / I1_rms × 100%</span></div>
-<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        <span class="comment">// This gives the correct harmonic magnitudes relative to the fundamental</span></div>
-<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; n; i++) {</div>
-<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_f = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(2 * i + 1); <span class="comment">// 3, 5, 7, 9, ...</span></div>
-<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_minus_1 = n_f - 1.0f;</div>
-<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_plus_1 = n_f + 1.0f;</div>
-<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span> </div>
-<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>          <span class="comment">// Compute Fourier coefficient</span></div>
-<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 -</div>
-<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>                              cosf(n_plus_1 * firingAngle) / n_plus_1;</div>
-<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span> </div>
-<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>          <span class="comment">// Convert to percentage of fundamental</span></div>
-<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>          array[i] = fabsf(coeff) * scale_factor;</div>
-<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>        }</div>
+<div class="line"><a id="l00126" name="l00126"></a><span class="lineno">  126</span>        <span class="keywordflow">if</span> (i1_rms &lt;= 0.001f)</div>
+<div class="line"><a id="l00127" name="l00127"></a><span class="lineno">  127</span>          <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a id="l00128" name="l00128"></a><span class="lineno">  128</span> </div>
+<div class="line"><a id="l00129" name="l00129"></a><span class="lineno">  129</span>        array[0] = 100.0f; <span class="comment">// H1 (fundamental) = 100% reference</span></div>
+<div class="line"><a id="l00130" name="l00130"></a><span class="lineno">  130</span> </div>
+<div class="line"><a id="l00131" name="l00131"></a><span class="lineno">  131</span>        <span class="comment">// Pre-compute scale factor for efficiency</span></div>
+<div class="line"><a id="l00132" name="l00132"></a><span class="lineno">  132</span>        <span class="keyword">const</span> <span class="keywordtype">float</span> scale_factor = (2.0f / M_PI) * 0.70710678f * 100.0f / i1_rms;</div>
+<div class="line"><a id="l00133" name="l00133"></a><span class="lineno">  133</span> </div>
+<div class="line"><a id="l00134" name="l00134"></a><span class="lineno">  134</span>        <span class="comment">// Calculate odd harmonics (H3, H5, H7, ...)</span></div>
+<div class="line"><a id="l00135" name="l00135"></a><span class="lineno">  135</span>        <span class="comment">// Formula for phase-controlled resistive loads (IEEE standard):</span></div>
+<div class="line"><a id="l00136" name="l00136"></a><span class="lineno">  136</span>        <span class="comment">// Hn = (2/π√2) × |cos((n-1)α)/(n-1) - cos((n+1)α)/(n+1)| / I1_rms × 100%</span></div>
+<div class="line"><a id="l00137" name="l00137"></a><span class="lineno">  137</span>        <span class="comment">// This gives the correct harmonic magnitudes relative to the fundamental</span></div>
+<div class="line"><a id="l00138" name="l00138"></a><span class="lineno">  138</span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; n; i++) {</div>
+<div class="line"><a id="l00139" name="l00139"></a><span class="lineno">  139</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_f = <span class="keyword">static_cast&lt;</span><span class="keywordtype">float</span><span class="keyword">&gt;</span>(2 * i + 1); <span class="comment">// 3, 5, 7, 9, ...</span></div>
+<div class="line"><a id="l00140" name="l00140"></a><span class="lineno">  140</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_minus_1 = n_f - 1.0f;</div>
+<div class="line"><a id="l00141" name="l00141"></a><span class="lineno">  141</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> n_plus_1 = n_f + 1.0f;</div>
 <div class="line"><a id="l00142" name="l00142"></a><span class="lineno">  142</span> </div>
-<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>      }</div>
-<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>  };</div>
+<div class="line"><a id="l00143" name="l00143"></a><span class="lineno">  143</span>          <span class="comment">// Compute Fourier coefficient</span></div>
+<div class="line"><a id="l00144" name="l00144"></a><span class="lineno">  144</span>          <span class="keyword">const</span> <span class="keywordtype">float</span> coeff = cosf(n_minus_1 * firingAngle) / n_minus_1 -</div>
+<div class="line"><a id="l00145" name="l00145"></a><span class="lineno">  145</span>                              cosf(n_plus_1 * firingAngle) / n_plus_1;</div>
+<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span> </div>
+<div class="line"><a id="l00147" name="l00147"></a><span class="lineno">  147</span>          <span class="comment">// Convert to percentage of fundamental</span></div>
+<div class="line"><a id="l00148" name="l00148"></a><span class="lineno">  148</span>          array[i] = fabsf(coeff) * scale_factor;</div>
+<div class="line"><a id="l00149" name="l00149"></a><span class="lineno">  149</span>        }</div>
+<div class="line"><a id="l00150" name="l00150"></a><span class="lineno">  150</span> </div>
+<div class="line"><a id="l00151" name="l00151"></a><span class="lineno">  151</span>        <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a id="l00152" name="l00152"></a><span class="lineno">  152</span>      }</div>
+<div class="line"><a id="l00153" name="l00153"></a><span class="lineno">  153</span> </div>
+<div class="line"><a id="l00154" name="l00154"></a><span class="lineno">  154</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00155" name="l00155"></a><span class="lineno">  155</span>      <span class="keyword">static</span> <span class="keyword">constexpr</span> uint32_t DIMMER_RESOLUTION = 12;</div>
+<div class="line"><a id="l00156" name="l00156"></a><span class="lineno">  156</span>      <span class="keyword">static</span> <span class="keyword">constexpr</span> uint32_t FIRING_DELAYS_LEN = 200;</div>
+<div class="line"><a id="l00157" name="l00157"></a><span class="lineno">  157</span>      <span class="keyword">static</span> <span class="keyword">constexpr</span> uint32_t FIRING_DELAY_MAX = (1 &lt;&lt; DIMMER_RESOLUTION) - 1;</div>
+<div class="line"><a id="l00158" name="l00158"></a><span class="lineno">  158</span>      <span class="keyword">static</span> <span class="keyword">constexpr</span> uint32_t FIRING_DELAYS_SCALE = (FIRING_DELAYS_LEN - 1U) * (1UL &lt;&lt; (16 - DIMMER_RESOLUTION));</div>
+<div class="line"><a id="l00159" name="l00159"></a><span class="lineno">  159</span> </div>
+<div class="line"><a id="l00160" name="l00160"></a><span class="lineno">  160</span>      <span class="comment">// clang-format off</span></div>
+<div class="line"><a id="l00161" name="l00161"></a><span class="lineno">  161</span>      <span class="keyword">static</span> <span class="keyword">constexpr</span> uint16_t FIRING_DELAYS[FIRING_DELAYS_LEN] = {</div>
+<div class="line"><a id="l00162" name="l00162"></a><span class="lineno">  162</span>        0xffff, 0xe877, 0xe240, 0xddd9, 0xda51, 0xd74f, 0xd4aa, 0xd248, 0xd01a, 0xce16,</div>
+<div class="line"><a id="l00163" name="l00163"></a><span class="lineno">  163</span>        0xcc34, 0xca6e, 0xc8c0, 0xc728, 0xc5a1, 0xc42b, 0xc2c3, 0xc168, 0xc019, 0xbed3,</div>
+<div class="line"><a id="l00164" name="l00164"></a><span class="lineno">  164</span>        0xbd98, 0xbc65, 0xbb3b, 0xba17, 0xb8fb, 0xb7e5, 0xb6d5, 0xb5ca, 0xb4c5, 0xb3c4,</div>
+<div class="line"><a id="l00165" name="l00165"></a><span class="lineno">  165</span>        0xb2c8, 0xb1d1, 0xb0dd, 0xafed, 0xaf01, 0xae18, 0xad33, 0xac51, 0xab71, 0xaa95,</div>
+<div class="line"><a id="l00166" name="l00166"></a><span class="lineno">  166</span>        0xa9bb, 0xa8e3, 0xa80e, 0xa73b, 0xa66b, 0xa59c, 0xa4d0, 0xa406, 0xa33d, 0xa276,</div>
+<div class="line"><a id="l00167" name="l00167"></a><span class="lineno">  167</span>        0xa1b1, 0xa0ed, 0xa02b, 0x9f6b, 0x9eac, 0x9dee, 0x9d32, 0x9c76, 0x9bbc, 0x9b04,</div>
+<div class="line"><a id="l00168" name="l00168"></a><span class="lineno">  168</span>        0x9a4c, 0x9996, 0x98e0, 0x982b, 0x9778, 0x96c5, 0x9613, 0x9563, 0x94b2, 0x9403,</div>
+<div class="line"><a id="l00169" name="l00169"></a><span class="lineno">  169</span>        0x9354, 0x92a6, 0x91f9, 0x914c, 0x90a0, 0x8ff5, 0x8f4a, 0x8ea0, 0x8df6, 0x8d4d,</div>
+<div class="line"><a id="l00170" name="l00170"></a><span class="lineno">  170</span>        0x8ca4, 0x8bfb, 0x8b53, 0x8aab, 0x8a04, 0x895d, 0x88b6, 0x8810, 0x876a, 0x86c4,</div>
+<div class="line"><a id="l00171" name="l00171"></a><span class="lineno">  171</span>        0x861e, 0x8579, 0x84d3, 0x842e, 0x8389, 0x82e4, 0x823f, 0x819b, 0x80f6, 0x8051,</div>
+<div class="line"><a id="l00172" name="l00172"></a><span class="lineno">  172</span>        0x7fad, 0x7f08, 0x7e63, 0x7dbf, 0x7d1a, 0x7c75, 0x7bd0, 0x7b2b, 0x7a85, 0x79e0,</div>
+<div class="line"><a id="l00173" name="l00173"></a><span class="lineno">  173</span>        0x793a, 0x7894, 0x77ee, 0x7748, 0x76a1, 0x75fa, 0x7553, 0x74ab, 0x7403, 0x735a,</div>
+<div class="line"><a id="l00174" name="l00174"></a><span class="lineno">  174</span>        0x72b1, 0x7208, 0x715e, 0x70b4, 0x7009, 0x6f5e, 0x6eb2, 0x6e05, 0x6d58, 0x6caa,</div>
+<div class="line"><a id="l00175" name="l00175"></a><span class="lineno">  175</span>        0x6bfb, 0x6b4c, 0x6a9b, 0x69eb, 0x6939, 0x6886, 0x67d3, 0x671e, 0x6668, 0x65b2,</div>
+<div class="line"><a id="l00176" name="l00176"></a><span class="lineno">  176</span>        0x64fa, 0x6442, 0x6388, 0x62cc, 0x6210, 0x6152, 0x6093, 0x5fd3, 0x5f11, 0x5e4d,</div>
+<div class="line"><a id="l00177" name="l00177"></a><span class="lineno">  177</span>        0x5d88, 0x5cc1, 0x5bf8, 0x5b2e, 0x5a62, 0x5993, 0x58c3, 0x57f0, 0x571b, 0x5643,</div>
+<div class="line"><a id="l00178" name="l00178"></a><span class="lineno">  178</span>        0x5569, 0x548d, 0x53ad, 0x52cb, 0x51e6, 0x50fd, 0x5011, 0x4f21, 0x4e2d, 0x4d36,</div>
+<div class="line"><a id="l00179" name="l00179"></a><span class="lineno">  179</span>        0x4c3a, 0x4b39, 0x4a34, 0x4929, 0x4819, 0x4703, 0x45e7, 0x44c3, 0x4399, 0x4266,</div>
+<div class="line"><a id="l00180" name="l00180"></a><span class="lineno">  180</span>        0x412b, 0x3fe5, 0x3e96, 0x3d3b, 0x3bd3, 0x3a5d, 0x38d6, 0x373e, 0x3590, 0x33ca,</div>
+<div class="line"><a id="l00181" name="l00181"></a><span class="lineno">  181</span>        0x31e8, 0x2fe4, 0x2db6, 0x2b54, 0x28af, 0x25ad, 0x2225, 0x1dbe, 0x1787, 0x0000</div>
+<div class="line"><a id="l00182" name="l00182"></a><span class="lineno">  182</span>      };</div>
+<div class="line"><a id="l00183" name="l00183"></a><span class="lineno">  183</span>      <span class="comment">// clang-format on</span></div>
+<div class="line"><a id="l00184" name="l00184"></a><span class="lineno">  184</span>  };</div>
 </div>
-<div class="line"><a id="l00146" name="l00146"></a><span class="lineno">  146</span>} <span class="comment">// namespace Mycila</span></div>
+<div class="line"><a id="l00185" name="l00185"></a><span class="lineno">  185</span>} <span class="comment">// namespace Mycila</span></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html"><div class="ttname"><a href="class_mycila_1_1_dimmer.html">Mycila::Dimmer</a></div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00023">MycilaDimmer.h:23</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_a0f0513eebff6847195e79b893c96738c"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a0f0513eebff6847195e79b893c96738c">Mycila::Dimmer::getDutyCycleFire</a></div><div class="ttdeci">float getDutyCycleFire() const</div><div class="ttdoc">Get the real firing duty cycle (conduction duty cycle) applied to the dimmer in the range [0,...</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00207">MycilaDimmer.h:207</a></div></div>
 <div class="ttc" id="aclass_mycila_1_1_dimmer_html_a915e8f46ca54bd45b13f7d2e13432938"><div class="ttname"><a href="class_mycila_1_1_dimmer.html#a915e8f46ca54bd45b13f7d2e13432938">Mycila::Dimmer::getDutyCycleMapped</a></div><div class="ttdeci">float getDutyCycleMapped() const</div><div class="ttdoc">Get the remapped power duty cycle from the currently user set duty cycle.</div><div class="ttdef"><b>Definition</b> <a href="_mycila_dimmer_8h_source.html#l00197">MycilaDimmer.h:197</a></div></div>
