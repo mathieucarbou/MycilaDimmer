@@ -83,15 +83,16 @@ namespace Mycila {
 
     private:
       gpio_num_t _pin = GPIO_NUM_NC;
+      uint16_t duty_milli = 0; // Duty cycle scaled 0–1000; updated from _apply() (avoids float in ISR)
+      // Cycle stealing state tracking
+      bool semi_period_odd = false; // Track odd/even semi-periods for balance
+      int32_t density_error = 0;    // Bresenham accumulator, scaled ×1000 (threshold: 1000)
+      int8_t dc_balance = 0;        // DC component balance (-1: owes positive, 1: owes negative)
 
       struct RegisteredDimmer {
           CycleStealingDimmer* dimmer = nullptr;
           RegisteredDimmer* prev = nullptr;
           RegisteredDimmer* next = nullptr;
-          // Cycle stealing state tracking
-          bool semi_period_odd = false; // Track odd/even semi-periods for balance
-          float density_error = 0.0f;   // Accumulator for Bresenham algorithm
-          int8_t dc_balance = 0;        // DC component balance (-1: owes positive, 1: owes negative)
       };
 
       static struct RegisteredDimmer* dimmers;

@@ -74,9 +74,38 @@ void Mycila::CycleStealingDimmer::end() {
   digitalWrite(_pin, LOW);
 }
 
-void ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::onZeroCross(int16_t delayUntilZero, void* arg) {
-  // sync the firering timer to start a little before 0V crossing
-  inlined_gptimer_set_raw_count(fire_timer, 0);
+void ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::onZeroCross(int16_t delayUntilZero, void* args) {
+  // read the timer count to check how much it diverted from the expected semi-period, and adjust it to stay in sync with the grid frequency
+  // We allow a margin of 50us from the onZeroCross event.
+  // delayUntilZero == 150us by default
+  // ------ 50us -- onZeroCross --- 50us --- 100us --- 0V crossing ------
+  uint64_t timer_count;
+  if (inlined_gptimer_get_raw_count(fire_timer, &timer_count) != ESP_OK) {
+    // failed to get the timer count: just ignore this ZC event
+    return;
+  }
+
+  // should not occur, but just in case...
+  if (timer_count > _semiPeriod) {
+    inlined_gptimer_set_raw_count(fire_timer, _semiPeriod);
+    return;
+  }
+
+  // the timer alarm was triggered less than 50us ago
+  // => we allow a 50us margin of error
+  if (timer_count <= 50) {
+    return;
+  }
+
+  const uint16_t delayUntilAlarm = _semiPeriod - static_cast<uint16_t>(timer_count);
+
+  // the timer alarm will trigger in less than 50us
+  if (delayUntilAlarm <= 50) {
+    return;
+  }
+
+  // reprogram the timer alarm
+  inlined_gptimer_set_raw_count(fire_timer, _semiPeriod);
 }
 
 // Timer ISR to be called as soon as a dimmer needs to be fired
@@ -88,17 +117,6 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
     return false;
   }
   inside_isr = true;
-
-  // get the time we spent looping and eventually waiting for the lock
-  uint64_t fire_timer_count_value;
-  if (inlined_gptimer_get_raw_count(fire_timer, &fire_timer_count_value) != ESP_OK) {
-    // failed to get the timer count: just ignore this event
-    inside_isr = false;
-    return false;
-  }
-
-  // Note: if locking takes too long (more than semi-period), a new timer event may be triggered
-  // while we are still in this ISR, but it will be ignored by the inside_isr guard
 
 #ifndef MYCILA_DIMMER_NO_LOCK
   // lock since we need to iterate over the list of dimmers
@@ -112,20 +130,24 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
   struct RegisteredDimmer* current = dimmers;
   while (current != nullptr) {
     CycleStealingDimmer* dimmer = current->dimmer;
-    float dutyCycle = dimmer->getDutyCycleFire();
+
+    // duty_milli is 0–1000 (scaled ×1000 from 0.0–1.0), pre-computed in _apply()
+    // so that _fireTimerISR contains no floating-point instructions and the CPU
+    // does not need to save/restore the FP coprocessor state on the ISR stack (~72 bytes).
+    const uint16_t dutyCycle = current->dimmer->duty_milli;
 
     // Full power: always conduct
-    if (dutyCycle >= 1.0f) {
+    if (dutyCycle >= 1000) {
       gpio_ll_set_level(&GPIO, dimmer->_pin, HIGH);
-      current->semi_period_odd = !current->semi_period_odd;
+      current->dimmer->semi_period_odd = !current->dimmer->semi_period_odd;
       current = current->next;
       continue;
     }
 
     // Zero power: never conduct
-    if (dutyCycle <= 0.0f) {
+    if (dutyCycle == 0) {
       gpio_ll_set_level(&GPIO, dimmer->_pin, LOW);
-      current->semi_period_odd = !current->semi_period_odd;
+      current->dimmer->semi_period_odd = !current->dimmer->semi_period_odd;
       current = current->next;
       continue;
     }
@@ -134,30 +156,30 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
     // Sliding window approach (Bresenham) with polarity balancing
 
     // Accumulate the energy deficit
-    current->density_error += dutyCycle;
+    current->dimmer->density_error += static_cast<int32_t>(dutyCycle);
 
     bool should_conduct = false;
 
     // Check if we have enough accumulated error to fire a pulse
-    if (current->density_error >= 1.0f) {
+    if (current->dimmer->density_error >= 1000) {
       // We want to fire. Check DC balance constraints.
       // semi_period_odd: True (Odd/Positive), False (Even/Negative)
       // dc_balance: 0 (Balanced), >0 (Excess Positive), <0 (Excess Negative)
       // Optimization: We define Odd as Positive (+1) and Even as Negative (-1)
-      int8_t phase_val = current->semi_period_odd ? 1 : -1;
+      int8_t phase_val = current->dimmer->semi_period_odd ? 1 : -1;
 
       // Rule:
       // 1. If balanced (0), we can fire. We will create a debt.
       // 2. If unbalanced, we can ONLY fire if it reduces the imbalance (opposite sign).
 
-      bool helps_balance = (current->dc_balance == 0) ||
-                           (current->dc_balance > 0 && phase_val < 0) ||
-                           (current->dc_balance < 0 && phase_val > 0);
+      bool helps_balance = (current->dimmer->dc_balance == 0) ||
+                           (current->dimmer->dc_balance > 0 && phase_val < 0) ||
+                           (current->dimmer->dc_balance < 0 && phase_val > 0);
 
       if (helps_balance) {
         should_conduct = true;
-        current->dc_balance += phase_val;
-        current->density_error -= 1.0f;
+        current->dimmer->dc_balance += phase_val;
+        current->dimmer->density_error -= 1000;
       } else {
         // We need to fire for power, but it would worsen the DC imbalance.
         // Wait for the next semi-period (which will have opposite polarity).
@@ -167,7 +189,7 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
 
     // Apply the decision
     gpio_ll_set_level(&GPIO, dimmer->_pin, should_conduct ? HIGH : LOW);
-    current->semi_period_odd = !current->semi_period_odd;
+    current->dimmer->semi_period_odd = !current->dimmer->semi_period_odd;
 
     current = current->next;
   }
@@ -183,7 +205,7 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
 
 // add a dimmer to the list of managed dimmers
 void Mycila::CycleStealingDimmer::_registerDimmer(Mycila::CycleStealingDimmer* dimmer) {
-  if (fire_timer == nullptr) {
+  if (dimmers == nullptr) {
     ESP_LOGI(TAG, "Starting dimmer firing ISR");
 
     gptimer_config_t timer_config;
@@ -260,10 +282,9 @@ void Mycila::CycleStealingDimmer::_unregisterDimmer(Mycila::CycleStealingDimmer*
   portEXIT_CRITICAL_SAFE(&dimmers_spinlock);
 #endif
 
-  if (dimmers == nullptr && fire_timer != nullptr) {
+  if (dimmers == nullptr) {
     ESP_LOGI(TAG, "Stopping dimmer firing ISR");
-    ESP_ERROR_CHECK(gptimer_set_alarm_action(fire_timer, nullptr));
-    ESP_ERROR_CHECK(gptimer_stop(fire_timer));
+    gptimer_stop(fire_timer);
     ESP_ERROR_CHECK(gptimer_disable(fire_timer));
     ESP_ERROR_CHECK(gptimer_del_timer(fire_timer));
     fire_timer = nullptr;
@@ -271,6 +292,10 @@ void Mycila::CycleStealingDimmer::_unregisterDimmer(Mycila::CycleStealingDimmer*
 }
 
 bool Mycila::CycleStealingDimmer::_apply() {
+  // Cache integer duty cycle for use in _fireTimerISR (avoids float arithmetic — and the
+  // associated FP coprocessor context save — inside the ISR, saving ~72 bytes of ISR stack).
+  duty_milli = static_cast<uint16_t>(getDutyCycleFire() * 1000.0f + 0.5f);
+
   if (!_enabled)
     return false;
 
