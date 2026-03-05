@@ -1,0 +1,1208 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://mathieu.carbou.me/MycilaDimmer/ac-dimming/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../cycle_stealing/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+    
+    
+      
+        <title>AC Dimming - MycilaDimmer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#ac-dimming" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="MycilaDimmer" class="md-header__button md-logo" aria-label="MycilaDimmer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            MycilaDimmer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              AC Dimming
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="deep-orange" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/mathieucarbou/MycilaDimmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mathieucarbou/MycilaDimmer
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="MycilaDimmer" class="md-nav__button md-logo" aria-label="MycilaDimmer" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    MycilaDimmer
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/mathieucarbou/MycilaDimmer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    mathieucarbou/MycilaDimmer
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AC Dimming
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AC Dimming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#method-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-stealing-delta-sigma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycle Stealing (Delta-Sigma)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#harmonic-analysis-class-a-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harmonic Analysis (Class A Compliance)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Harmonic Analysis (Class A Compliance)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#harmonic-current-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harmonic Current Measurements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Right Method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#harmonic-mitigation-for-phase-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harmonic Mitigation for Phase Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cycle_stealing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cycle Stealing Algorithm
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dimmers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dimmer Types
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../installation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Installation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Configuration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Troubleshooting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_11" >
+        
+          
+          <label class="md-nav__link" for="__nav_11" id="__nav_11_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    C++ API
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    C++ API
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cppapi/annotated/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Annotated Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cppapi/hierarchy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Class Hierarchy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cppapi/classes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    All Classes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cppapi/namespaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Namespaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cppapi/files/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Files
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#method-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method Comparison
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Method Comparison">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#phase-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Phase Control
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cycle-stealing-delta-sigma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cycle Stealing (Delta-Sigma)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#harmonic-analysis-class-a-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harmonic Analysis (Class A Compliance)
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Harmonic Analysis (Class A Compliance)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#harmonic-current-measurements" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harmonic Current Measurements
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#choosing-the-right-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Choosing the Right Method
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#harmonic-mitigation-for-phase-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Harmonic Mitigation for Phase Control
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="ac-dimming">AC Dimming<a class="headerlink" href="#ac-dimming" title="Permanent link">&para;</a></h1>
+<p>When controlling AC power devices like TRIACs, SSRs, and voltage regulators, there are several dimming approaches available. Each method has specific characteristics, advantages, and limitations that affect precision, grid compatibility, and regulatory compliance.</p>
+<h2 id="method-comparison">Method Comparison<a class="headerlink" href="#method-comparison" title="Permanent link">&para;</a></h2>
+<h3 id="phase-control">Phase Control<a class="headerlink" href="#phase-control" title="Permanent link">&para;</a></h3>
+<p><strong>How it works:</strong> Controls power by delaying the firing angle within each AC semi-period (twice per cycle). The TRIAC/SSR activates at a specific point in the sine wave, "chopping" the waveform to deliver partial power.</p>
+<p><img alt="Phase control oscilloscope" src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/Oscillo_Dimmer_50.jpeg" /></p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>✅ <strong>High Precision</strong>: Can adjust power at each semi-period (every 10ms for 50Hz), enabling watt-level control</li>
+<li>✅ <strong>Fast Response</strong>: Instant power adjustment with no delay</li>
+<li>✅ <strong>Accurate Power Control</strong>: With Power LUT, achieves predictable power output matching the desired level</li>
+<li>✅ <strong>Regulatory Compliant</strong>: Keeps grid balanced (no DC component) when properly implemented</li>
+<li>✅ <strong>Widely Used</strong>: Standard method in commercial dimmers and variable speed drives</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>⚠️ <strong>Harmonics</strong>: Generates harmonic distortion, especially at 50% power (90° phase angle)</li>
+<li>Harmonics are regulated by CEI 61000-3-2 (Class A devices)</li>
+<li>H3 (3rd harmonic) is the most significant, exceeds limits at 50% dimming with ~1700W nominal load</li>
+<li>H15 (15th harmonic) first to exceed limits at ~760W nominal load</li>
+<li>Maximum compliant load: ~800W without mitigation</li>
+<li>⚠️ <strong>Mitigation may be required</strong>: May need RC snubbers, proper wiring, load management, or limiter settings</li>
+</ul>
+<p><strong>MycilaDimmer implementations using phase control:</strong></p>
+<ul>
+<li><code>ThyristorDimmer</code> — Direct TRIAC/Random SSR control with zero-cross detection</li>
+<li><code>PWMDimmer</code> — Generates PWM signal for a PWM-to-analog converter to drive voltage regulators (LSA, LCTC)</li>
+<li><code>DFRobotDimmer</code> — Outputs 0-10V analog via I2C DAC to voltage regulators (LSA, LCTC)</li>
+</ul>
+<p>All three support the <strong>Power LUT</strong> for linearized power delivery and expose <code>calculateHarmonics()</code> for harmonic analysis.</p>
+<hr />
+<h3 id="cycle-stealing-delta-sigma">Cycle Stealing (Delta-Sigma)<a class="headerlink" href="#cycle-stealing-delta-sigma" title="Permanent link">&para;</a></h3>
+<p><strong>How it works:</strong> Instead of chopping the sine wave, Cycle Stealing delivers complete half-cycles of power to the load.
+This library uses an advanced <strong>First-Order Delta-Sigma Modulator (Bresenham's algorithm)</strong> to optimally distribute ON/OFF cycles.
+Crucially, it enforces <strong>DC Balance</strong>, ensuring that for every positive half-cycle consumed, a negative one is also consumed, preventing DC offset on the grid.</p>
+<p><img alt="Cycle stealing oscilloscope" src="https://mathieu.carbou.me/MycilaDimmer/assets/img/measurements/cycle_stealing_10ms.jpeg" /></p>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>✅ <strong>Zero Noise</strong>: Switches exactly at zero-crossing, generating virtually no EMF / RFI noise</li>
+<li>✅ <strong>Grid Friendly</strong>: Strictly maintains DC balance, avoiding transformer saturation and grid asymmetry issues</li>
+<li>✅ <strong>High Compatible</strong>: Works with standard Zero-Cross SSRs (cheaper) as well as Random SSRs/TRIACs</li>
+<li>✅ <strong>Fast Response</strong>: The accumulator-based algorithm responds to duty cycle changes instantly</li>
+</ul>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>❌ <strong>Flickering</strong>: Not suitable for lighting. The rapid on/off pulsing causes visible flicker in bulbs</li>
+<li>❌ <strong>Sub-Harmonics</strong>: Generates inter-harmonics and sub-harmonics (frequencies below 50/60Hz)</li>
+<li>❌ <strong>No Power LUT</strong>: Does not support the Phase Control Power LUT feature</li>
+<li>❌ <strong>Thermal Inertia Required</strong>: Only suitable for purely resistive loads with high thermal inertia (water heaters, oil radiators, floor heating)</li>
+</ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+</div>
+<p>See the <a href="../cycle_stealing/">Cycle Stealing Algorithm</a> page for a detailed technical explanation.</p>
+<h2 id="harmonic-analysis-class-a-compliance">Harmonic Analysis (Class A Compliance)<a class="headerlink" href="#harmonic-analysis-class-a-compliance" title="Permanent link">&para;</a></h2>
+<p>According to the <strong>CEI 61000-3-2</strong> standard, Class A equipment includes:</p>
+<ul>
+<li>Balanced three-phase equipment</li>
+<li>Household appliances excluding equipment identified as Class D</li>
+<li>Tools excluding portable tools</li>
+<li>Dimmers for incandescent lamps</li>
+<li>Audio equipment</li>
+</ul>
+<p>The standard defines maximum permissible harmonic currents for each harmonic order (up to the 40th harmonic).</p>
+<p><img alt="CEI 61000-3-2 Class A Limits" src="../assets/img/measurements/CEI%2061000-3-2.png" /></p>
+<h3 id="harmonic-current-measurements">Harmonic Current Measurements<a class="headerlink" href="#harmonic-current-measurements" title="Permanent link">&para;</a></h3>
+<p>The following graphs show the harmonic currents (H3 and H15) generated by a phase-controlled load compared to the Class A limits.</p>
+<p><strong>H3 (3rd Harmonic - 150Hz/180Hz):</strong></p>
+<p>The 3rd harmonic is typically the most significant. As shown below, it exceeds the Class A limit of 2.30A at approximately <strong>1700W</strong> load with phase control.</p>
+<p><img alt="H3 Harmonic Current" src="../assets/img/measurements/H3.png" /></p>
+<p><strong>H15 (15th Harmonic - 750Hz/900Hz):</strong></p>
+<p>While lower in magnitude, higher-order harmonics also have strict limits. The 15th harmonic exceeds its Class A limit (0.15 * 15/n) at approximately <strong>800W</strong> load.</p>
+<p><img alt="H15 Harmonic Current" src="../assets/img/measurements/H15.png" /></p>
+<div class="admonition warning">
+<p class="admonition-title">Compliance Notice</p>
+</div>
+<p>For loads exceeding ~800W, standard phase control dimming is likely non-compliant with CEI 61000-3-2 Class A limits without additional harmonic mitigation (filters) or alternative control strategies.</p>
+<hr />
+<h2 id="choosing-the-right-method">Choosing the Right Method<a class="headerlink" href="#choosing-the-right-method" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Use Case</th>
+<th style="text-align: left;">Recommended Method</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">Solar router / high precision</td>
+<td style="text-align: left;"><strong>Phase Control</strong> (ThyristorDimmer) with harmonic mitigation</td>
+</tr>
+<tr>
+<td style="text-align: left;">Water heater / resistive load</td>
+<td style="text-align: left;"><strong>Cycle Stealing</strong> (CycleStealingDimmer)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Voltage regulator (0-10V)</td>
+<td style="text-align: left;"><strong>DFRobot DAC</strong> (DFRobotDimmer)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Voltage regulator (PWM)</td>
+<td style="text-align: left;"><strong>PWM</strong> (PWMDimmer)</td>
+</tr>
+<tr>
+<td style="text-align: left;">Simple on/off</td>
+<td style="text-align: left;">Standard Zero-Cross SSR with relay</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="harmonic-mitigation-for-phase-control">Harmonic Mitigation for Phase Control<a class="headerlink" href="#harmonic-mitigation-for-phase-control" title="Permanent link">&para;</a></h2>
+<p>When using phase control, harmonics can be reduced or partially mitigated through several approaches:</p>
+<ol>
+<li><strong>Power Limiter</strong>: Limit the dimmer to 40% of nominal load</li>
+<li><strong>Reduced Load</strong>: Use lower wattage resistance (e.g., 1000W @ 53Ω instead of 3000W @ 18Ω)</li>
+<li><strong>Proper Wiring</strong>: Minimize cable length, use appropriate wire gauge</li>
+<li><strong>Strategic Placement</strong>: Position router close to grid entry/exit point</li>
+<li><strong>Stepped Loads</strong>: Use multiple resistances with relays (e.g., 3× 800W elements)</li>
+<li><strong>RC Snubbers</strong>: 100Ω 100nF snubbers can help with sensitive equipment</li>
+</ol>
+<hr />
+<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="http://crochet.david.online.fr/bep/copie%20serveur/Normes/cei%2061000-3-2.pdf">CEI 61000-3-2 Harmonic Standards</a></li>
+<li><a href="https://www.thierry-lequeu.fr/data/TRIAC.pdf">Etude des harmoniques du courant de ligne</a> (Thierry Lequeu)</li>
+<li><a href="https://fr.electrical-installation.org/frwiki/Détection_et_atténuation_des_harmoniques">Détection et atténuation des harmoniques</a> (Schneider Electric)</li>
+<li><a href="https://www.salicru.com/files/pagina/72/278/jn004a01_whitepaper-armonics_%281%29.pdf">HARMONICS: CAUSES, EFFECTS AND MINIMIZATION</a> (Ramon Pinyol)</li>
+<li><a href="https://www.renesas.com/en/document/apn/1164-cycle-stealing-control">Cycle Stealing Control</a> (Vladimir Veljkovic, Renesas)</li>
+<li><a href="https://tsltd.github.io">Optimized Random Integral Wave AC Control Algorithm for AC heaters</a></li>
+<li><a href="https://docs.openenergymonitor.org/pv-diversion/">Learn: PV Diversion</a></li>
+<li><a href="https://yasolr.carbou.me/overview">YaSolR Overview - Detailed Analysis</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.sections", "navigation.expand", "content.code.copy"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+    
+  </body>
+</html>

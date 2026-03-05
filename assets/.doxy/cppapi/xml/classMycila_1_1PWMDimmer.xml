@@ -1,0 +1,342 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classMycila_1_1PWMDimmer" kind="class" language="C++" prot="public">
+    <compoundname>Mycila::PWMDimmer</compoundname>
+    <basecompoundref refid="classMycila_1_1PhaseControlDimmer" prot="public" virt="non-virtual">Mycila::PhaseControlDimmer</basecompoundref>
+    <includes refid="MycilaDimmerPWM_8h" local="no">MycilaDimmerPWM.h</includes>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMycila_1_1PWMDimmer_1a9325f94bcdb0de833acde913c4be8800" prot="private" static="no" mutable="no">
+        <type>gpio_num_t</type>
+        <definition>gpio_num_t Mycila::PWMDimmer::_pin</definition>
+        <argsstring></argsstring>
+        <name>_pin</name>
+        <qualifiedname>Mycila::PWMDimmer::_pin</qualifiedname>
+        <initializer>= GPIO_NUM_NC</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="91" column="18" bodyfile="src/MycilaDimmerPWM.h" bodystart="91" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1PWMDimmer_1a370db82395af193b92ab37ed9a686683" prot="private" static="no" mutable="no">
+        <type>uint32_t</type>
+        <definition>uint32_t Mycila::PWMDimmer::_frequency</definition>
+        <argsstring></argsstring>
+        <name>_frequency</name>
+        <qualifiedname>Mycila::PWMDimmer::_frequency</qualifiedname>
+        <initializer>= <ref refid="MycilaDimmerPWM_8h_1ad345ad0b183ebb891b69f1d5feccf5ce" kindref="member">MYCILA_DIMMER_PWM_FREQUENCY</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="92" column="16" bodyfile="src/MycilaDimmerPWM.h" bodystart="92" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1PWMDimmer_1aedcfc13e4b0e979185ec6e10f0a20c2e" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::PWMDimmer::_resolution</definition>
+        <argsstring></argsstring>
+        <name>_resolution</name>
+        <qualifiedname>Mycila::PWMDimmer::_resolution</qualifiedname>
+        <initializer>= <ref refid="MycilaDimmerPWM_8h_1a4635458c2450d9503a2da6e8fdd36350" kindref="member">MYCILA_DIMMER_PWM_RESOLUTION</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="93" column="15" bodyfile="src/MycilaDimmerPWM.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1a4058fef5468d8d27bab0c99885f2a0ed" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mycila::PWMDimmer::~PWMDimmer</definition>
+        <argsstring>()</argsstring>
+        <name>~PWMDimmer</name>
+        <qualifiedname>Mycila::PWMDimmer::~PWMDimmer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="18" column="15" bodyfile="src/MycilaDimmerPWM.h" bodystart="18" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1a04eda47bd3b808743674eb3fc034aac7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::PWMDimmer::setPin</definition>
+        <argsstring>(gpio_num_t pin)</argsstring>
+        <name>setPin</name>
+        <qualifiedname>Mycila::PWMDimmer::setPin</qualifiedname>
+        <param>
+          <type>gpio_num_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Set the GPIO pin to use for the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="23" column="12" bodyfile="src/MycilaDimmerPWM.h" bodystart="23" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1abb1aed226515de9353ee37939d54a96e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>gpio_num_t</type>
+        <definition>gpio_num_t Mycila::PWMDimmer::getPin</definition>
+        <argsstring>() const</argsstring>
+        <name>getPin</name>
+        <qualifiedname>Mycila::PWMDimmer::getPin</qualifiedname>
+        <briefdescription>
+<para>Get the GPIO pin used for the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="28" column="18" bodyfile="src/MycilaDimmerPWM.h" bodystart="28" bodyend="28"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1a4de79584bffb1a77bba14a97e6c22d81" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::PWMDimmer::setFrequency</definition>
+        <argsstring>(uint32_t frequency)</argsstring>
+        <name>setFrequency</name>
+        <qualifiedname>Mycila::PWMDimmer::setFrequency</qualifiedname>
+        <param>
+          <type>uint32_t</type>
+          <declname>frequency</declname>
+        </param>
+        <briefdescription>
+<para>Set the PWM frequency in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="33" column="12" bodyfile="src/MycilaDimmerPWM.h" bodystart="33" bodyend="33"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1ae33f46712aec8126b2f4c7b72969ff92" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint32_t</type>
+        <definition>uint32_t Mycila::PWMDimmer::getFrequency</definition>
+        <argsstring>() const</argsstring>
+        <name>getFrequency</name>
+        <qualifiedname>Mycila::PWMDimmer::getFrequency</qualifiedname>
+        <briefdescription>
+<para>Get the PWM frequency in Hz. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="38" column="16" bodyfile="src/MycilaDimmerPWM.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1a1e03df6c8414c708adfb214ec9135e7c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::PWMDimmer::setResolution</definition>
+        <argsstring>(uint8_t resolution)</argsstring>
+        <name>setResolution</name>
+        <qualifiedname>Mycila::PWMDimmer::setResolution</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>resolution</declname>
+        </param>
+        <briefdescription>
+<para>Set the PWM resolution in bits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="43" column="12" bodyfile="src/MycilaDimmerPWM.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1a80199f11c002b692348e99aa1767afa9" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::PWMDimmer::getResolution</definition>
+        <argsstring>() const</argsstring>
+        <name>getResolution</name>
+        <qualifiedname>Mycila::PWMDimmer::getResolution</qualifiedname>
+        <briefdescription>
+<para>Get the PWM resolution in bits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="48" column="15" bodyfile="src/MycilaDimmerPWM.h" bodystart="48" bodyend="48"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1a314ba911ac20a6902e4723ae9cfe1299" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::PWMDimmer::begin</definition>
+        <argsstring>() override</argsstring>
+        <name>begin</name>
+        <qualifiedname>Mycila::PWMDimmer::begin</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a54fd1a618e053fc51434775fe92f2166">begin</reimplements>
+        <briefdescription>
+<para>Enable a dimmer on a specific GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be enabled if pin is invalid </para>
+</simplesect>
+<simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be activated until the ZCD is enabled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="56" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1ab1c83c98bacc525f04d4af037ec2d378" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mycila::PWMDimmer::end</definition>
+        <argsstring>() override</argsstring>
+        <name>end</name>
+        <qualifiedname>Mycila::PWMDimmer::end</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960">end</reimplements>
+        <briefdescription>
+<para>Disable the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be destroyed but won&apos;t turn on anymore even is a duty cycle is set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="63" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1ab77db1b2c82cabbbb8166f4d61bc7108" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * Mycila::PWMDimmer::type</definition>
+        <argsstring>() const override</argsstring>
+        <name>type</name>
+        <qualifiedname>Mycila::PWMDimmer::type</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a576ed69f3f6cf4be3baa58f536f9dd49">type</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="65" column="18" bodyfile="src/MycilaDimmerPWM.h" bodystart="65" bodyend="65"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classMycila_1_1PWMDimmer_1ab712ac8a69195375ffeadb39c74126c3" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::PWMDimmer::_apply</definition>
+        <argsstring>() override</argsstring>
+        <name>_apply</name>
+        <qualifiedname>Mycila::PWMDimmer::_apply</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c">_apply</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="82" column="12" bodyfile="src/MycilaDimmerPWM.h" bodystart="82" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>PWM based dimmer implementation for voltage regulators controlled by a PWM signal to 0-10V analog convertor. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="1">
+        <label>Mycila::PWMDimmer</label>
+        <link refid="classMycila_1_1PWMDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="1">
+        <label>Mycila::PWMDimmer</label>
+        <link refid="classMycila_1_1PWMDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/MycilaDimmerPWM.h" line="16" column="3" bodyfile="src/MycilaDimmerPWM.h" bodystart="16" bodyend="94"/>
+    <listofallmembers>
+      <member refid="classMycila_1_1PWMDimmer_1ab712ac8a69195375ffeadb39c74126c3" prot="protected" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>_apply</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172" prot="protected" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>_calculateDimmerHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_contrain</name></member>
+      <member refid="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_dutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_dutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_dutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8c4c1126eb9e8429e97886970c1aa076" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_dutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a85bfbf3fc1aa9e539abe22be3eeec368" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_dutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_enabled</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1a370db82395af193b92ab37ed9a686683" prot="private" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_frequency</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_lookupFiringDelay</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_online</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1a9325f94bcdb0de833acde913c4be8800" prot="private" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_pin</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_powerLUTEnabled</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1aedcfc13e4b0e979185ec6e10f0a20c2e" prot="private" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_resolution</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" prot="protected" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>_semiPeriod</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1a314ba911ac20a6902e4723ae9cfe1299" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>begin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a6b34aab3c938759c82853fe5f917ee54" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>calculateHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1ae182ed0b25be3e4b82a1e6772e201e24" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>calculateMetrics</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1aa20d3cdec048767dff71208a72bdc940" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>enablePowerLUT</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1ab1c83c98bacc525f04d4af037ec2d378" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>end</name></member>
+      <member refid="classMycila_1_1Dimmer_1a717feacc41caacea0681e2fa6816e18c" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getDutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a90913d5b183b43ece94a9c323fb6cc1f" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getDutyCycleMapped</name></member>
+      <member refid="classMycila_1_1Dimmer_1a38579bf14b9e375b89e54970bbae16d1" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab936b1ffcb91cb3339ed8da8ba086895" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getDutyCycleMin</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1ae33f46712aec8126b2f4c7b72969ff92" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getFrequency</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1abb1aed226515de9353ee37939d54a96e" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getPin</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>getPowerRatio</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1a80199f11c002b692348e99aa1767afa9" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getResolution</name></member>
+      <member refid="classMycila_1_1Dimmer_1a518d3f8796875645cfab0c395b9c90df" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>getSemiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a5912fd1ebbeff4444b37247a7b2791f4" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>isEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1aa79fca836ab46599aa51d951bd258d58" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>isOff</name></member>
+      <member refid="classMycila_1_1Dimmer_1a45ffba29874e10e48ea48f247d61628b" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>isOn</name></member>
+      <member refid="classMycila_1_1Dimmer_1aaf5694660dfeec4f9131133324edf223" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>isOnAtFullPower</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>isOnline</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>isPowerLUTEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1a04d71f45a6371457f6414af1d30a371e" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>off</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8275a7b7cf9417c2d143519452a88880" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>on</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>setDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1af83b436ec8799d705dbf22265225beaf" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>setDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1abe79bb19232cdede06774f88274672a6" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>setDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a65e890fe02705d74cb3fb41387d843dc" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>setDutyCycleMin</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1a4de79584bffb1a77bba14a97e6c22d81" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>setFrequency</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7dfc096d101bd15b5948d1e398fdc236" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>setOnline</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1a04eda47bd3b808743674eb3fc034aac7" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>setPin</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1a1e03df6c8414c708adfb214ec9135e7c" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>setResolution</name></member>
+      <member refid="classMycila_1_1Dimmer_1a10c7e14e08ab36dc3b480c33d908740e" prot="public" virt="non-virtual"><scope>Mycila::PWMDimmer</scope><name>setSemiPeriod</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1ab77db1b2c82cabbbb8166f4d61bc7108" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>type</name></member>
+      <member refid="classMycila_1_1Dimmer_1ad13ce419d205132904899d442cb96d94" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>~Dimmer</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a6c4cd8ed9117e8726533828029fbad4e" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>~PhaseControlDimmer</name></member>
+      <member refid="classMycila_1_1PWMDimmer_1a4058fef5468d8d27bab0c99885f2a0ed" prot="public" virt="virtual"><scope>Mycila::PWMDimmer</scope><name>~PWMDimmer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

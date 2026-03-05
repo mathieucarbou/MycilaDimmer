@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="MycilaDimmerCycleStealing_8h" kind="file" language="C++">
+    <compoundname>MycilaDimmerCycleStealing.h</compoundname>
+    <includes refid="MycilaDimmer_8h" local="yes">MycilaDimmer.h</includes>
+    <includes local="no">driver/gptimer_types.h</includes>
+    <includedby refid="MycilaDimmers_8h" local="yes">src/MycilaDimmers.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>MycilaDimmer.h</label>
+        <link refid="MycilaDimmer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/MycilaDimmerCycleStealing.h</label>
+        <link refid="MycilaDimmerCycleStealing_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>assert.h</label>
+      </node>
+      <node id="5">
+        <label>cmath</label>
+      </node>
+      <node id="6">
+        <label>cstdio</label>
+      </node>
+      <node id="7">
+        <label>driver/gptimer_types.h</label>
+      </node>
+      <node id="4">
+        <label>esp32-hal-gpio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>src/MycilaDimmerCycleStealing.h</label>
+        <link refid="MycilaDimmerCycleStealing_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/MycilaDimmers.h</label>
+        <link refid="MycilaDimmers_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMycila_1_1CycleStealingDimmer" prot="public">Mycila::CycleStealingDimmer</innerclass>
+    <innerclass refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer" prot="private">Mycila::CycleStealingDimmer::RegisteredDimmer</innerclass>
+    <innernamespace refid="namespaceMycila">Mycila</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>MIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>Mathieu<sp/>Carbou</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="MycilaDimmer_8h" kindref="compound">MycilaDimmer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;driver/gptimer_types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceMycila" kindref="compound">Mycila</ref><sp/>{</highlight></codeline>
+<codeline lineno="11" refid="classMycila_1_1CycleStealingDimmer" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMycila_1_1CycleStealingDimmer" kindref="compound">CycleStealingDimmer</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref><sp/>{</highlight></codeline>
+<codeline lineno="12"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="13" refid="classMycila_1_1CycleStealingDimmer_1a5a40506f0eceeba356d68e17b54fb291" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1CycleStealingDimmer_1a5a40506f0eceeba356d68e17b54fb291" kindref="member">~CycleStealingDimmer</ref>()<sp/>{<sp/><ref refid="classMycila_1_1CycleStealingDimmer_1a45ae13f8dde4a574404c21d3e3747bbb" kindref="member">end</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="14"><highlight class="normal"></highlight></codeline>
+<codeline lineno="18" refid="classMycila_1_1CycleStealingDimmer_1ad82d2ae3c01162a8b388c625602ad5df" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1CycleStealingDimmer_1ad82d2ae3c01162a8b388c625602ad5df" kindref="member">setPin</ref>(gpio_num_t<sp/>pin)<sp/>{<sp/>_pin<sp/>=<sp/>pin;<sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classMycila_1_1CycleStealingDimmer_1af83c8f0bf0d08c86aa7b02f43594a930" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpio_num_t<sp/><ref refid="classMycila_1_1CycleStealingDimmer_1af83c8f0bf0d08c86aa7b02f43594a930" kindref="member">getPin</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_pin;<sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="30" refid="classMycila_1_1CycleStealingDimmer_1a478af9dbe8d3d1dfd7a4000238f68ebb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1CycleStealingDimmer_1a478af9dbe8d3d1dfd7a4000238f68ebb" kindref="member">begin</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classMycila_1_1CycleStealingDimmer_1a45ae13f8dde4a574404c21d3e3747bbb" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1CycleStealingDimmer_1a45ae13f8dde4a574404c21d3e3747bbb" kindref="member">end</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="38"><highlight class="normal"></highlight></codeline>
+<codeline lineno="39" refid="classMycila_1_1CycleStealingDimmer_1a5da91cc782149bc6e2bac026c0a8d3ec" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classMycila_1_1CycleStealingDimmer_1a5da91cc782149bc6e2bac026c0a8d3ec" kindref="member">type</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;cycle-stealing&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="59" refid="classMycila_1_1CycleStealingDimmer_1a624f4a89d834e8053bba8616b1bba06f" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1CycleStealingDimmer_1a624f4a89d834e8053bba8616b1bba06f" kindref="member">onZeroCross</ref>(int16_t<sp/>delayUntilZero,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args);</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MYCILA_JSON_SUPPORT</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toJson(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>JsonObject&amp;<sp/>root)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Dimmer::toJson(root);</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;pin&quot;</highlight><highlight class="normal">]<sp/>=<sp/>_pin;</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="74" refid="classMycila_1_1CycleStealingDimmer_1a216de3963f22ef367c4f8e15ea37d9aa" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1CycleStealingDimmer_1a216de3963f22ef367c4f8e15ea37d9aa" kindref="member">_apply</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classMycila_1_1CycleStealingDimmer_1a8d5e987ad7d8bc3a264ef904a3843355" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1CycleStealingDimmer_1a8d5e987ad7d8bc3a264ef904a3843355" kindref="member">_calculateDimmerHarmonics</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>array,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Unlike<sp/>phase<sp/>control<sp/>(which<sp/>distorts<sp/>every<sp/>cycle<sp/>identically<sp/>and<sp/>creates<sp/>standard<sp/>odd<sp/>harmonics<sp/>like<sp/>3rd,<sp/>5th,<sp/>7th),<sp/>cycle<sp/>stealing<sp/>creates<sp/>sub-harmonics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>and<sp/>inter-harmonics<sp/>(frequencies<sp/>below<sp/>50/60Hz<sp/>or<sp/>between<sp/>standard<sp/>multiples).</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Since<sp/>the<sp/>algorithm<sp/>uses<sp/>a<sp/>dynamic<sp/>Delta-Sigma<sp/>modulator<sp/>(Bresenham-like)<sp/>rather<sp/>than<sp/>a<sp/>fixed<sp/>pattern<sp/>length,<sp/>the<sp/>&quot;period&quot;<sp/>of<sp/>the<sp/>repetition<sp/>is<sp/>not<sp/>fixed</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>or<sp/>easily<sp/>predicted<sp/>without<sp/>a<sp/>complex<sp/>simulation.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpio_num_t<sp/>_pin<sp/>=<sp/>GPIO_NUM_NC;</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>duty_milli<sp/>=<sp/>0;<sp/></highlight><highlight class="comment">//<sp/>Duty<sp/>cycle<sp/>scaled<sp/>0–1000;<sp/>updated<sp/>from<sp/>_apply()<sp/>(avoids<sp/>float<sp/>in<sp/>ISR)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Cycle<sp/>stealing<sp/>state<sp/>tracking</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>semi_period_odd<sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;<sp/></highlight><highlight class="comment">//<sp/>Track<sp/>odd/even<sp/>semi-periods<sp/>for<sp/>balance</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int32_t<sp/>density_error<sp/>=<sp/>0;<sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Bresenham<sp/>accumulator,<sp/>scaled<sp/>×1000<sp/>(threshold:<sp/>1000)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>int8_t<sp/>dc_balance<sp/>=<sp/>0;<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>DC<sp/>component<sp/>balance<sp/>(-1:<sp/>owes<sp/>positive,<sp/>1:<sp/>owes<sp/>negative)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">RegisteredDimmer<sp/>{</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1CycleStealingDimmer" kindref="compound">CycleStealingDimmer</ref>*<sp/>dimmer<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RegisteredDimmer*<sp/>prev<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RegisteredDimmer*<sp/>next<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">RegisteredDimmer*<sp/>dimmers;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>_fireTimerISR(gptimer_handle_t<sp/>timer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gptimer_alarm_event_data_t*<sp/>event,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_registerDimmer(<ref refid="classMycila_1_1CycleStealingDimmer" kindref="compound">Mycila::CycleStealingDimmer</ref>*<sp/>dimmer);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_unregisterDimmer(<ref refid="classMycila_1_1CycleStealingDimmer" kindref="compound">Mycila::CycleStealingDimmer</ref>*<sp/>dimmer);</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="103"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Mycila</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/MycilaDimmerCycleStealing.h"/>
+  </compounddef>
+</doxygen>

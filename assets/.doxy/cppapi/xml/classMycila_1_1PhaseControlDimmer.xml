@@ -1,0 +1,390 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classMycila_1_1PhaseControlDimmer" kind="class" language="C++" prot="public">
+    <compoundname>Mycila::PhaseControlDimmer</compoundname>
+    <basecompoundref refid="classMycila_1_1Dimmer" prot="public" virt="non-virtual">Mycila::Dimmer</basecompoundref>
+    <derivedcompoundref refid="classMycila_1_1DFRobotDimmer" prot="public" virt="non-virtual">Mycila::DFRobotDimmer</derivedcompoundref>
+    <derivedcompoundref refid="classMycila_1_1PWMDimmer" prot="public" virt="non-virtual">Mycila::PWMDimmer</derivedcompoundref>
+    <derivedcompoundref refid="classMycila_1_1ThyristorDimmer" prot="public" virt="non-virtual">Mycila::ThyristorDimmer</derivedcompoundref>
+    <includes refid="MycilaDimmerPhaseControl_8h" local="no">MycilaDimmerPhaseControl.h</includes>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Mycila::PhaseControlDimmer::_powerLUTEnabled</definition>
+        <argsstring></argsstring>
+        <name>_powerLUTEnabled</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::_powerLUTEnabled</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="103" column="12" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classMycila_1_1PhaseControlDimmer_1aa47be906f9e651073aef730ade39ca86" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t Mycila::PhaseControlDimmer::DIMMER_RESOLUTION</definition>
+        <argsstring></argsstring>
+        <name>DIMMER_RESOLUTION</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::DIMMER_RESOLUTION</qualifiedname>
+        <initializer>= 12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="155" column="33" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="155" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1PhaseControlDimmer_1aef0f566f47549b3486088c4b69ec2609" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t Mycila::PhaseControlDimmer::FIRING_DELAYS_LEN</definition>
+        <argsstring></argsstring>
+        <name>FIRING_DELAYS_LEN</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::FIRING_DELAYS_LEN</qualifiedname>
+        <initializer>= 200</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="156" column="33" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="156" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1PhaseControlDimmer_1a5535d5eb40e9774a08e3a54399ab5802" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t Mycila::PhaseControlDimmer::FIRING_DELAY_MAX</definition>
+        <argsstring></argsstring>
+        <name>FIRING_DELAY_MAX</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::FIRING_DELAY_MAX</qualifiedname>
+        <initializer>= (1 &lt;&lt; DIMMER_RESOLUTION) - 1</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="157" column="33" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="157" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1PhaseControlDimmer_1ad6f43db853eeaac5993f472df72a732b" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint32_t</type>
+        <definition>constexpr uint32_t Mycila::PhaseControlDimmer::FIRING_DELAYS_SCALE</definition>
+        <argsstring></argsstring>
+        <name>FIRING_DELAYS_SCALE</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::FIRING_DELAYS_SCALE</qualifiedname>
+        <initializer>= (FIRING_DELAYS_LEN - 1U) * (1UL &lt;&lt; (16 - DIMMER_RESOLUTION))</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="158" column="33" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="158" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1PhaseControlDimmer_1aef46cb260c00a1314c0b11c0b793758c" prot="private" static="yes" constexpr="yes" mutable="no">
+        <type>constexpr uint16_t</type>
+        <definition>constexpr uint16_t Mycila::PhaseControlDimmer::FIRING_DELAYS[FIRING_DELAYS_LEN]</definition>
+        <argsstring>[FIRING_DELAYS_LEN]</argsstring>
+        <name>FIRING_DELAYS</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::FIRING_DELAYS</qualifiedname>
+        <initializer>= {
+        0xffff, 0xe877, 0xe240, 0xddd9, 0xda51, 0xd74f, 0xd4aa, 0xd248, 0xd01a, 0xce16,
+        0xcc34, 0xca6e, 0xc8c0, 0xc728, 0xc5a1, 0xc42b, 0xc2c3, 0xc168, 0xc019, 0xbed3,
+        0xbd98, 0xbc65, 0xbb3b, 0xba17, 0xb8fb, 0xb7e5, 0xb6d5, 0xb5ca, 0xb4c5, 0xb3c4,
+        0xb2c8, 0xb1d1, 0xb0dd, 0xafed, 0xaf01, 0xae18, 0xad33, 0xac51, 0xab71, 0xaa95,
+        0xa9bb, 0xa8e3, 0xa80e, 0xa73b, 0xa66b, 0xa59c, 0xa4d0, 0xa406, 0xa33d, 0xa276,
+        0xa1b1, 0xa0ed, 0xa02b, 0x9f6b, 0x9eac, 0x9dee, 0x9d32, 0x9c76, 0x9bbc, 0x9b04,
+        0x9a4c, 0x9996, 0x98e0, 0x982b, 0x9778, 0x96c5, 0x9613, 0x9563, 0x94b2, 0x9403,
+        0x9354, 0x92a6, 0x91f9, 0x914c, 0x90a0, 0x8ff5, 0x8f4a, 0x8ea0, 0x8df6, 0x8d4d,
+        0x8ca4, 0x8bfb, 0x8b53, 0x8aab, 0x8a04, 0x895d, 0x88b6, 0x8810, 0x876a, 0x86c4,
+        0x861e, 0x8579, 0x84d3, 0x842e, 0x8389, 0x82e4, 0x823f, 0x819b, 0x80f6, 0x8051,
+        0x7fad, 0x7f08, 0x7e63, 0x7dbf, 0x7d1a, 0x7c75, 0x7bd0, 0x7b2b, 0x7a85, 0x79e0,
+        0x793a, 0x7894, 0x77ee, 0x7748, 0x76a1, 0x75fa, 0x7553, 0x74ab, 0x7403, 0x735a,
+        0x72b1, 0x7208, 0x715e, 0x70b4, 0x7009, 0x6f5e, 0x6eb2, 0x6e05, 0x6d58, 0x6caa,
+        0x6bfb, 0x6b4c, 0x6a9b, 0x69eb, 0x6939, 0x6886, 0x67d3, 0x671e, 0x6668, 0x65b2,
+        0x64fa, 0x6442, 0x6388, 0x62cc, 0x6210, 0x6152, 0x6093, 0x5fd3, 0x5f11, 0x5e4d,
+        0x5d88, 0x5cc1, 0x5bf8, 0x5b2e, 0x5a62, 0x5993, 0x58c3, 0x57f0, 0x571b, 0x5643,
+        0x5569, 0x548d, 0x53ad, 0x52cb, 0x51e6, 0x50fd, 0x5011, 0x4f21, 0x4e2d, 0x4d36,
+        0x4c3a, 0x4b39, 0x4a34, 0x4929, 0x4819, 0x4703, 0x45e7, 0x44c3, 0x4399, 0x4266,
+        0x412b, 0x3fe5, 0x3e96, 0x3d3b, 0x3bd3, 0x3a5d, 0x38d6, 0x373e, 0x3590, 0x33ca,
+        0x31e8, 0x2fe4, 0x2db6, 0x2b54, 0x28af, 0x25ad, 0x2225, 0x1dbe, 0x1787, 0x0000
+      }</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="161" column="33" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="161" bodyend="182"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMycila_1_1PhaseControlDimmer_1a6c4cd8ed9117e8726533828029fbad4e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mycila::PhaseControlDimmer::~PhaseControlDimmer</definition>
+        <argsstring>()</argsstring>
+        <name>~PhaseControlDimmer</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::~PhaseControlDimmer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="12" column="15" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="12" bodyend="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PhaseControlDimmer_1aa20d3cdec048767dff71208a72bdc940" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::PhaseControlDimmer::enablePowerLUT</definition>
+        <argsstring>(bool enable)</argsstring>
+        <name>enablePowerLUT</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::enablePowerLUT</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>enable</declname>
+        </param>
+        <briefdescription>
+<para>Enable or disable the use of power LUT for this phase-control dimmer The power LUT provides a non-linear dimming curve that is more aligned with human perception of brightness. If disabled, a linear dimming curve will be used. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>enable</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>: true to enable, false to disable </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="24" column="12" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="24" bodyend="24"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mycila::PhaseControlDimmer::isPowerLUTEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isPowerLUTEnabled</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::isPowerLUTEnabled</qualifiedname>
+        <briefdescription>
+<para>Check if the power LUT is enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="29" column="12" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="29" bodyend="29"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::PhaseControlDimmer::isOnline</definition>
+        <argsstring>() const override</argsstring>
+        <name>isOnline</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::isOnline</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a7141a09aef5e3896f7378061cfc6c337">isOnline</reimplements>
+        <briefdescription>
+<para>Returns true if the dimmer is online. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A phase-control dimmer is considered online if it is enabled, marked online, and, if power LUT is enabled, it must have a valid semi-period set. </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="39" column="12" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::PhaseControlDimmer::setDutyCycle</definition>
+        <argsstring>(float dutyCycle) override</argsstring>
+        <name>setDutyCycle</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::setDutyCycle</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1ae0ef5805b0a6911171f379a0945bfa5c">setDutyCycle</reimplements>
+        <param>
+          <type>float</type>
+          <declname>dutyCycle</declname>
+        </param>
+        <briefdescription>
+<para>Set the power duty, eventually remapped by the power LUT if enabled. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dutyCycle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the power duty cycle in the range [0.0, 1.0] </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="50" column="12" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="50" bodyend="70"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>float</type>
+        <definition>float Mycila::PhaseControlDimmer::getPowerRatio</definition>
+        <argsstring>() const override</argsstring>
+        <name>getPowerRatio</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::getPowerRatio</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1acbc25eec2438b85782838265f9e8b8d3">getPowerRatio</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="76" column="13" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="76" bodyend="88"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>static uint16_t Mycila::PhaseControlDimmer::_lookupFiringDelay</definition>
+        <argsstring>(float dutyCycle)</argsstring>
+        <name>_lookupFiringDelay</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::_lookupFiringDelay</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>dutyCycle</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="105" column="23" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="105" bodyend="113"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::PhaseControlDimmer::_calculateDimmerHarmonics</definition>
+        <argsstring>(float *array, size_t n) const override</argsstring>
+        <name>_calculateDimmerHarmonics</name>
+        <qualifiedname>Mycila::PhaseControlDimmer::_calculateDimmerHarmonics</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1ac663b5f99852d96721f95aaa855cf499">_calculateDimmerHarmonics</reimplements>
+        <param>
+          <type>float *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPhaseControl.h" line="115" column="12" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="115" bodyend="152"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Mycila::DFRobotDimmer</label>
+        <link refid="classMycila_1_1DFRobotDimmer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="4">
+        <label>Mycila::PWMDimmer</label>
+        <link refid="classMycila_1_1PWMDimmer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>Mycila::ThyristorDimmer</label>
+        <link refid="classMycila_1_1ThyristorDimmer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="1">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/MycilaDimmerPhaseControl.h" line="10" column="3" bodyfile="src/MycilaDimmerPhaseControl.h" bodystart="10" bodyend="184"/>
+    <listofallmembers>
+      <member refid="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c" prot="protected" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_apply</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172" prot="protected" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_calculateDimmerHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_contrain</name></member>
+      <member refid="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_dutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_dutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_dutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8c4c1126eb9e8429e97886970c1aa076" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_dutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a85bfbf3fc1aa9e539abe22be3eeec368" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_dutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_enabled</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_lookupFiringDelay</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_online</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_powerLUTEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" prot="protected" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>_semiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a54fd1a618e053fc51434775fe92f2166" prot="public" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>begin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a6b34aab3c938759c82853fe5f917ee54" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>calculateHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1ae182ed0b25be3e4b82a1e6772e201e24" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>calculateMetrics</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1aa47be906f9e651073aef730ade39ca86" prot="private" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>DIMMER_RESOLUTION</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1aa20d3cdec048767dff71208a72bdc940" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>enablePowerLUT</name></member>
+      <member refid="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960" prot="public" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>end</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a5535d5eb40e9774a08e3a54399ab5802" prot="private" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>FIRING_DELAY_MAX</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1aef46cb260c00a1314c0b11c0b793758c" prot="private" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>FIRING_DELAYS</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1aef0f566f47549b3486088c4b69ec2609" prot="private" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>FIRING_DELAYS_LEN</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1ad6f43db853eeaac5993f472df72a732b" prot="private" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>FIRING_DELAYS_SCALE</name></member>
+      <member refid="classMycila_1_1Dimmer_1a717feacc41caacea0681e2fa6816e18c" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>getDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>getDutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a90913d5b183b43ece94a9c323fb6cc1f" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>getDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>getDutyCycleMapped</name></member>
+      <member refid="classMycila_1_1Dimmer_1a38579bf14b9e375b89e54970bbae16d1" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>getDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab936b1ffcb91cb3339ed8da8ba086895" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>getDutyCycleMin</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce" prot="public" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>getPowerRatio</name></member>
+      <member refid="classMycila_1_1Dimmer_1a518d3f8796875645cfab0c395b9c90df" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>getSemiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a5912fd1ebbeff4444b37247a7b2791f4" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>isEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1aa79fca836ab46599aa51d951bd258d58" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>isOff</name></member>
+      <member refid="classMycila_1_1Dimmer_1a45ffba29874e10e48ea48f247d61628b" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>isOn</name></member>
+      <member refid="classMycila_1_1Dimmer_1aaf5694660dfeec4f9131133324edf223" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>isOnAtFullPower</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" prot="public" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>isOnline</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>isPowerLUTEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1a04d71f45a6371457f6414af1d30a371e" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>off</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8275a7b7cf9417c2d143519452a88880" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>on</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532" prot="public" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>setDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1af83b436ec8799d705dbf22265225beaf" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>setDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1abe79bb19232cdede06774f88274672a6" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>setDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a65e890fe02705d74cb3fb41387d843dc" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>setDutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7dfc096d101bd15b5948d1e398fdc236" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>setOnline</name></member>
+      <member refid="classMycila_1_1Dimmer_1a10c7e14e08ab36dc3b480c33d908740e" prot="public" virt="non-virtual"><scope>Mycila::PhaseControlDimmer</scope><name>setSemiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a576ed69f3f6cf4be3baa58f536f9dd49" prot="public" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>type</name></member>
+      <member refid="classMycila_1_1Dimmer_1ad13ce419d205132904899d442cb96d94" prot="public" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>~Dimmer</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a6c4cd8ed9117e8726533828029fbad4e" prot="public" virt="virtual"><scope>Mycila::PhaseControlDimmer</scope><name>~PhaseControlDimmer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

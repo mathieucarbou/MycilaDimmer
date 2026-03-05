@@ -1,0 +1,426 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classMycila_1_1CycleStealingDimmer" kind="class" language="C++" prot="public">
+    <compoundname>Mycila::CycleStealingDimmer</compoundname>
+    <basecompoundref refid="classMycila_1_1Dimmer" prot="public" virt="non-virtual">Mycila::Dimmer</basecompoundref>
+    <includes refid="MycilaDimmerCycleStealing_8h" local="no">MycilaDimmerCycleStealing.h</includes>
+    <innerclass refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer" prot="private">Mycila::CycleStealingDimmer::RegisteredDimmer</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMycila_1_1CycleStealingDimmer_1ae8bd24e76c1d82edfaa8052b4f88c1db" prot="private" static="no" mutable="no">
+        <type>gpio_num_t</type>
+        <definition>gpio_num_t Mycila::CycleStealingDimmer::_pin</definition>
+        <argsstring></argsstring>
+        <name>_pin</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::_pin</qualifiedname>
+        <initializer>= GPIO_NUM_NC</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="85" column="18" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="85" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1CycleStealingDimmer_1aee6f871d5af980b86dd319b55665fb2c" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t Mycila::CycleStealingDimmer::duty_milli</definition>
+        <argsstring></argsstring>
+        <name>duty_milli</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::duty_milli</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="86" column="16" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="86" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1CycleStealingDimmer_1a3e3362a477810a017feb6cf41dcbaa7a" prot="private" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Mycila::CycleStealingDimmer::semi_period_odd</definition>
+        <argsstring></argsstring>
+        <name>semi_period_odd</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::semi_period_odd</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="88" column="12" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="88" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1CycleStealingDimmer_1a1f5daca2bec194b8551dc5e392294360" prot="private" static="no" mutable="no">
+        <type>int32_t</type>
+        <definition>int32_t Mycila::CycleStealingDimmer::density_error</definition>
+        <argsstring></argsstring>
+        <name>density_error</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::density_error</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="89" column="15" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="89" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1CycleStealingDimmer_1ad4607afe5663049addc6f797d70d2d72" prot="private" static="no" mutable="no">
+        <type>int8_t</type>
+        <definition>int8_t Mycila::CycleStealingDimmer::dc_balance</definition>
+        <argsstring></argsstring>
+        <name>dc_balance</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::dc_balance</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="90" column="14" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="90" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classMycila_1_1CycleStealingDimmer_1a397ed42cb8c305cfc4432f65ddd5057d" prot="private" static="yes" mutable="no">
+        <type>struct RegisteredDimmer *</type>
+        <definition>struct RegisteredDimmer* Mycila::CycleStealingDimmer::dimmers</definition>
+        <argsstring></argsstring>
+        <name>dimmers</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::dimmers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="98" column="37" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a5a40506f0eceeba356d68e17b54fb291" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mycila::CycleStealingDimmer::~CycleStealingDimmer</definition>
+        <argsstring>()</argsstring>
+        <name>~CycleStealingDimmer</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::~CycleStealingDimmer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="13" column="15" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="13" bodyend="13"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1ad82d2ae3c01162a8b388c625602ad5df" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::CycleStealingDimmer::setPin</definition>
+        <argsstring>(gpio_num_t pin)</argsstring>
+        <name>setPin</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::setPin</qualifiedname>
+        <param>
+          <type>gpio_num_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Set the GPIO pin to use for the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="18" column="12" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="18" bodyend="18"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1af83c8f0bf0d08c86aa7b02f43594a930" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>gpio_num_t</type>
+        <definition>gpio_num_t Mycila::CycleStealingDimmer::getPin</definition>
+        <argsstring>() const</argsstring>
+        <name>getPin</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::getPin</qualifiedname>
+        <briefdescription>
+<para>Get the GPIO pin used for the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="23" column="18" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="23" bodyend="23"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a478af9dbe8d3d1dfd7a4000238f68ebb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::CycleStealingDimmer::begin</definition>
+        <argsstring>() override</argsstring>
+        <name>begin</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::begin</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a54fd1a618e053fc51434775fe92f2166">begin</reimplements>
+        <briefdescription>
+<para>Enable a dimmer on a specific GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be enabled if pin is invalid </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="30" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a45ae13f8dde4a574404c21d3e3747bbb" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mycila::CycleStealingDimmer::end</definition>
+        <argsstring>() override</argsstring>
+        <name>end</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::end</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960">end</reimplements>
+        <briefdescription>
+<para>Disable the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be destroyed but won&apos;t turn on anymore even is a duty cycle is set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="37" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a5da91cc782149bc6e2bac026c0a8d3ec" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * Mycila::CycleStealingDimmer::type</definition>
+        <argsstring>() const override</argsstring>
+        <name>type</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::type</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a576ed69f3f6cf4be3baa58f536f9dd49">type</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="39" column="18" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="39" bodyend="39"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a624f4a89d834e8053bba8616b1bba06f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Mycila::CycleStealingDimmer::onZeroCross</definition>
+        <argsstring>(int16_t delayUntilZero, void *args)</argsstring>
+        <name>onZeroCross</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::onZeroCross</qualifiedname>
+        <param>
+          <type>int16_t</type>
+          <declname>delayUntilZero</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Optional: Integration with a Zero-Cross Detection (ZCD) system</para>
+<para>Callback to be called when a zero-crossing event is detected.</para>
+<para>This is optional when using standard (sync) Solid State Relays (SSR) that only activate or deactivate when the AC voltage crosses zero. This is usually the behavior of most SSRs available on the market.</para>
+<para>If you are using a Random Solid State Relay (SSR) or a TRIAC that can be triggered at any point in the AC cycle, then you need to set this callback so that the library knows when to fire and stop the SSR/TRIAC.</para>
+<para>When using MycilaPulseAnalyzer library, this callback can be registered like this:</para>
+<para>pulseAnalyzer.onZeroCross(Mycila::CycleStealingDimmer::onZeroCross);</para>
+<para><itemizedlist>
+<listitem><para>When using your own ISR with the RobotDyn ZCD, you can call this method with delayUntilZero == 200 since the length of the ZCD pulse is about 400 us.</para>
+</listitem><listitem><para>When using your own ISR with the ZCd from Daniel S, you can call this method with delayUntilZero == 550 since the length of the ZCD pulse is about 1100 us. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="59" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a216de3963f22ef367c4f8e15ea37d9aa" prot="protected" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::CycleStealingDimmer::_apply</definition>
+        <argsstring>() override</argsstring>
+        <name>_apply</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::_apply</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c">_apply</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="74" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a8d5e987ad7d8bc3a264ef904a3843355" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::CycleStealingDimmer::_calculateDimmerHarmonics</definition>
+        <argsstring>(float *array, size_t n) const override</argsstring>
+        <name>_calculateDimmerHarmonics</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::_calculateDimmerHarmonics</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1ac663b5f99852d96721f95aaa855cf499">_calculateDimmerHarmonics</reimplements>
+        <param>
+          <type>float *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="76" column="12" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="76" bodyend="82"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1ab1826cd0d4039e07f414f94010120fcd" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Mycila::CycleStealingDimmer::_fireTimerISR</definition>
+        <argsstring>(gptimer_handle_t timer, const gptimer_alarm_event_data_t *event, void *arg)</argsstring>
+        <name>_fireTimerISR</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::_fireTimerISR</qualifiedname>
+        <param>
+          <type>gptimer_handle_t</type>
+          <declname>timer</declname>
+        </param>
+        <param>
+          <type>const gptimer_alarm_event_data_t *</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="99" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a9f9fd5871a52659a110a2bb6f954e947" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Mycila::CycleStealingDimmer::_registerDimmer</definition>
+        <argsstring>(Mycila::CycleStealingDimmer *dimmer)</argsstring>
+        <name>_registerDimmer</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::_registerDimmer</qualifiedname>
+        <param>
+          <type><ref refid="classMycila_1_1CycleStealingDimmer" kindref="compound">Mycila::CycleStealingDimmer</ref> *</type>
+          <declname>dimmer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="100" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1CycleStealingDimmer_1a88173f78c35a718bc0335fb056add4dd" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Mycila::CycleStealingDimmer::_unregisterDimmer</definition>
+        <argsstring>(Mycila::CycleStealingDimmer *dimmer)</argsstring>
+        <name>_unregisterDimmer</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::_unregisterDimmer</qualifiedname>
+        <param>
+          <type><ref refid="classMycila_1_1CycleStealingDimmer" kindref="compound">Mycila::CycleStealingDimmer</ref> *</type>
+          <declname>dimmer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="101" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mycila::CycleStealingDimmer</label>
+        <link refid="classMycila_1_1CycleStealingDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mycila::CycleStealingDimmer</label>
+        <link refid="classMycila_1_1CycleStealingDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/MycilaDimmerCycleStealing.h" line="11" column="3" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="11" bodyend="102"/>
+    <listofallmembers>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a216de3963f22ef367c4f8e15ea37d9aa" prot="protected" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_apply</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a8d5e987ad7d8bc3a264ef904a3843355" prot="protected" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_calculateDimmerHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_contrain</name></member>
+      <member refid="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_dutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_dutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_dutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8c4c1126eb9e8429e97886970c1aa076" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_dutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a85bfbf3fc1aa9e539abe22be3eeec368" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_dutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_enabled</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1ab1826cd0d4039e07f414f94010120fcd" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_fireTimerISR</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_online</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1ae8bd24e76c1d82edfaa8052b4f88c1db" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_pin</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a9f9fd5871a52659a110a2bb6f954e947" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_registerDimmer</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" prot="protected" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_semiPeriod</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a88173f78c35a718bc0335fb056add4dd" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>_unregisterDimmer</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a478af9dbe8d3d1dfd7a4000238f68ebb" prot="public" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>begin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a6b34aab3c938759c82853fe5f917ee54" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>calculateHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1ae182ed0b25be3e4b82a1e6772e201e24" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>calculateMetrics</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1ad4607afe5663049addc6f797d70d2d72" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>dc_balance</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a1f5daca2bec194b8551dc5e392294360" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>density_error</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a397ed42cb8c305cfc4432f65ddd5057d" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>dimmers</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1aee6f871d5af980b86dd319b55665fb2c" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>duty_milli</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a45ae13f8dde4a574404c21d3e3747bbb" prot="public" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>end</name></member>
+      <member refid="classMycila_1_1Dimmer_1a717feacc41caacea0681e2fa6816e18c" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getDutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a90913d5b183b43ece94a9c323fb6cc1f" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getDutyCycleMapped</name></member>
+      <member refid="classMycila_1_1Dimmer_1a38579bf14b9e375b89e54970bbae16d1" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab936b1ffcb91cb3339ed8da8ba086895" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getDutyCycleMin</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1af83c8f0bf0d08c86aa7b02f43594a930" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getPin</name></member>
+      <member refid="classMycila_1_1Dimmer_1acbc25eec2438b85782838265f9e8b8d3" prot="public" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getPowerRatio</name></member>
+      <member refid="classMycila_1_1Dimmer_1a518d3f8796875645cfab0c395b9c90df" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>getSemiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a5912fd1ebbeff4444b37247a7b2791f4" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>isEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1aa79fca836ab46599aa51d951bd258d58" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>isOff</name></member>
+      <member refid="classMycila_1_1Dimmer_1a45ffba29874e10e48ea48f247d61628b" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>isOn</name></member>
+      <member refid="classMycila_1_1Dimmer_1aaf5694660dfeec4f9131133324edf223" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>isOnAtFullPower</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7141a09aef5e3896f7378061cfc6c337" prot="public" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>isOnline</name></member>
+      <member refid="classMycila_1_1Dimmer_1a04d71f45a6371457f6414af1d30a371e" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>off</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8275a7b7cf9417c2d143519452a88880" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>on</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a624f4a89d834e8053bba8616b1bba06f" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>onZeroCross</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a3e3362a477810a017feb6cf41dcbaa7a" prot="private" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>semi_period_odd</name></member>
+      <member refid="classMycila_1_1Dimmer_1ae0ef5805b0a6911171f379a0945bfa5c" prot="public" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>setDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1af83b436ec8799d705dbf22265225beaf" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>setDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1abe79bb19232cdede06774f88274672a6" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>setDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a65e890fe02705d74cb3fb41387d843dc" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>setDutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7dfc096d101bd15b5948d1e398fdc236" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>setOnline</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1ad82d2ae3c01162a8b388c625602ad5df" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>setPin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a10c7e14e08ab36dc3b480c33d908740e" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer</scope><name>setSemiPeriod</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a5da91cc782149bc6e2bac026c0a8d3ec" prot="public" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>type</name></member>
+      <member refid="classMycila_1_1CycleStealingDimmer_1a5a40506f0eceeba356d68e17b54fb291" prot="public" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>~CycleStealingDimmer</name></member>
+      <member refid="classMycila_1_1Dimmer_1ad13ce419d205132904899d442cb96d94" prot="public" virt="virtual"><scope>Mycila::CycleStealingDimmer</scope><name>~Dimmer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,423 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classMycila_1_1ThyristorDimmer" kind="class" language="C++" prot="public">
+    <compoundname>Mycila::ThyristorDimmer</compoundname>
+    <basecompoundref refid="classMycila_1_1PhaseControlDimmer" prot="public" virt="non-virtual">Mycila::PhaseControlDimmer</basecompoundref>
+    <includes refid="MycilaDimmerThyristor_8h" local="no">MycilaDimmerThyristor.h</includes>
+    <innerclass refid="structMycila_1_1ThyristorDimmer_1_1RegisteredDimmer" prot="private">Mycila::ThyristorDimmer::RegisteredDimmer</innerclass>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMycila_1_1ThyristorDimmer_1a651b2c8735152898b841241a588801f0" prot="private" static="no" mutable="no">
+        <type>gpio_num_t</type>
+        <definition>gpio_num_t Mycila::ThyristorDimmer::_pin</definition>
+        <argsstring></argsstring>
+        <name>_pin</name>
+        <qualifiedname>Mycila::ThyristorDimmer::_pin</qualifiedname>
+        <initializer>= GPIO_NUM_NC</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="102" column="18" bodyfile="src/MycilaDimmerThyristor.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1ThyristorDimmer_1a5a496f6e6e71b608579595ccf7e90b61" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t Mycila::ThyristorDimmer::_delay</definition>
+        <argsstring></argsstring>
+        <name>_delay</name>
+        <qualifiedname>Mycila::ThyristorDimmer::_delay</qualifiedname>
+        <initializer>= UINT16_MAX</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="103" column="16" bodyfile="src/MycilaDimmerThyristor.h" bodystart="103" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1ThyristorDimmer_1a020b5b7f130376b69dc665a4ab8fa7eb" prot="private" static="no" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t Mycila::ThyristorDimmer::alarm_count</definition>
+        <argsstring></argsstring>
+        <name>alarm_count</name>
+        <qualifiedname>Mycila::ThyristorDimmer::alarm_count</qualifiedname>
+        <initializer>= UINT16_MAX</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="104" column="16" bodyfile="src/MycilaDimmerThyristor.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classMycila_1_1ThyristorDimmer_1a4098c2fd1c3822aebec4f764be2e7abc" prot="private" static="yes" mutable="no">
+        <type>struct RegisteredDimmer *</type>
+        <definition>struct RegisteredDimmer* Mycila::ThyristorDimmer::dimmers</definition>
+        <argsstring></argsstring>
+        <name>dimmers</name>
+        <qualifiedname>Mycila::ThyristorDimmer::dimmers</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="112" column="37" bodyfile="src/MycilaDimmerThyristor.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1a4e2785135580ff2e2decc46d7ee3387c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mycila::ThyristorDimmer::~ThyristorDimmer</definition>
+        <argsstring>()</argsstring>
+        <name>~ThyristorDimmer</name>
+        <qualifiedname>Mycila::ThyristorDimmer::~ThyristorDimmer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="16" column="15" bodyfile="src/MycilaDimmerThyristor.h" bodystart="16" bodyend="16"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1a6ea7401605120ef604f0f5fdb255b58e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::ThyristorDimmer::setPin</definition>
+        <argsstring>(gpio_num_t pin)</argsstring>
+        <name>setPin</name>
+        <qualifiedname>Mycila::ThyristorDimmer::setPin</qualifiedname>
+        <param>
+          <type>gpio_num_t</type>
+          <declname>pin</declname>
+        </param>
+        <briefdescription>
+<para>Set the GPIO pin to use for the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="21" column="12" bodyfile="src/MycilaDimmerThyristor.h" bodystart="21" bodyend="21"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1a39b9f1be2d0ace6ecaf323b175b6323c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>gpio_num_t</type>
+        <definition>gpio_num_t Mycila::ThyristorDimmer::getPin</definition>
+        <argsstring>() const</argsstring>
+        <name>getPin</name>
+        <qualifiedname>Mycila::ThyristorDimmer::getPin</qualifiedname>
+        <briefdescription>
+<para>Get the GPIO pin used for the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="26" column="18" bodyfile="src/MycilaDimmerThyristor.h" bodystart="26" bodyend="26"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1aeae233eac6f9dbc0b73b39b32159bee6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>uint16_t Mycila::ThyristorDimmer::getFiringDelay</definition>
+        <argsstring>() const</argsstring>
+        <name>getFiringDelay</name>
+        <qualifiedname>Mycila::ThyristorDimmer::getFiringDelay</qualifiedname>
+        <briefdescription>
+<para>Get the firing delay in us of the dimmer in the range [0, semi-period] At 0% power, delay is equal to the semi-period: the dimmer is kept off At 100% power, the delay is 0 us: the dimmer is kept on This value is mostly used for TRIAC based dimmers but also in order to derive metrics based on the phase angle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="34" column="16" bodyfile="src/MycilaDimmerThyristor.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1acefc6e35c851e599035e5c2cb2730694" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mycila::ThyristorDimmer::getPhaseAngle</definition>
+        <argsstring>() const</argsstring>
+        <name>getPhaseAngle</name>
+        <qualifiedname>Mycila::ThyristorDimmer::getPhaseAngle</qualifiedname>
+        <briefdescription>
+<para>Get the phase angle in degrees (°) of the dimmer in the range [0, 180] At 0% power, the phase angle is equal to 180 At 100% power, the phase angle is equal to 0. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="41" column="13" bodyfile="src/MycilaDimmerThyristor.h" bodystart="41" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1ae6a65f0467eadbbb9a21a5d2fb2cda89" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::ThyristorDimmer::begin</definition>
+        <argsstring>() override</argsstring>
+        <name>begin</name>
+        <qualifiedname>Mycila::ThyristorDimmer::begin</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a54fd1a618e053fc51434775fe92f2166">begin</reimplements>
+        <briefdescription>
+<para>Enable a dimmer on a specific GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be enabled if pin is invalid </para>
+</simplesect>
+<simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be activated until the ZCD is enabled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="49" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1aeb0acda0ee498ff78561ae9d7d5c2e6a" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mycila::ThyristorDimmer::end</definition>
+        <argsstring>() override</argsstring>
+        <name>end</name>
+        <qualifiedname>Mycila::ThyristorDimmer::end</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960">end</reimplements>
+        <briefdescription>
+<para>Disable the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be destroyed but won&apos;t turn on anymore even is a duty cycle is set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="56" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1afda1af88f34b1c0126525d7ca17bdfb8" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * Mycila::ThyristorDimmer::type</definition>
+        <argsstring>() const override</argsstring>
+        <name>type</name>
+        <qualifiedname>Mycila::ThyristorDimmer::type</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a576ed69f3f6cf4be3baa58f536f9dd49">type</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="58" column="18" bodyfile="src/MycilaDimmerThyristor.h" bodystart="58" bodyend="58"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1ac868f096c92e91522456b38adbd4c1ba" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Mycila::ThyristorDimmer::onZeroCross</definition>
+        <argsstring>(int16_t delayUntilZero, void *args)</argsstring>
+        <name>onZeroCross</name>
+        <qualifiedname>Mycila::ThyristorDimmer::onZeroCross</qualifiedname>
+        <param>
+          <type>int16_t</type>
+          <declname>delayUntilZero</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>args</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+<para>Callback to be called when a zero-crossing event is detected.</para>
+<para><itemizedlist>
+<listitem><para>When using MycilaPulseAnalyzer library, this callback can be registered like this:</para>
+</listitem></itemizedlist>
+</para>
+<para>pulseAnalyzer.onZeroCross(Mycila::ThyristorDimmer::onZeroCross);</para>
+<para><itemizedlist>
+<listitem><para>When using your own ISR with the RobotDyn ZCD, you can call this method with delayUntilZero == 200 since the length of the ZCD pulse is about 400 us.</para>
+</listitem><listitem><para>When using your own ISR with the ZCd from Daniel S, you can call this method with delayUntilZero == 550 since the length of the ZCD pulse is about 1100 us. </para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="70" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1a1fe34a978cd88893d7a005ac3fb15cd5" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::ThyristorDimmer::_apply</definition>
+        <argsstring>() override</argsstring>
+        <name>_apply</name>
+        <qualifiedname>Mycila::ThyristorDimmer::_apply</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c">_apply</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="87" column="12" bodyfile="src/MycilaDimmerThyristor.h" bodystart="87" bodyend="99"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-static-func">
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1a1b9df65747cd19e7e2e077f95f55ea30" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>static bool Mycila::ThyristorDimmer::_fireTimerISR</definition>
+        <argsstring>(gptimer_handle_t timer, const gptimer_alarm_event_data_t *event, void *arg)</argsstring>
+        <name>_fireTimerISR</name>
+        <qualifiedname>Mycila::ThyristorDimmer::_fireTimerISR</qualifiedname>
+        <param>
+          <type>gptimer_handle_t</type>
+          <declname>timer</declname>
+        </param>
+        <param>
+          <type>const gptimer_alarm_event_data_t *</type>
+          <declname>event</declname>
+        </param>
+        <param>
+          <type>void *</type>
+          <declname>arg</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="113" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1a906d57bdd68cd8e954f73d5c6b537acf" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Mycila::ThyristorDimmer::_registerDimmer</definition>
+        <argsstring>(Mycila::ThyristorDimmer *dimmer)</argsstring>
+        <name>_registerDimmer</name>
+        <qualifiedname>Mycila::ThyristorDimmer::_registerDimmer</qualifiedname>
+        <param>
+          <type><ref refid="classMycila_1_1ThyristorDimmer" kindref="compound">Mycila::ThyristorDimmer</ref> *</type>
+          <declname>dimmer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="114" column="19"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1ThyristorDimmer_1aaafb683092ccd31bb3bab9cbc563be95" prot="private" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Mycila::ThyristorDimmer::_unregisterDimmer</definition>
+        <argsstring>(Mycila::ThyristorDimmer *dimmer)</argsstring>
+        <name>_unregisterDimmer</name>
+        <qualifiedname>Mycila::ThyristorDimmer::_unregisterDimmer</qualifiedname>
+        <param>
+          <type><ref refid="classMycila_1_1ThyristorDimmer" kindref="compound">Mycila::ThyristorDimmer</ref> *</type>
+          <declname>dimmer</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerThyristor.h" line="115" column="19"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>Thyristor (TRIAC) based dimmer implementation for TRIAC and Random SSR dimmers. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="3">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="2">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mycila::ThyristorDimmer</label>
+        <link refid="classMycila_1_1ThyristorDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="3">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="2">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mycila::ThyristorDimmer</label>
+        <link refid="classMycila_1_1ThyristorDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/MycilaDimmerThyristor.h" line="14" column="3" bodyfile="src/MycilaDimmerThyristor.h" bodystart="14" bodyend="116"/>
+    <listofallmembers>
+      <member refid="classMycila_1_1ThyristorDimmer_1a1fe34a978cd88893d7a005ac3fb15cd5" prot="protected" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>_apply</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172" prot="protected" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>_calculateDimmerHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_contrain</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a5a496f6e6e71b608579595ccf7e90b61" prot="private" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_delay</name></member>
+      <member refid="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_dutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_dutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_dutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8c4c1126eb9e8429e97886970c1aa076" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_dutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a85bfbf3fc1aa9e539abe22be3eeec368" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_dutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_enabled</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a1b9df65747cd19e7e2e077f95f55ea30" prot="private" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_fireTimerISR</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_lookupFiringDelay</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_online</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a651b2c8735152898b841241a588801f0" prot="private" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_pin</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_powerLUTEnabled</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a906d57bdd68cd8e954f73d5c6b537acf" prot="private" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_registerDimmer</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" prot="protected" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_semiPeriod</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1aaafb683092ccd31bb3bab9cbc563be95" prot="private" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>_unregisterDimmer</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a020b5b7f130376b69dc665a4ab8fa7eb" prot="private" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>alarm_count</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1ae6a65f0467eadbbb9a21a5d2fb2cda89" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>begin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a6b34aab3c938759c82853fe5f917ee54" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>calculateHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1ae182ed0b25be3e4b82a1e6772e201e24" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>calculateMetrics</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a4098c2fd1c3822aebec4f764be2e7abc" prot="private" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>dimmers</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1aa20d3cdec048767dff71208a72bdc940" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>enablePowerLUT</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1aeb0acda0ee498ff78561ae9d7d5c2e6a" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>end</name></member>
+      <member refid="classMycila_1_1Dimmer_1a717feacc41caacea0681e2fa6816e18c" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getDutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a90913d5b183b43ece94a9c323fb6cc1f" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getDutyCycleMapped</name></member>
+      <member refid="classMycila_1_1Dimmer_1a38579bf14b9e375b89e54970bbae16d1" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab936b1ffcb91cb3339ed8da8ba086895" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getDutyCycleMin</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1aeae233eac6f9dbc0b73b39b32159bee6" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getFiringDelay</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1acefc6e35c851e599035e5c2cb2730694" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getPhaseAngle</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a39b9f1be2d0ace6ecaf323b175b6323c" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getPin</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>getPowerRatio</name></member>
+      <member refid="classMycila_1_1Dimmer_1a518d3f8796875645cfab0c395b9c90df" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>getSemiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a5912fd1ebbeff4444b37247a7b2791f4" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>isEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1aa79fca836ab46599aa51d951bd258d58" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>isOff</name></member>
+      <member refid="classMycila_1_1Dimmer_1a45ffba29874e10e48ea48f247d61628b" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>isOn</name></member>
+      <member refid="classMycila_1_1Dimmer_1aaf5694660dfeec4f9131133324edf223" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>isOnAtFullPower</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>isOnline</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>isPowerLUTEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1a04d71f45a6371457f6414af1d30a371e" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>off</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8275a7b7cf9417c2d143519452a88880" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>on</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1ac868f096c92e91522456b38adbd4c1ba" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>onZeroCross</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>setDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1af83b436ec8799d705dbf22265225beaf" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>setDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1abe79bb19232cdede06774f88274672a6" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>setDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a65e890fe02705d74cb3fb41387d843dc" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>setDutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7dfc096d101bd15b5948d1e398fdc236" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>setOnline</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a6ea7401605120ef604f0f5fdb255b58e" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>setPin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a10c7e14e08ab36dc3b480c33d908740e" prot="public" virt="non-virtual"><scope>Mycila::ThyristorDimmer</scope><name>setSemiPeriod</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1afda1af88f34b1c0126525d7ca17bdfb8" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>type</name></member>
+      <member refid="classMycila_1_1Dimmer_1ad13ce419d205132904899d442cb96d94" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>~Dimmer</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a6c4cd8ed9117e8726533828029fbad4e" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>~PhaseControlDimmer</name></member>
+      <member refid="classMycila_1_1ThyristorDimmer_1a4e2785135580ff2e2decc46d7ee3387c" prot="public" virt="virtual"><scope>Mycila::ThyristorDimmer</scope><name>~ThyristorDimmer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="MycilaDimmerPWM_8h" kind="file" language="C++">
+    <compoundname>MycilaDimmerPWM.h</compoundname>
+    <includes refid="MycilaDimmerPhaseControl_8h" local="yes">MycilaDimmerPhaseControl.h</includes>
+    <includedby refid="MycilaDimmers_8h" local="yes">src/MycilaDimmers.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>MycilaDimmer.h</label>
+        <link refid="MycilaDimmer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/MycilaDimmerPWM.h</label>
+        <link refid="MycilaDimmerPWM_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MycilaDimmerPhaseControl.h</label>
+        <link refid="MycilaDimmerPhaseControl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>assert.h</label>
+      </node>
+      <node id="6">
+        <label>cmath</label>
+      </node>
+      <node id="7">
+        <label>cstdio</label>
+      </node>
+      <node id="5">
+        <label>esp32-hal-gpio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>src/MycilaDimmerPWM.h</label>
+        <link refid="MycilaDimmerPWM_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/MycilaDimmers.h</label>
+        <link refid="MycilaDimmers_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMycila_1_1PWMDimmer" prot="public">Mycila::PWMDimmer</innerclass>
+    <innernamespace refid="namespaceMycila">Mycila</innernamespace>
+    <sectiondef kind="define">
+      <memberdef kind="define" id="MycilaDimmerPWM_8h_1a4635458c2450d9503a2da6e8fdd36350" prot="public" static="no">
+        <name>MYCILA_DIMMER_PWM_RESOLUTION</name>
+        <initializer>12</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="9" column="9" bodyfile="src/MycilaDimmerPWM.h" bodystart="9" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="define" id="MycilaDimmerPWM_8h_1ad345ad0b183ebb891b69f1d5feccf5ce" prot="public" static="no">
+        <name>MYCILA_DIMMER_PWM_FREQUENCY</name>
+        <initializer>1000</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerPWM.h" line="10" column="9" bodyfile="src/MycilaDimmerPWM.h" bodystart="10" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>MIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>Mathieu<sp/>Carbou</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="MycilaDimmerPhaseControl_8h" kindref="compound">MycilaDimmerPhaseControl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9" refid="MycilaDimmerPWM_8h_1a4635458c2450d9503a2da6e8fdd36350" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MYCILA_DIMMER_PWM_RESOLUTION<sp/>12<sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>12<sp/>bits<sp/>resolution<sp/>=&gt;<sp/>0-4095<sp/>watts</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10" refid="MycilaDimmerPWM_8h_1ad345ad0b183ebb891b69f1d5feccf5ce" refkind="member"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MYCILA_DIMMER_PWM_FREQUENCY<sp/><sp/>1000<sp/></highlight><highlight class="comment">//<sp/>1<sp/>kHz</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight></codeline>
+<codeline lineno="12"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceMycila" kindref="compound">Mycila</ref><sp/>{</highlight></codeline>
+<codeline lineno="16" refid="classMycila_1_1PWMDimmer" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMycila_1_1PWMDimmer" kindref="compound">PWMDimmer</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer" kindref="compound">PhaseControlDimmer</ref><sp/>{</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="18" refid="classMycila_1_1PWMDimmer_1a4058fef5468d8d27bab0c99885f2a0ed" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PWMDimmer_1a4058fef5468d8d27bab0c99885f2a0ed" kindref="member">~PWMDimmer</ref>()<sp/>{<sp/><ref refid="classMycila_1_1PWMDimmer_1ab1c83c98bacc525f04d4af037ec2d378" kindref="member">end</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"></highlight></codeline>
+<codeline lineno="23" refid="classMycila_1_1PWMDimmer_1a04eda47bd3b808743674eb3fc034aac7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PWMDimmer_1a04eda47bd3b808743674eb3fc034aac7" kindref="member">setPin</ref>(gpio_num_t<sp/>pin)<sp/>{<sp/>_pin<sp/>=<sp/>pin;<sp/>}</highlight></codeline>
+<codeline lineno="24"><highlight class="normal"></highlight></codeline>
+<codeline lineno="28" refid="classMycila_1_1PWMDimmer_1abb1aed226515de9353ee37939d54a96e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpio_num_t<sp/><ref refid="classMycila_1_1PWMDimmer_1abb1aed226515de9353ee37939d54a96e" kindref="member">getPin</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_pin;<sp/>}</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"></highlight></codeline>
+<codeline lineno="33" refid="classMycila_1_1PWMDimmer_1a4de79584bffb1a77bba14a97e6c22d81" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PWMDimmer_1a4de79584bffb1a77bba14a97e6c22d81" kindref="member">setFrequency</ref>(uint32_t<sp/>frequency)<sp/>{<sp/>this-&gt;_frequency<sp/>=<sp/>frequency;<sp/>}</highlight></codeline>
+<codeline lineno="34"><highlight class="normal"></highlight></codeline>
+<codeline lineno="38" refid="classMycila_1_1PWMDimmer_1ae33f46712aec8126b2f4c7b72969ff92" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/><ref refid="classMycila_1_1PWMDimmer_1ae33f46712aec8126b2f4c7b72969ff92" kindref="member">getFrequency</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_frequency;<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="43" refid="classMycila_1_1PWMDimmer_1a1e03df6c8414c708adfb214ec9135e7c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PWMDimmer_1a1e03df6c8414c708adfb214ec9135e7c" kindref="member">setResolution</ref>(uint8_t<sp/>resolution)<sp/>{<sp/>this-&gt;_resolution<sp/>=<sp/>resolution;<sp/>}</highlight></codeline>
+<codeline lineno="44"><highlight class="normal"></highlight></codeline>
+<codeline lineno="48" refid="classMycila_1_1PWMDimmer_1a80199f11c002b692348e99aa1767afa9" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classMycila_1_1PWMDimmer_1a80199f11c002b692348e99aa1767afa9" kindref="member">getResolution</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_resolution;<sp/>}</highlight></codeline>
+<codeline lineno="49"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classMycila_1_1PWMDimmer_1a314ba911ac20a6902e4723ae9cfe1299" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PWMDimmer_1a314ba911ac20a6902e4723ae9cfe1299" kindref="member">begin</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="63" refid="classMycila_1_1PWMDimmer_1ab1c83c98bacc525f04d4af037ec2d378" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PWMDimmer_1ab1c83c98bacc525f04d4af037ec2d378" kindref="member">end</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight></codeline>
+<codeline lineno="65" refid="classMycila_1_1PWMDimmer_1ab77db1b2c82cabbbb8166f4d61bc7108" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classMycila_1_1PWMDimmer_1ab77db1b2c82cabbbb8166f4d61bc7108" kindref="member">type</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;pwm&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MYCILA_JSON_SUPPORT</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toJson(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>JsonObject&amp;<sp/>root)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PhaseControlDimmer::toJson(root);</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;pin&quot;</highlight><highlight class="normal">]<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">int</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(_pin);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;frequency&quot;</highlight><highlight class="normal">]<sp/>=<sp/>_frequency;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;resolution&quot;</highlight><highlight class="normal">]<sp/>=<sp/>_resolution;</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="82" refid="classMycila_1_1PWMDimmer_1ab712ac8a69195375ffeadb39c74126c3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PWMDimmer_1ab712ac8a69195375ffeadb39c74126c3" kindref="member">_apply</ref>()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" kindref="member">isOnline</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ledcWrite(_pin,<sp/>0);</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>duty<sp/>=<sp/><ref refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" kindref="member">getDutyCycleFire</ref>()<sp/>*<sp/>((1<sp/>&lt;&lt;<sp/>_resolution)<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>ledcWrite(_pin,<sp/>duty);</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpio_num_t<sp/>_pin<sp/>=<sp/>GPIO_NUM_NC;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>_frequency<sp/>=<sp/><ref refid="MycilaDimmerPWM_8h_1ad345ad0b183ebb891b69f1d5feccf5ce" kindref="member">MYCILA_DIMMER_PWM_FREQUENCY</ref>;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>_resolution<sp/>=<sp/><ref refid="MycilaDimmerPWM_8h_1a4635458c2450d9503a2da6e8fdd36350" kindref="member">MYCILA_DIMMER_PWM_RESOLUTION</ref>;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="95"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Mycila</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/MycilaDimmerPWM.h"/>
+  </compounddef>
+</doxygen>

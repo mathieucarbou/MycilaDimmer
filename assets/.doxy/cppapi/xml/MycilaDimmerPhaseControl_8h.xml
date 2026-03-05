@@ -1,0 +1,239 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="MycilaDimmerPhaseControl_8h" kind="file" language="C++">
+    <compoundname>MycilaDimmerPhaseControl.h</compoundname>
+    <includes refid="MycilaDimmer_8h" local="yes">MycilaDimmer.h</includes>
+    <includedby refid="MycilaDimmerDFRobot_8h" local="yes">src/MycilaDimmerDFRobot.h</includedby>
+    <includedby refid="MycilaDimmerPWM_8h" local="yes">src/MycilaDimmerPWM.h</includedby>
+    <includedby refid="MycilaDimmerThyristor_8h" local="yes">src/MycilaDimmerThyristor.h</includedby>
+    <incdepgraph>
+      <node id="2">
+        <label>MycilaDimmer.h</label>
+        <link refid="MycilaDimmer_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/MycilaDimmerPhaseControl.h</label>
+        <link refid="MycilaDimmerPhaseControl_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>assert.h</label>
+      </node>
+      <node id="5">
+        <label>cmath</label>
+      </node>
+      <node id="6">
+        <label>cstdio</label>
+      </node>
+      <node id="4">
+        <label>esp32-hal-gpio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="2">
+        <label>src/MycilaDimmerDFRobot.h</label>
+        <link refid="MycilaDimmerDFRobot_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>src/MycilaDimmerPWM.h</label>
+        <link refid="MycilaDimmerPWM_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/MycilaDimmerPhaseControl.h</label>
+        <link refid="MycilaDimmerPhaseControl_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+      </node>
+      <node id="5">
+        <label>src/MycilaDimmerThyristor.h</label>
+        <link refid="MycilaDimmerThyristor_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>src/MycilaDimmers.h</label>
+        <link refid="MycilaDimmers_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMycila_1_1PhaseControlDimmer" prot="public">Mycila::PhaseControlDimmer</innerclass>
+    <innernamespace refid="namespaceMycila">Mycila</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>MIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>Mathieu<sp/>Carbou</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="MycilaDimmer_8h" kindref="compound">MycilaDimmer.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceMycila" kindref="compound">Mycila</ref><sp/>{</highlight></codeline>
+<codeline lineno="10" refid="classMycila_1_1PhaseControlDimmer" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMycila_1_1PhaseControlDimmer" kindref="compound">PhaseControlDimmer</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref><sp/>{</highlight></codeline>
+<codeline lineno="11"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="12" refid="classMycila_1_1PhaseControlDimmer_1a6c4cd8ed9117e8726533828029fbad4e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a6c4cd8ed9117e8726533828029fbad4e" kindref="member">~PhaseControlDimmer</ref>()<sp/>{<sp/><ref refid="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960" kindref="member">end</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="13"><highlight class="normal"></highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>POWER<sp/>LUT<sp/>//</highlight></codeline>
+<codeline lineno="17"></codeline>
+<codeline lineno="24" refid="classMycila_1_1PhaseControlDimmer_1aa20d3cdec048767dff71208a72bdc940" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1aa20d3cdec048767dff71208a72bdc940" kindref="member">enablePowerLUT</ref>(</highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>enable)<sp/>{<sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" kindref="member">_powerLUTEnabled</ref><sp/>=<sp/>enable;<sp/>}</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"></highlight></codeline>
+<codeline lineno="29" refid="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" kindref="member">isPowerLUTEnabled</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" kindref="member">_powerLUTEnabled</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>DIMMER<sp/>STATES<sp/>//</highlight></codeline>
+<codeline lineno="34"></codeline>
+<codeline lineno="39" refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" kindref="member">isOnline</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" kindref="member">_enabled</ref><sp/>&amp;&amp;<sp/><ref refid="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" kindref="member">_online</ref><sp/>&amp;&amp;<sp/>(!<ref refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" kindref="member">_powerLUTEnabled</ref><sp/>||<sp/><ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref><sp/>&gt;<sp/>0);<sp/>}</highlight></codeline>
+<codeline lineno="40"><highlight class="normal"></highlight></codeline>
+<codeline lineno="42"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>DIMMER<sp/>CONTROL<sp/>//</highlight></codeline>
+<codeline lineno="44"></codeline>
+<codeline lineno="50" refid="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532" kindref="member">setDutyCycle</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dutyCycle)</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="51"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Apply<sp/>limit<sp/>and<sp/>save<sp/>the<sp/>wanted<sp/>duty<sp/>cycle.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="52"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>It<sp/>will<sp/>only<sp/>be<sp/>applied<sp/>when<sp/>dimmer<sp/>will<sp/>be<sp/>on.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" kindref="member">_dutyCycle</ref><sp/>=<sp/><ref refid="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" kindref="member">_contrain</ref>(dutyCycle,<sp/>0,<sp/><ref refid="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" kindref="member">_dutyCycleLimit</ref>);</highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>mapped<sp/>=<sp/><ref refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" kindref="member">getDutyCycleMapped</ref>();</highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" kindref="member">_powerLUTEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="58"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mapped<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" kindref="member">_dutyCycleFire</ref><sp/>=<sp/>0.0f;</highlight></codeline>
+<codeline lineno="60"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(mapped<sp/>==<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="61"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" kindref="member">_dutyCycleFire</ref><sp/>=<sp/>1.0f;</highlight></codeline>
+<codeline lineno="62"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" kindref="member">_dutyCycleFire</ref><sp/>=<sp/><ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref><sp/>&gt;<sp/>0<sp/>?<sp/>(1.0f<sp/>-<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" kindref="member">_lookupFiringDelay</ref>(mapped))<sp/>/<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref>))<sp/>:<sp/>mapped;</highlight></codeline>
+<codeline lineno="64"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" kindref="member">_dutyCycleFire</ref><sp/>=<sp/>mapped;</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" kindref="member">isOnline</ref>()<sp/>&amp;&amp;<sp/><ref refid="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c" kindref="member">_apply</ref>();</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>METRICS<sp/>//</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76" refid="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce" kindref="member">getPowerRatio</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(<ref refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" kindref="member">_powerLUTEnabled</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>With<sp/>LUT<sp/>enabled,<sp/>the<sp/>mapped<sp/>duty<sp/>cycle<sp/>IS<sp/>the<sp/>linearized<sp/>power<sp/>ratio</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" kindref="member">getDutyCycleMapped</ref>();</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Without<sp/>LUT,<sp/>we<sp/>have<sp/>a<sp/>linear<sp/>firing<sp/>time.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>We<sp/>calculate<sp/>real<sp/>Power<sp/>Ratio<sp/>from<sp/>Phase<sp/>Angle<sp/>using<sp/>the<sp/>physical<sp/>formula:</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>P_ratio<sp/>=<sp/>d<sp/>-<sp/>sin(2<sp/>*<sp/>pi<sp/>*<sp/>d)<sp/>/<sp/>(2<sp/>*<sp/>pi)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty<sp/>=<sp/><ref refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" kindref="member">getDutyCycleFire</ref>();</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Optimization:<sp/>use<sp/>multiplication<sp/>by<sp/>inverse<sp/>instead<sp/>of<sp/>division</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>duty<sp/>-<sp/>sinf(2.0f<sp/>*<sp/>M_PI<sp/>*<sp/>duty)<sp/>*<sp/>(1.0f<sp/>/<sp/>(2.0f<sp/>*<sp/>M_PI));</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MYCILA_JSON_SUPPORT</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toJson(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>JsonObject&amp;<sp/>root)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>Dimmer::toJson(root);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;power_lut&quot;</highlight><highlight class="normal">]<sp/>=<sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" kindref="member">isPowerLUTEnabled</ref>();</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="103" refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" kindref="member">_powerLUTEnabled</ref><sp/>=<sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105" refid="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/>uint16_t<sp/><ref refid="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" kindref="member">_lookupFiringDelay</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>dutyCycle)<sp/>{</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>duty<sp/>=<sp/>dutyCycle<sp/>*<sp/>FIRING_DELAY_MAX;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>slot<sp/>=<sp/>duty<sp/>*<sp/>FIRING_DELAYS_SCALE<sp/>+<sp/>(FIRING_DELAYS_SCALE<sp/>&gt;&gt;<sp/>1);</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>index<sp/>=<sp/>slot<sp/>&gt;&gt;<sp/>16;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>a<sp/>=<sp/>FIRING_DELAYS[index];</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>b<sp/>=<sp/>FIRING_DELAYS[index<sp/>+<sp/>1];</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint32_t<sp/>delay<sp/>=<sp/>a<sp/>-<sp/>(((a<sp/>-<sp/>b)<sp/>*<sp/>(slot<sp/>&amp;<sp/>0xffff))<sp/>&gt;&gt;<sp/>16);<sp/></highlight><highlight class="comment">//<sp/>interpolate<sp/>a<sp/>b</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(delay<sp/>*<sp/><ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref>)<sp/>&gt;&gt;<sp/>16;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115" refid="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172" kindref="member">_calculateDimmerHarmonics</ref>(</highlight><highlight class="keywordtype">float</highlight><highlight class="normal">*<sp/>array,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>n)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>getDutyCycleFire()<sp/>returns<sp/>the<sp/>conduction<sp/>angle<sp/>normalized<sp/>(0-1)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>firing<sp/>angle:<sp/>α<sp/>=<sp/>π<sp/>×<sp/>(1<sp/>-<sp/>conduction)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>At<sp/>50%<sp/>power:<sp/>α<sp/>≈<sp/>90°<sp/>(π/2),<sp/>which<sp/>gives<sp/>maximum<sp/>harmonics</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>firingAngle<sp/>=<sp/>M_PI<sp/>*<sp/>(1.0f<sp/>-<sp/><ref refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" kindref="member">_dutyCycleFire</ref>);</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"></highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>RMS<sp/>of<sp/>fundamental<sp/>component<sp/>(reference)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Formula<sp/>from<sp/>Thierry<sp/>Lequeu:<sp/>I1_rms<sp/>=<sp/>(1/π)<sp/>×<sp/>√[2(π<sp/>-<sp/>α<sp/>+<sp/>½sin(2α))]</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>sin_2a<sp/>=<sp/>sinf(2.0f<sp/>*<sp/>firingAngle);</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>i1_rms<sp/>=<sp/>sqrtf((2.0f<sp/>/<sp/>M_PI)<sp/>*<sp/>(M_PI<sp/>-<sp/>firingAngle<sp/>+<sp/>0.5f<sp/>*<sp/>sin_2a));</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(i1_rms<sp/>&lt;=<sp/>0.001f)</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">false</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>array[0]<sp/>=<sp/>100.0f;<sp/></highlight><highlight class="comment">//<sp/>H1<sp/>(fundamental)<sp/>=<sp/>100%<sp/>reference</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Pre-compute<sp/>scale<sp/>factor<sp/>for<sp/>efficiency</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>scale_factor<sp/>=<sp/>(2.0f<sp/>/<sp/>M_PI)<sp/>*<sp/>0.70710678f<sp/>*<sp/>100.0f<sp/>/<sp/>i1_rms;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Calculate<sp/>odd<sp/>harmonics<sp/>(H3,<sp/>H5,<sp/>H7,<sp/>...)</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Formula<sp/>for<sp/>phase-controlled<sp/>resistive<sp/>loads<sp/>(IEEE<sp/>standard):</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Hn<sp/>=<sp/>(2/π√2)<sp/>×<sp/>|cos((n-1)α)/(n-1)<sp/>-<sp/>cos((n+1)α)/(n+1)|<sp/>/<sp/>I1_rms<sp/>×<sp/>100%</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>This<sp/>gives<sp/>the<sp/>correct<sp/>harmonic<sp/>magnitudes<sp/>relative<sp/>to<sp/>the<sp/>fundamental</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>i<sp/>=<sp/>1;<sp/>i<sp/>&lt;<sp/>n;<sp/>i++)<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>n_f<sp/>=<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(2<sp/>*<sp/>i<sp/>+<sp/>1);<sp/></highlight><highlight class="comment">//<sp/>3,<sp/>5,<sp/>7,<sp/>9,<sp/>...</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>n_minus_1<sp/>=<sp/>n_f<sp/>-<sp/>1.0f;</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>n_plus_1<sp/>=<sp/>n_f<sp/>+<sp/>1.0f;</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Compute<sp/>Fourier<sp/>coefficient</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>coeff<sp/>=<sp/>cosf(n_minus_1<sp/>*<sp/>firingAngle)<sp/>/<sp/>n_minus_1<sp/>-</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>cosf(n_plus_1<sp/>*<sp/>firingAngle)<sp/>/<sp/>n_plus_1;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>Convert<sp/>to<sp/>percentage<sp/>of<sp/>fundamental</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>array[i]<sp/>=<sp/>fabsf(coeff)<sp/>*<sp/>scale_factor;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"></highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/>DIMMER_RESOLUTION<sp/>=<sp/>12;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/>FIRING_DELAYS_LEN<sp/>=<sp/>200;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/>FIRING_DELAY_MAX<sp/>=<sp/>(1<sp/>&lt;&lt;<sp/>DIMMER_RESOLUTION)<sp/>-<sp/>1;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint32_t<sp/>FIRING_DELAYS_SCALE<sp/>=<sp/>(FIRING_DELAYS_LEN<sp/>-<sp/>1U)<sp/>*<sp/>(1UL<sp/>&lt;&lt;<sp/>(16<sp/>-<sp/>DIMMER_RESOLUTION));</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clang-format<sp/>off</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">constexpr</highlight><highlight class="normal"><sp/>uint16_t<sp/>FIRING_DELAYS[FIRING_DELAYS_LEN]<sp/>=<sp/>{</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xffff,<sp/>0xe877,<sp/>0xe240,<sp/>0xddd9,<sp/>0xda51,<sp/>0xd74f,<sp/>0xd4aa,<sp/>0xd248,<sp/>0xd01a,<sp/>0xce16,</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xcc34,<sp/>0xca6e,<sp/>0xc8c0,<sp/>0xc728,<sp/>0xc5a1,<sp/>0xc42b,<sp/>0xc2c3,<sp/>0xc168,<sp/>0xc019,<sp/>0xbed3,</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xbd98,<sp/>0xbc65,<sp/>0xbb3b,<sp/>0xba17,<sp/>0xb8fb,<sp/>0xb7e5,<sp/>0xb6d5,<sp/>0xb5ca,<sp/>0xb4c5,<sp/>0xb3c4,</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xb2c8,<sp/>0xb1d1,<sp/>0xb0dd,<sp/>0xafed,<sp/>0xaf01,<sp/>0xae18,<sp/>0xad33,<sp/>0xac51,<sp/>0xab71,<sp/>0xaa95,</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xa9bb,<sp/>0xa8e3,<sp/>0xa80e,<sp/>0xa73b,<sp/>0xa66b,<sp/>0xa59c,<sp/>0xa4d0,<sp/>0xa406,<sp/>0xa33d,<sp/>0xa276,</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0xa1b1,<sp/>0xa0ed,<sp/>0xa02b,<sp/>0x9f6b,<sp/>0x9eac,<sp/>0x9dee,<sp/>0x9d32,<sp/>0x9c76,<sp/>0x9bbc,<sp/>0x9b04,</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x9a4c,<sp/>0x9996,<sp/>0x98e0,<sp/>0x982b,<sp/>0x9778,<sp/>0x96c5,<sp/>0x9613,<sp/>0x9563,<sp/>0x94b2,<sp/>0x9403,</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x9354,<sp/>0x92a6,<sp/>0x91f9,<sp/>0x914c,<sp/>0x90a0,<sp/>0x8ff5,<sp/>0x8f4a,<sp/>0x8ea0,<sp/>0x8df6,<sp/>0x8d4d,</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x8ca4,<sp/>0x8bfb,<sp/>0x8b53,<sp/>0x8aab,<sp/>0x8a04,<sp/>0x895d,<sp/>0x88b6,<sp/>0x8810,<sp/>0x876a,<sp/>0x86c4,</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x861e,<sp/>0x8579,<sp/>0x84d3,<sp/>0x842e,<sp/>0x8389,<sp/>0x82e4,<sp/>0x823f,<sp/>0x819b,<sp/>0x80f6,<sp/>0x8051,</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x7fad,<sp/>0x7f08,<sp/>0x7e63,<sp/>0x7dbf,<sp/>0x7d1a,<sp/>0x7c75,<sp/>0x7bd0,<sp/>0x7b2b,<sp/>0x7a85,<sp/>0x79e0,</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x793a,<sp/>0x7894,<sp/>0x77ee,<sp/>0x7748,<sp/>0x76a1,<sp/>0x75fa,<sp/>0x7553,<sp/>0x74ab,<sp/>0x7403,<sp/>0x735a,</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x72b1,<sp/>0x7208,<sp/>0x715e,<sp/>0x70b4,<sp/>0x7009,<sp/>0x6f5e,<sp/>0x6eb2,<sp/>0x6e05,<sp/>0x6d58,<sp/>0x6caa,</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x6bfb,<sp/>0x6b4c,<sp/>0x6a9b,<sp/>0x69eb,<sp/>0x6939,<sp/>0x6886,<sp/>0x67d3,<sp/>0x671e,<sp/>0x6668,<sp/>0x65b2,</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x64fa,<sp/>0x6442,<sp/>0x6388,<sp/>0x62cc,<sp/>0x6210,<sp/>0x6152,<sp/>0x6093,<sp/>0x5fd3,<sp/>0x5f11,<sp/>0x5e4d,</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x5d88,<sp/>0x5cc1,<sp/>0x5bf8,<sp/>0x5b2e,<sp/>0x5a62,<sp/>0x5993,<sp/>0x58c3,<sp/>0x57f0,<sp/>0x571b,<sp/>0x5643,</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x5569,<sp/>0x548d,<sp/>0x53ad,<sp/>0x52cb,<sp/>0x51e6,<sp/>0x50fd,<sp/>0x5011,<sp/>0x4f21,<sp/>0x4e2d,<sp/>0x4d36,</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x4c3a,<sp/>0x4b39,<sp/>0x4a34,<sp/>0x4929,<sp/>0x4819,<sp/>0x4703,<sp/>0x45e7,<sp/>0x44c3,<sp/>0x4399,<sp/>0x4266,</highlight></codeline>
+<codeline lineno="180"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x412b,<sp/>0x3fe5,<sp/>0x3e96,<sp/>0x3d3b,<sp/>0x3bd3,<sp/>0x3a5d,<sp/>0x38d6,<sp/>0x373e,<sp/>0x3590,<sp/>0x33ca,</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>0x31e8,<sp/>0x2fe4,<sp/>0x2db6,<sp/>0x2b54,<sp/>0x28af,<sp/>0x25ad,<sp/>0x2225,<sp/>0x1dbe,<sp/>0x1787,<sp/>0x0000</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>clang-format<sp/>on</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="185"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Mycila</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/MycilaDimmerPhaseControl.h"/>
+  </compounddef>
+</doxygen>

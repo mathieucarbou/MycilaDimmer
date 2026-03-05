@@ -1,0 +1,17 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="namespaceMycila" kind="namespace" language="C++">
+    <compoundname>Mycila</compoundname>
+    <innerclass refid="classMycila_1_1CycleStealingDimmer" prot="public">Mycila::CycleStealingDimmer</innerclass>
+    <innerclass refid="classMycila_1_1DFRobotDimmer" prot="public">Mycila::DFRobotDimmer</innerclass>
+    <innerclass refid="classMycila_1_1Dimmer" prot="public">Mycila::Dimmer</innerclass>
+    <innerclass refid="classMycila_1_1PhaseControlDimmer" prot="public">Mycila::PhaseControlDimmer</innerclass>
+    <innerclass refid="classMycila_1_1PWMDimmer" prot="public">Mycila::PWMDimmer</innerclass>
+    <innerclass refid="classMycila_1_1ThyristorDimmer" prot="public">Mycila::ThyristorDimmer</innerclass>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/MycilaDimmer.h" line="22" column="1"/>
+  </compounddef>
+</doxygen>

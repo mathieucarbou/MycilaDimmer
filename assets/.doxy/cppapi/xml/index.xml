@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygenindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="index.xsd" version="1.9.8" xml:lang="en-US">
+  <compound refid="classMycila_1_1CycleStealingDimmer" kind="class"><name>Mycila::CycleStealingDimmer</name>
+    <member refid="classMycila_1_1CycleStealingDimmer_1ae8bd24e76c1d82edfaa8052b4f88c1db" kind="variable"><name>_pin</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1aee6f871d5af980b86dd319b55665fb2c" kind="variable"><name>duty_milli</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a3e3362a477810a017feb6cf41dcbaa7a" kind="variable"><name>semi_period_odd</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a1f5daca2bec194b8551dc5e392294360" kind="variable"><name>density_error</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1ad4607afe5663049addc6f797d70d2d72" kind="variable"><name>dc_balance</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a397ed42cb8c305cfc4432f65ddd5057d" kind="variable"><name>dimmers</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a5a40506f0eceeba356d68e17b54fb291" kind="function"><name>~CycleStealingDimmer</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1ad82d2ae3c01162a8b388c625602ad5df" kind="function"><name>setPin</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1af83c8f0bf0d08c86aa7b02f43594a930" kind="function"><name>getPin</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a478af9dbe8d3d1dfd7a4000238f68ebb" kind="function"><name>begin</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a45ae13f8dde4a574404c21d3e3747bbb" kind="function"><name>end</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a5da91cc782149bc6e2bac026c0a8d3ec" kind="function"><name>type</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a624f4a89d834e8053bba8616b1bba06f" kind="function"><name>onZeroCross</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a216de3963f22ef367c4f8e15ea37d9aa" kind="function"><name>_apply</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a8d5e987ad7d8bc3a264ef904a3843355" kind="function"><name>_calculateDimmerHarmonics</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1ab1826cd0d4039e07f414f94010120fcd" kind="function"><name>_fireTimerISR</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a9f9fd5871a52659a110a2bb6f954e947" kind="function"><name>_registerDimmer</name></member>
+    <member refid="classMycila_1_1CycleStealingDimmer_1a88173f78c35a718bc0335fb056add4dd" kind="function"><name>_unregisterDimmer</name></member>
+  </compound>
+  <compound refid="classMycila_1_1DFRobotDimmer" kind="class"><name>Mycila::DFRobotDimmer</name>
+    <member refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" kind="enum"><name>SKU</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a696b031073e74bf2cb98e5ef201d4aa3" kind="enumvalue"><name>UNKNOWN</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aaee6d0fcea577ca78ecb74a4554b7257" kind="enumvalue"><name>DFR1071_GP8211S</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aebcaf9299dde44e9c24b89fb43ae9f93" kind="enumvalue"><name>DFR1073_GP8413</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a30bb788e02f2c6d17bb7b020c5fcdb61" kind="enumvalue"><name>DFR0971_GP8403</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kind="enum"><name>Output</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135adfd0749b5fbb78dcdd9c3a36651cb32b" kind="enumvalue"><name>RANGE_0_5V</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135a3060079d1a8e3c0a0d718ae01b1946f3" kind="enumvalue"><name>RANGE_0_10V</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a9a472b4240fce7cd7a0ba44d1c089411" kind="variable"><name>_sku</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1acb3f9b23f8c36ab46e435a685e84acd7" kind="variable"><name>_output</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a164b52f0a5c8aa03ab7ee0adb28a5072" kind="variable"><name>_wire</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a524a85aee5676734c4b7ad4edccb4584" kind="variable"><name>_deviceAddress</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1ab17a49c0b20c5af40574e50e7642ad16" kind="variable"><name>_channel</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a8ec36b67728c706e1d26727108ab2b88" kind="function"><name>~DFRobotDimmer</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1afa23eadd84aef6c537f2bd09951e53a1" kind="function"><name>setWire</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1ae348405078536dae09cbd53efb3972c2" kind="function"><name>getWire</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a0824314146931242a57d2fb22d52d8a7" kind="function"><name>setSKU</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a154a3eb3ea5c31d269e2dd1254f40cbe" kind="function"><name>getSKU</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a787206839fe862de890da60eb49db146" kind="function"><name>setOutput</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1abf3647219e5e3e7f2639c039491924d6" kind="function"><name>getOutput</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a0bbc67b4737e18c386b6b28a2ba5c0c0" kind="function"><name>setDeviceAddress</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a6c3bf41fdb4c15cc7fcee51b171a203e" kind="function"><name>getDeviceAddress</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a2b837feb23229c9adc26836f01131600" kind="function"><name>setChannel</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a83b2bb509506383cf5bd33fe608c50e2" kind="function"><name>getChannel</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1ab64c2d69d31e919ba456ad90ccd14cf2" kind="function"><name>getResolution</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1ab4d84864138a2eb32f57361b6f5fc202" kind="function"><name>begin</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1af29886b4c364adc366ca78d66d32d1d3" kind="function"><name>end</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a10d32304c6a1b119f6a96b114b2c70fd" kind="function"><name>type</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a9132dcc2dd637f2782c0d618633e0d66" kind="function"><name>_apply</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1aa9c68d333c042b392bb6e07f828851d2" kind="function"><name>_sendDutyCycle</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1ab7b7bbcae2a79f49b8b21a07d1946c50" kind="function"><name>_sendOutput</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a87b760de7ebc0671796f97e9482ae810" kind="function"><name>_send</name></member>
+    <member refid="classMycila_1_1DFRobotDimmer_1a862be6c3da2f43fabc7daa72da0c3270" kind="function"><name>_test</name></member>
+  </compound>
+  <compound refid="classMycila_1_1Dimmer" kind="class"><name>Mycila::Dimmer</name>
+    <member refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" kind="variable"><name>_enabled</name></member>
+    <member refid="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" kind="variable"><name>_online</name></member>
+    <member refid="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" kind="variable"><name>_dutyCycle</name></member>
+    <member refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" kind="variable"><name>_dutyCycleFire</name></member>
+    <member refid="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" kind="variable"><name>_dutyCycleLimit</name></member>
+    <member refid="classMycila_1_1Dimmer_1a85bfbf3fc1aa9e539abe22be3eeec368" kind="variable"><name>_dutyCycleMin</name></member>
+    <member refid="classMycila_1_1Dimmer_1a8c4c1126eb9e8429e97886970c1aa076" kind="variable"><name>_dutyCycleMax</name></member>
+    <member refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kind="variable"><name>_semiPeriod</name></member>
+    <member refid="classMycila_1_1Dimmer_1ad13ce419d205132904899d442cb96d94" kind="function"><name>~Dimmer</name></member>
+    <member refid="classMycila_1_1Dimmer_1a54fd1a618e053fc51434775fe92f2166" kind="function"><name>begin</name></member>
+    <member refid="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960" kind="function"><name>end</name></member>
+    <member refid="classMycila_1_1Dimmer_1a576ed69f3f6cf4be3baa58f536f9dd49" kind="function"><name>type</name></member>
+    <member refid="classMycila_1_1Dimmer_1af83b436ec8799d705dbf22265225beaf" kind="function"><name>setDutyCycleLimit</name></member>
+    <member refid="classMycila_1_1Dimmer_1a65e890fe02705d74cb3fb41387d843dc" kind="function"><name>setDutyCycleMin</name></member>
+    <member refid="classMycila_1_1Dimmer_1abe79bb19232cdede06774f88274672a6" kind="function"><name>setDutyCycleMax</name></member>
+    <member refid="classMycila_1_1Dimmer_1a90913d5b183b43ece94a9c323fb6cc1f" kind="function"><name>getDutyCycleLimit</name></member>
+    <member refid="classMycila_1_1Dimmer_1ab936b1ffcb91cb3339ed8da8ba086895" kind="function"><name>getDutyCycleMin</name></member>
+    <member refid="classMycila_1_1Dimmer_1a38579bf14b9e375b89e54970bbae16d1" kind="function"><name>getDutyCycleMax</name></member>
+    <member refid="classMycila_1_1Dimmer_1a5912fd1ebbeff4444b37247a7b2791f4" kind="function"><name>isEnabled</name></member>
+    <member refid="classMycila_1_1Dimmer_1a7141a09aef5e3896f7378061cfc6c337" kind="function"><name>isOnline</name></member>
+    <member refid="classMycila_1_1Dimmer_1a7dfc096d101bd15b5948d1e398fdc236" kind="function"><name>setOnline</name></member>
+    <member refid="classMycila_1_1Dimmer_1a8275a7b7cf9417c2d143519452a88880" kind="function"><name>on</name></member>
+    <member refid="classMycila_1_1Dimmer_1a04d71f45a6371457f6414af1d30a371e" kind="function"><name>off</name></member>
+    <member refid="classMycila_1_1Dimmer_1aa79fca836ab46599aa51d951bd258d58" kind="function"><name>isOff</name></member>
+    <member refid="classMycila_1_1Dimmer_1a45ffba29874e10e48ea48f247d61628b" kind="function"><name>isOn</name></member>
+    <member refid="classMycila_1_1Dimmer_1aaf5694660dfeec4f9131133324edf223" kind="function"><name>isOnAtFullPower</name></member>
+    <member refid="classMycila_1_1Dimmer_1ae0ef5805b0a6911171f379a0945bfa5c" kind="function"><name>setDutyCycle</name></member>
+    <member refid="classMycila_1_1Dimmer_1a717feacc41caacea0681e2fa6816e18c" kind="function"><name>getDutyCycle</name></member>
+    <member refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" kind="function"><name>getDutyCycleMapped</name></member>
+    <member refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" kind="function"><name>getDutyCycleFire</name></member>
+    <member refid="classMycila_1_1Dimmer_1acbc25eec2438b85782838265f9e8b8d3" kind="function"><name>getPowerRatio</name></member>
+    <member refid="classMycila_1_1Dimmer_1a6b34aab3c938759c82853fe5f917ee54" kind="function"><name>calculateHarmonics</name></member>
+    <member refid="classMycila_1_1Dimmer_1ae182ed0b25be3e4b82a1e6772e201e24" kind="function"><name>calculateMetrics</name></member>
+    <member refid="classMycila_1_1Dimmer_1a518d3f8796875645cfab0c395b9c90df" kind="function"><name>getSemiPeriod</name></member>
+    <member refid="classMycila_1_1Dimmer_1a10c7e14e08ab36dc3b480c33d908740e" kind="function"><name>setSemiPeriod</name></member>
+    <member refid="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c" kind="function"><name>_apply</name></member>
+    <member refid="classMycila_1_1Dimmer_1ac663b5f99852d96721f95aaa855cf499" kind="function"><name>_calculateDimmerHarmonics</name></member>
+    <member refid="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" kind="function"><name>_contrain</name></member>
+  </compound>
+  <compound refid="structMycila_1_1Dimmer_1_1Metrics" kind="struct"><name>Mycila::Dimmer::Metrics</name>
+    <member refid="structMycila_1_1Dimmer_1_1Metrics_1a017c296f1a13bf44398ce29d2eb7f70a" kind="variable"><name>voltage</name></member>
+    <member refid="structMycila_1_1Dimmer_1_1Metrics_1ad301259d8632b1d88b6b22d33675de7a" kind="variable"><name>current</name></member>
+    <member refid="structMycila_1_1Dimmer_1_1Metrics_1a2acd10385adeda58056dcc42e21a35b0" kind="variable"><name>power</name></member>
+    <member refid="structMycila_1_1Dimmer_1_1Metrics_1aaded7bf74296b346dab8292c94a8d132" kind="variable"><name>apparentPower</name></member>
+    <member refid="structMycila_1_1Dimmer_1_1Metrics_1a70ff1ea0039f394d2764e2d53e713c20" kind="variable"><name>powerFactor</name></member>
+    <member refid="structMycila_1_1Dimmer_1_1Metrics_1a75ef4f26332aa403f0685b53d5bd0697" kind="variable"><name>thdi</name></member>
+  </compound>
+  <compound refid="classMycila_1_1PhaseControlDimmer" kind="class"><name>Mycila::PhaseControlDimmer</name>
+    <member refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" kind="variable"><name>_powerLUTEnabled</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1aa47be906f9e651073aef730ade39ca86" kind="variable"><name>DIMMER_RESOLUTION</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1aef0f566f47549b3486088c4b69ec2609" kind="variable"><name>FIRING_DELAYS_LEN</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1a5535d5eb40e9774a08e3a54399ab5802" kind="variable"><name>FIRING_DELAY_MAX</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1ad6f43db853eeaac5993f472df72a732b" kind="variable"><name>FIRING_DELAYS_SCALE</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1aef46cb260c00a1314c0b11c0b793758c" kind="variable"><name>FIRING_DELAYS</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1a6c4cd8ed9117e8726533828029fbad4e" kind="function"><name>~PhaseControlDimmer</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1aa20d3cdec048767dff71208a72bdc940" kind="function"><name>enablePowerLUT</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" kind="function"><name>isPowerLUTEnabled</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" kind="function"><name>isOnline</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532" kind="function"><name>setDutyCycle</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce" kind="function"><name>getPowerRatio</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" kind="function"><name>_lookupFiringDelay</name></member>
+    <member refid="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172" kind="function"><name>_calculateDimmerHarmonics</name></member>
+  </compound>
+  <compound refid="classMycila_1_1PWMDimmer" kind="class"><name>Mycila::PWMDimmer</name>
+    <member refid="classMycila_1_1PWMDimmer_1a9325f94bcdb0de833acde913c4be8800" kind="variable"><name>_pin</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1a370db82395af193b92ab37ed9a686683" kind="variable"><name>_frequency</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1aedcfc13e4b0e979185ec6e10f0a20c2e" kind="variable"><name>_resolution</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1a4058fef5468d8d27bab0c99885f2a0ed" kind="function"><name>~PWMDimmer</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1a04eda47bd3b808743674eb3fc034aac7" kind="function"><name>setPin</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1abb1aed226515de9353ee37939d54a96e" kind="function"><name>getPin</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1a4de79584bffb1a77bba14a97e6c22d81" kind="function"><name>setFrequency</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1ae33f46712aec8126b2f4c7b72969ff92" kind="function"><name>getFrequency</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1a1e03df6c8414c708adfb214ec9135e7c" kind="function"><name>setResolution</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1a80199f11c002b692348e99aa1767afa9" kind="function"><name>getResolution</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1a314ba911ac20a6902e4723ae9cfe1299" kind="function"><name>begin</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1ab1c83c98bacc525f04d4af037ec2d378" kind="function"><name>end</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1ab77db1b2c82cabbbb8166f4d61bc7108" kind="function"><name>type</name></member>
+    <member refid="classMycila_1_1PWMDimmer_1ab712ac8a69195375ffeadb39c74126c3" kind="function"><name>_apply</name></member>
+  </compound>
+  <compound refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer" kind="struct"><name>Mycila::CycleStealingDimmer::RegisteredDimmer</name>
+    <member refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a1165d6ae61db01243182e881c5ba2f7f" kind="variable"><name>dimmer</name></member>
+    <member refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a05b7b7a4f71860e6c66360b242f29b55" kind="variable"><name>prev</name></member>
+    <member refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a6cff749e519557b8f35f0d34d3bcd45a" kind="variable"><name>next</name></member>
+  </compound>
+  <compound refid="structMycila_1_1ThyristorDimmer_1_1RegisteredDimmer" kind="struct"><name>Mycila::ThyristorDimmer::RegisteredDimmer</name>
+    <member refid="structMycila_1_1ThyristorDimmer_1_1RegisteredDimmer_1af49e44a013b715513920e8bd06ae3e7e" kind="variable"><name>dimmer</name></member>
+    <member refid="structMycila_1_1ThyristorDimmer_1_1RegisteredDimmer_1a3a855b1a8d40ebb1ff84fba81dec4af9" kind="variable"><name>prev</name></member>
+    <member refid="structMycila_1_1ThyristorDimmer_1_1RegisteredDimmer_1a6876811ff7036b3684c4edc38604d038" kind="variable"><name>next</name></member>
+  </compound>
+  <compound refid="classMycila_1_1ThyristorDimmer" kind="class"><name>Mycila::ThyristorDimmer</name>
+    <member refid="classMycila_1_1ThyristorDimmer_1a651b2c8735152898b841241a588801f0" kind="variable"><name>_pin</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a5a496f6e6e71b608579595ccf7e90b61" kind="variable"><name>_delay</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a020b5b7f130376b69dc665a4ab8fa7eb" kind="variable"><name>alarm_count</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a4098c2fd1c3822aebec4f764be2e7abc" kind="variable"><name>dimmers</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a4e2785135580ff2e2decc46d7ee3387c" kind="function"><name>~ThyristorDimmer</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a6ea7401605120ef604f0f5fdb255b58e" kind="function"><name>setPin</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a39b9f1be2d0ace6ecaf323b175b6323c" kind="function"><name>getPin</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1aeae233eac6f9dbc0b73b39b32159bee6" kind="function"><name>getFiringDelay</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1acefc6e35c851e599035e5c2cb2730694" kind="function"><name>getPhaseAngle</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1ae6a65f0467eadbbb9a21a5d2fb2cda89" kind="function"><name>begin</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1aeb0acda0ee498ff78561ae9d7d5c2e6a" kind="function"><name>end</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1afda1af88f34b1c0126525d7ca17bdfb8" kind="function"><name>type</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1ac868f096c92e91522456b38adbd4c1ba" kind="function"><name>onZeroCross</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a1fe34a978cd88893d7a005ac3fb15cd5" kind="function"><name>_apply</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a1b9df65747cd19e7e2e077f95f55ea30" kind="function"><name>_fireTimerISR</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1a906d57bdd68cd8e954f73d5c6b537acf" kind="function"><name>_registerDimmer</name></member>
+    <member refid="classMycila_1_1ThyristorDimmer_1aaafb683092ccd31bb3bab9cbc563be95" kind="function"><name>_unregisterDimmer</name></member>
+  </compound>
+  <compound refid="namespaceMycila" kind="namespace"><name>Mycila</name>
+  </compound>
+  <compound refid="MycilaDimmer_8h" kind="file"><name>MycilaDimmer.h</name>
+    <member refid="MycilaDimmer_8h_1a46043bcc87f27bf8ae3119e4efb89eed" kind="define"><name>MYCILA_DIMMER_VERSION</name></member>
+    <member refid="MycilaDimmer_8h_1a28b2f0ea5a17cc0335a01955737bc32c" kind="define"><name>MYCILA_DIMMER_VERSION_MAJOR</name></member>
+    <member refid="MycilaDimmer_8h_1af33901d7dc6e6671ae0ec31d2af899e9" kind="define"><name>MYCILA_DIMMER_VERSION_MINOR</name></member>
+    <member refid="MycilaDimmer_8h_1a840f53793f3ea2602767c0fd1f6eafc7" kind="define"><name>MYCILA_DIMMER_VERSION_REVISION</name></member>
+  </compound>
+  <compound refid="MycilaDimmerCycleStealing_8h" kind="file"><name>MycilaDimmerCycleStealing.h</name>
+  </compound>
+  <compound refid="MycilaDimmerDFRobot_8h" kind="file"><name>MycilaDimmerDFRobot.h</name>
+  </compound>
+  <compound refid="MycilaDimmerPhaseControl_8h" kind="file"><name>MycilaDimmerPhaseControl.h</name>
+  </compound>
+  <compound refid="MycilaDimmerPWM_8h" kind="file"><name>MycilaDimmerPWM.h</name>
+    <member refid="MycilaDimmerPWM_8h_1a4635458c2450d9503a2da6e8fdd36350" kind="define"><name>MYCILA_DIMMER_PWM_RESOLUTION</name></member>
+    <member refid="MycilaDimmerPWM_8h_1ad345ad0b183ebb891b69f1d5feccf5ce" kind="define"><name>MYCILA_DIMMER_PWM_FREQUENCY</name></member>
+  </compound>
+  <compound refid="MycilaDimmers_8h" kind="file"><name>MycilaDimmers.h</name>
+  </compound>
+  <compound refid="MycilaDimmerThyristor_8h" kind="file"><name>MycilaDimmerThyristor.h</name>
+  </compound>
+  <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
+  </compound>
+</doxygenindex>
