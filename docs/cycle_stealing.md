@@ -10,6 +10,8 @@ Cycle stealing (or integral cycle control) varies power by delivering complete h
 - **50% Power:** The SSR is ON every other half-cycle.
 - **1% Power:** The SSR is ON for 1 half-cycle out of every 100.
 
+![Cycle Stealing 50%](assets/img/measurements/cycle-stealing-0.5.png)
+
 Unlike phase control, which chops the sine wave (generating high EMF noise), cycle stealing switches only at zero-crossing points, generating virtually zero noise. This makes it ideal for resistive loads like heaters.
 
 ## The Algorithm: Delta-Sigma Modulation
