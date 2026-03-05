@@ -4,7 +4,7 @@
 [![Continuous Integration](https://github.com/mathieucarbou/MycilaDimmer/actions/workflows/ci.yml/badge.svg)](https://github.com/mathieucarbou/MycilaDimmer/actions/workflows/ci.yml)
 [![PlatformIO Registry](https://badges.registry.platformio.org/packages/mathieucarbou/library/MycilaDimmer.svg)](https://registry.platformio.org/libraries/mathieucarbou/MycilaDimmer)
 
-A comprehensive ESP32/Arduino library for controlling AC power devices including TRIACs, SSRs, and voltage regulators through multiple dimming methods.
+A comprehensive ESP32/Arduino dimming library for controlling AC power devices including TRIACs, SSRs, and voltage regulators through multiple dimming methods.
 
 > **[📖 Full documentation and API reference → mathieu.carbou.me/MycilaDimmer](https://mathieu.carbou.me/MycilaDimmer/)**
 
