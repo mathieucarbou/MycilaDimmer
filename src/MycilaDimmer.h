@@ -323,6 +323,7 @@ namespace Mycila {
             }
           }
         }
+        delete[] output;
       }
 #endif
 
