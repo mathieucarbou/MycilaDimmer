@@ -1,6 +1,6 @@
 {
   "name": "MycilaDimmer",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "ESP32 / Arduino Dimming Library to control TRIAC, Random SSR, Voltage Regulator with DfRobot DAC or PWM",
   "keywords": "configuration",
   "homepage": "https://github.com/mathieucarbou/MycilaDimmer",
