@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer" kind="struct" language="C++" prot="private">
+    <compoundname>Mycila::CycleStealingDimmer::RegisteredDimmer</compoundname>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a1165d6ae61db01243182e881c5ba2f7f" prot="public" static="no" mutable="no">
+        <type><ref refid="classMycila_1_1CycleStealingDimmer" kindref="compound">CycleStealingDimmer</ref> *</type>
+        <definition>CycleStealingDimmer* Mycila::CycleStealingDimmer::RegisteredDimmer::dimmer</definition>
+        <argsstring></argsstring>
+        <name>dimmer</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::RegisteredDimmer::dimmer</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="93" column="31" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="93" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a05b7b7a4f71860e6c66360b242f29b55" prot="public" static="no" mutable="no">
+        <type>RegisteredDimmer *</type>
+        <definition>RegisteredDimmer* Mycila::CycleStealingDimmer::RegisteredDimmer::prev</definition>
+        <argsstring></argsstring>
+        <name>prev</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::RegisteredDimmer::prev</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="94" column="28" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="94" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a6cff749e519557b8f35f0d34d3bcd45a" prot="public" static="no" mutable="no">
+        <type>RegisteredDimmer *</type>
+        <definition>RegisteredDimmer* Mycila::CycleStealingDimmer::RegisteredDimmer::next</definition>
+        <argsstring></argsstring>
+        <name>next</name>
+        <qualifiedname>Mycila::CycleStealingDimmer::RegisteredDimmer::next</qualifiedname>
+        <initializer>= nullptr</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerCycleStealing.h" line="95" column="28" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="95" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="2">
+        <label>Mycila::CycleStealingDimmer</label>
+        <link refid="classMycila_1_1CycleStealingDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mycila::CycleStealingDimmer::RegisteredDimmer</label>
+        <childnode refid="2" relation="usage">
+          <edgelabel>dimmer</edgelabel>
+        </childnode>
+        <childnode refid="1" relation="usage">
+          <edgelabel>next</edgelabel>
+          <edgelabel>prev</edgelabel>
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+    </collaborationgraph>
+    <location file="src/MycilaDimmerCycleStealing.h" line="92" column="7" bodyfile="src/MycilaDimmerCycleStealing.h" bodystart="92" bodyend="96"/>
+    <listofallmembers>
+      <member refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a1165d6ae61db01243182e881c5ba2f7f" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer::RegisteredDimmer</scope><name>dimmer</name></member>
+      <member refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a6cff749e519557b8f35f0d34d3bcd45a" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer::RegisteredDimmer</scope><name>next</name></member>
+      <member refid="structMycila_1_1CycleStealingDimmer_1_1RegisteredDimmer_1a05b7b7a4f71860e6c66360b242f29b55" prot="public" virt="non-virtual"><scope>Mycila::CycleStealingDimmer::RegisteredDimmer</scope><name>prev</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

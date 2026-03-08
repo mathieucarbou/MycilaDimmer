@@ -1,0 +1,655 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classMycila_1_1DFRobotDimmer" kind="class" language="C++" prot="public">
+    <compoundname>Mycila::DFRobotDimmer</compoundname>
+    <basecompoundref refid="classMycila_1_1PhaseControlDimmer" prot="public" virt="non-virtual">Mycila::PhaseControlDimmer</basecompoundref>
+    <includes refid="MycilaDimmerDFRobot_8h" local="no">MycilaDimmerDFRobot.h</includes>
+    <sectiondef kind="public-type">
+      <memberdef kind="enum" id="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>SKU</name>
+        <qualifiedname>Mycila::DFRobotDimmer::SKU</qualifiedname>
+        <enumvalue id="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a696b031073e74bf2cb98e5ef201d4aa3" prot="public">
+          <name>UNKNOWN</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aaee6d0fcea577ca78ecb74a4554b7257" prot="public">
+          <name>DFR1071_GP8211S</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aebcaf9299dde44e9c24b89fb43ae9f93" prot="public">
+          <name>DFR1073_GP8413</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a30bb788e02f2c6d17bb7b020c5fcdb61" prot="public">
+          <name>DFR0971_GP8403</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="17" column="7" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="17" bodyend="25"/>
+      </memberdef>
+      <memberdef kind="enum" id="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" prot="public" static="no" strong="yes">
+        <type></type>
+        <name>Output</name>
+        <qualifiedname>Mycila::DFRobotDimmer::Output</qualifiedname>
+        <enumvalue id="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135adfd0749b5fbb78dcdd9c3a36651cb32b" prot="public">
+          <name>RANGE_0_5V</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135a3060079d1a8e3c0a0d718ae01b1946f3" prot="public">
+          <name>RANGE_0_10V</name>
+          <briefdescription>
+          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="27" column="7" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="27" bodyend="30"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classMycila_1_1DFRobotDimmer_1a9a472b4240fce7cd7a0ba44d1c089411" prot="private" static="no" mutable="no">
+        <type><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" kindref="member">SKU</ref></type>
+        <definition>SKU Mycila::DFRobotDimmer::_sku</definition>
+        <argsstring></argsstring>
+        <name>_sku</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_sku</qualifiedname>
+        <initializer>= <ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a696b031073e74bf2cb98e5ef201d4aa3" kindref="member">SKU::UNKNOWN</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="125" column="11" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="125" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1DFRobotDimmer_1acb3f9b23f8c36ab46e435a685e84acd7" prot="private" static="no" mutable="no">
+        <type><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref></type>
+        <definition>Output Mycila::DFRobotDimmer::_output</definition>
+        <argsstring></argsstring>
+        <name>_output</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_output</qualifiedname>
+        <initializer>= <ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135a3060079d1a8e3c0a0d718ae01b1946f3" kindref="member">Output::RANGE_0_10V</ref></initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="126" column="14" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="126" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1DFRobotDimmer_1a164b52f0a5c8aa03ab7ee0adb28a5072" prot="private" static="no" mutable="no">
+        <type>TwoWire *</type>
+        <definition>TwoWire* Mycila::DFRobotDimmer::_wire</definition>
+        <argsstring></argsstring>
+        <name>_wire</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_wire</qualifiedname>
+        <initializer>= &amp;Wire</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="127" column="15" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="127" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1DFRobotDimmer_1a524a85aee5676734c4b7ad4edccb4584" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::_deviceAddress</definition>
+        <argsstring></argsstring>
+        <name>_deviceAddress</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_deviceAddress</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="128" column="15" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="128" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1DFRobotDimmer_1ab17a49c0b20c5af40574e50e7642ad16" prot="private" static="no" mutable="no">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::_channel</definition>
+        <argsstring></argsstring>
+        <name>_channel</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_channel</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="129" column="15" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="129" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a8ec36b67728c706e1d26727108ab2b88" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mycila::DFRobotDimmer::~DFRobotDimmer</definition>
+        <argsstring>()</argsstring>
+        <name>~DFRobotDimmer</name>
+        <qualifiedname>Mycila::DFRobotDimmer::~DFRobotDimmer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="32" column="15" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="32" bodyend="32"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1afa23eadd84aef6c537f2bd09951e53a1" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::DFRobotDimmer::setWire</definition>
+        <argsstring>(TwoWire &amp;wire)</argsstring>
+        <name>setWire</name>
+        <qualifiedname>Mycila::DFRobotDimmer::setWire</qualifiedname>
+        <param>
+          <type>TwoWire &amp;</type>
+          <declname>wire</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="34" column="12" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="34" bodyend="34"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1ae348405078536dae09cbd53efb3972c2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>TwoWire &amp;</type>
+        <definition>TwoWire &amp; Mycila::DFRobotDimmer::getWire</definition>
+        <argsstring>() const</argsstring>
+        <name>getWire</name>
+        <qualifiedname>Mycila::DFRobotDimmer::getWire</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="35" column="15" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="35" bodyend="35"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a0824314146931242a57d2fb22d52d8a7" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::DFRobotDimmer::setSKU</definition>
+        <argsstring>(SKU sku)</argsstring>
+        <name>setSKU</name>
+        <qualifiedname>Mycila::DFRobotDimmer::setSKU</qualifiedname>
+        <param>
+          <type><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" kindref="member">SKU</ref></type>
+          <declname>sku</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="37" column="12" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="37" bodyend="37"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a154a3eb3ea5c31d269e2dd1254f40cbe" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" kindref="member">SKU</ref></type>
+        <definition>SKU Mycila::DFRobotDimmer::getSKU</definition>
+        <argsstring>() const</argsstring>
+        <name>getSKU</name>
+        <qualifiedname>Mycila::DFRobotDimmer::getSKU</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="38" column="11" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="38" bodyend="38"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a787206839fe862de890da60eb49db146" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::DFRobotDimmer::setOutput</definition>
+        <argsstring>(Output output)</argsstring>
+        <name>setOutput</name>
+        <qualifiedname>Mycila::DFRobotDimmer::setOutput</qualifiedname>
+        <param>
+          <type><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref></type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+<para>Set output mode of the device: 0-5V or 0-10V. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>output</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output mode </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="44" column="12" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="44" bodyend="44"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1abf3647219e5e3e7f2639c039491924d6" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref></type>
+        <definition>Output Mycila::DFRobotDimmer::getOutput</definition>
+        <argsstring>() const</argsstring>
+        <name>getOutput</name>
+        <qualifiedname>Mycila::DFRobotDimmer::getOutput</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="45" column="14" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="45" bodyend="45"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a0bbc67b4737e18c386b6b28a2ba5c0c0" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::DFRobotDimmer::setDeviceAddress</definition>
+        <argsstring>(uint8_t deviceAddress)</argsstring>
+        <name>setDeviceAddress</name>
+        <qualifiedname>Mycila::DFRobotDimmer::setDeviceAddress</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>deviceAddress</declname>
+        </param>
+        <briefdescription>
+<para>I2C address of the device. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>deviceAddress</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>I2C address </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="51" column="12" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="51" bodyend="51"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a6c3bf41fdb4c15cc7fcee51b171a203e" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::getDeviceAddress</definition>
+        <argsstring>() const</argsstring>
+        <name>getDeviceAddress</name>
+        <qualifiedname>Mycila::DFRobotDimmer::getDeviceAddress</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="52" column="15" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="52" bodyend="52"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a2b837feb23229c9adc26836f01131600" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::DFRobotDimmer::setChannel</definition>
+        <argsstring>(uint8_t channel)</argsstring>
+        <name>setChannel</name>
+        <qualifiedname>Mycila::DFRobotDimmer::setChannel</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>channel</declname>
+        </param>
+        <briefdescription>
+<para>Set channel number. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>channel</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>output channel <linebreak/>
+ 0: Channel 0 (valid when PWM0 output is configured) <linebreak/>
+ 1: Channel 1 (valid when PWM1 output is configured) <linebreak/>
+ 2: All channels (valid when configuring dual channel output) </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="61" column="12" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="61" bodyend="61"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a83b2bb509506383cf5bd33fe608c50e2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::getChannel</definition>
+        <argsstring>() const</argsstring>
+        <name>getChannel</name>
+        <qualifiedname>Mycila::DFRobotDimmer::getChannel</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="62" column="15" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="62" bodyend="62"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1ab64c2d69d31e919ba456ad90ccd14cf2" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::getResolution</definition>
+        <argsstring>() const</argsstring>
+        <name>getResolution</name>
+        <qualifiedname>Mycila::DFRobotDimmer::getResolution</qualifiedname>
+        <briefdescription>
+<para>Get the PWM resolution in bits. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="67" column="15" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="67" bodyend="78"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1ab4d84864138a2eb32f57361b6f5fc202" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::DFRobotDimmer::begin</definition>
+        <argsstring>() override</argsstring>
+        <name>begin</name>
+        <qualifiedname>Mycila::DFRobotDimmer::begin</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a54fd1a618e053fc51434775fe92f2166">begin</reimplements>
+        <briefdescription>
+<para>Enable a dimmer on a specific GPIO pin. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be enabled if pin is invalid </para>
+</simplesect>
+<simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be activated until the ZCD is enabled </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="86" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1af29886b4c364adc366ca78d66d32d1d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="virtual">
+        <type>void</type>
+        <definition>void Mycila::DFRobotDimmer::end</definition>
+        <argsstring>() override</argsstring>
+        <name>end</name>
+        <qualifiedname>Mycila::DFRobotDimmer::end</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960">end</reimplements>
+        <briefdescription>
+<para>Disable the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para><ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> won&apos;t be destroyed but won&apos;t turn on anymore even is a duty cycle is set. </para>
+</simplesect>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="93" column="12"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a10d32304c6a1b119f6a96b114b2c70fd" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>const char * Mycila::DFRobotDimmer::type</definition>
+        <argsstring>() const override</argsstring>
+        <name>type</name>
+        <qualifiedname>Mycila::DFRobotDimmer::type</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a576ed69f3f6cf4be3baa58f536f9dd49">type</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="95" column="18" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="95" bodyend="95"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a9132dcc2dd637f2782c0d618633e0d66" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>bool Mycila::DFRobotDimmer::_apply</definition>
+        <argsstring>() override</argsstring>
+        <name>_apply</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_apply</qualifiedname>
+        <reimplements refid="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c">_apply</reimplements>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="116" column="12" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="116" bodyend="122"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="private-func">
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1aa9c68d333c042b392bb6e07f828851d2" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::_sendDutyCycle</definition>
+        <argsstring>(uint8_t address, uint16_t duty)</argsstring>
+        <name>_sendDutyCycle</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_sendDutyCycle</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint16_t</type>
+          <declname>duty</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="131" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1ab7b7bbcae2a79f49b8b21a07d1946c50" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::_sendOutput</definition>
+        <argsstring>(uint8_t address, Output output)</argsstring>
+        <name>_sendOutput</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_sendOutput</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref></type>
+          <declname>output</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="132" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a87b760de7ebc0671796f97e9482ae810" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::_send</definition>
+        <argsstring>(uint8_t address, uint8_t reg, uint8_t *buffer, size_t size)</argsstring>
+        <name>_send</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_send</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <param>
+          <type>uint8_t</type>
+          <declname>reg</declname>
+        </param>
+        <param>
+          <type>uint8_t *</type>
+          <declname>buffer</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>size</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="133" column="15"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1DFRobotDimmer_1a862be6c3da2f43fabc7daa72da0c3270" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>uint8_t</type>
+        <definition>uint8_t Mycila::DFRobotDimmer::_test</definition>
+        <argsstring>(uint8_t address)</argsstring>
+        <name>_test</name>
+        <qualifiedname>Mycila::DFRobotDimmer::_test</qualifiedname>
+        <param>
+          <type>uint8_t</type>
+          <declname>address</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmerDFRobot.h" line="134" column="15"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+<para>DFRobot DFR1071/DFR1073/DFR0971 I2C controlled 0-10V/0-5V dimmer implementation for voltage regulators controlled by a 0-10V/0-5V analog signal. </para>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="1">
+        <label>Mycila::DFRobotDimmer</label>
+        <link refid="classMycila_1_1DFRobotDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="2">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <collaborationgraph>
+      <node id="1">
+        <label>Mycila::DFRobotDimmer</label>
+        <link refid="classMycila_1_1DFRobotDimmer"/>
+        <childnode refid="2" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="2">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </collaborationgraph>
+    <location file="src/MycilaDimmerDFRobot.h" line="15" column="3" bodyfile="src/MycilaDimmerDFRobot.h" bodystart="15" bodyend="135"/>
+    <listofallmembers>
+      <member refid="classMycila_1_1DFRobotDimmer_1a9132dcc2dd637f2782c0d618633e0d66" prot="protected" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>_apply</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172" prot="protected" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>_calculateDimmerHarmonics</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1ab17a49c0b20c5af40574e50e7642ad16" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_channel</name></member>
+      <member refid="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_contrain</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a524a85aee5676734c4b7ad4edccb4584" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_deviceAddress</name></member>
+      <member refid="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_dutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_dutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_dutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8c4c1126eb9e8429e97886970c1aa076" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_dutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a85bfbf3fc1aa9e539abe22be3eeec368" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_dutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_enabled</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1af6c2d992c3215a8c48afe8ee045eca4d" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_lookupFiringDelay</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_online</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1acb3f9b23f8c36ab46e435a685e84acd7" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_output</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a9325bd1c8ec7cf6ea73312e1b3f6604b" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_powerLUTEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" prot="protected" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_semiPeriod</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a87b760de7ebc0671796f97e9482ae810" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_send</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1aa9c68d333c042b392bb6e07f828851d2" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_sendDutyCycle</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1ab7b7bbcae2a79f49b8b21a07d1946c50" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_sendOutput</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a9a472b4240fce7cd7a0ba44d1c089411" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_sku</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a862be6c3da2f43fabc7daa72da0c3270" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_test</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a164b52f0a5c8aa03ab7ee0adb28a5072" prot="private" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>_wire</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1ab4d84864138a2eb32f57361b6f5fc202" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>begin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a6b34aab3c938759c82853fe5f917ee54" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>calculateHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1ae182ed0b25be3e4b82a1e6772e201e24" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>calculateMetrics</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1aa20d3cdec048767dff71208a72bdc940" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>enablePowerLUT</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1af29886b4c364adc366ca78d66d32d1d3" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>end</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a83b2bb509506383cf5bd33fe608c50e2" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getChannel</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a6c3bf41fdb4c15cc7fcee51b171a203e" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getDeviceAddress</name></member>
+      <member refid="classMycila_1_1Dimmer_1a717feacc41caacea0681e2fa6816e18c" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getDutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a90913d5b183b43ece94a9c323fb6cc1f" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getDutyCycleMapped</name></member>
+      <member refid="classMycila_1_1Dimmer_1a38579bf14b9e375b89e54970bbae16d1" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab936b1ffcb91cb3339ed8da8ba086895" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getDutyCycleMin</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1abf3647219e5e3e7f2639c039491924d6" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getOutput</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>getPowerRatio</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1ab64c2d69d31e919ba456ad90ccd14cf2" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getResolution</name></member>
+      <member refid="classMycila_1_1Dimmer_1a518d3f8796875645cfab0c395b9c90df" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getSemiPeriod</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a154a3eb3ea5c31d269e2dd1254f40cbe" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getSKU</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1ae348405078536dae09cbd53efb3972c2" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>getWire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a5912fd1ebbeff4444b37247a7b2791f4" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>isEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1aa79fca836ab46599aa51d951bd258d58" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>isOff</name></member>
+      <member refid="classMycila_1_1Dimmer_1a45ffba29874e10e48ea48f247d61628b" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>isOn</name></member>
+      <member refid="classMycila_1_1Dimmer_1aaf5694660dfeec4f9131133324edf223" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>isOnAtFullPower</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>isOnline</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a48cf62a536f65ce9b6eae8f5bbfe6d0d" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>isPowerLUTEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1a04d71f45a6371457f6414af1d30a371e" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>off</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8275a7b7cf9417c2d143519452a88880" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>on</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>Output</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a2b837feb23229c9adc26836f01131600" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setChannel</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a0bbc67b4737e18c386b6b28a2ba5c0c0" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setDeviceAddress</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>setDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1af83b436ec8799d705dbf22265225beaf" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1abe79bb19232cdede06774f88274672a6" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a65e890fe02705d74cb3fb41387d843dc" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setDutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7dfc096d101bd15b5948d1e398fdc236" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setOnline</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a787206839fe862de890da60eb49db146" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setOutput</name></member>
+      <member refid="classMycila_1_1Dimmer_1a10c7e14e08ab36dc3b480c33d908740e" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setSemiPeriod</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a0824314146931242a57d2fb22d52d8a7" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setSKU</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1afa23eadd84aef6c537f2bd09951e53a1" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>setWire</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" prot="public" virt="non-virtual"><scope>Mycila::DFRobotDimmer</scope><name>SKU</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a10d32304c6a1b119f6a96b114b2c70fd" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>type</name></member>
+      <member refid="classMycila_1_1DFRobotDimmer_1a8ec36b67728c706e1d26727108ab2b88" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>~DFRobotDimmer</name></member>
+      <member refid="classMycila_1_1Dimmer_1ad13ce419d205132904899d442cb96d94" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>~Dimmer</name></member>
+      <member refid="classMycila_1_1PhaseControlDimmer_1a6c4cd8ed9117e8726533828029fbad4e" prot="public" virt="virtual"><scope>Mycila::DFRobotDimmer</scope><name>~PhaseControlDimmer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

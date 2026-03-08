@@ -1,0 +1,799 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="classMycila_1_1Dimmer" kind="class" language="C++" prot="public">
+    <compoundname>Mycila::Dimmer</compoundname>
+    <derivedcompoundref refid="classMycila_1_1CycleStealingDimmer" prot="public" virt="non-virtual">Mycila::CycleStealingDimmer</derivedcompoundref>
+    <derivedcompoundref refid="classMycila_1_1PhaseControlDimmer" prot="public" virt="non-virtual">Mycila::PhaseControlDimmer</derivedcompoundref>
+    <includes refid="MycilaDimmer_8h" local="no">MycilaDimmer.h</includes>
+    <innerclass refid="structMycila_1_1Dimmer_1_1Metrics" prot="public">Mycila::Dimmer::Metrics</innerclass>
+    <sectiondef kind="protected-attrib">
+      <memberdef kind="variable" id="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Mycila::Dimmer::_enabled</definition>
+        <argsstring></argsstring>
+        <name>_enabled</name>
+        <qualifiedname>Mycila::Dimmer::_enabled</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="331" column="12" bodyfile="src/MycilaDimmer.h" bodystart="331" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" prot="protected" static="no" mutable="no">
+        <type>bool</type>
+        <definition>bool Mycila::Dimmer::_online</definition>
+        <argsstring></argsstring>
+        <name>_online</name>
+        <qualifiedname>Mycila::Dimmer::_online</qualifiedname>
+        <initializer>= false</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="332" column="12" bodyfile="src/MycilaDimmer.h" bodystart="332" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::_dutyCycle</definition>
+        <argsstring></argsstring>
+        <name>_dutyCycle</name>
+        <qualifiedname>Mycila::Dimmer::_dutyCycle</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="334" column="13" bodyfile="src/MycilaDimmer.h" bodystart="334" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::_dutyCycleFire</definition>
+        <argsstring></argsstring>
+        <name>_dutyCycleFire</name>
+        <qualifiedname>Mycila::Dimmer::_dutyCycleFire</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="335" column="13" bodyfile="src/MycilaDimmer.h" bodystart="335" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::_dutyCycleLimit</definition>
+        <argsstring></argsstring>
+        <name>_dutyCycleLimit</name>
+        <qualifiedname>Mycila::Dimmer::_dutyCycleLimit</qualifiedname>
+        <initializer>= 1.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="336" column="13" bodyfile="src/MycilaDimmer.h" bodystart="336" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1Dimmer_1a85bfbf3fc1aa9e539abe22be3eeec368" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::_dutyCycleMin</definition>
+        <argsstring></argsstring>
+        <name>_dutyCycleMin</name>
+        <qualifiedname>Mycila::Dimmer::_dutyCycleMin</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="337" column="13" bodyfile="src/MycilaDimmer.h" bodystart="337" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classMycila_1_1Dimmer_1a8c4c1126eb9e8429e97886970c1aa076" prot="protected" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::_dutyCycleMax</definition>
+        <argsstring></argsstring>
+        <name>_dutyCycleMax</name>
+        <qualifiedname>Mycila::Dimmer::_dutyCycleMax</qualifiedname>
+        <initializer>= 1.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="338" column="13" bodyfile="src/MycilaDimmer.h" bodystart="338" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-attrib">
+      <memberdef kind="variable" id="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" prot="protected" static="yes" mutable="no">
+        <type>uint16_t</type>
+        <definition>uint16_t Mycila::Dimmer::_semiPeriod</definition>
+        <argsstring></argsstring>
+        <name>_semiPeriod</name>
+        <qualifiedname>Mycila::Dimmer::_semiPeriod</qualifiedname>
+        <initializer>= 0</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="340" column="30" bodyfile="src/MycilaDimmer.h" bodystart="340" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-func">
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1ad13ce419d205132904899d442cb96d94" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type></type>
+        <definition>virtual Mycila::Dimmer::~Dimmer</definition>
+        <argsstring>()</argsstring>
+        <name>~Dimmer</name>
+        <qualifiedname>Mycila::Dimmer::~Dimmer</qualifiedname>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="36" column="15" bodyfile="src/MycilaDimmer.h" bodystart="36" bodyend="36"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a54fd1a618e053fc51434775fe92f2166" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Mycila::Dimmer::begin</definition>
+        <argsstring>()</argsstring>
+        <name>begin</name>
+        <qualifiedname>Mycila::Dimmer::begin</qualifiedname>
+        <reimplementedby refid="classMycila_1_1CycleStealingDimmer_1a478af9dbe8d3d1dfd7a4000238f68ebb">begin</reimplementedby>
+        <reimplementedby refid="classMycila_1_1DFRobotDimmer_1ab4d84864138a2eb32f57361b6f5fc202">begin</reimplementedby>
+        <reimplementedby refid="classMycila_1_1PWMDimmer_1a314ba911ac20a6902e4723ae9cfe1299">begin</reimplementedby>
+        <reimplementedby refid="classMycila_1_1ThyristorDimmer_1ae6a65f0467eadbbb9a21a5d2fb2cda89">begin</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="38" column="20" bodyfile="src/MycilaDimmer.h" bodystart="38" bodyend="41"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>void</type>
+        <definition>virtual void Mycila::Dimmer::end</definition>
+        <argsstring>()</argsstring>
+        <name>end</name>
+        <qualifiedname>Mycila::Dimmer::end</qualifiedname>
+        <reimplementedby refid="classMycila_1_1CycleStealingDimmer_1a45ae13f8dde4a574404c21d3e3747bbb">end</reimplementedby>
+        <reimplementedby refid="classMycila_1_1DFRobotDimmer_1af29886b4c364adc366ca78d66d32d1d3">end</reimplementedby>
+        <reimplementedby refid="classMycila_1_1PWMDimmer_1ab1c83c98bacc525f04d4af037ec2d378">end</reimplementedby>
+        <reimplementedby refid="classMycila_1_1ThyristorDimmer_1aeb0acda0ee498ff78561ae9d7d5c2e6a">end</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="42" column="20" bodyfile="src/MycilaDimmer.h" bodystart="42" bodyend="42"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a576ed69f3f6cf4be3baa58f536f9dd49" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>const char *</type>
+        <definition>virtual const char * Mycila::Dimmer::type</definition>
+        <argsstring>() const</argsstring>
+        <name>type</name>
+        <qualifiedname>Mycila::Dimmer::type</qualifiedname>
+        <reimplementedby refid="classMycila_1_1CycleStealingDimmer_1a5da91cc782149bc6e2bac026c0a8d3ec">type</reimplementedby>
+        <reimplementedby refid="classMycila_1_1DFRobotDimmer_1a10d32304c6a1b119f6a96b114b2c70fd">type</reimplementedby>
+        <reimplementedby refid="classMycila_1_1PWMDimmer_1ab77db1b2c82cabbbb8166f4d61bc7108">type</reimplementedby>
+        <reimplementedby refid="classMycila_1_1ThyristorDimmer_1afda1af88f34b1c0126525d7ca17bdfb8">type</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="43" column="26" bodyfile="src/MycilaDimmer.h" bodystart="43" bodyend="43"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1af83b436ec8799d705dbf22265225beaf" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::Dimmer::setDutyCycleLimit</definition>
+        <argsstring>(float limit)</argsstring>
+        <name>setDutyCycleLimit</name>
+        <qualifiedname>Mycila::Dimmer::setDutyCycleLimit</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>limit</declname>
+        </param>
+        <briefdescription>
+<para>Set the power duty cycle limit of the dimmer. The duty cycle will be clamped to this limit. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>limit</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the power duty cycle limit in the range [0.0, 1.0] </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="54" column="12" bodyfile="src/MycilaDimmer.h" bodystart="54" bodyend="58"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a65e890fe02705d74cb3fb41387d843dc" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::Dimmer::setDutyCycleMin</definition>
+        <argsstring>(float min)</argsstring>
+        <name>setDutyCycleMin</name>
+        <qualifiedname>Mycila::Dimmer::setDutyCycleMin</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>min</declname>
+        </param>
+        <briefdescription>
+<para>Duty remapping (equivalent to Shelly <ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> remapping feature). Useful to calibrate the dimmer when using for example a PWM signal to 0-10V analog convertor connected to a voltage regulator which is only working in a specific voltage range like 1-8V. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>min</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set the new &quot;0&quot; value for the power duty cycle. The duty cycle in the range [0.0, 1.0] will be remapped to [min, max]. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="66" column="12" bodyfile="src/MycilaDimmer.h" bodystart="66" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1abe79bb19232cdede06774f88274672a6" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::Dimmer::setDutyCycleMax</definition>
+        <argsstring>(float max)</argsstring>
+        <name>setDutyCycleMax</name>
+        <qualifiedname>Mycila::Dimmer::setDutyCycleMax</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>max</declname>
+        </param>
+        <briefdescription>
+<para>Duty remapping (equivalent to Shelly <ref refid="classMycila_1_1Dimmer" kindref="compound">Dimmer</ref> remapping feature). Useful to calibrate the dimmer when using for example a PWM signal to 0-10V analog convertor connected to a voltage regulator which is only working in a specific voltage range like 1-8V. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>max</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Set the new &quot;1&quot; value for the power duty cycle. The duty cycle in the range [0.0, 1.0] will be remapped to [min, max]. </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="77" column="12" bodyfile="src/MycilaDimmer.h" bodystart="77" bodyend="80"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a90913d5b183b43ece94a9c323fb6cc1f" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::getDutyCycleLimit</definition>
+        <argsstring>() const</argsstring>
+        <name>getDutyCycleLimit</name>
+        <qualifiedname>Mycila::Dimmer::getDutyCycleLimit</qualifiedname>
+        <briefdescription>
+<para>Get the power duty cycle limit of the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="85" column="13" bodyfile="src/MycilaDimmer.h" bodystart="85" bodyend="85"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1ab936b1ffcb91cb3339ed8da8ba086895" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::getDutyCycleMin</definition>
+        <argsstring>() const</argsstring>
+        <name>getDutyCycleMin</name>
+        <qualifiedname>Mycila::Dimmer::getDutyCycleMin</qualifiedname>
+        <briefdescription>
+<para>Get the remapped &quot;0&quot; of the dimmer duty cycle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="90" column="13" bodyfile="src/MycilaDimmer.h" bodystart="90" bodyend="90"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a38579bf14b9e375b89e54970bbae16d1" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::getDutyCycleMax</definition>
+        <argsstring>() const</argsstring>
+        <name>getDutyCycleMax</name>
+        <qualifiedname>Mycila::Dimmer::getDutyCycleMax</qualifiedname>
+        <briefdescription>
+<para>Get the remapped &quot;1&quot; of the dimmer duty cycle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="95" column="13" bodyfile="src/MycilaDimmer.h" bodystart="95" bodyend="95"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a5912fd1ebbeff4444b37247a7b2791f4" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mycila::Dimmer::isEnabled</definition>
+        <argsstring>() const</argsstring>
+        <name>isEnabled</name>
+        <qualifiedname>Mycila::Dimmer::isEnabled</qualifiedname>
+        <briefdescription>
+<para>Check if the dimmer is enabled (if it was able to initialize correctly) </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="120" column="12" bodyfile="src/MycilaDimmer.h" bodystart="120" bodyend="120"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a7141a09aef5e3896f7378061cfc6c337" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Mycila::Dimmer::isOnline</definition>
+        <argsstring>() const</argsstring>
+        <name>isOnline</name>
+        <qualifiedname>Mycila::Dimmer::isOnline</qualifiedname>
+        <reimplementedby refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73">isOnline</reimplementedby>
+        <briefdescription>
+<para>Returns true if the dimmer is online. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>A dimmer is considered online if it is enabled, marked online </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="126" column="20" bodyfile="src/MycilaDimmer.h" bodystart="126" bodyend="126"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a7dfc096d101bd15b5948d1e398fdc236" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::Dimmer::setOnline</definition>
+        <argsstring>(bool online)</argsstring>
+        <name>setOnline</name>
+        <qualifiedname>Mycila::Dimmer::setOnline</qualifiedname>
+        <param>
+          <type>bool</type>
+          <declname>online</declname>
+        </param>
+        <briefdescription>
+<para>Set the online status of the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>This flag can be used to temporarily disable the dimmer when not connected to the grid </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="132" column="12" bodyfile="src/MycilaDimmer.h" bodystart="132" bodyend="141"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a8275a7b7cf9417c2d143519452a88880" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::Dimmer::on</definition>
+        <argsstring>()</argsstring>
+        <name>on</name>
+        <qualifiedname>Mycila::Dimmer::on</qualifiedname>
+        <briefdescription>
+<para>Turn on the dimmer at full power. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="150" column="12" bodyfile="src/MycilaDimmer.h" bodystart="150" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a04d71f45a6371457f6414af1d30a371e" prot="public" static="no" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>void Mycila::Dimmer::off</definition>
+        <argsstring>()</argsstring>
+        <name>off</name>
+        <qualifiedname>Mycila::Dimmer::off</qualifiedname>
+        <briefdescription>
+<para>Turn off the dimmer. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="155" column="12" bodyfile="src/MycilaDimmer.h" bodystart="155" bodyend="155"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1aa79fca836ab46599aa51d951bd258d58" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mycila::Dimmer::isOff</definition>
+        <argsstring>() const</argsstring>
+        <name>isOff</name>
+        <qualifiedname>Mycila::Dimmer::isOff</qualifiedname>
+        <briefdescription>
+<para>Check if the dimmer is off. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="160" column="12" bodyfile="src/MycilaDimmer.h" bodystart="160" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a45ffba29874e10e48ea48f247d61628b" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mycila::Dimmer::isOn</definition>
+        <argsstring>() const</argsstring>
+        <name>isOn</name>
+        <qualifiedname>Mycila::Dimmer::isOn</qualifiedname>
+        <briefdescription>
+<para>Check if the dimmer is on. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="165" column="12" bodyfile="src/MycilaDimmer.h" bodystart="165" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1aaf5694660dfeec4f9131133324edf223" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mycila::Dimmer::isOnAtFullPower</definition>
+        <argsstring>() const</argsstring>
+        <name>isOnAtFullPower</name>
+        <qualifiedname>Mycila::Dimmer::isOnAtFullPower</qualifiedname>
+        <briefdescription>
+<para>Check if the dimmer is on at full power. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="170" column="12" bodyfile="src/MycilaDimmer.h" bodystart="170" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1ae0ef5805b0a6911171f379a0945bfa5c" prot="public" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Mycila::Dimmer::setDutyCycle</definition>
+        <argsstring>(float dutyCycle)</argsstring>
+        <name>setDutyCycle</name>
+        <qualifiedname>Mycila::Dimmer::setDutyCycle</qualifiedname>
+        <reimplementedby refid="classMycila_1_1PhaseControlDimmer_1a431d427af2d3421f25ff1c11db579532">setDutyCycle</reimplementedby>
+        <param>
+          <type>float</type>
+          <declname>dutyCycle</declname>
+        </param>
+        <briefdescription>
+<para>Set the power duty. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername>dutyCycle</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>the power duty cycle in the range [0.0, 1.0] </para>
+</parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="177" column="20" bodyfile="src/MycilaDimmer.h" bodystart="177" bodyend="183"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a717feacc41caacea0681e2fa6816e18c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::getDutyCycle</definition>
+        <argsstring>() const</argsstring>
+        <name>getDutyCycle</name>
+        <qualifiedname>Mycila::Dimmer::getDutyCycle</qualifiedname>
+        <briefdescription>
+<para>Get the power duty cycle configured for the dimmer by the user. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="192" column="13" bodyfile="src/MycilaDimmer.h" bodystart="192" bodyend="192"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::getDutyCycleMapped</definition>
+        <argsstring>() const</argsstring>
+        <name>getDutyCycleMapped</name>
+        <qualifiedname>Mycila::Dimmer::getDutyCycleMapped</qualifiedname>
+        <briefdescription>
+<para>Get the remapped power duty cycle from the currently user set duty cycle. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="197" column="13" bodyfile="src/MycilaDimmer.h" bodystart="197" bodyend="197"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::getDutyCycleFire</definition>
+        <argsstring>() const</argsstring>
+        <name>getDutyCycleFire</name>
+        <qualifiedname>Mycila::Dimmer::getDutyCycleFire</qualifiedname>
+        <briefdescription>
+<para>Get the real firing duty cycle (conduction duty cycle) applied to the dimmer in the range [0, 1]. </para>
+        </briefdescription>
+        <detaileddescription>
+<para><itemizedlist>
+<listitem><para>At 0% power, the ratio is equal to 0.</para>
+</listitem><listitem><para>At 100% power, the ratio is equal to 1. <simplesect kind="return"><para>The duty cycle applied on the hardware, or 0 if the dimmer is offline The firing ratio represents the actual proportion of time the dimmer is conducting power to the load within each AC cycle. It is computed based on the remapped duty cycle and eventually the power LUT if enabled. </para>
+</simplesect>
+</para>
+</listitem></itemizedlist>
+</para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="207" column="13" bodyfile="src/MycilaDimmer.h" bodystart="207" bodyend="207"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1acbc25eec2438b85782838265f9e8b8d3" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>float</type>
+        <definition>virtual float Mycila::Dimmer::getPowerRatio</definition>
+        <argsstring>() const</argsstring>
+        <name>getPowerRatio</name>
+        <qualifiedname>Mycila::Dimmer::getPowerRatio</qualifiedname>
+        <reimplementedby refid="classMycila_1_1PhaseControlDimmer_1a7cccaf1bc81b180abb84745f2a3580ce">getPowerRatio</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="213" column="21" bodyfile="src/MycilaDimmer.h" bodystart="213" bodyend="216"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a6b34aab3c938759c82853fe5f917ee54" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mycila::Dimmer::calculateHarmonics</definition>
+        <argsstring>(float *array, size_t n) const</argsstring>
+        <name>calculateHarmonics</name>
+        <qualifiedname>Mycila::Dimmer::calculateHarmonics</qualifiedname>
+        <param>
+          <type>float *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="222" column="12" bodyfile="src/MycilaDimmer.h" bodystart="222" bodyend="250"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1ae182ed0b25be3e4b82a1e6772e201e24" prot="public" static="no" const="yes" explicit="no" inline="yes" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool Mycila::Dimmer::calculateMetrics</definition>
+        <argsstring>(Metrics &amp;metrics, float gridVoltage, float loadResistance) const</argsstring>
+        <name>calculateMetrics</name>
+        <qualifiedname>Mycila::Dimmer::calculateMetrics</qualifiedname>
+        <param>
+          <type><ref refid="structMycila_1_1Dimmer_1_1Metrics" kindref="compound">Metrics</ref> &amp;</type>
+          <declname>metrics</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>gridVoltage</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>loadResistance</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="252" column="12" bodyfile="src/MycilaDimmer.h" bodystart="252" bodyend="295"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a518d3f8796875645cfab0c395b9c90df" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>uint16_t</type>
+        <definition>static uint16_t Mycila::Dimmer::getSemiPeriod</definition>
+        <argsstring>()</argsstring>
+        <name>getSemiPeriod</name>
+        <qualifiedname>Mycila::Dimmer::getSemiPeriod</qualifiedname>
+        <briefdescription>
+<para>Get the semi-period in us used for the power LUT calculations. If LUT is disabled, returns 0. </para>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="104" column="23" bodyfile="src/MycilaDimmer.h" bodystart="104" bodyend="104"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a10c7e14e08ab36dc3b480c33d908740e" prot="public" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>void</type>
+        <definition>static void Mycila::Dimmer::setSemiPeriod</definition>
+        <argsstring>(uint16_t semiPeriod)</argsstring>
+        <name>setSemiPeriod</name>
+        <qualifiedname>Mycila::Dimmer::setSemiPeriod</qualifiedname>
+        <param>
+          <type>uint16_t</type>
+          <declname>semiPeriod</declname>
+        </param>
+        <briefdescription>
+<para>Set the semi-period of the grid frequency in us for this dimmer. This is mandatory when using power LUT. </para>
+        </briefdescription>
+        <detaileddescription>
+<para>Typical values are 10000 for 50Hz and 8333 for 60Hz.</para>
+<para>The value can also come from MycilaPulseAnalyzer </para>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="111" column="19" bodyfile="src/MycilaDimmer.h" bodystart="111" bodyend="111"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-func">
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c" prot="protected" static="no" const="no" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Mycila::Dimmer::_apply</definition>
+        <argsstring>()</argsstring>
+        <name>_apply</name>
+        <qualifiedname>Mycila::Dimmer::_apply</qualifiedname>
+        <reimplementedby refid="classMycila_1_1CycleStealingDimmer_1a216de3963f22ef367c4f8e15ea37d9aa">_apply</reimplementedby>
+        <reimplementedby refid="classMycila_1_1DFRobotDimmer_1a9132dcc2dd637f2782c0d618633e0d66">_apply</reimplementedby>
+        <reimplementedby refid="classMycila_1_1PWMDimmer_1ab712ac8a69195375ffeadb39c74126c3">_apply</reimplementedby>
+        <reimplementedby refid="classMycila_1_1ThyristorDimmer_1a1fe34a978cd88893d7a005ac3fb15cd5">_apply</reimplementedby>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="342" column="20" bodyfile="src/MycilaDimmer.h" bodystart="342" bodyend="342"/>
+      </memberdef>
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1ac663b5f99852d96721f95aaa855cf499" prot="protected" static="no" const="yes" explicit="no" inline="yes" virt="virtual">
+        <type>bool</type>
+        <definition>virtual bool Mycila::Dimmer::_calculateDimmerHarmonics</definition>
+        <argsstring>(float *array, size_t n) const</argsstring>
+        <name>_calculateDimmerHarmonics</name>
+        <qualifiedname>Mycila::Dimmer::_calculateDimmerHarmonics</qualifiedname>
+        <reimplementedby refid="classMycila_1_1CycleStealingDimmer_1a8d5e987ad7d8bc3a264ef904a3843355">_calculateDimmerHarmonics</reimplementedby>
+        <reimplementedby refid="classMycila_1_1PhaseControlDimmer_1a34b284641f49ccbca1a703314a705172">_calculateDimmerHarmonics</reimplementedby>
+        <param>
+          <type>float *</type>
+          <declname>array</declname>
+        </param>
+        <param>
+          <type>size_t</type>
+          <declname>n</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="344" column="20" bodyfile="src/MycilaDimmer.h" bodystart="344" bodyend="349"/>
+      </memberdef>
+    </sectiondef>
+    <sectiondef kind="protected-static-func">
+      <memberdef kind="function" id="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" prot="protected" static="yes" const="no" explicit="no" inline="yes" virt="non-virtual">
+        <type>float</type>
+        <definition>static float Mycila::Dimmer::_contrain</definition>
+        <argsstring>(float amt, float low, float high)</argsstring>
+        <name>_contrain</name>
+        <qualifiedname>Mycila::Dimmer::_contrain</qualifiedname>
+        <param>
+          <type>float</type>
+          <declname>amt</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>low</declname>
+        </param>
+        <param>
+          <type>float</type>
+          <declname>high</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="355" column="27" bodyfile="src/MycilaDimmer.h" bodystart="355" bodyend="357"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <inheritancegraph>
+      <node id="2">
+        <label>Mycila::CycleStealingDimmer</label>
+        <link refid="classMycila_1_1CycleStealingDimmer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>Mycila::DFRobotDimmer</label>
+        <link refid="classMycila_1_1DFRobotDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>Mycila::Dimmer</label>
+        <link refid="classMycila_1_1Dimmer"/>
+      </node>
+      <node id="5">
+        <label>Mycila::PWMDimmer</label>
+        <link refid="classMycila_1_1PWMDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="3">
+        <label>Mycila::PhaseControlDimmer</label>
+        <link refid="classMycila_1_1PhaseControlDimmer"/>
+        <childnode refid="1" relation="public-inheritance">
+        </childnode>
+      </node>
+      <node id="6">
+        <label>Mycila::ThyristorDimmer</label>
+        <link refid="classMycila_1_1ThyristorDimmer"/>
+        <childnode refid="3" relation="public-inheritance">
+        </childnode>
+      </node>
+    </inheritancegraph>
+    <location file="src/MycilaDimmer.h" line="23" column="3" bodyfile="src/MycilaDimmer.h" bodystart="23" bodyend="358"/>
+    <listofallmembers>
+      <member refid="classMycila_1_1Dimmer_1a6fb5b41b3e299e1db9b2e1fae72e897c" prot="protected" virt="virtual"><scope>Mycila::Dimmer</scope><name>_apply</name></member>
+      <member refid="classMycila_1_1Dimmer_1ac663b5f99852d96721f95aaa855cf499" prot="protected" virt="virtual"><scope>Mycila::Dimmer</scope><name>_calculateDimmerHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1a4a16a34b7cd031e3f9ea699af23c231f" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_contrain</name></member>
+      <member refid="classMycila_1_1Dimmer_1addd835ef139e7d9dd21ec7c6387eedcc" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_dutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7e941fcddb972cac10e806e923112ca7" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_dutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a88e7e2ba34272990ce56058b170737dd" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_dutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8c4c1126eb9e8429e97886970c1aa076" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_dutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a85bfbf3fc1aa9e539abe22be3eeec368" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_dutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_enabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab6260c766739f7b991d6a84086a7926b" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_online</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" prot="protected" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>_semiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a54fd1a618e053fc51434775fe92f2166" prot="public" virt="virtual"><scope>Mycila::Dimmer</scope><name>begin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a6b34aab3c938759c82853fe5f917ee54" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>calculateHarmonics</name></member>
+      <member refid="classMycila_1_1Dimmer_1ae182ed0b25be3e4b82a1e6772e201e24" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>calculateMetrics</name></member>
+      <member refid="classMycila_1_1Dimmer_1a4108da25e47d5c15f307ab9ab0d91960" prot="public" virt="virtual"><scope>Mycila::Dimmer</scope><name>end</name></member>
+      <member refid="classMycila_1_1Dimmer_1a717feacc41caacea0681e2fa6816e18c" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>getDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>getDutyCycleFire</name></member>
+      <member refid="classMycila_1_1Dimmer_1a90913d5b183b43ece94a9c323fb6cc1f" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>getDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1a915e8f46ca54bd45b13f7d2e13432938" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>getDutyCycleMapped</name></member>
+      <member refid="classMycila_1_1Dimmer_1a38579bf14b9e375b89e54970bbae16d1" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>getDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1ab936b1ffcb91cb3339ed8da8ba086895" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>getDutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1acbc25eec2438b85782838265f9e8b8d3" prot="public" virt="virtual"><scope>Mycila::Dimmer</scope><name>getPowerRatio</name></member>
+      <member refid="classMycila_1_1Dimmer_1a518d3f8796875645cfab0c395b9c90df" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>getSemiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a5912fd1ebbeff4444b37247a7b2791f4" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>isEnabled</name></member>
+      <member refid="classMycila_1_1Dimmer_1aa79fca836ab46599aa51d951bd258d58" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>isOff</name></member>
+      <member refid="classMycila_1_1Dimmer_1a45ffba29874e10e48ea48f247d61628b" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>isOn</name></member>
+      <member refid="classMycila_1_1Dimmer_1aaf5694660dfeec4f9131133324edf223" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>isOnAtFullPower</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7141a09aef5e3896f7378061cfc6c337" prot="public" virt="virtual"><scope>Mycila::Dimmer</scope><name>isOnline</name></member>
+      <member refid="classMycila_1_1Dimmer_1a04d71f45a6371457f6414af1d30a371e" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>off</name></member>
+      <member refid="classMycila_1_1Dimmer_1a8275a7b7cf9417c2d143519452a88880" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>on</name></member>
+      <member refid="classMycila_1_1Dimmer_1ae0ef5805b0a6911171f379a0945bfa5c" prot="public" virt="virtual"><scope>Mycila::Dimmer</scope><name>setDutyCycle</name></member>
+      <member refid="classMycila_1_1Dimmer_1af83b436ec8799d705dbf22265225beaf" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>setDutyCycleLimit</name></member>
+      <member refid="classMycila_1_1Dimmer_1abe79bb19232cdede06774f88274672a6" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>setDutyCycleMax</name></member>
+      <member refid="classMycila_1_1Dimmer_1a65e890fe02705d74cb3fb41387d843dc" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>setDutyCycleMin</name></member>
+      <member refid="classMycila_1_1Dimmer_1a7dfc096d101bd15b5948d1e398fdc236" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>setOnline</name></member>
+      <member refid="classMycila_1_1Dimmer_1a10c7e14e08ab36dc3b480c33d908740e" prot="public" virt="non-virtual"><scope>Mycila::Dimmer</scope><name>setSemiPeriod</name></member>
+      <member refid="classMycila_1_1Dimmer_1a576ed69f3f6cf4be3baa58f536f9dd49" prot="public" virt="virtual"><scope>Mycila::Dimmer</scope><name>type</name></member>
+      <member refid="classMycila_1_1Dimmer_1ad13ce419d205132904899d442cb96d94" prot="public" virt="virtual"><scope>Mycila::Dimmer</scope><name>~Dimmer</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

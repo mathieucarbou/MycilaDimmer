@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="MycilaDimmerThyristor_8h" kind="file" language="C++">
+    <compoundname>MycilaDimmerThyristor.h</compoundname>
+    <includes refid="MycilaDimmerPhaseControl_8h" local="yes">MycilaDimmerPhaseControl.h</includes>
+    <includes local="no">driver/gptimer_types.h</includes>
+    <includedby refid="MycilaDimmers_8h" local="yes">src/MycilaDimmers.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>MycilaDimmer.h</label>
+        <link refid="MycilaDimmer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MycilaDimmerPhaseControl.h</label>
+        <link refid="MycilaDimmerPhaseControl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/MycilaDimmerThyristor.h</label>
+        <link refid="MycilaDimmerThyristor_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="4">
+        <label>assert.h</label>
+      </node>
+      <node id="6">
+        <label>cmath</label>
+      </node>
+      <node id="7">
+        <label>cstdio</label>
+      </node>
+      <node id="8">
+        <label>driver/gptimer_types.h</label>
+      </node>
+      <node id="5">
+        <label>esp32-hal-gpio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>src/MycilaDimmerThyristor.h</label>
+        <link refid="MycilaDimmerThyristor_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/MycilaDimmers.h</label>
+        <link refid="MycilaDimmers_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMycila_1_1ThyristorDimmer" prot="public">Mycila::ThyristorDimmer</innerclass>
+    <innerclass refid="structMycila_1_1ThyristorDimmer_1_1RegisteredDimmer" prot="private">Mycila::ThyristorDimmer::RegisteredDimmer</innerclass>
+    <innernamespace refid="namespaceMycila">Mycila</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>MIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>Mathieu<sp/>Carbou</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="MycilaDimmerPhaseControl_8h" kindref="compound">MycilaDimmerPhaseControl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;driver/gptimer_types.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceMycila" kindref="compound">Mycila</ref><sp/>{</highlight></codeline>
+<codeline lineno="14" refid="classMycila_1_1ThyristorDimmer" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMycila_1_1ThyristorDimmer" kindref="compound">ThyristorDimmer</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer" kindref="compound">PhaseControlDimmer</ref><sp/>{</highlight></codeline>
+<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="16" refid="classMycila_1_1ThyristorDimmer_1a4e2785135580ff2e2decc46d7ee3387c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1ThyristorDimmer_1a4e2785135580ff2e2decc46d7ee3387c" kindref="member">~ThyristorDimmer</ref>()<sp/>{<sp/><ref refid="classMycila_1_1ThyristorDimmer_1aeb0acda0ee498ff78561ae9d7d5c2e6a" kindref="member">end</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="17"><highlight class="normal"></highlight></codeline>
+<codeline lineno="21" refid="classMycila_1_1ThyristorDimmer_1a6ea7401605120ef604f0f5fdb255b58e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1ThyristorDimmer_1a6ea7401605120ef604f0f5fdb255b58e" kindref="member">setPin</ref>(gpio_num_t<sp/>pin)<sp/>{<sp/>_pin<sp/>=<sp/>pin;<sp/>}</highlight></codeline>
+<codeline lineno="22"><highlight class="normal"></highlight></codeline>
+<codeline lineno="26" refid="classMycila_1_1ThyristorDimmer_1a39b9f1be2d0ace6ecaf323b175b6323c" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpio_num_t<sp/><ref refid="classMycila_1_1ThyristorDimmer_1a39b9f1be2d0ace6ecaf323b175b6323c" kindref="member">getPin</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_pin;<sp/>}</highlight></codeline>
+<codeline lineno="27"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classMycila_1_1ThyristorDimmer_1aeae233eac6f9dbc0b73b39b32159bee6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/><ref refid="classMycila_1_1ThyristorDimmer_1aeae233eac6f9dbc0b73b39b32159bee6" kindref="member">getFiringDelay</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_delay<sp/>&gt;<sp/><ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref><sp/>?<sp/><ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref><sp/>:<sp/>_delay;<sp/>}</highlight></codeline>
+<codeline lineno="35"><highlight class="normal"></highlight></codeline>
+<codeline lineno="41" refid="classMycila_1_1ThyristorDimmer_1acefc6e35c851e599035e5c2cb2730694" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1ThyristorDimmer_1acefc6e35c851e599035e5c2cb2730694" kindref="member">getPhaseAngle</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_delay<sp/>&gt;=<sp/><ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref><sp/>?<sp/>180<sp/>:<sp/>180<sp/>*<sp/>_delay<sp/>/<sp/><ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref>;<sp/>}</highlight></codeline>
+<codeline lineno="42"><highlight class="normal"></highlight></codeline>
+<codeline lineno="49" refid="classMycila_1_1ThyristorDimmer_1ae6a65f0467eadbbb9a21a5d2fb2cda89" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1ThyristorDimmer_1ae6a65f0467eadbbb9a21a5d2fb2cda89" kindref="member">begin</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="50"><highlight class="normal"></highlight></codeline>
+<codeline lineno="56" refid="classMycila_1_1ThyristorDimmer_1aeb0acda0ee498ff78561ae9d7d5c2e6a" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1ThyristorDimmer_1aeb0acda0ee498ff78561ae9d7d5c2e6a" kindref="member">end</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58" refid="classMycila_1_1ThyristorDimmer_1afda1af88f34b1c0126525d7ca17bdfb8" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classMycila_1_1ThyristorDimmer_1afda1af88f34b1c0126525d7ca17bdfb8" kindref="member">type</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;thyristor&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70" refid="classMycila_1_1ThyristorDimmer_1ac868f096c92e91522456b38adbd4c1ba" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1ThyristorDimmer_1ac868f096c92e91522456b38adbd4c1ba" kindref="member">onZeroCross</ref>(int16_t<sp/>delayUntilZero,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>args);</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"></highlight></codeline>
+<codeline lineno="72"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MYCILA_JSON_SUPPORT</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toJson(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>JsonObject&amp;<sp/>root)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PhaseControlDimmer::toJson(root);</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;pin&quot;</highlight><highlight class="normal">]<sp/>=<sp/>_pin;</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;firing_delay&quot;</highlight><highlight class="normal">]<sp/>=<sp/><ref refid="classMycila_1_1ThyristorDimmer_1aeae233eac6f9dbc0b73b39b32159bee6" kindref="member">getFiringDelay</ref>();</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;firing_angle&quot;</highlight><highlight class="normal">]<sp/>=<sp/><ref refid="classMycila_1_1ThyristorDimmer_1acefc6e35c851e599035e5c2cb2730694" kindref="member">getPhaseAngle</ref>();</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="87" refid="classMycila_1_1ThyristorDimmer_1a1fe34a978cd88893d7a005ac3fb15cd5" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1ThyristorDimmer_1a1fe34a978cd88893d7a005ac3fb15cd5" kindref="member">_apply</ref>()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">float</highlight><highlight class="normal"><sp/>duty<sp/>=<sp/><ref refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" kindref="member">getDutyCycleFire</ref>();</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" kindref="member">isOnline</ref>()<sp/>||<sp/>duty<sp/>==<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_delay<sp/>=<sp/>UINT16_MAX;</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" kindref="member">_enabled</ref>;</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(duty<sp/>==<sp/>1)<sp/>{</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_delay<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" kindref="member">_enabled</ref>;</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>_delay<sp/>=<sp/>(1.0f<sp/>-<sp/>duty)<sp/>*<sp/></highlight><highlight class="keyword">static_cast&lt;</highlight><highlight class="keywordtype">float</highlight><highlight class="keyword">&gt;</highlight><highlight class="normal">(<ref refid="classMycila_1_1Dimmer_1a0a373f111682d1210fb3ff269824188d" kindref="member">_semiPeriod</ref>);</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1Dimmer_1a2212e403703545ca69d0a38d3105f83a" kindref="member">_enabled</ref>;</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>gpio_num_t<sp/>_pin<sp/>=<sp/>GPIO_NUM_NC;</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>_delay<sp/>=<sp/>UINT16_MAX;<sp/></highlight><highlight class="comment">//<sp/>this<sp/>is<sp/>the<sp/>next<sp/>firing<sp/>delay<sp/>to<sp/>apply</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>alarm_count<sp/>=<sp/>UINT16_MAX;<sp/></highlight><highlight class="comment">//<sp/>when<sp/>to<sp/>fire<sp/>the<sp/>dimmer</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">RegisteredDimmer<sp/>{</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1ThyristorDimmer" kindref="compound">ThyristorDimmer</ref>*<sp/>dimmer<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RegisteredDimmer*<sp/>prev<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>RegisteredDimmer*<sp/>next<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">struct<sp/></highlight><highlight class="normal">RegisteredDimmer*<sp/>dimmers;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>_fireTimerISR(gptimer_handle_t<sp/>timer,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gptimer_alarm_event_data_t*<sp/>event,<sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal">*<sp/>arg);</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_registerDimmer(<ref refid="classMycila_1_1ThyristorDimmer" kindref="compound">Mycila::ThyristorDimmer</ref>*<sp/>dimmer);</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>_unregisterDimmer(<ref refid="classMycila_1_1ThyristorDimmer" kindref="compound">Mycila::ThyristorDimmer</ref>*<sp/>dimmer);</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="117"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Mycila</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/MycilaDimmerThyristor.h"/>
+  </compounddef>
+</doxygen>

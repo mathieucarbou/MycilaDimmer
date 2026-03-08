@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="structMycila_1_1Dimmer_1_1Metrics" kind="struct" language="C++" prot="public">
+    <compoundname>Mycila::Dimmer::Metrics</compoundname>
+    <includes refid="MycilaDimmer_8h" local="no">MycilaDimmer.h</includes>
+    <sectiondef kind="public-attrib">
+      <memberdef kind="variable" id="structMycila_1_1Dimmer_1_1Metrics_1a017c296f1a13bf44398ce29d2eb7f70a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::Metrics::voltage</definition>
+        <argsstring></argsstring>
+        <name>voltage</name>
+        <qualifiedname>Mycila::Dimmer::Metrics::voltage</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="27" column="17" bodyfile="src/MycilaDimmer.h" bodystart="27" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMycila_1_1Dimmer_1_1Metrics_1ad301259d8632b1d88b6b22d33675de7a" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::Metrics::current</definition>
+        <argsstring></argsstring>
+        <name>current</name>
+        <qualifiedname>Mycila::Dimmer::Metrics::current</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="28" column="17" bodyfile="src/MycilaDimmer.h" bodystart="28" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMycila_1_1Dimmer_1_1Metrics_1a2acd10385adeda58056dcc42e21a35b0" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::Metrics::power</definition>
+        <argsstring></argsstring>
+        <name>power</name>
+        <qualifiedname>Mycila::Dimmer::Metrics::power</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="29" column="17" bodyfile="src/MycilaDimmer.h" bodystart="29" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMycila_1_1Dimmer_1_1Metrics_1aaded7bf74296b346dab8292c94a8d132" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::Metrics::apparentPower</definition>
+        <argsstring></argsstring>
+        <name>apparentPower</name>
+        <qualifiedname>Mycila::Dimmer::Metrics::apparentPower</qualifiedname>
+        <initializer>= 0.0f</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="30" column="17" bodyfile="src/MycilaDimmer.h" bodystart="30" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMycila_1_1Dimmer_1_1Metrics_1a70ff1ea0039f394d2764e2d53e713c20" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::Metrics::powerFactor</definition>
+        <argsstring></argsstring>
+        <name>powerFactor</name>
+        <qualifiedname>Mycila::Dimmer::Metrics::powerFactor</qualifiedname>
+        <initializer>= NAN</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="31" column="17" bodyfile="src/MycilaDimmer.h" bodystart="31" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="structMycila_1_1Dimmer_1_1Metrics_1a75ef4f26332aa403f0685b53d5bd0697" prot="public" static="no" mutable="no">
+        <type>float</type>
+        <definition>float Mycila::Dimmer::Metrics::thdi</definition>
+        <argsstring></argsstring>
+        <name>thdi</name>
+        <qualifiedname>Mycila::Dimmer::Metrics::thdi</qualifiedname>
+        <initializer>= NAN</initializer>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="src/MycilaDimmer.h" line="32" column="17" bodyfile="src/MycilaDimmer.h" bodystart="32" bodyend="-1"/>
+      </memberdef>
+    </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="src/MycilaDimmer.h" line="25" column="7" bodyfile="src/MycilaDimmer.h" bodystart="25" bodyend="33"/>
+    <listofallmembers>
+      <member refid="structMycila_1_1Dimmer_1_1Metrics_1aaded7bf74296b346dab8292c94a8d132" prot="public" virt="non-virtual"><scope>Mycila::Dimmer::Metrics</scope><name>apparentPower</name></member>
+      <member refid="structMycila_1_1Dimmer_1_1Metrics_1ad301259d8632b1d88b6b22d33675de7a" prot="public" virt="non-virtual"><scope>Mycila::Dimmer::Metrics</scope><name>current</name></member>
+      <member refid="structMycila_1_1Dimmer_1_1Metrics_1a2acd10385adeda58056dcc42e21a35b0" prot="public" virt="non-virtual"><scope>Mycila::Dimmer::Metrics</scope><name>power</name></member>
+      <member refid="structMycila_1_1Dimmer_1_1Metrics_1a70ff1ea0039f394d2764e2d53e713c20" prot="public" virt="non-virtual"><scope>Mycila::Dimmer::Metrics</scope><name>powerFactor</name></member>
+      <member refid="structMycila_1_1Dimmer_1_1Metrics_1a75ef4f26332aa403f0685b53d5bd0697" prot="public" virt="non-virtual"><scope>Mycila::Dimmer::Metrics</scope><name>thdi</name></member>
+      <member refid="structMycila_1_1Dimmer_1_1Metrics_1a017c296f1a13bf44398ce29d2eb7f70a" prot="public" virt="non-virtual"><scope>Mycila::Dimmer::Metrics</scope><name>voltage</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

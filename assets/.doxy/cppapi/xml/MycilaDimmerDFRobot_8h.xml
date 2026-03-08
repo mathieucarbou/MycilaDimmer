@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.9.8" xml:lang="en-US">
+  <compounddef id="MycilaDimmerDFRobot_8h" kind="file" language="C++">
+    <compoundname>MycilaDimmerDFRobot.h</compoundname>
+    <includes refid="MycilaDimmerPhaseControl_8h" local="yes">MycilaDimmerPhaseControl.h</includes>
+    <includes local="no">Wire.h</includes>
+    <includedby refid="MycilaDimmers_8h" local="yes">src/MycilaDimmers.h</includedby>
+    <incdepgraph>
+      <node id="3">
+        <label>MycilaDimmer.h</label>
+        <link refid="MycilaDimmer_8h"/>
+        <childnode refid="4" relation="include">
+        </childnode>
+        <childnode refid="5" relation="include">
+        </childnode>
+        <childnode refid="6" relation="include">
+        </childnode>
+        <childnode refid="7" relation="include">
+        </childnode>
+      </node>
+      <node id="1">
+        <label>src/MycilaDimmerDFRobot.h</label>
+        <link refid="MycilaDimmerDFRobot_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+        <childnode refid="8" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>MycilaDimmerPhaseControl.h</label>
+        <link refid="MycilaDimmerPhaseControl_8h"/>
+        <childnode refid="3" relation="include">
+        </childnode>
+      </node>
+      <node id="8">
+        <label>Wire.h</label>
+      </node>
+      <node id="4">
+        <label>assert.h</label>
+      </node>
+      <node id="6">
+        <label>cmath</label>
+      </node>
+      <node id="7">
+        <label>cstdio</label>
+      </node>
+      <node id="5">
+        <label>esp32-hal-gpio.h</label>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="1">
+        <label>src/MycilaDimmerDFRobot.h</label>
+        <link refid="MycilaDimmerDFRobot_8h"/>
+        <childnode refid="2" relation="include">
+        </childnode>
+      </node>
+      <node id="2">
+        <label>src/MycilaDimmers.h</label>
+        <link refid="MycilaDimmers_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classMycila_1_1DFRobotDimmer" prot="public">Mycila::DFRobotDimmer</innerclass>
+    <innernamespace refid="namespaceMycila">Mycila</innernamespace>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"><highlight class="comment">//<sp/>SPDX-License-Identifier:<sp/>MIT</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="2"><highlight class="normal"></highlight><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="3"><highlight class="comment"><sp/>*<sp/>Copyright<sp/>(C)<sp/>Mathieu<sp/>Carbou</highlight></codeline>
+<codeline lineno="4"><highlight class="comment"><sp/>*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="5"><highlight class="normal"></highlight><highlight class="preprocessor">#pragma<sp/>once</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="6"><highlight class="normal"></highlight></codeline>
+<codeline lineno="7"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="MycilaDimmerPhaseControl_8h" kindref="compound">MycilaDimmerPhaseControl.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="8"><highlight class="normal"></highlight></codeline>
+<codeline lineno="9"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;Wire.h&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="10"><highlight class="normal"></highlight></codeline>
+<codeline lineno="11"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespaceMycila" kindref="compound">Mycila</ref><sp/>{</highlight></codeline>
+<codeline lineno="15" refid="classMycila_1_1DFRobotDimmer" refkind="compound"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classMycila_1_1DFRobotDimmer" kindref="compound">DFRobotDimmer</ref><sp/>:<sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1PhaseControlDimmer" kindref="compound">PhaseControlDimmer</ref><sp/>{</highlight></codeline>
+<codeline lineno="16"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="17" refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" kindref="member">SKU</ref><sp/>{</highlight></codeline>
+<codeline lineno="18"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a696b031073e74bf2cb98e5ef201d4aa3" kindref="member">UNKNOWN</ref>,</highlight></codeline>
+<codeline lineno="19"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0-5V/10V<sp/>output,<sp/>1-channel,<sp/>I2C,<sp/>15-bit<sp/>resolution,<sp/>99.99%<sp/>accuracy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="20"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aaee6d0fcea577ca78ecb74a4554b7257" kindref="member">DFR1071_GP8211S</ref>,</highlight></codeline>
+<codeline lineno="21"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0-5V/10V<sp/>output,<sp/>2-channel,<sp/>I2C,<sp/>15-bit<sp/>resolution,<sp/>99.99%<sp/>accuracy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="22"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aebcaf9299dde44e9c24b89fb43ae9f93" kindref="member">DFR1073_GP8413</ref>,</highlight></codeline>
+<codeline lineno="23"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="comment">//<sp/>0-5V/10V<sp/>output,<sp/>2-channel,<sp/>I2C,<sp/>12-bit<sp/>resolution,<sp/>99.90%<sp/>accuracy</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="24"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a30bb788e02f2c6d17bb7b020c5fcdb61" kindref="member">DFR0971_GP8403</ref>,</highlight></codeline>
+<codeline lineno="25"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="26"><highlight class="normal"></highlight></codeline>
+<codeline lineno="27" refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">enum<sp/>class</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref><sp/>{</highlight></codeline>
+<codeline lineno="28"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135adfd0749b5fbb78dcdd9c3a36651cb32b" kindref="member">RANGE_0_5V</ref>,</highlight></codeline>
+<codeline lineno="29"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135a3060079d1a8e3c0a0d718ae01b1946f3" kindref="member">RANGE_0_10V</ref>,</highlight></codeline>
+<codeline lineno="30"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>};</highlight></codeline>
+<codeline lineno="31"><highlight class="normal"></highlight></codeline>
+<codeline lineno="32" refid="classMycila_1_1DFRobotDimmer_1a8ec36b67728c706e1d26727108ab2b88" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">virtual</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a8ec36b67728c706e1d26727108ab2b88" kindref="member">~DFRobotDimmer</ref>()<sp/>{<sp/><ref refid="classMycila_1_1DFRobotDimmer_1af29886b4c364adc366ca78d66d32d1d3" kindref="member">end</ref>();<sp/>}</highlight></codeline>
+<codeline lineno="33"><highlight class="normal"></highlight></codeline>
+<codeline lineno="34" refid="classMycila_1_1DFRobotDimmer_1afa23eadd84aef6c537f2bd09951e53a1" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1afa23eadd84aef6c537f2bd09951e53a1" kindref="member">setWire</ref>(TwoWire&amp;<sp/>wire)<sp/>{<sp/>_wire<sp/>=<sp/>&amp;wire;<sp/>}</highlight></codeline>
+<codeline lineno="35" refid="classMycila_1_1DFRobotDimmer_1ae348405078536dae09cbd53efb3972c2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TwoWire&amp;<sp/><ref refid="classMycila_1_1DFRobotDimmer_1ae348405078536dae09cbd53efb3972c2" kindref="member">getWire</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>*_wire;<sp/>}</highlight></codeline>
+<codeline lineno="36"><highlight class="normal"></highlight></codeline>
+<codeline lineno="37" refid="classMycila_1_1DFRobotDimmer_1a0824314146931242a57d2fb22d52d8a7" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a0824314146931242a57d2fb22d52d8a7" kindref="member">setSKU</ref>(<ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" kindref="member">SKU</ref><sp/>sku)<sp/>{<sp/>_sku<sp/>=<sp/>sku;<sp/>}</highlight></codeline>
+<codeline lineno="38" refid="classMycila_1_1DFRobotDimmer_1a154a3eb3ea5c31d269e2dd1254f40cbe" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" kindref="member">SKU</ref><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a154a3eb3ea5c31d269e2dd1254f40cbe" kindref="member">getSKU</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_sku;<sp/>}</highlight></codeline>
+<codeline lineno="39"><highlight class="normal"></highlight></codeline>
+<codeline lineno="44" refid="classMycila_1_1DFRobotDimmer_1a787206839fe862de890da60eb49db146" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a787206839fe862de890da60eb49db146" kindref="member">setOutput</ref>(<ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref><sp/>output)<sp/>{<sp/>_output<sp/>=<sp/>output;<sp/>}</highlight></codeline>
+<codeline lineno="45" refid="classMycila_1_1DFRobotDimmer_1abf3647219e5e3e7f2639c039491924d6" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref><sp/><ref refid="classMycila_1_1DFRobotDimmer_1abf3647219e5e3e7f2639c039491924d6" kindref="member">getOutput</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_output;<sp/>}</highlight></codeline>
+<codeline lineno="46"><highlight class="normal"></highlight></codeline>
+<codeline lineno="51" refid="classMycila_1_1DFRobotDimmer_1a0bbc67b4737e18c386b6b28a2ba5c0c0" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a0bbc67b4737e18c386b6b28a2ba5c0c0" kindref="member">setDeviceAddress</ref>(uint8_t<sp/>deviceAddress)<sp/>{<sp/>_deviceAddress<sp/>=<sp/>deviceAddress;<sp/>}</highlight></codeline>
+<codeline lineno="52" refid="classMycila_1_1DFRobotDimmer_1a6c3bf41fdb4c15cc7fcee51b171a203e" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a6c3bf41fdb4c15cc7fcee51b171a203e" kindref="member">getDeviceAddress</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_deviceAddress;<sp/>}</highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="61" refid="classMycila_1_1DFRobotDimmer_1a2b837feb23229c9adc26836f01131600" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a2b837feb23229c9adc26836f01131600" kindref="member">setChannel</ref>(uint8_t<sp/>channel)<sp/>{<sp/>_channel<sp/>=<sp/>channel;<sp/>}</highlight></codeline>
+<codeline lineno="62" refid="classMycila_1_1DFRobotDimmer_1a83b2bb509506383cf5bd33fe608c50e2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a83b2bb509506383cf5bd33fe608c50e2" kindref="member">getChannel</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_channel;<sp/>}</highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="67" refid="classMycila_1_1DFRobotDimmer_1ab64c2d69d31e919ba456ad90ccd14cf2" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/><ref refid="classMycila_1_1DFRobotDimmer_1ab64c2d69d31e919ba456ad90ccd14cf2" kindref="member">getResolution</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">switch</highlight><highlight class="normal"><sp/>(_sku)<sp/>{</highlight></codeline>
+<codeline lineno="69"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aaee6d0fcea577ca78ecb74a4554b7257" kindref="member">SKU::DFR1071_GP8211S</ref>:</highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>15;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aebcaf9299dde44e9c24b89fb43ae9f93" kindref="member">SKU::DFR1073_GP8413</ref>:</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>15;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">case</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a30bb788e02f2c6d17bb7b020c5fcdb61" kindref="member">SKU::DFR0971_GP8403</ref>:</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>12;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">default</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="86" refid="classMycila_1_1DFRobotDimmer_1ab4d84864138a2eb32f57361b6f5fc202" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1ab4d84864138a2eb32f57361b6f5fc202" kindref="member">begin</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93" refid="classMycila_1_1DFRobotDimmer_1af29886b4c364adc366ca78d66d32d1d3" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1af29886b4c364adc366ca78d66d32d1d3" kindref="member">end</ref>()<sp/></highlight><highlight class="keyword">override</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classMycila_1_1DFRobotDimmer_1a10d32304c6a1b119f6a96b114b2c70fd" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal">*<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a10d32304c6a1b119f6a96b114b2c70fd" kindref="member">type</ref>()</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{<sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="stringliteral">&quot;dfrobot&quot;</highlight><highlight class="normal">;<sp/>}</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight><highlight class="preprocessor">#ifdef<sp/>MYCILA_JSON_SUPPORT</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>toJson(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>JsonObject&amp;<sp/>root)</highlight><highlight class="keyword"><sp/>const<sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>PhaseControlDimmer::toJson(root);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;sku&quot;</highlight><highlight class="normal">]<sp/>=<sp/>_sku<sp/>==<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aaee6d0fcea577ca78ecb74a4554b7257" kindref="member">SKU::DFR1071_GP8211S</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;DFR1071_GP8211S&quot;</highlight><highlight class="normal"><sp/>:<sp/>_sku<sp/>==<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6aebcaf9299dde44e9c24b89fb43ae9f93" kindref="member">SKU::DFR1073_GP8413</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;DFR1073_GP8413&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/>_sku<sp/>==<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a30bb788e02f2c6d17bb7b020c5fcdb61" kindref="member">SKU::DFR0971_GP8403</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;DFR0971_GP8403&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;UNKNOWN&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;output&quot;</highlight><highlight class="normal">]<sp/>=<sp/>_output<sp/>==<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135adfd0749b5fbb78dcdd9c3a36651cb32b" kindref="member">Output::RANGE_0_5V</ref><sp/>?<sp/></highlight><highlight class="stringliteral">&quot;0-5V&quot;</highlight><highlight class="normal"><sp/>:<sp/></highlight><highlight class="stringliteral">&quot;0-10V&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;i2c_address&quot;</highlight><highlight class="normal">]<sp/>=<sp/>_deviceAddress;</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;channel&quot;</highlight><highlight class="normal">]<sp/>=<sp/>_channel;</highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>root[</highlight><highlight class="stringliteral">&quot;resolution&quot;</highlight><highlight class="normal">]<sp/>=<sp/><ref refid="classMycila_1_1DFRobotDimmer_1ab64c2d69d31e919ba456ad90ccd14cf2" kindref="member">getResolution</ref>();</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">protected</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="116" refid="classMycila_1_1DFRobotDimmer_1a9132dcc2dd637f2782c0d618633e0d66" refkind="member"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a9132dcc2dd637f2782c0d618633e0d66" kindref="member">_apply</ref>()</highlight><highlight class="keyword"><sp/>override<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!<ref refid="classMycila_1_1PhaseControlDimmer_1a60aecb7734f6eca2a96d5605f6a65d73" kindref="member">isOnline</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_sendDutyCycle(_deviceAddress,<sp/>0)<sp/>==<sp/>ESP_OK;</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>uint16_t<sp/>duty<sp/>=<sp/><ref refid="classMycila_1_1Dimmer_1a0f0513eebff6847195e79b893c96738c" kindref="member">getDutyCycleFire</ref>()<sp/>*<sp/>((1<sp/>&lt;&lt;<sp/><ref refid="classMycila_1_1DFRobotDimmer_1ab64c2d69d31e919ba456ad90ccd14cf2" kindref="member">getResolution</ref>())<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>_sendDutyCycle(_deviceAddress,<sp/>duty)<sp/>==<sp/>ESP_OK;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6" kindref="member">SKU</ref><sp/>_sku<sp/>=<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a48c08cde4421542fcdf3757ff404dfb6a696b031073e74bf2cb98e5ef201d4aa3" kindref="member">SKU::UNKNOWN</ref>;</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref><sp/>_output<sp/>=<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135a3060079d1a8e3c0a0d718ae01b1946f3" kindref="member">Output::RANGE_0_10V</ref>;</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>TwoWire*<sp/>_wire<sp/>=<sp/>&amp;Wire;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>_deviceAddress;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>_channel<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"></highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>_sendDutyCycle(uint8_t<sp/>address,<sp/>uint16_t<sp/>duty);</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>_sendOutput(uint8_t<sp/>address,<sp/><ref refid="classMycila_1_1DFRobotDimmer_1a3af200e30b2e9efa04650147fca0c135" kindref="member">Output</ref><sp/>output);</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>_send(uint8_t<sp/>address,<sp/>uint8_t<sp/>reg,<sp/>uint8_t*<sp/>buffer,<sp/></highlight><highlight class="keywordtype">size_t</highlight><highlight class="normal"><sp/>size);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>uint8_t<sp/>_test(uint8_t<sp/>address);</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/>};</highlight></codeline>
+<codeline lineno="136"><highlight class="normal">}<sp/></highlight><highlight class="comment">//<sp/>namespace<sp/>Mycila</highlight><highlight class="normal"></highlight></codeline>
+    </programlisting>
+    <location file="src/MycilaDimmerDFRobot.h"/>
+  </compounddef>
+</doxygen>
