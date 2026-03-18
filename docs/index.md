@@ -74,7 +74,7 @@ _This website is provided for informational purposes only. By accessing this sit
 
 - _**Use of Information**: Use of the information provided on this site is at your own risk. We decline all responsibility for the consequences arising from the use of this information. It is recommended that you consult a competent professional for advice specific to your situation._
 
-- _**External Links**: This site may contain links to external websites which are provided for your reference and convenience. We have no control over the content of - _**External Links**: Thie accept no res- _**External Links**: This site may contain links to external websites which are provided ft extent permitted by applicable law, we disclaim all liability for any direct, indirect, incidental, consequential or special damages arising out of the use of, or inability to use, this website, - _**External Links**: This site may contain links to external websites which are provided for your reference and convenience. We have no control over the content of - _**External Links**: Thie accept no res- _**External Links**: This sitgree to these terms, please do not use this site.\*\*\_
+- _**External Links**: This site may contain links to external websites which are provided for your reference and convenience. We have no control over the content of these websites and accept no responsibility for them. To the extent permitted by applicable law, we disclaim all liability for any direct, indirect, incidental, consequential or special damages arising out of the use of, or inability to use, this website. If you do not agree to these terms, please do not use this site._
 
 ---
 

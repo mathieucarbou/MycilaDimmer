@@ -32,7 +32,7 @@ void setup() {
 - Lookup table with linear interpolation for seamless transitions
 - IRAM-safe interrupt handlers
 - Supports several zero-cross detection circuits:
-  - [Zero-Cross Detector](https://www.pcbway.com/project/shareproject/Zero_Cross_Detector_a707a878.html) from Daniel S
+  - [Zero-Cross Detector](https://www.pcbway.com/project/shareproject/Zero_Cross_Detector_a707a878.html) from Daniel S.
   - [JSY-MK-194G](https://www.jsypowermeter.com/jsy-mk-194g-ac-single-phase-bidirectional-power-energy-meter-module-with-2-split-core-cts-product/)
   - RobotDyn ZCD
   - BM1Z102FJ
