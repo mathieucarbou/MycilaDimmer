@@ -67,6 +67,7 @@ nav:
   - Examples: examples.md
   - Troubleshooting: troubleshooting.md
   - Contributing: contributing.md
+  - Sponsors: sponsors.md
   - C++ API:
       - Annotated Classes: cppapi/annotated.md
       - Class Hierarchy: cppapi/hierarchy.md
