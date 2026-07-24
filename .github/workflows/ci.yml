@@ -124,7 +124,7 @@ jobs:
           ]
         platform:
           [
-            "https://github.com/pioarduino/platform-espressif32/releases/download/55.03.31/platform-espressif32.zip",
+            "https://github.com/pioarduino/platform-espressif32/releases/download/55.03.311/platform-espressif32.zip",
           ]
 
     steps:
