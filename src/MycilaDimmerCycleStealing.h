@@ -82,11 +82,15 @@ namespace Mycila {
       }
 
     private:
+      // Delta-Sigma modulator scale: duty 0.0-1.0 is scaled to 0-DUTY_SCALE integer units.
+      // DUTY_SCALE units of accumulated error = the energy of one full half-cycle.
+      static constexpr int32_t DUTY_SCALE = 1000;
+
       gpio_num_t _pin = GPIO_NUM_NC;
-      uint16_t duty_milli = 0; // Duty cycle scaled 0–1000; updated from _apply() (avoids float in ISR)
+      uint16_t duty_milli = 0; // Duty cycle scaled 0–DUTY_SCALE; updated from _apply() (avoids float in ISR)
       // Cycle stealing state tracking
       bool semi_period_odd = false; // Track odd/even semi-periods for balance
-      int32_t density_error = 0;    // Bresenham accumulator, scaled ×1000 (threshold: 1000)
+      int32_t density_error = 0;    // Bresenham accumulator, scaled ×DUTY_SCALE (threshold: DUTY_SCALE)
       int8_t dc_balance = 0;        // DC component balance (-1: owes positive, 1: owes negative)
 
       struct RegisteredDimmer {

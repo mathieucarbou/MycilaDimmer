@@ -131,13 +131,13 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
   while (current != nullptr) {
     CycleStealingDimmer* dimmer = current->dimmer;
 
-    // duty_milli is 0–1000 (scaled ×1000 from 0.0–1.0), pre-computed in _apply()
+    // duty_milli is 0–DUTY_SCALE (scaled ×1000 from 0.0–1.0), pre-computed in _apply()
     // so that _fireTimerISR contains no floating-point instructions and the CPU
     // does not need to save/restore the FP coprocessor state on the ISR stack (~72 bytes).
     const uint16_t dutyCycle = current->dimmer->duty_milli;
 
     // Full power: always conduct
-    if (dutyCycle >= 1000) {
+    if (dutyCycle >= DUTY_SCALE) {
       gpio_ll_set_level(&GPIO, dimmer->_pin, HIGH);
       current->dimmer->semi_period_odd = !current->dimmer->semi_period_odd;
       current = current->next;
@@ -161,7 +161,7 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
     bool should_conduct = false;
 
     // Check if we have enough accumulated error to fire a pulse
-    if (current->dimmer->density_error >= 1000) {
+    if (current->dimmer->density_error >= DUTY_SCALE) {
       // We want to fire. Check DC balance constraints.
       // semi_period_odd: True (Odd/Positive), False (Even/Negative)
       // dc_balance: 0 (Balanced), >0 (Excess Positive), <0 (Excess Negative)
@@ -179,7 +179,7 @@ bool ARDUINO_ISR_ATTR Mycila::CycleStealingDimmer::_fireTimerISR(gptimer_handle_
       if (helps_balance) {
         should_conduct = true;
         current->dimmer->dc_balance += phase_val;
-        current->dimmer->density_error -= 1000;
+        current->dimmer->density_error -= DUTY_SCALE;
       } else {
         // We need to fire for power, but it would worsen the DC imbalance.
         // Wait for the next semi-period (which will have opposite polarity).
@@ -294,7 +294,7 @@ void Mycila::CycleStealingDimmer::_unregisterDimmer(Mycila::CycleStealingDimmer*
 bool Mycila::CycleStealingDimmer::_apply() {
   // Cache integer duty cycle for use in _fireTimerISR (avoids float arithmetic — and the
   // associated FP coprocessor context save — inside the ISR, saving ~72 bytes of ISR stack).
-  duty_milli = static_cast<uint16_t>(getDutyCycleFire() * 1000.0f + 0.5f);
+  duty_milli = static_cast<uint16_t>(getDutyCycleFire() * static_cast<float>(DUTY_SCALE) + 0.5f);
 
   if (!_enabled)
     return false;
