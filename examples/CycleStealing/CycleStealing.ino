@@ -11,7 +11,6 @@
 #include <MycilaDimmers.h>
 
 #if defined(CONFIG_IDF_TARGET_ESP32)
-  // #define GPIO_DIMMER GPIO_NUM_25 // RobotDyn
   #define GPIO_DIMMER GPIO_NUM_26 // synchronous SSR
 #else
   #define GPIO_DIMMER GPIO_NUM_20

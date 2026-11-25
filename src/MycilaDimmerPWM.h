@@ -83,7 +83,7 @@ namespace Mycila {
         if (!isOnline()) {
           return ledcWrite(_pin, 0);
         }
-        uint32_t duty = getDutyCycleFire() * ((1 << _resolution) - 1);
+        uint32_t duty = getDutyCycleFire() * (1 << _resolution);
         return ledcWrite(_pin, duty);
       }
 

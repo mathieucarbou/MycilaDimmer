@@ -6,6 +6,8 @@
 
 A comprehensive ESP32/Arduino dimming library for controlling AC power devices including TRIACs, SSRs, and voltage regulators through multiple dimming methods.
 
+Compatible with **ESP32 Arduino core 3 and 4**.
+
 ![](assets/img/console.png)
 ![](assets/img/anim.gif)
 
@@ -34,7 +36,7 @@ MycilaDimmer provides a unified interface for controlling AC power devices throu
 
 ## Supported Hardware
 
-- **ESP32** (all variants: ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6, ESP32-H2) via Arduino Framework
+- **ESP32** (all variants: ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6, ESP32-H2) via Arduino Framework (ESP32 Arduino core 3 and 4)
 - **TRIACs** with zero-cross detection circuits
 - **Random Solid State Relays (SSRs)**
 - **Voltage Regulators** with 0-10V control (LSA, LCTC, etc.)

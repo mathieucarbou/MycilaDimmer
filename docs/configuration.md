@@ -15,13 +15,16 @@ build_flags =
   -D CONFIG_GPIO_CTRL_FUNC_IN_IRAM=1
 
 lib_deps =
-  mathieucarbou/MycilaPulseAnalyzer
+  mathieucarbou/MycilaPulseAnalyzer @ 3.1.0 ; 3.1.0 or later for ESP32 Arduino core 4
 ```
 
+!!! tip "Automatic grid frequency detection"
+    `Mycila::PulseAnalyzer` performs the grid frequency (semi-period) detection for the dimmers (`Mycila::Dimmer::setSemiPeriod()`), as shown in the [ThyristorAutoFrequency](https://github.com/mathieucarbou/MycilaDimmer/tree/main/examples/ThyristorAutoFrequency/) example — no need to hardcode `10000` (50Hz) or `8333` (60Hz).
+
 !!! note "Semi-period is always required"
-All dimmer types require `Mycila::Dimmer::setSemiPeriod()` to be called at startup (10000 for 50Hz, 8333 for 60Hz).
-For `PhaseControlDimmer` subclasses (Thyristor, PWM, DFRobot), it is only strictly required when `enablePowerLUT(true)` is set — but it is good practice to always set it.
-For `CycleStealingDimmer`, it is always required.
+    All dimmer types require `Mycila::Dimmer::setSemiPeriod()` to be called at startup (10000 for 50Hz, 8333 for 60Hz).
+    For `PhaseControlDimmer` subclasses (Thyristor, PWM, DFRobot), it is only strictly required when `enablePowerLUT(true)` is set — but it is good practice to always set it.
+    For `CycleStealingDimmer`, it is always required.
 
 ### JSON Support
 

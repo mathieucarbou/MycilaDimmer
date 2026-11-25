@@ -60,8 +60,15 @@ void setup() {
   pulseAnalyzer.onZeroCross(Mycila::ThyristorDimmer::onZeroCross);
   pulseAnalyzer.begin(GPIO_ZCD);
 
+  while (!pulseAnalyzer.getNominalGridSemiPeriod()) {
+    Serial.printf("Waiting for grid frequency detection...\n");
+    delay(200);
+  }
+  Serial.printf("Grid frequency detected: %d Hz\n", pulseAnalyzer.getNominalGridFrequency());
+
   // Grid semi-period in microseconds (us) must be set correctly for the dimmer to work properly
-  Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
+  Mycila::Dimmer::setSemiPeriod(pulseAnalyzer.getNominalGridSemiPeriod());
+  // Mycila::Dimmer::setSemiPeriod(10000); // 50Hz grid frequency
   // Mycila::Dimmer::setSemiPeriod(8333);  // 60Hz grid frequency
 
   dimmer.enablePowerLUT(true); // Enable power LUT for better dimming curve

@@ -18,11 +18,11 @@ lib_deps =
 
 ## Dependencies
 
-- **ESP32 Arduino Core** (any recent version)
+- **ESP32 Arduino Core 3.x** (ESP-IDF 5.x) or **ESP32 Arduino Core 4.x** (ESP-IDF 6.x)
 - **[ArduinoJson](https://github.com/bblanchon/ArduinoJson)** (optional, for JSON telemetry support)
-- **[MycilaPulseAnalyzer](https://github.com/mathieucarbou/MycilaPulseAnalyzer)** (optional, required for Thyristor and Cycle Stealing dimmers with zero-cross detection)
+- **[MycilaPulseAnalyzer](https://github.com/mathieucarbou/MycilaPulseAnalyzer)** (optional, required for Thyristor and Cycle Stealing dimmers with zero-cross detection; use 3.1.0 or later with ESP32 Arduino core 4)
 
 ## Supported Platforms
 
 - **ESP32** (all variants: ESP32, ESP32-S2, ESP32-S3, ESP32-C3, ESP32-C6, ESP32-H2)
-- **Arduino Framework** via PlatformIO or Arduino IDE
+- **Arduino Framework** via PlatformIO or Arduino IDE (ESP32 Arduino core 3 and 4)

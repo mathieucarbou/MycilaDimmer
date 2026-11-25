@@ -33,7 +33,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Install arduino-cli
         run: curl -fsSL https://raw.githubusercontent.com/arduino/arduino-cli/master/install.sh | BINDIR=/usr/local/bin sh
@@ -48,7 +48,7 @@ jobs:
         run: arduino-cli lib install ArduinoJson
 
       - name: Install MycilaPulseAnalyzer
-        run: ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true arduino-cli lib install --git-url https://github.com/mathieucarbou/MycilaPulseAnalyzer#v3.0.10
+        run: ARDUINO_LIBRARY_ENABLE_UNSAFE_INSTALL=true arduino-cli lib install --git-url https://github.com/mathieucarbou/MycilaPulseAnalyzer#v3.1.0
 
       - name: CycleStealing
         run: arduino-cli compile --library . --warnings all -b ${{ matrix.board }} "examples/CycleStealing/CycleStealing.ino"
@@ -96,15 +96,16 @@ jobs:
           ]
         platform:
           [
-            "https://github.com/pioarduino/platform-espressif32/releases/download/55.03.311/platform-espressif32.zip",
+            "https://github.com/pioarduino/platform-espressif32/releases/download/55.03.313/platform-espressif32.zip",
+            "https://github.com/pioarduino/platform-espressif32/releases/download/61.04.00/platform-espressif32.zip",
           ]
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
 
       - name: Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: "3.13"
 
